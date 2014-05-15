@@ -21,19 +21,69 @@
 		<div id="FJTAnneFrank">
 			<h1>FJT Anne Frank</h1>
 			<p>
-				
+				Situé au 21 rue du Bloc, 62 000 ARRAS.<br />
+				Tél : 03 21 71 24 83<br />
+				Fax : 03 21 23 08 44<br />
+				<a href="mailto:annefrank@4aj.fr">annefrank@4aj.fr</a><br />
+			</p>
+			<p>
+				<span class="underline">Directrice d'établissement :</span> BAUDUIN Sylvie<br />
+			</p>
+			<p>
+				<span class="underline">Public accueilli :</span>
+				Jeunes gens âgés de 16 à 30 ans : lycéens, étudiants, apprentis, salariés, stagiaires, demandeurs d'emploi ...<br />
+				40 places pour un public féminin et 8 places mixtes
+			</p>
+			<p>
+				<span class="underline">Bref Historique :</span> Le foyer de Jeunes Travailleurs s'est constitué sous sa forme associative en mai 1965, après s'être appelé "Maison de Protection de la Jeune Fille", puis "Association du Foyer de Jeunes Travailleuses de la région d'Arras" et "Résidence Anne Frank, Foyer de Jeunes Travailleurs" depuis décembre 2000, lors de la réécriture des status de l'association.
 			</p>
 		</div>
 		<div id="FJTClairLogis">
 			<h1>FJT Clair Logis</h1>
 			<p>
-				
+				Situé au 30 Grand'Place 62 000 Arras.<br />
+				Tél : 03 21 59 12 73<br />
+				Fax : 03 21 59 12 73<br />
+				<a href="mailto:clairlogis@4aj.fr">clairlogis@4aj.fr</a><br />
+			</p>
+			<p>
+				<span class="underline">Directeur d'Etablissement :</span> SZYMCZAK Patrice<br />
+			</p>
+			<p>
+				<span class="underline">Public accueilli :</span>
+				Foyer Féminin de 18/30 ans, salariées, stagiaires, apprenties, demandeuse d'emploi, étudiantes, jeunes en Aide Sociale, etc ...<br />
+			</p>
+			<p>
+				<span class="underline">Bref Historique :</span><br />
+				Le foyer Clair Logis a été créé par Mademoiselle BAUVIN, qui vivait avec ses parents au 30, Grand'Place / 1 rue Paul Perin. <br />
+				Melle BAUVIN a d'abord accueilli des jeunes travailleuses ou scolaires, avec leur pique-nique, et commence à loger une... deux... trois jeunes venant de la campagne environnante et travaillant sur Arras. Nous sommes en 1935...<br />
+				C'est en Février 1951 que se crée l'association "Vaillance et Joie".<br />
+				En 1983, pour aider l'accueil des jeunes confiées par les assistantes sociales, une convention avec les services de l'Aide Sociele à l'Enfance est établie... Cette convention est revue et adaptée en 94/95 avec les services de la Direction Départementale de l'Enfance et de la Famille.<br />
 			</p>
 		</div>
 		<div id="FJTNobel">
 			<h1>FJT Nobel</h1>
 			<p>
-
+				Situé au 7 rue Diderot 62 000 Arras.<br />
+				Tél : 03 21 16 11 70<br />
+				Fax : 03 21 16 11 71<br />
+				<a href="mailto:nobel@4aj.fr">nobel@4aj.fr</a><br />
+			</p>
+			<p>
+				<span class="underline">Directrice d'Etablissement :</span> TERCHANI Sonia<br />
+			</p>
+			<p>
+				<span class="underline">Public accueilli :</span>
+				Foyer Mixte 16/35 ans (lycéens, étudiants, stagiaires, salariés, demandeurs d'emploi...) ayant un projet de vie construit ou en cours d'élaboration (57 chambres dont un studio pour un public mixte).
+			</p>
+			<p>
+				<span class="underline">Bref Historique :</span><br />
+				Le foyer de jeunes travailleurs s'est constitué sous forme associative en janvier 1970. Située en plein coeur des quartiers ouest d'Arras, il a répondu tout de suite à un besoin urgent en logement pour les personnes de (18 à 30 ans) qui souhaitaient trouver un habitat rapidement.<br />
+				C'est en 1974 que l'association s'orienta vers une stratégie la coduisant à devenir également CHRS (Centre d'Hébergement et de Réadaptation Sociale).<br />
+				C'est enfin en 1989 que l'Association accueillit des étudiants à l'ouverture de l'Université d'Artois.<br />
+				Le 1 juillet 2003, le foyer s'est repositionné à la Résidence Nobel, 7 rue Diderot à Arras, suite au plan de "Rénovation Urbaine".<br />
+				Le 18 mai 2006, le FJT est habilité "A.S.E" afin de répondre aux nombreuses demandes émanant de garçons de 16 à 21 ans.<br />
+				Au regard du repositionnement à la Résidence Nobel et à l'implication de tous concluante dans ce nouveau lieu, il est décidé de rebaptiser le F.J.T. le 8 juin 2006 pour qu'il devienne Association F.J.T "Résidence Nobel".
 			</p>
 		</div>
 	</body>
