@@ -18,6 +18,23 @@
 				Aujourd'hui ce sont 160 places dans les trois établissements dont 39 places de centre d'hébergement en réinsertion sociale (ou CHRS), 33 places dans le cadre de l'aide sociale à l'enfance, 5 places d'urgence, et 8 places dans le cadre de l'implication dans la campagne hivernale. L'originalité, la transversalité des dispositifs, la non stigmatisation du public accueilli sont mises en exergue par l'accueil d'une jeunesse large âgée de 16 à 30 ans.
 			</p>	
 		</div>
+		<div id="plateformeLogement">
+			<h1>Plateforme Logement</h1>
+			<p>
+				Prendre rendez vous à la plateforme logement des jeunes : <br />
+				34 bis Grand Place<br />
+				Tel : 03 21 71 92 97<br />
+				<a href="mailto:plateformelogementjeunes@4aj.fr">plateformelogementjeunes@4aj.fr</a><br />
+			</p>
+			<p>
+				<spam class="underline">Horaires d'ouverture</spam><br />
+				Mardi 		9h00-12h30 14h00-18h00<br />
+				Mercredi	9h00-12h30 14h00-18h00<br />
+				Jeudi 		9h00-12h30 14h00-18h00<br />
+				Vendredi	9h00-12h30 14h00-17h30<br />
+				Samedi 		9h00-12h30<br />
+			</p>
+		</div>
 		<div id="FJTAnneFrank">
 			<h1>FJT Anne Frank</h1>
 			<p>
