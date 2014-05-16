@@ -1,5 +1,15 @@
 <?php
 include_once 'request/connection.php';
+if(isConnect()) // Pour se déconnecter
+{
+	if(!empty($_GET['dislog']) && $_GET['dislog'] == true)
+	{
+		unset($_SESSION['mail']);
+		unset($_SESSION['log']);
+		$_SESSION['message'] = "Vous êtes déconnecté.";
+		header('location:index.html');
+	} 
+}
 if(!empty($_POST['mail']) && !empty($_POST['password']))	// Connection
 {
 	$mail = $mysqli->real_escape_string($_POST['mail']); 
@@ -19,6 +29,14 @@ if(!empty($_POST['mail']) && !empty($_POST['password']))	// Connection
 	{
 		$message = "L'utilisateur n'existe pas.";
 	}
+}
+if(isConnect())
+{
+	if(!empty($message))
+	{
+		$_SESSION['message'] = $message;
+	}
+	header('location:index.html');
 }
 include_once 'view/connection.php';
 ?>

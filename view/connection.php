@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<?php 
-	isConnect();
-?>
 <html>
 	<head>
 			<title>Page de connection</title>
@@ -15,7 +12,9 @@
 			if(!empty($message))
 			{
 				echo '<em>'.$message.'</em><br />'; 
-			} ?>
+			} ?><br />
+			<br />
+			<a href="index.html">Accueil</a>
 			<form method="post">
 				<legend for="mail">Votre email : </legend><input type="name" id="mail" name="mail" /><br />
 				<legend for="password">Mot de passe : </legend><input type="password" id="password" name="password" /><br />

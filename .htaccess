@@ -8,5 +8,6 @@ RewriteEngine on
 # Règles de réécriture d'URL : 
 #-------------------------------------------------- 
 
-# Article sans numéro de page : 
+
+RewriteRule ^([a-zA-Z0-9]+)-([a-zA-Z0-9]+=[a-zA-Z0-9]+).html$ index.php?section=$1&$2 [L]
 RewriteRule ^([a-zA-Z0-9]+).html$ index.php?section=$1 [L]

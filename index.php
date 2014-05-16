@@ -5,7 +5,7 @@ $mysqli = connection();
 
 if (!isset($_GET['section']) OR $_GET['section'] == 'index')
 {
-    include_once('controleur/index.php');
+    include_once('controller/index.php');
 }
 elseif ($_GET['section'] == 'connection')
 {

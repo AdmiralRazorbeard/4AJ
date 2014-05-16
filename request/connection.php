@@ -14,15 +14,12 @@ function countMember($mail, $password) // Retourne 1 si valide, 1.5 si seulement
 	}
 	return 0;
 }
-function isConnect()
+function isConnect()	// Return true si connecté, false sinon
 {
 	if(!empty($_SESSION['log']) && $_SESSION['log'] == 1 && !empty($_SESSION['mail']))
 	{
-		if(!empty($message))
-		{
-			$_SESSION['message'] = $message;
-		}
-		header('location:index.html');
+		return true;
 	}
+	return false;
 }
 ?>
