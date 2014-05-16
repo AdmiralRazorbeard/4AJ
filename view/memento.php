@@ -3,7 +3,7 @@
 	<head>
 			<title>mémento de l'association</title>
 			<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-			<link rel="stylesheet" href="design.css" />
+			<link rel="stylesheet" href="vue/style.css" />
 	</head> 
 	<body>
 		<div>
