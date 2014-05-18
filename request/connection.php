@@ -1,5 +1,6 @@
 <?php
-function countMember($mail, $password) // Retourne 1 si valide, 1.5 si seulement mail valide
+function countMember($mail, $password)
+//Retourne 1 si valide, 1.5 si seulement mail valide
 {
 	$nbre = run('SELECT COUNT(*) as nbre FROM membre WHERE mail = "'.$mail.'"');
 	$nbre = $nbre->fetch_object();
@@ -14,7 +15,8 @@ function countMember($mail, $password) // Retourne 1 si valide, 1.5 si seulement
 	}
 	return 0;
 }
-function isConnect()	// Return true si connecté, false sinon
+function isConnect()
+// Return true si connecté, false sinon
 {
 	if(!empty($_SESSION['log']) && $_SESSION['log'] == 1 && !empty($_SESSION['mail']))
 	{
