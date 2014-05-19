@@ -6,7 +6,7 @@
 			<link rel="stylesheet" href="design.css" />
 	</head> 
 	<body>
-		<div id="association">
+		<div>
 			<h1>4AJ, un tremplin pour les jeunes</h1>
 			<p>
 				<?php if(!empty($message)) { ?>
@@ -22,6 +22,7 @@
 				<?php } ?><br />
 				<a href="admin/">Partie admin</a><br />
 				<a href="membre/">Partie jeunes</a><br />
+				<a href="index.php?section=inscription">Inscription</a>
 			</p>
 		</div>
 	</body>
