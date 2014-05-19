@@ -17,20 +17,20 @@
 				    <ul id="s_item4">
       					<li><a href="#">Services</a></li>
       					<li><a href="#">Repas</a></li>
-      					<li><a href="#">Livre d'or</a></li>
+      					<li><a class="last_item" href="#">Livre d'or</a></li>
     				</ul>
     			</li>
 				<li><a id="item5" href="index.php?page=devenirResidant">Devenir résidant</a>
 				    <ul id="s_item5">
       					<li><a href="#">Conditions</a></li>
-      					<li><a href="#">Logements</a></li>
+      					<li><a class="last_item" href="#">Logements</a></li>
     				</ul>
     			</li>
 				<li><a id="item6" href="index.php?page=contact">Contact</a>
 					<ul id="s_item6">
       					<li><a href="#">FAQ</a></li>
       					<li><a href="#">Mémento</a></li>
-      					<li><a href="#">Faire un don</a></li>
+      					<li><a class="last_item" href="#">Faire un don</a></li>
     				</ul>
     			</li>	
 			</ul>
