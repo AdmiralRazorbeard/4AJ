@@ -6,6 +6,10 @@ body {
     margin: auto;
 }
 /*	--- Menu ---	*/
+nav{
+	position:relative;
+    top:-16px;
+}
 nav ul {
 	margin:0;
 	padding:0;
@@ -44,4 +48,40 @@ nav ul li:hover ul {
 }
 nav li:hover ul li {
 	float:none;
+}
+
+
+#banniere{overflow:hidden;height:220px;position:relative;top:-16px;}
+#banniere img{width:990px;height:220px;}
+#banniere ul{display: table;width:2700px;padding-left:0%;
+-webkit-animation:siteslide 45s ease 0s infinite;
+-moz-animation:siteslide 45s ease 0s infinite;
+-ms-animation:siteslide 45s ease 0s infinite;
+-o-animation:siteslide 45s ease 0s infinite;
+animation:siteslide 45s ease 0s infinite;
+}
+#banniere ul li{display:table-cell;width:990px;height:220px;list-style:none;}
+@-webkit-keyframes siteslide{
+0%,23%{margin-left:0px;} 
+30%,53% {margin-left:-990px;}
+60%,83% {margin-left:-1980px;}  
+100%{margin-left:-2970px;}
+}
+@-ms-keyframes siteslide{
+0%,23%{margin-left:0px;} 
+30%,53% {margin-left:-990px;}
+60%,83% {margin-left:-1980px;}  
+100%{margin-left:-2970px;}
+}
+@-o-keyframes siteslide{
+0%,23%{margin-left:0px;} 
+30%,53% {margin-left:-990px;}
+60%,83% {margin-left:-1980px;}  
+100%{margin-left:-2970px;}
+}
+@keyframes siteslide{
+0%,23%{margin-left:0px;} 
+30%,53% {margin-left:-990px;}
+60%,83% {margin-left:-1980px;}  
+100%{margin-left:-2970px;}
 }

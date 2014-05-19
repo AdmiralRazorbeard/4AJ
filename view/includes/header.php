@@ -8,6 +8,14 @@
 	</head> 
 	<body>
 	<div class="mainWrapper">
+		<div id="banniere">
+			<ul id="sContent">
+				<li><img src="../graphicRessources/1.jpg"/></li>
+				<li><img src="../graphicRessources/2.jpg"/></li>
+				<li><img src="../graphicRessources/3.jpg"/></li>
+				<li><img src="../graphicRessources/1.jpg"/></li>
+			</ul>
+		</div>
 		<nav>
 			<ul>
 				<li><a id="item1" href="index.php?page=association">L'association</a></li>
