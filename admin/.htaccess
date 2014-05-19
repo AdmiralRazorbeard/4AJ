@@ -1,5 +1,5 @@
 #-------------------------------------------------- 
-# Répertoire : /4AJ/ #-------------------------------------------------- 
+# Répertoire : /4AJ/admin/ #-------------------------------------------------- 
 # Le serveur doit suivre les liens symboliques : 
 Options +FollowSymlinks 
 # Activation du module de réécriture d'URL : 
