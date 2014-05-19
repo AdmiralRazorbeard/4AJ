@@ -10,11 +10,12 @@
 				<?php }	?>
 				<?php
 				if(isConnect()) {?>
-					<a href="connection-dislog=true.html">Se déconnecter</a><br />
+					<a href="index.php?section=connection&dislog=true">Se déconnecter</a><br />
 					<?php } else { ?>
-					<a href="connection.html">Se connecter</a>
+					<a href="index.php?section=connection">Se connecter</a>
 				<?php } ?><br />
 				<a href="admin/">Partie admin</a><br />
+				<a href="membre/">Partie jeunes</a><br />
 			</p>
 		</div>
 	</body>

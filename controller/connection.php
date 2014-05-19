@@ -8,7 +8,7 @@ if(isConnect())
 		unset($_SESSION['mail']);
 		unset($_SESSION['log']);
 		$_SESSION['message'] = "Vous êtes déconnecté.";
-		header('location:index.html');
+		header('location:index.php');
 	} 
 }
 if(!empty($_POST['mail']) && !empty($_POST['password']))	
@@ -40,7 +40,7 @@ if(isConnect())
 	{
 		$_SESSION['message'] = $message;
 	}
-	header('location:index.html');
+	header('location:index.php');
 }
 include_once 'view/connection.php';
 ?>
