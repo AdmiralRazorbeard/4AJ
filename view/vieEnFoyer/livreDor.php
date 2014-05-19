@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
-			<title>Présentation de l'association</title>
-			<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-			<link rel="stylesheet" href="design.css" />
-	</head> 
+<?php include_once '../includes/header.php'; ?>
 	<body>
 		<h1>Services proposés par l'association 4AJ, un tremplin pour les Jeunes</h1>
 		<p>

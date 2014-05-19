@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
-			<title>Conditions</title>
-			<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-			<link rel="stylesheet" href="design.css" />
-	</head> 
+<?php include_once '../includes/header.php'; ?>
 	<body>
 		<div>
 		<p>Vous êtes salarié(e), étudiant(e), apprenti(e), en formation, en recherche d’emploi… L'association 4AJ est faite pour vous!

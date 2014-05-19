@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
-			<title>mémento de l'association</title>
-			<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-			<link rel="stylesheet" href="vue/style.css" />
-	</head> 
+<?php include_once '../includes/header.php'; ?> 
 	<body>
 		<div>
 			<h1>Mémento (dernière mise à jour : 19 09 2013)</h1>

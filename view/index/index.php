@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
-			<title>4AJ, un tremplin pour les jeunes</title>
-			<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-			<link rel="stylesheet" href="design.css" />
-	</head> 
+<?php include_once '../includes/header.php'; ?>
 	<body>
 		<div id="association">
 			<h1>4AJ, un tremplin pour les jeunes</h1>
