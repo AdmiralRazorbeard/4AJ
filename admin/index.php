@@ -16,7 +16,7 @@ if(!empty($_SESSION['log']) && $_SESSION['log'] == 1 && !empty($_SESSION['mail']
 }
 if(!$isSuperAdmin)
 {
-	header('location:../index.html');
+	header('location:../index.php');
 }
 else
 {
