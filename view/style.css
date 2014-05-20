@@ -108,14 +108,27 @@ animation:siteslide 45s ease 0s infinite;
 .contentWrapper{   
     padding: 0px 20px 5px 20px;;
 }
-.element h1{
+.element h1,.element .a_title{
     font-size: 20px;
 }
 .association h1{
     color:#2797e8;
     text-shadow:1px 1px 0.6px #103b5a;
 }
-
+.actualites .a_title{
+    color:#f8d617;
+    text-shadow:1px 1px 0.6px #5a4c00;
+}
+.actualites .a_info {
+    font-size: 12px;
+    font-style: italic;
+    color: #B1B1B1;
+    padding-bottom: 10px;
+}
+.actualites .a_content {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #B1B1B1;
+}
 
 
 
