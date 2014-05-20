@@ -2,18 +2,18 @@
 <html>
 	<head>
 		<title>4AJ, un tremplin pour les jeunes</title>
-		<link rel="stylesheet" type="text/css" href="../style.css" />
-		<link rel="icon" type="image/png" href="../graphicRessources/favicon.jpg" >
+		<link rel="stylesheet" type="text/css" href="/4AJ/view/style.css" />
+		<link rel="icon" type="image/png" href="/4AJ/view/graphicRessources/favicon.jpg" >
 		<meta charset="utf-8">
 	</head> 
 	<body>
 	<div class="mainWrapper">
 		<div id="banniere">
 			<ul id="sContent">
-				<li><img src="../graphicRessources/1.jpg"/></li>
-				<li><img src="../graphicRessources/2.jpg"/></li>
-				<li><img src="../graphicRessources/3.jpg"/></li>
-				<li><img src="../graphicRessources/1.jpg"/></li>
+				<li><img src="/4AJ/view/graphicRessources/1.jpg"/></li>
+				<li><img src="/4AJ/view/graphicRessources/2.jpg"/></li>
+				<li><img src="/4AJ/view/graphicRessources/3.jpg"/></li>
+				<li><img src="/4AJ/view/graphicRessources/1.jpg"/></li>
 			</ul>
 		</div>
 		<nav>

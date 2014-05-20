@@ -7,5 +7,5 @@ if(!empty($_SESSION['message']))
 }
 
 
-include_once 'view/index.php';
+include_once 'view/index/index.php';
 ?>
