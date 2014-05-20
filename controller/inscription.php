@@ -5,9 +5,14 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 {
 	if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['password']))
 	// Et si il a bien complété le formulaire :
-	{
+	{		
+			// INITIALISATION
 		$errorPassword = false;
 		$error = 0;
+		$adresse = "NULL";
+		$telFixe = "NULL";
+		$telPortable = "NULL";
+		$dateNaissance = "NULL";
 			// NOM
 		$nom = $mysqli->real_escape_string($_POST['nom']);
 		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['nom']))
@@ -37,7 +42,6 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		}
 		else
 		{ 
-			echo $password;
 			$password = md5($_POST['password']);
 		}
 
@@ -46,48 +50,34 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		{
 			$adresse = $mysqli->real_escape_string($_POST['adresse']);
 		}
-		else
-		{
-			$adresse = "NULL";
-		}
 
 			// TEL FIXE
 		if(!empty($_POST['telFixe']))
 		{
-			if(preg_match("#^[0-9]{10}$#", $_POST['telFixe']))
+			if(preg_match("#^[0-9]{10,11}$#", $_POST['telFixe']))
 			{
 				$telFixe = $mysqli->real_escape_string($_POST['telFixe']);
 			}
-			else
-			{
-				$telFixe = "NULL";
-			}
-		}
-		else
-		{
-			$telFixe = "NULL";
 		}
 
 			// TEL PORTABLE
 		if(!empty($_POST['telPortable']))
 		{
-			if(preg_match("#^[0-9]{10}$#", $_POST['telPortable']))
+			if(preg_match("#^[0-9]{10,11}$#", $_POST['telPortable']))
 			{
 				$telPortable = $mysqli->real_escape_string($_POST['telPortable']);
 			}
-			else
+		}
+		if(!empty($_POST['anneDateNaissance']) && !empty($_POST['moisDateNaissance']) && !empty($_POST['jourDateNaissance']))
+		{
+			if(is_numeric($_POST['anneDateNaissance']) && $_POST['anneDateNaissance'] <= date('Y') && $_POST['anneDateNaissance'] >= 1920 && !empty($_POST['moisDateNaissance']) && is_numeric($_POST['moisDateNaissance']) && $_POST['moisDateNaissance'] >= 1 && $_POST['moisDateNaissance'] <= 12 && !empty($_POST['jourDateNaissance']) && is_numeric($_POST['jourDateNaissance']) && $_POST['jourDateNaissance'] >= 1 && $_POST['jourDateNaissance'] <= 31)
 			{
-				$telPortable = "NULL";
+				$dateNaissance = $_POST['anneDateNaissance'].'-'.$_POST['moisDateNaissance'].'-'.$_POST['jourDateNaissance'];
 			}
 		}
-		else
-		{
-			$telPortable = "NULL";
-		}
-		echo $error;
 		if($error == 0)
 		{
-			addMembers($nom, $prenom, $adresse, $telFixe, $telPortable, $mail, $password);
+			addMembers($nom, $prenom, $adresse, $telFixe, $telPortable, $mail, $dateNaissance, $password);
 		}
 		else
 		{
