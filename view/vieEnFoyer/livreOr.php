@@ -58,13 +58,24 @@ function v_maxlength(id, crid, max)
 			<?php	}
 				} 
 				?>
+				<!-- Affiche les pages -->
+				<p>
+					<?php 
+					$i = 1;
+					for($i; $i <= $nbrePage; $i ++)
+					{ ?>
+						<?php if($i == $page) {echo '<b>'; }?>
+						<a href="index.php?section=livreor&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+						<?php if($i == $page) {echo '</b>'; }?>
+			<?php	} ?>
+				</p>	
 			</div>
 			<hr>
 			<fieldset>
 				<legend>Laissez un message</legend>
 				<form method="post">
 					<label for="nom">Votre nom : </label><input type="text" name="nom" id="nom" /><br />
-					<label for="mail">Votre email : </label><input type="text" name="mail" id="mail" /> <em>(Ceci est optionnel mais peut nous permettre de vous recontacter)</em><br />
+					<label for="mail">Votre email : </label><input type="text" name="mail" id="mail" /> <em>(Ceci est optionnel et ne sera pas afficher au public, mais peut nous permettre de vous recontacter)</em><br />
 					<label for="contenu">Contenu : </label><br />
 					<textarea name="contenu" id="contenu" cols="50" rows="10" ></textarea><br />
 					<em>Il vous reste <span id="carac_reste_textarea_1"></span> caractères.</em><br />
