@@ -17,9 +17,9 @@
 			<?php } ?>
 			<p>
 				<form method="post">
-					<label for="nom">Votre nom* : </label><input type="text" name="nom" id="nom"><br />
-					<label for="prenom">Votre prénom* : </label><input type="text" name="prenom" id="prenom"><br />
-					<label for="mail">Votre email* : </label><input type="text" name="mail" id="mail"><br />
+					<label for="nom">Votre nom* : </label><input required type="text" name="nom" id="nom"><br />
+					<label for="prenom">Votre prénom* : </label><input required type="text" name="prenom" id="prenom"><br />
+					<label for="mail">Votre email* : </label><input required type="text" name="mail" id="mail"><br />
 					<label for="adresse">Votre adresse : </label><input type="text" name="adresse" id="adresse"><br />
 					<label for="telFixe">Votre Téléphone fixe : </label><input type="text" name="telFixe" id="telFixe"><br />
 					<label for="telPortable">Votre téléphone portable : </label><input type="text" name="telPortable" id="telPortable"><br />
@@ -56,7 +56,7 @@
 							<option value="<?php echo $i;?>"><?php echo $i; ?></option>
 				<?php	} ?>
 					</select><br />
-					<label for="password">Mot de passe* : </label><input type="password" name="password" id="password"><br />
+					<label for="password">Mot de passe* : </label><input required type="password" name="password" id="password"><br />
 					<em>Les champs marqués d'un * sont obligatoires.</em><br />
 					<input type="submit"><input type="reset">
 				</form>

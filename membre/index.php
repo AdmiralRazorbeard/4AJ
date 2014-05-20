@@ -13,14 +13,15 @@ if(!empty($_SESSION['log']) && $_SESSION['log'] == 1 && !empty($_SESSION['mail']
 	{
 		$accessAllow = true;
 	}
-	$tmp 	= run('	SELECT fonction.isAccesJeunes
+	$tmp 	= run('	SELECT COUNT(*) as nbre
 					FROM membre,membrefonction,fonction 
 					WHERE membre.id = membrefonction.id 
 					AND membrefonction.id_fonction = fonction.id 
 					AND mail = "'.$mail.'"
+					AND fonction.isAccesJeunes = 1
 				');
 	$tmp = $tmp->fetch_object();
-	if($tmp->isAccesJeunes == 1)
+	if($tmp->nbre >= 1)
 	{
 		$accessAllow = true;
 	}
