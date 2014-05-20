@@ -16,4 +16,8 @@ elseif ($_GET['section'] == 'inscription')
 {
 	include_once 'controller/inscription.php';
 }
+elseif ($_GET['section'] == 'livreor')
+{
+	include_once 'controller/livreOr.php';
+}
 ?>

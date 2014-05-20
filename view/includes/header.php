@@ -25,7 +25,7 @@
 				    <ul id="s_item4">
       					<li><a href="#">Services</a></li>
       					<li><a href="#">Repas</a></li>
-      					<li><a class="last_item" href="#">Livre d'or</a></li>
+      					<li><a class="last_item" href="index.php?section=livreOr">Livre d'or</a></li>
     				</ul>
     			</li>
 				<li><a id="item5" href="index.php?page=devenirResidant">Devenir résidant</a>
