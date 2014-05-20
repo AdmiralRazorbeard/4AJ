@@ -18,23 +18,23 @@
 		</div>
 		<nav>
 			<ul>
-				<li><a id="item1" href="index.php?page=association">L'association</a></li>
+				<li><a id="item1" href="index.php?section=association">L'association</a></li>
 				<li><a id="item2" href="#">Actualités</a></li>
-				<li><a id="item3" href="index.php?page=liensUtiles">Liens utiles</a></li>
-				<li><a id="item4" href="index.php?page=vieEnFoyer">Vie en foyer</a>
+				<li><a id="item3" href="index.php?section=liensutiles">Liens utiles</a></li>
+				<li><a id="item4" href="index.php?section=vieenfoyer">Vie en foyer</a>
 				    <ul id="s_item4">
       					<li><a href="#">Services</a></li>
       					<li><a href="#">Repas</a></li>
-      					<li><a class="last_item" href="#">Livre d'or</a></li>
+      					<li><a class="last_item" href="index.php?section=livreor">Livre d'or</a></li>
     				</ul>
     			</li>
-				<li><a id="item5" href="index.php?page=devenirResidant">Devenir résidant</a>
+				<li><a id="item5" href="index.php?section=devenirresidant">Devenir résidant</a>
 				    <ul id="s_item5">
       					<li><a href="#">Conditions</a></li>
       					<li><a class="last_item" href="#">Logements</a></li>
     				</ul>
     			</li>
-				<li><a id="item6" href="index.php?page=contact">Contact</a>
+				<li><a id="item6" href="index.php?section=contact">Contact</a>
 					<ul id="s_item6">
       					<li><a href="#">FAQ</a></li>
       					<li><a href="#">Mémento</a></li>
