@@ -13,7 +13,7 @@ body {
     -webkit-box-shadow: 1px 1px 4px 0px black;
     -o-box-shadow: 1px 1px 4px 0px black;
     box-shadow: 1px 1px 4px 0px black;
-    /*  ombre du mainWrapper  */
+    /*  ombre du mainWrapper  adaptée aux differents navigateurs  */
 }
 
 /*  ------------    */
@@ -57,6 +57,7 @@ nav li a {
 }
 nav ul li ul {
     display:none;
+    z-index: 1;
 }
 nav ul li:hover ul {
     display:block;
@@ -112,10 +113,15 @@ animation:siteslide 45s ease 0s infinite;
 .element h1,.element .a_title{
     font-size: 20px;
 }
+.element h2{
+    font-size: 17px;
+}
+/*  --- Propriétés de la section association --  */
 .association h1{
     color:#2797e8;
     text-shadow:1px 1px 0.6px #103b5a;
 }
+/*  --- Propriétés de la section actualités --  */
 .actualites .a_title{
     color:#f8d617;
     text-shadow:1px 1px 0.6px #5a4c00;
@@ -130,7 +136,16 @@ animation:siteslide 45s ease 0s infinite;
     padding-bottom: 10px;
     border-bottom: 1px solid #B1B1B1;
 }
-
+/*  --- Propriétés de la section liensUtiles --  */
+.liensUtiles h2{
+    font-size: 16px;
+    color:#a4b819;
+    text-shadow:1px 1px 0.6px #323807; 
+}
+.liensUtiles p{
+    position:relative;
+    bottom:15px;
+}
 
 
 
