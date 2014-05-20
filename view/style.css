@@ -36,7 +36,8 @@ nav li {
 }
 #item1{background:#2797e8;}#item2{background:#f8d617;}#item3{background:#a4b819;}#item4, #s_item4 a{background:#ce7526;}{background:#ce7526;}#item5, #s_item5 a{background:#6f0006;}#item6, #s_item6 a{background:#955359;}
 #item1:hover{background:#5bade7;}#item2:hover{background:#f8de4d;}#item3:hover{background:#bfd241;}#item4:hover, #s_item4 a:hover{background:#e8964d;}#item5:hover, #s_item5 a:hover{background:#a90008;}#item6:hover, #s_item6 a:hover{background:#b0757a;}
-/*  Couleur des items du menu, hover ou non */
+/*#item1:active{background:#5bade7;}#item2:active{background:#f8de4d;}#item3:active{background:#bfd241;}#item4:active{background:#e8964d;}#item5:active{background:#a90008;}#item6:active{background:#b0757a;}*/
+/*  Couleur des items du menu, hover ou non, actif ou non */
 .last_item{
     border-radius: 0px 0px 6px 6px;
     /*  Le dernier item du chaque menu déroulant a les bord inférieurs arrondis */
@@ -108,14 +109,27 @@ animation:siteslide 45s ease 0s infinite;
 .contentWrapper{   
     padding: 0px 20px 5px 20px;;
 }
-.element h1{
+.element h1,.element .a_title{
     font-size: 20px;
 }
 .association h1{
     color:#2797e8;
     text-shadow:1px 1px 0.6px #103b5a;
 }
-
+.actualites .a_title{
+    color:#f8d617;
+    text-shadow:1px 1px 0.6px #5a4c00;
+}
+.actualites .a_info {
+    font-size: 12px;
+    font-style: italic;
+    color: #B1B1B1;
+    padding-bottom: 10px;
+}
+.actualites .a_content {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #B1B1B1;
+}
 
 
 

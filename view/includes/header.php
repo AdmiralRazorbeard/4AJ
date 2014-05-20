@@ -19,7 +19,7 @@
 		<nav>
 			<ul>
 				<li><a id="item1" href="index.php?page=association">L'association</a></li>
-				<li><a id="item2" href="index.php?page=actualites">Actualités</a></li>
+				<li><a id="item2" href="#">Actualités</a></li>
 				<li><a id="item3" href="index.php?page=liensUtiles">Liens utiles</a></li>
 				<li><a id="item4" href="index.php?page=vieEnFoyer">Vie en foyer</a>
 				    <ul id="s_item4">
