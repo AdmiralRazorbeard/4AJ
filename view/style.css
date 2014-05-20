@@ -1,56 +1,73 @@
 body {
-	width: 990px;
-	font-family: 'Trebuchet', sans-serif;
+    font-family: 'Trebuchet', sans-serif;
     padding: 0px;
     margin: 0px;
     margin: auto;
+    background:#04467e;
 }
-/*	--- Menu ---	*/
+.mainWrapper{
+    width: 990px;
+    margin:auto;
+    background:#f7f7f7;
+    -moz-box-shadow: 1px 1px 4px 0px black;
+    -webkit-box-shadow: 1px 1px 4px 0px black;
+    -o-box-shadow: 1px 1px 4px 0px black;
+    box-shadow: 1px 1px 4px 0px black;
+    /*  ombre du mainWrapper  */
+}
+
+/*  ------------    */
+/*  --- MENU ---    */
+/*  ------------    */
 nav{
-	position:relative;
+    position:relative;
     top:-16px;
 }
 nav ul {
-	margin:0;
-	padding:0;
-	list-style-type:none;
-	text-align:center;
+    margin:0;
+    padding:0;
+    list-style-type:none;
+    text-align:center;
 }
 nav li {
-	float:left;
-	margin:auto;
-	padding:0;
+    float:left;
+    margin:auto;
+    padding:0;
 }
 #item1{background:#2797e8;}#item2{background:#f8d617;}#item3{background:#a4b819;}#item4, #s_item4 a{background:#ce7526;}{background:#ce7526;}#item5, #s_item5 a{background:#6f0006;}#item6, #s_item6 a{background:#955359;}
 #item1:hover{background:#5bade7;}#item2:hover{background:#f8de4d;}#item3:hover{background:#bfd241;}#item4:hover, #s_item4 a:hover{background:#e8964d;}#item5:hover, #s_item5 a:hover{background:#a90008;}#item6:hover, #s_item6 a:hover{background:#b0757a;}
+/*  Couleur des items du menu, hover ou non */
 .last_item{
-	border-radius: 0px 0px 6px 6px;
+    border-radius: 0px 0px 6px 6px;
+    /*  Le dernier item du chaque menu déroulant a les bord inférieurs arrondis */
 }
 nav li ul {
-	position:absolute;
+    position:absolute;
 }
 nav li a {
-	display:block;
-	width:155px;
-	color:white;
-	text-decoration:none;
-	padding:5px;
-	text-shadow:1px 1px 1px black;
-	font-weight: bold;
-	font-style:normal;
+    display:block;
+    width:155px;
+    color:white;
+    text-decoration:none;
+    padding:5px;
+    text-shadow:1px 1px 1px black;
+    font-weight: bold;
+    font-style:normal;
 }
 nav ul li ul {
-	display:none;
+    display:none;
 }
 nav ul li:hover ul {
-	display:block;
+    display:block;
     
 }
 nav li:hover ul li {
-	float:none;
+    float:none;
 }
 
-
+/*  --------------  */
+/*  -- BANNIERE --  */
+/*  --------------  */
 #banniere{overflow:hidden;height:220px;position:relative;top:-16px;}
 #banniere img{width:990px;height:220px;}
 #banniere ul{display: table;width:2700px;padding-left:0%;
@@ -85,3 +102,21 @@ animation:siteslide 45s ease 0s infinite;
 60%,83% {margin-left:-1980px;}  
 100%{margin-left:-2970px;}
 }
+/*  --------------  */
+/*  --- CONTENU --  */
+/*  --------------  */
+.contentWrapper{   
+    padding: 0px 20px 5px 20px;;
+}
+.element h1{
+    font-size: 20px;
+}
+.association h1{
+    color:#2797e8;
+    text-shadow:1px 1px 0.6px #103b5a;
+}
+
+
+
+
+
