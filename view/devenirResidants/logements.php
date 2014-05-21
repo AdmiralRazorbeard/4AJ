@@ -1,4 +1,4 @@
-<?php include_once '../includes/header.php'; ?>
+<?php include_once '/view/includes/header.php'; ?>
 	<body>
 
 	</body>

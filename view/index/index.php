@@ -1,4 +1,4 @@
-<?php include_once 'view/includes/header.php'; ?>
+<?php include_once '/view/includes/header.php'; ?>
 	<body>
 		<div>
 			<h1>4AJ, un tremplin pour les jeunes</h1>

@@ -1,4 +1,4 @@
-<?php include_once '../includes/header.php'; ?>
+<?php include_once '/view/includes/header.php'; ?>
 	<body>
 		<div>
 		<p>Vous êtes salarié(e), étudiant(e), apprenti(e), en formation, en recherche d’emploi… L'association 4AJ est faite pour vous!
