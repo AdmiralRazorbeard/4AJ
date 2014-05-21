@@ -1,3 +1,3 @@
 <?php
-include_once 'view/actualites/actualites.php';
+include_once '/view/actualites/actualites.php';
 ?>

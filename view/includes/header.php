@@ -18,6 +18,7 @@
 		</div>
 		<nav>
 			<ul>
+				<li><a id="item0" href="index.php?section=accueil">Accueil</a></li>
 				<li><a id="item1" href="index.php?section=association">L'association</a></li>
 				<li><a id="item2" href="index.php?section=actualites">Actualités</a></li>
 				<li><a id="item3" href="index.php?section=liensutiles">Liens utiles</a></li>
