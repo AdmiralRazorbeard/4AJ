@@ -24,7 +24,7 @@ elseif ($_GET['section'] == 'association')
 {
 	include_once 'controller/association.php';
 }
-elseif ($_GET['section'] == 'actualite')
+elseif ($_GET['section'] == 'actualites')
 {
 	include_once 'controller/actualite.php';
 }
