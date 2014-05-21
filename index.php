@@ -28,9 +28,9 @@ elseif ($_GET['section'] == 'actualites')
 {
 	include_once 'controller/actualites.php';
 }
-elseif ($_GET['section'] == 'liensutiles')
+elseif ($_GET['section'] == 'liensUtiles')
 {
-	include_once 'controller/liensutiles.php';
+	include_once 'controller/liensUtiles.php';
 }
 elseif ($_GET['section'] == 'vieEnFoyer')
 {
