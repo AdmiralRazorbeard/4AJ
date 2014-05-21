@@ -16,23 +16,19 @@ elseif ($_GET['section'] == 'inscription')
 {
 	include_once 'controller/inscription.php';
 }
-elseif ($_GET['section'] == 'livreor')
-{
-	include_once 'controller/livreOr.php';
-}
 elseif ($_GET['section'] == 'association')
 {
 	include_once 'controller/association.php';
 }
-elseif ($_GET['section'] == 'actualite')
+elseif ($_GET['section'] == 'actualites')
 {
-	include_once 'controller/actualite.php';
+	include_once 'controller/actualites.php';
 }
 elseif ($_GET['section'] == 'liensutiles')
 {
 	include_once 'controller/liensutiles.php';
 }
-elseif ($_GET['section'] == 'vieenfoyer')
+elseif ($_GET['section'] == 'vieEnFoyer')
 {
 	include_once 'controller/vieEnFoyer.php';
 }
@@ -44,9 +40,13 @@ elseif ($_GET['section'] == 'repas')
 {
 	include_once 'controller/repas.php';
 }
-elseif ($_GET['section'] == 'devenirrasident')
+elseif ($_GET['section'] == 'livreOr')
 {
-	include_once 'controller/devenirrasident.php';
+	include_once 'controller/livreOr.php';
+}
+elseif ($_GET['section'] == 'devenirResidant')
+{
+	include_once 'controller/devenirResidant.php';
 }
 elseif ($_GET['section'] == 'conditions')
 {
@@ -60,12 +60,16 @@ elseif ($_GET['section'] == 'contact')
 {
 	include_once 'controller/contact.php';
 }
-elseif ($_GET['section'] == 'FAQ')
+elseif ($_GET['section'] == 'faq')
 {
 	include_once 'controller/faq.php';
 }
-elseif ($_GET['section'] == 'faireundon')
+elseif ($_GET['section'] == 'memento')
 {
-	include_once 'controller/faireundon.php';
+	include_once 'controller/memento.php';
+}
+elseif ($_GET['section'] == 'faireUnDon')
+{
+	include_once 'controller/faireUnDon.php';
 }
 ?>
