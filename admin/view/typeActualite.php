@@ -7,6 +7,7 @@
 	</head> 
 	<body>
 		<h1>Type d'actualité</h1>
+		<a href="index.php?section=actualite">Retour</a><br />
 		<?php if(isset($fonctionne) && !$fonctionne) { ?>
 		<p>
 			<em>Un type d'actualité porte déjà le même nom.</em>
