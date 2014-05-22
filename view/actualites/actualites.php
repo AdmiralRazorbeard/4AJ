@@ -4,16 +4,24 @@
 			<?php if($admin) { ?>
 			<p>
 				<em><a href="admin/index.php?section=actualite">Partie admin</a></em>
+				<form method="post">
+					<b>Admin</b> : nombre de billet par page : 
+					<input type="text" required size="1" placeholder="<?php echo $nbreBilletParPage; ?>" name="nbreBilletParPage" /><input type="submit" colls="2" /><br /><br />
+				</form>
+
 			</p>
 			<?php } ?>
-			<form method="post">
+
+			<form method="get">
 				Choisir un type : 
 				<!-- Liste tout les types d'actualités -->
 				<select name="typeActualite">
-						<option value="0">Tout</option>
+						<option value="all">Tout</option>
 					<?php 
 					foreach ($listeTypeActualite as $k => $v) { ?>
-						<option value="<?php echo $k; ?>"><?php echo htmlspecialchars($v['nom']); ?></option>
+						<option value="<?php echo $k; ?>"
+				<?php	if(!empty($_GET['typeActualite']) && $k == $_GET['typeActualite']) { echo 'selected'; }?> 
+						><?php echo htmlspecialchars($v['nom']); ?></option>
 			<?php	} ?>
 				</select>
 				<input type="submit" />
@@ -38,6 +46,21 @@
 		<?php }?>
 
 			</div>
+			<!-- Affiche les pages -->
+			<p>
+				<?php 
+				$i = 1;
+				for($i; $i <= $nbrePage; $i ++)
+				{ ?>
+					<?php if($i == $page) {echo '<b>'; }
+					if(!empty($_GET['typeActualite']) && (is_numeric($_GET['typeActualite']) || $_GET['typeActualite'] == 'all')) { ?>
+					<a href="index.php?section=actualites&typeActualite=<?php echo $_GET['typeActualite']; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+					<?php } else { ?>					
+					<a href="index.php?section=actualites&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+					<?php } ?>
+					<?php if($i == $page) {echo '</b>'; }?>
+		<?php	} ?>
+			</p>
 		</div>
 	</body>
 </html>
