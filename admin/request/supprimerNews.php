@@ -31,7 +31,7 @@ function isAdminActualite()
 
 function deleteNews($id)
 {
-	echo $id;
+	run('DELETE FROM newsfonction WHERE id='.$id);
 	run('DELETE FROM news WHERE id='.$id);
 }
 ?>
