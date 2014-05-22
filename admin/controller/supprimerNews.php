@@ -12,5 +12,6 @@ else
 		deleteNews($_GET['id']);
 	}
 }
+header('location:../index.php?section=actualites');
 
 ?>

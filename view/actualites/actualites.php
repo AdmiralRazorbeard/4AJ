@@ -13,7 +13,7 @@
 						<option value="0">Tout</option>
 					<?php 
 					foreach ($listeTypeActualite as $k => $v) { ?>
-						<option value="<?php echo $k; ?>"><?php echo $v['nom']; ?></option>
+						<option value="<?php echo $k; ?>"><?php echo htmlspecialchars($v['nom']); ?></option>
 			<?php	} ?>
 				</select>
 				<input type="submit" />
@@ -25,11 +25,11 @@
 					// un message d'erreur
 				{
 					foreach ($listeActualite as $key => $value) { ?>
-						<h4><?php echo $value['titre']; ?>, le <?php echo $value['timestamp']; ?>, 
+						<h4><?php echo htmlspecialchars($value['titre']); ?>, le <?php echo $value['timestamp']; ?>, 
 						<?php if($admin) { ?><a href="admin/index.php?section=modifierNews&id=<?php echo $key; ?>">Modifier</a>,
 						<a href="admin/index.php?section=supprimerNews&id=<?php echo $key; ?>">Suprimmer</a><?php } ?></h4>
 						<p>
-							<?php echo $value['contenu']; ?>
+							<?php echo nl2br(htmlspecialchars($value['contenu'])); ?>
 						</p>
 	<?php			} 
 				} 

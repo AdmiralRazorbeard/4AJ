@@ -19,4 +19,8 @@ elseif ($_GET['section'] == 'supprimerNews')
 {
 	include_once('controller/supprimerNews.php');
 }
+elseif ($_GET['section'] == 'modifierNews')
+{
+	include_once('controller/modifierNews.php');
+}
 ?>
