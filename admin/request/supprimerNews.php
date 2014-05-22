@@ -31,6 +31,8 @@ function isAdminActualite()
 
 function deleteNews($id)
 {
+
+	// Supprime la news ainsi que toute les Foreign Keys
 	run('DELETE FROM newsfonction WHERE id='.$id);
 	run('DELETE FROM news WHERE id='.$id);
 }
