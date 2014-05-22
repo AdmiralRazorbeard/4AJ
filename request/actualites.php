@@ -28,6 +28,11 @@ function isAdminActualite()
 	}
 	return false;
 }
+function nbrePage($nbreBilletParPage, $type=0)
+// Compte le nombre de page qu'il doit y avoir, le nombre passé en paramètre est le nombre de billet par page.
+{
+	return ceil(nombreActualite($type)/$nbreBilletParPage);
+}
 function allTypeActualite()
 // Retourne la liste de toutes les actualités (où il y a des actualités visibles)
 {
@@ -79,9 +84,89 @@ function allTypeActualite()
 	}
 	return $typeActualite;
 }
-function listeActualite($type = 0)
+function nombreActualite($type = 0)
+// Nombre d'actualité en fonction de la fonction & superAdmin
+{
+	if($type == 0 || !is_numeric($type))
+	{
+		if(!empty($_SESSION['mail']))
+		{
+			$superAdmin = run('	SELECT COUNT(*) as admin 
+								FROM membre 
+								WHERE mail="'.$_SESSION['mail'].'" 
+								AND isSuperAdmin = 1')->fetch_object();
+			if($superAdmin->admin == 1)
+			{	// Tout car admin
+				$nbre = run('	SELECT DISTINCT COUNT(DISTINCT news.id) as nbre
+						 		FROM news 
+						 		ORDER BY news.timestampNews DESC')->fetch_object();
+			}
+			else
+			{	// seulement ceux de ta fonction
+				$nbre = run('	SELECT COUNT(DISTINCT news.id) as nbre
+						 		FROM news,fonction,newsfonction,membre,membrefonction 
+						 		WHERE news.id 	= newsfonction.id 
+						 		AND fonction.id = newsfonction.id_fonction 
+						 		AND membre.id 	= membrefonction.id 
+						 		AND fonction.id = membrefonction.id_fonction
+						 		AND membre.mail = "'.$_SESSION["mail"].'"
+						 		ORDER BY news.timestampNews DESC')->fetch_object();
+			}
+		}
+		else
+		{	// Pour public
+			$nbre = run('	SELECT COUNT(DISTINCT news.id) as nbre
+					 		FROM news,fonction,newsfonction
+					 		WHERE news.id 	= newsfonction.id 
+					 		AND fonction.id = newsfonction.id_fonction 
+					 		AND newsfonction.id_fonction = 1
+					 		ORDER BY news.timestampNews DESC')->fetch_object();		
+		}		
+	}
+	else
+	{
+		// L'utilisateur a choisi un type
+		if(!empty($_SESSION['mail']))
+		{
+			$superAdmin = run('SELECT COUNT(*) as admin FROM membre WHERE mail="'.$_SESSION['mail'].'" AND isSuperAdmin = 1')->fetch_object();
+			if($superAdmin->admin == 1)
+			{	// Tout car admin
+				$nbre = run('	SELECT COUNT(DISTINCT news.id) as nbre
+						 		FROM news 
+						 		WHERE id_Type_d_actualite = '.$type.'
+						 		ORDER BY news.timestampNews DESC')->fetch_object();
+			}
+			else
+			{	// seulement ta fonction
+				$nbre = run('	SELECT COUNT(DISTINCT news.id) as nbre
+						 		FROM news,fonction,newsfonction,membre,membrefonction 
+						 		WHERE news.id 	= newsfonction.id 
+						 		AND fonction.id = newsfonction.id_fonction 
+						 		AND membre.id 	= membrefonction.id 
+						 		AND fonction.id = membrefonction.id_fonction
+						 		AND membre.mail = "'.$_SESSION["mail"].'"
+						 		AND id_Type_d_actualite = '.$type.'
+						 		ORDER BY news.timestampNews DESC')->fetch_object();
+			}
+		}
+		else
+		{	// Pour public
+			$nbre = run('	SELECT COUNT(DISTINCT news.id) as nbre
+					 		FROM news,fonction,newsfonction
+					 		WHERE news.id 	= newsfonction.id 
+					 		AND fonction.id = newsfonction.id_fonction 
+					 		AND newsfonction.id_fonction = 1
+						 	AND id_Type_d_actualite = '.$type.'
+					 		ORDER BY news.timestampNews DESC')->fetch_object();		
+		}
+	}
+	return $nbre->nbre;
+}
+function listeActualite($page, $nbreBilletParPage, $type = 0)
 // Liste toute les actualités (tout si admin, sinon seulement ce à quoi ta fonction t'autorise, sinon seulement le public)
 {
+	// Si on est à la page n° $page, alors les entrés commence à partir de :
+	$premierActualiteASortir = ($page-1)*$nbreBilletParPage;
 	if($type == 0 || !is_numeric($type))
 	{
 		if(!empty($_SESSION['mail']))
@@ -91,7 +176,8 @@ function listeActualite($type = 0)
 			{	// Tout car admin
 				$actu = run('	SELECT DISTINCT news.id AS idNews, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
 						 		FROM news 
-						 		ORDER BY news.timestampNews DESC');
+						 		ORDER BY news.timestampNews DESC
+								LIMIT '.$premierActualiteASortir.','.$nbreBilletParPage);
 			}
 			else
 			{	// seulement ta fonction
@@ -102,7 +188,8 @@ function listeActualite($type = 0)
 						 		AND membre.id 	= membrefonction.id 
 						 		AND fonction.id = membrefonction.id_fonction
 						 		AND membre.mail = "'.$_SESSION["mail"].'"
-						 		ORDER BY news.timestampNews DESC');
+						 		ORDER BY news.timestampNews DESC
+								LIMIT '.$premierActualiteASortir.','.$nbreBilletParPage);
 			}
 		}
 		else
@@ -112,7 +199,8 @@ function listeActualite($type = 0)
 					 		WHERE news.id 	= newsfonction.id 
 					 		AND fonction.id = newsfonction.id_fonction 
 					 		AND newsfonction.id_fonction = 1
-					 		ORDER BY news.timestampNews DESC');		
+					 		ORDER BY news.timestampNews DESC
+							LIMIT '.$premierActualiteASortir.','.$nbreBilletParPage);		
 		}
 	}
 	else
@@ -126,7 +214,8 @@ function listeActualite($type = 0)
 				$actu = run('	SELECT DISTINCT news.id AS idNews, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
 						 		FROM news 
 						 		WHERE id_Type_d_actualite = '.$type.'
-						 		ORDER BY news.timestampNews DESC');
+						 		ORDER BY news.timestampNews DESC
+								LIMIT '.$premierActualiteASortir.','.$nbreBilletParPage);
 			}
 			else
 			{	// seulement ta fonction
@@ -138,7 +227,8 @@ function listeActualite($type = 0)
 						 		AND fonction.id = membrefonction.id_fonction
 						 		AND membre.mail = "'.$_SESSION["mail"].'"
 						 		AND id_Type_d_actualite = '.$type.'
-						 		ORDER BY news.timestampNews DESC');
+						 		ORDER BY news.timestampNews DESC
+								LIMIT '.$premierActualiteASortir.','.$nbreBilletParPage);
 			}
 		}
 		else
@@ -149,7 +239,8 @@ function listeActualite($type = 0)
 					 		AND fonction.id = newsfonction.id_fonction 
 					 		AND newsfonction.id_fonction = 1
 						 	AND id_Type_d_actualite = '.$type.'
-					 		ORDER BY news.timestampNews DESC');		
+					 		ORDER BY news.timestampNews DESC
+							LIMIT '.$premierActualiteASortir.','.$nbreBilletParPage);		
 		}
 	}
 	while($tmp = $actu->fetch_object())
@@ -167,4 +258,16 @@ function listeActualite($type = 0)
 	}
 }
 
+function returnNombreBilletParPage()
+	// Retourne le nombre de billet par page
+{
+	$tmp = run('SELECT nombreBilletActualiteParPage FROM infolivreoractualite WHERE id=1')->fetch_object();
+	$tmp = $tmp->nombreBilletActualiteParPage;
+	return $tmp;
+}
+function newNombreBilletParPage($nombreBilletParPage)
+	// Modifie le nombre de billet par page
+{
+	run ('UPDATE infolivreoractualite SET nombreBilletActualiteParPage = '.$nombreBilletParPage.' WHERE id=1');
+}
 ?>

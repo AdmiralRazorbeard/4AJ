@@ -7,6 +7,8 @@ if($admin && !empty($_GET['delete']) && is_numeric($_GET['delete']))
 {
 	deleteLivreOr($_GET['delete']);
 }
+
+	// Changer le nombre de billet par page
 if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBilletParPage']))
 {
 	newNombreBilletParPage(intval($_POST['nbreBilletParPage']));

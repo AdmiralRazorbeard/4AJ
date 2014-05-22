@@ -76,13 +76,13 @@ function deleteLivreOr($id)
 }
 function returnNombreBilletParPage()
 {
-	$tmp = run('SELECT nombreBilletLivreOrParPage FROM infolivreor WHERE id=1')->fetch_object();
+	$tmp = run('SELECT nombreBilletLivreOrParPage FROM infolivreoractualite WHERE id=1')->fetch_object();
 	$tmp = $tmp->nombreBilletLivreOrParPage;
 	return $tmp;
 }
 
 function newNombreBilletParPage($nombreBilletParPage)
 {
-	run ('UPDATE infolivreor SET nombreBilletLivreOrParPage = '.$nombreBilletParPage.' WHERE id=1');
+	run ('UPDATE infolivreoractualite SET nombreBilletLivreOrParPage = '.$nombreBilletParPage.' WHERE id=1');
 }
 ?>

@@ -4,7 +4,20 @@ date_default_timezone_set('Europe/Paris');
 include_once('request/connectionSQL.php');
 $mysqli = connection();
 
-if (empty($_GET['section']))
+if(isset($_GET['typeActualite']) && empty($_GET['section']))
+// Au cas où qu'on vient d'actualite
+{
+	if(is_numeric($_GET['typeActualite']) || $_GET['typeActualite'] == 'all')
+	{
+		header('location:index.php?section=actualites&typeActualite='.$_GET['typeActualite']);
+	}
+	else
+	{
+		header('location:index.php?index=index');
+	}	
+}
+// Si on vient pas d'actualité, on fait comme d'hab
+elseif (empty($_GET['section']))	
 {
     header('location:index.php?section=index');
 }
