@@ -66,8 +66,5 @@ function addActualite($titre, $typeActualite, $contenu, $idMembre)
 	run('INSERT INTO news(id_membre, titreNewsFR, contenuNewsFR, id_Type_d_actualite) VALUES ('.$idMembre.', "'.$titre.'", "'.$contenu.'", '.$typeActualite.')');
 }
 
-function isIssetVisiblePar()
-{
-	
-}
+
 ?>

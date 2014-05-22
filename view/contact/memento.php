@@ -1,5 +1,4 @@
 <?php include_once '/view/includes/header.php'; ?>
-	<body>
 		<div>
 			<h1>Mémento (dernière mise à jour : 19 09 2013)</h1>
 			<div>

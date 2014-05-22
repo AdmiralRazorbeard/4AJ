@@ -1,3 +1,3 @@
 <?php
-include_once 'view/association/association.php';
+include_once '/view/association/association.php';
 ?>

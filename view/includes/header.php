@@ -18,27 +18,30 @@
 		</div>
 		<nav>
 			<ul>
-				<li><a id="item1" href="index.php?section=association">L'association</a></li>
-				<li><a id="item2" href="index.php?section=actualites">Actualités</a></li>
-				<li><a id="item3" href="index.php?section=liensutiles">Liens utiles</a></li>
-				<li><a id="item4" href="index.php?section=vieenfoyer">Vie en foyer</a>
+				<?php include_once('/view/includes/headerfunctions.php'); ?>
+				<!-- Gestion des classes actives pour les boutons -->
+				<li><a <?php if (openSection('accueil')){?>id="active_item0"<?php } else { ?>id="item0"<?php } ?> href="index.php?section=accueil">Accueil</a></li>
+				<li><a <?php if (openSection('association')){?>id="active_item1"<?php } else { ?>id="item1"<?php } ?> href="index.php?section=association">L'association</a></li>
+				<li><a <?php if (openSection('actualites')){?>id="active_item2"<?php } else { ?>id="item2"<?php } ?> href="index.php?section=actualites">Actualités</a></li>
+				<li><a <?php if (openSection('liensUtiles')){?>id="active_item3"<?php } else { ?>id="item3"<?php } ?> href="index.php?section=liensUtiles">Liens utiles</a></li>
+				<li><a <?php if (openSous_Section_vieEnFoyer()){?>id="active_item4"<?php } else { ?>id="item4"<?php } ?> href="index.php?section=vieEnFoyer">Vie en foyer</a>
 				    <ul id="s_item4">
       					<li><a href="index.php?section=services">Services</a></li>
       					<li><a href="index.php?section=repas">Repas</a></li>
-      					<li><a class="last_item" href="index.php?section=livreor">Livre d'or</a></li>
+      					<li><a class="last_item" href="index.php?section=livreOr">Livre d'or</a></li>
     				</ul>
     			</li>
-				<li><a id="item5" href="index.php?section=devenirresidant">Devenir résidant</a>
+				<li><a <?php if (openSous_Section_devenirResidant()){?>id="active_item5"<?php } else { ?>id="item5"<?php } ?> href="index.php?section=devenirResidant">Devenir résidant</a>
 				    <ul id="s_item5">
       					<li><a href="index.php?section=conditions">Conditions</a></li>
       					<li><a class="last_item" href="index.php?section=logements">Logements</a></li>
     				</ul>
     			</li>
-				<li><a id="item6" href="index.php?section=contact">Contact</a>
+				<li><a <?php if (openSous_Section_contact()){?>id="active_item6"<?php } else { ?>id="item6"<?php } ?> href="index.php?section=contact">Contact</a>
 					<ul id="s_item6">
       					<li><a href="index.php?section=faq">FAQ</a></li>
       					<li><a href="index.php?section=memento">Mémento</a></li>
-      					<li><a class="last_item" href="index.php?section=don">Faire un don</a></li>
+      					<li><a class="last_item" href="index.php?section=faireUnDon">Faire un don</a></li>
     				</ul>
     			</li>	
 			</ul>
