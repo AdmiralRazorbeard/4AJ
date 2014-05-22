@@ -38,6 +38,17 @@ nav li {
 #item0:hover{background:#503080;}#item1:hover{background:#5bade7;}#item2:hover{background:#f8de4d;}#item3:hover{background:#bfd241;}#item4:hover, #s_item4 a:hover{background:#e8964d;}#item5:hover, #s_item5 a:hover{background:#a90008;}#item6:hover, #s_item6 a:hover{background:#b0757a;}
 #active_item0{background:#503080;}#active_item1{background:#5bade7;}#active_item2{background:#f8de4d;}#active_item3{background:#bfd241;}#active_item4{background:#e8964d;}#active_item5{background:#a90008;}#active_item6{background:#b0757a;}
 /*  Couleur des items du menu, hover ou non, actif ou non */
+#submenu_item{background:#f7f7f7;}
+#submenu_item:hover{
+background:#646464;color:#f7f7f7;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-ms-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+transition: all 0.3s ease-in-out;
+}
+#active_item0{background:#646464;color:#f7f7f7;}
+/*  Couleur des items du sous-menu, hover ou non, actif ou non */
 .last_item{
     border-radius: 0px 0px 6px 6px;
     /*  Le dernier item du chaque menu déroulant a les bord inférieurs arrondis */
@@ -45,7 +56,7 @@ nav li {
 nav li ul {
     position:absolute;
 }
-nav li a {
+#mainMenu li a {
     display:block;
     width:130px;
     color:white;
@@ -55,6 +66,17 @@ nav li a {
     font-weight: bold;
     font-style:normal;
     font-size:15px;
+}
+#subMenu li a {
+    display:block;
+    width:130px;
+    color:#4b4b4b;
+    text-decoration:none;
+    padding:10px 5px 10px 5px;
+    border-bottom:1px solid #646464;
+    font-weight: bold;
+    font-style:normal;
+    font-size:13px;
 }
 nav ul li ul {
     display:none;

@@ -16,7 +16,7 @@
 				<li><img src="/4AJ/view/graphicRessources/1.jpg"/></li>
 			</ul>
 		</div>
-		<nav>
+		<nav id="mainMenu">
 			<ul>
 				<?php include_once('/view/includes/headerfunctions.php'); ?>
 				<!-- Gestion des classes actives pour les boutons -->
