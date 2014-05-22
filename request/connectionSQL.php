@@ -3,8 +3,8 @@ function connection()
 {
 	$serveur	= 'localhost';
 	$user 		= 'root';
-	$password 	= 'root';
-	$BDD 		= '4aj';
+	$password 	= '';
+	$BDD 		= '4AJ';
 	return $cnx = new mysqli($serveur, $user, $password, $BDD);
 }
 function run($sql)

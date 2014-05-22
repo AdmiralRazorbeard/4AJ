@@ -28,14 +28,14 @@ function v_maxlength(id, crid, max)
 </script>
 		<div id="mainWrapper">
 			<div class="contentWrapper">	
-				<img src="/4AJ/view/graphicRessources/livredor.png" alt="livreOr" />
+				<img id="img_livredor" src="/4AJ/view/graphicRessources/livredor.png" alt="livreOr" />
 				<?php if($admin) { ?>
 				<form method="post">
 					<b>Admin</b> : nombre de billet par page : 
 					<input type="text" required size="1" placeholder="<?php echo $nbreBilletParPage; ?>" name="nbreBilletParPage" /><input type="submit" colls="2" /><br /><br />
 				</form>
 				<?php } ?>
-				<div>
+				<div id="div_livredor">
 					<?php	
 					// Affiche le livre d'or
 					if(!empty($livreOr))
@@ -71,15 +71,25 @@ function v_maxlength(id, crid, max)
 				<?php	} ?>
 					</p>	
 				</div>
-				<hr>
-				<fieldset>
+				<fieldset id="message_livredor">
 					<legend>Laissez un message</legend>
 					<form method="post">
-						<label for="nom">Votre nom : </label><input type="text" name="nom" id="nom" /><br />
-						<label for="mail">Votre email : </label><input type="text" name="mail" id="mail" /> <em>(Ceci est optionnel et ne sera pas afficher au public, mais peut nous permettre de vous recontacter)</em><br />
-						<label for="contenu">Contenu : </label><br />
-						<textarea name="contenu" id="contenu" cols="50" rows="10" ></textarea><br />
-						<em>Il vous reste <span id="carac_reste_textarea_1"></span> caractères.</em><br />
+						<p class="form-field">
+						<label for="nom">Votre nom : </label>
+						<input type="text" name="nom" id="nom" />
+						</p>
+						<p class="form-field">
+						<label for="mail">Votre email : </label>
+						<input type="text" name="mail" id="mail" />
+						</p>
+						<p class="message_info"> 
+						<em>(Ceci est optionnel et ne sera pas afficher au public, mais peut nous permettre de vous recontacter)</em>
+						</p>
+						<p class="form-field">
+						<label for="contenu">Contenu : </label>
+						<textarea name="contenu" id="contenu" cols="50" rows="10" ></textarea>
+						</p>
+						<p class="message_info"><em>Il vous reste <span id="carac_reste_textarea_1"></span> caractères.</em></p>
 						<!-- Script pour le nombre de caractère -->
 						<script type="text/javascript">
 							<!--
