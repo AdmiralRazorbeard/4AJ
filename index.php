@@ -4,9 +4,17 @@ date_default_timezone_set('Europe/Paris');
 include_once('request/connectionSQL.php');
 $mysqli = connection();
 
-if (empty($_GET['section']) OR $_GET['section'] == 'index')
+if (empty($_GET['section']))
 {
-    include_once('controller/index.php');
+    header('location:index.php?section=index');
+}
+elseif ($_GET['section'] == 'index')
+{
+	include_once 'controller/index.php';
+}
+elseif ($_GET['section'] == 'accueil')
+{
+	include_once 'controller/index.php';
 }
 elseif ($_GET['section'] == 'connection')
 {
