@@ -47,7 +47,7 @@ background:#646464;color:#f7f7f7;
 -o-transition: all 0.3s ease-in-out;
 transition: all 0.3s ease-in-out;
 }
-#active_item0{background:#646464;color:#f7f7f7;}
+#active_submenu_item{background:#646464;color:#f7f7f7;}
 /*  Couleur des items du sous-menu, hover ou non, actif ou non */
 .last_item{
     border-radius: 0px 0px 6px 6px;

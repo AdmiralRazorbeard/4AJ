@@ -20,7 +20,7 @@
 			<ul>
 				<?php include_once('/view/includes/headerfunctions.php'); ?>
 				<!-- Gestion des classes actives pour les boutons -->
-				<li><a <?php if (openSection('accueil')){?>id="active_item0"<?php } else { ?>id="item0"<?php } ?> href="index.php?section=accueil">Accueil</a></li>
+				<li><a <?php if (openSection('accueil')){?>id="active_item0"<?php } else { ?>id="item0"<?php } ?> href="index.php?section=index">Accueil</a></li>
 				<li><a <?php if (openSection('association')){?>id="active_item1"<?php } else { ?>id="item1"<?php } ?> href="index.php?section=association">L'association</a></li>
 				<li><a <?php if (openSection('actualites')){?>id="active_item2"<?php } else { ?>id="item2"<?php } ?> href="index.php?section=actualites">Actualités</a></li>
 				<li><a <?php if (openSection('liensUtiles')){?>id="active_item3"<?php } else { ?>id="item3"<?php } ?> href="index.php?section=liensUtiles">Liens utiles</a></li>

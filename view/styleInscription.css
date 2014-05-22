@@ -1,0 +1,50 @@
+body {
+    font-family: 'Trebuchet', sans-serif;
+    padding: 0px;
+    margin: 0px;
+    margin: auto;
+    background:#04467e;
+}
+.mainWrapper{
+    width: 980px;
+    margin:auto;
+    padding-top:10px;
+    padding-bottom:30px;
+    background:#f7f7f7;
+    -moz-box-shadow: 1px 1px 4px 0px black;
+    -webkit-box-shadow: 1px 1px 4px 0px black;
+    -o-box-shadow: 1px 1px 4px 0px black;
+    box-shadow: 1px 1px 4px 0px black;
+    /*  ombre du mainWrapper  adaptée aux differents navigateurs  */
+}
+/*  --- Propriétés de inscription --  */
+h1{
+    text-align:center;
+}
+#inscription{
+    width:700px;
+    margin:auto;
+    
+}
+#inscription .inscription_info{
+    text-align:center;
+    font-size:12px;
+}
+#inscription .form-field {
+    clear: both;
+    margin: 5px;
+    overflow: hidden;
+    margin:auto;
+}
+#inscription .form-field label{
+    float:left;
+    width:30%;
+    padding: 5px; 
+}
+#inscription .form-field input,.form-field textarea{
+    float: left;
+    width: 55%;
+    padding: 5px;
+    border: 1px solid #686868;
+    background: #fff;
+}
