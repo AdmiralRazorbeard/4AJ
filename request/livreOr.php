@@ -4,13 +4,7 @@ function addLivreOr($nom, $email, $contenu)
 {
 	run('INSERT INTO livreor(nom,mail,contenu) VALUES ("'.$nom.'", "'.$email.'", "'.$contenu.'")');
 }
-function nbrePage($nbreBilletParPage)
-// Compte le nombre de page qu'il doit y avoir, le nombre passé en paramètre et le nombre de billet par page.
-{
-	$tmp = run('SELECT COUNT(*) as nbre FROM livreOr')->fetch_object();
-	$tmp = $tmp->nbre;
-	return ceil($tmp/$nbreBilletParPage);
-}
+
 function returnLivreOr($page, $nbreBilletParPage)
 {
 // Retourne un tableau contenant toutes les données du livre d'or
@@ -76,13 +70,13 @@ function deleteLivreOr($id)
 }
 function returnNombreBilletParPage()
 {
-	$tmp = run('SELECT nombreBilletLivreOrParPage FROM infolivreor WHERE id=1')->fetch_object();
+	$tmp = run('SELECT nombreBilletLivreOrParPage FROM infolivreoractualite WHERE id=1')->fetch_object();
 	$tmp = $tmp->nombreBilletLivreOrParPage;
 	return $tmp;
 }
 
 function newNombreBilletParPage($nombreBilletParPage)
 {
-	run ('UPDATE infolivreor SET nombreBilletLivreOrParPage = '.$nombreBilletParPage.' WHERE id=1');
+	run ('UPDATE infolivreoractualite SET nombreBilletLivreOrParPage = '.$nombreBilletParPage.' WHERE id=1');
 }
 ?>
