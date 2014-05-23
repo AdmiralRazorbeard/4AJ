@@ -10,27 +10,26 @@
 	</head> 
 	<body>
 	<div class="mainWrapper">
-		<div id="banniere">
-			<div id="connexion">
-				<h3>Connection</h3>
-				<?php
-				if(!empty($message))
-				{
-					echo '<em>'.$message.'</em><br />'; 
-				} ?><br />
-				<br />
-				<?php
-				if(isConnected()) {?>
-					<a href="index.php?section=index&dislog=true">Se déconnecter</a><br />
-				<?php }
-				else { ?>
-				<form method="post">
-					<legend for="mail">Votre email : </legend><input type="name" id="mail" name="mail" /><br />
-					<legend for="password">Mot de passe : </legend><input type="password" id="password" name="password" /><br />
-					<input type="submit"/>
-				</form>
+		<div id="connexion">
+			<div class="connexion_text">Connection</br></div>
+			<?php
+		if(!empty($message))
+			{
+			echo '<div class="connexion_text"><em>'.$message.'</em></div>'; 
+			} ?>
+			<?php
+			if(isConnected()) {?>
+				<div class="connexion_text"><a href="index.php?section=index&dislog=true">Se déconnecter</a></div>
+			<?php }
+			else { ?>
+			<form method="post">
+				<div class="connexion_text"><legend for="mail">Votre email :</div><div></legend><input type="name" id="mail" name="mail" /></div>
+				<div class="connexion_text"><legend for="password">Mot de passe :</div><div></legend><input type="password" id="password" name="password" /></div>
+				<div class="connexion_submit"><input id="submit" type="submit"/></div>
+			</form>
 				<?php } ?>
-			</div>
+		</div>
+		<div id="banniere">
 			<ul id="sContent">
 				<li><img src="/4AJ/view/graphicRessources/1.jpg"/></li>
 				<li><img src="/4AJ/view/graphicRessources/2.jpg"/></li>
