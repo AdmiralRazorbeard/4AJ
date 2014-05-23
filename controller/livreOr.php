@@ -24,7 +24,7 @@ if(!empty($_POST['nom']) && !empty($_POST['contenu']))
 		{
 			$email = $mysqli->real_escape_string($_POST['mail']);
 		}
-		addLivreOr($nom,$email,$contenu);
+		addLivreOrAConfirmer($nom,$email,$contenu);
 	}
 }
 $nbreBilletParPage = returnNombreBilletParPage();

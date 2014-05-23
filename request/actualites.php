@@ -266,4 +266,46 @@ function newNombreBilletParPage($nombreBilletParPage)
 {
 	run ('UPDATE infolivreoractualite SET nombreBilletActualiteParPage = '.$nombreBilletParPage.' WHERE id=1');
 }
+
+function returnNombreTotalActualite()
+	// Retourne le nombre total d'actualite
+{
+	$tmp = run('SELECT nombreTotalBilletActualite FROM infolivreoractualite WHERE id=1')->fetch_object();
+	$tmp = $tmp->nombreTotalBilletActualite;
+	return $tmp;
+}
+function newNombreTotalActualite($nombreTotalActualite)
+	// Modifie le nombre total d'actulite
+{
+	run ('UPDATE infolivreoractualite SET nombreTotalBilletActualite = '.$nombreTotalActualite.' WHERE id=1');
+	verifNombreActualite();
+}
+function nbreActualite()
+// Nombre total d'actualite
+{
+	$nbreActualite = run('SELECT COUNT(*) as nbre FROM news')->fetch_object();
+	$nbreActualite = $nbreActualite->nbre;	
+	return $nbreActualite;
+}
+function deleteNews($id)
+{
+
+	// Supprime la news ainsi que toute les Foreign Keys
+	run('DELETE FROM newsfonction WHERE id='.$id);
+	run('DELETE FROM news WHERE id='.$id);
+}
+function verifNombreActualite()
+// Cela supprimer au fur et à mesure les anciennes news pour éviter de surcharger la base
+{
+	$nbreTotalAdmis = run('SELECT nombreTotalBilletActualite FROM infolivreoractualite')->fetch_object();
+	$nbreTotalAdmis = $nbreTotalAdmis->nombreTotalBilletActualite;
+	$nbreActualite = nbreActualite();
+	while($nbreActualite > $nbreTotalAdmis)
+	{
+		$dernierIdActualite = run('SELECT id FROM news ORDER BY id LIMIT 0,1')->fetch_object();
+		$dernierIdActualite = $dernierIdActualite->id;
+		deleteNews($dernierIdActualite);
+		$nbreActualite--;
+	}
+}
 ?>
