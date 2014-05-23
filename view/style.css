@@ -93,9 +93,11 @@ nav li:hover ul li {
 /*  --------------  */
 /*  -- BANNIERE --  */
 /*  --------------  */
+
+/*  ----Images-----  */
 #banniere{overflow:hidden;height:220px;position:relative;top:-16px;}
 #banniere img{width:980px;height:220px;}
-#banniere ul{display: table;width:2700px;padding-left:0%;
+#banniere ul{display:table;width:2700px;padding-left:0%;
 -webkit-animation:siteslide 45s ease 0s infinite;
 -moz-animation:siteslide 45s ease 0s infinite;
 -ms-animation:siteslide 45s ease 0s infinite;
@@ -127,6 +129,38 @@ animation:siteslide 45s ease 0s infinite;
 60%,83% {margin-left:-1960px;}  
 100%{margin-left:-2940px;}
 }
+/*  ----Connexion-----  */
+#connexion{
+padding-left:15px;
+border-radius: 0px 0px 0px 0px;
+background:#075da6;
+height:29px;
+font-size:11px;
+color:white;
+}
+#connexion div{
+height:29px;
+float:left;
+margin-right:6px;
+}
+#connexion .connexion_text{
+    position:relative;
+    top:6px;
+}
+
+#connexion #mail, #password {
+    height:14px;
+    width:100px;
+    margin-left:0px;
+    margin-right:15px;
+    position:relative;
+    top:4px;
+}
+#connexion .connexion_submit{
+    position:relative;
+    top:2px;
+}
+
 /*  --------------  */
 /*  --- CONTENU --  */
 /*  --------------  */
