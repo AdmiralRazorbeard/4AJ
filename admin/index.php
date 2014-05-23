@@ -27,4 +27,8 @@ elseif ($_GET['section'] == 'livreOrAConfirmer')
 {
 	include_once('controller/livreOrAConfirmer.php');
 }
+elseif ($_GET['section'] == 'gestionMembres')
+{
+	include_once('controller/gestionMembres.php');
+}
 ?>
