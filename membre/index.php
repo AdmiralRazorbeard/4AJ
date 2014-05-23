@@ -12,6 +12,7 @@ if(!empty($_SESSION['log']) && $_SESSION['log'] == 1 && !empty($_SESSION['mail']
 	if($tmp->isSuperAdmin == 1)
 	{
 		$accessAllow = true;
+		//c'est le superAdmin
 	}
 	$tmp 	= run('	SELECT COUNT(*) as nbre
 					FROM membre,membrefonction,fonction 

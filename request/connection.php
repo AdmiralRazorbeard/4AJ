@@ -24,4 +24,14 @@ function isConnect()
 	}
 	return false;
 }
+function mailExist($mail)
+{
+	$nbre = run('SELECT COUNT(*) as nbre FROM membre WHERE mail = "'.$mail.'"');
+	$nbre = $nbre->fetch_object();
+	if($nbre->nbre == 1)
+	{
+		return true;
+	}
+	return false;
+}
 ?>

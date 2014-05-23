@@ -14,10 +14,17 @@
 					<?php if(isConnect()) { ?><em>Vous êtes déjà connecter : <a href="index.php?section=connection&dislog=true">Se déconnecter</a></em><?php } ?>
 					<?php if(!empty($message))
 					{ ?>
-					<p>
-						<em><?php echo $message; ?></em>
-					</p>
+						<em><?php echo $message; ?></em></br>
 					<?php } ?>
+					<?php if(!empty($message2))
+					{ ?>
+						<em><?php echo $message2; ?></em></br>
+					<?php } ?>
+					<?php if(!empty($message3))
+					{ ?>
+						<em><?php echo $message3; ?></em></br>
+					<?php } ?>
+					</br>
 					<form method="post">
 						<fieldset id="inscription">
 							<p class="form-field">

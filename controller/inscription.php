@@ -8,6 +8,8 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 	{		
 			// INITIALISATION
 		$errorPassword = false;
+		$errorMail = false;
+		$errorGlobalName = false;
 		$error = 0;
 		$adresse = "NULL";
 		$telFixe = "NULL";
@@ -17,6 +19,7 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		$nom = $mysqli->real_escape_string($_POST['nom']);
 		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['nom']))
 		{
+			$errorGlobalName=true;
 			$error ++;
 		}
 
@@ -24,12 +27,18 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		$prenom = $mysqli->real_escape_string($_POST['prenom']);
 		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['prenom']))
 		{
+			$errorGlobalName=true;
 			$error ++;
 		}
 
 			// MAIL
 		if(!preg_match("#^[a-zA-Z0-9.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $_POST['mail']))
 		{
+			$error ++;
+		}
+		if (mailExist($_POST['mail']))
+		{
+			$errorMail=true;
 			$error ++;
 		}
 		$mail = $mysqli->real_escape_string($_POST['mail']);
@@ -78,6 +87,7 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		if($error == 0)
 		{
 			addMembers($nom, $prenom, $adresse, $telFixe, $telPortable, $mail, $dateNaissance, $password);
+			$message ="<br />L'inscription est réussie, vous pouvez désormais vous connecter sur la page d'accueil<br /><a href=\"index.php?section=index\">Retourner a l'accueil</a>";
 		}
 		else
 		{
@@ -85,6 +95,14 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 			if($errorPassword)
 			{
 				$message = $message."<br />Le mot de passe doit comporté plus de 6 caractères.";
+			}
+			if($errorGlobalName)
+			{
+				$message2 ="<br />Veuillez vérifier la validité de vos données (Nom et/ou Prénom)";
+			}
+			if($errorMail)
+			{
+				$message3 ="<br />Ce mail est déjà utilisé pour un autre compte";
 			}
 		}
 	}

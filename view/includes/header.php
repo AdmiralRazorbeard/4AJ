@@ -1,3 +1,5 @@
+<?php include_once('/view/includes/headerfunctions.php');?>
+<!-- Gestion des classes actives pour les boutons et de la connexion-->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,6 +11,26 @@
 	<body>
 	<div class="mainWrapper">
 		<div id="banniere">
+			<div id="connexion">
+				<h3>Connection</h3>
+				<?php
+				if(!empty($message))
+				{
+					echo '<em>'.$message.'</em><br />'; 
+				} ?><br />
+				<br />
+				<?php
+				if(isConnected()) {?>
+					<a href="index.php?section=index&dislog=true">Se déconnecter</a><br />
+				<?php }
+				else { ?>
+				<form method="post">
+					<legend for="mail">Votre email : </legend><input type="name" id="mail" name="mail" /><br />
+					<legend for="password">Mot de passe : </legend><input type="password" id="password" name="password" /><br />
+					<input type="submit"/>
+				</form>
+				<?php } ?>
+			</div>
 			<ul id="sContent">
 				<li><img src="/4AJ/view/graphicRessources/1.jpg"/></li>
 				<li><img src="/4AJ/view/graphicRessources/2.jpg"/></li>
@@ -18,9 +40,7 @@
 		</div>
 		<nav id="mainMenu">
 			<ul>
-				<?php include_once('/view/includes/headerfunctions.php'); ?>
-				<!-- Gestion des classes actives pour les boutons -->
-				<li><a <?php if (openSection('accueil')){?>id="active_item0"<?php } else { ?>id="item0"<?php } ?> href="index.php?section=index">Accueil</a></li>
+				<li><a <?php if (openSection('index')){?>id="active_item0"<?php } else { ?>id="item0"<?php } ?> href="index.php?section=index">Accueil</a></li>
 				<li><a <?php if (openSection('association')){?>id="active_item1"<?php } else { ?>id="item1"<?php } ?> href="index.php?section=association">L'association</a></li>
 				<li><a <?php if (openSection('actualites')){?>id="active_item2"<?php } else { ?>id="item2"<?php } ?> href="index.php?section=actualites">Actualités</a></li>
 				<li><a <?php if (openSection('liensUtiles')){?>id="active_item3"<?php } else { ?>id="item3"<?php } ?> href="index.php?section=liensUtiles">Liens utiles</a></li>
