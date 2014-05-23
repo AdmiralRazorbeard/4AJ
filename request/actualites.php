@@ -21,7 +21,7 @@ function isAdminActualite()
 						AND fonction.isAdminActualite = 1');
 		$tmp = $tmp->fetch_object();
 		if($tmp->nbre >= 1)
-		// Ou si il a une des fonctions dont il fait parti qui est admin sur le livre d'or
+		// Ou si il a une des fonctions dont il fait parti qui est admin sur les actualités
 		{
 			return true;
 		}
@@ -34,22 +34,25 @@ function nbrePage($nbreBilletParPage, $type=0)
 	return ceil(nombreActualite($type)/$nbreBilletParPage);
 }
 function allTypeActualite()
-// Retourne la liste de toutes les actualités (où il y a des actualités visibles)
+// Retourne la liste de tous les types d'actualités (où il y a des actualités visibles)
 {
 	$tmp = run('SELECT id, nom FROM type_d_actualite ORDER BY id');
 	$typeActualite = NULL;
 	while ($donnees = $tmp->fetch_object())
 	{
 		if(!empty($_SESSION['mail']))
+		// si connecté	
 		{
 			$superAdmin = run('SELECT COUNT(*) as admin FROM membre WHERE mail = "'.$_SESSION['mail'].'" AND isSuperAdmin = 1')->fetch_object();
 			if($superAdmin->admin == 1)
 			{
+				//si c'est le superAdmin
 				$typeActualite[$donnees->id]['id'] = $donnees->id;
 				$typeActualite[$donnees->id]['nom'] = $donnees->nom;
 			}
 			else
 			{
+				//si juste membre, teste si l'utilisateur peut acceder à ce type d'actualités
 				$actu = run('	SELECT COUNT(*) as nbre
 						 		FROM news,fonction,newsfonction,membre,membrefonction 
 						 		WHERE news.id 	= newsfonction.id 
@@ -57,8 +60,7 @@ function allTypeActualite()
 						 		AND membre.id 	= membrefonction.id 
 						 		AND fonction.id = membrefonction.id_fonction
 						 		AND membre.mail = "'.$_SESSION["mail"].'"
-						 		AND id_Type_d_actualite = '.$donnees->id.'
-						 		ORDER BY news.timestampNews DESC')->fetch_object();	
+						 		AND id_Type_d_actualite = '.$donnees->id.'')->fetch_object();	
 				if($actu->nbre >= 1)
 				{
 					$typeActualite[$donnees->id]['id'] = $donnees->id;
@@ -68,13 +70,13 @@ function allTypeActualite()
 		}
 		else
 		{
+			//uniquement les types d'actualités accesibles au public
 			$actu = run('	SELECT COUNT(*) as nbre
 					 		FROM news,fonction,newsfonction
 					 		WHERE news.id 	= newsfonction.id 
 					 		AND fonction.id = newsfonction.id_fonction 
 					 		AND newsfonction.id_fonction = 1
-					 		AND id_Type_d_actualite = '.$donnees->id.'
-					 		ORDER BY news.timestampNews DESC')->fetch_object();
+					 		AND id_Type_d_actualite = '.$donnees->id.'')->fetch_object();
 			if($actu->nbre >= 1)
 			{
 				$typeActualite[$donnees->id]['id'] = $donnees->id;
@@ -97,20 +99,18 @@ function nombreActualite($type = 0)
 								AND isSuperAdmin = 1')->fetch_object();
 			if($superAdmin->admin == 1)
 			{	// Tout car admin
-				$nbre = run('	SELECT DISTINCT COUNT(DISTINCT news.id) as nbre
-						 		FROM news 
-						 		ORDER BY news.timestampNews DESC')->fetch_object();
+				$nbre = run('	SELECT COUNT(DISTINCT news.id) as nbre
+						 		FROM news ')->fetch_object();
 			}
 			else
-			{	// seulement ceux de ta fonction
+			{	// seulement ceux de ta fonction (connecté en temps que membre)
 				$nbre = run('	SELECT COUNT(DISTINCT news.id) as nbre
 						 		FROM news,fonction,newsfonction,membre,membrefonction 
 						 		WHERE news.id 	= newsfonction.id 
 						 		AND fonction.id = newsfonction.id_fonction 
 						 		AND membre.id 	= membrefonction.id 
 						 		AND fonction.id = membrefonction.id_fonction
-						 		AND membre.mail = "'.$_SESSION["mail"].'"
-						 		ORDER BY news.timestampNews DESC')->fetch_object();
+						 		AND membre.mail = "'.$_SESSION["mail"].'"')->fetch_object();
 			}
 		}
 		else
@@ -119,8 +119,7 @@ function nombreActualite($type = 0)
 					 		FROM news,fonction,newsfonction
 					 		WHERE news.id 	= newsfonction.id 
 					 		AND fonction.id = newsfonction.id_fonction 
-					 		AND newsfonction.id_fonction = 1
-					 		ORDER BY news.timestampNews DESC')->fetch_object();		
+					 		AND newsfonction.id_fonction = 1')->fetch_object();		
 		}		
 	}
 	else
@@ -133,8 +132,7 @@ function nombreActualite($type = 0)
 			{	// Tout car admin
 				$nbre = run('	SELECT COUNT(DISTINCT news.id) as nbre
 						 		FROM news 
-						 		WHERE id_Type_d_actualite = '.$type.'
-						 		ORDER BY news.timestampNews DESC')->fetch_object();
+						 		WHERE id_Type_d_actualite = '.$type.'')->fetch_object();
 			}
 			else
 			{	// seulement ta fonction
@@ -145,8 +143,7 @@ function nombreActualite($type = 0)
 						 		AND membre.id 	= membrefonction.id 
 						 		AND fonction.id = membrefonction.id_fonction
 						 		AND membre.mail = "'.$_SESSION["mail"].'"
-						 		AND id_Type_d_actualite = '.$type.'
-						 		ORDER BY news.timestampNews DESC')->fetch_object();
+						 		AND id_Type_d_actualite = '.$type.'')->fetch_object();
 			}
 		}
 		else
@@ -156,8 +153,7 @@ function nombreActualite($type = 0)
 					 		WHERE news.id 	= newsfonction.id 
 					 		AND fonction.id = newsfonction.id_fonction 
 					 		AND newsfonction.id_fonction = 1
-						 	AND id_Type_d_actualite = '.$type.'
-					 		ORDER BY news.timestampNews DESC')->fetch_object();		
+						 	AND id_Type_d_actualite = '.$type.'')->fetch_object();		
 		}
 	}
 	return $nbre->nbre;

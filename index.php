@@ -5,7 +5,7 @@ include_once('request/connectionSQL.php');
 $mysqli = connection();
 
 if(isset($_GET['typeActualite']) && empty($_GET['section']))
-// Au cas où qu'on vient d'actualite
+// Au cas où on vient d'actualite
 {
 	if(is_numeric($_GET['typeActualite']) || $_GET['typeActualite'] == 'all')
 	{
@@ -16,7 +16,7 @@ if(isset($_GET['typeActualite']) && empty($_GET['section']))
 		header('location:index.php?index=index');
 	}	
 }
-// Si on vient pas d'actualité, on fait comme d'hab
+// Si on ne vient pas d'actualité, on fait comme d'hab
 elseif (empty($_GET['section']))	
 {
     header('location:index.php?section=index');

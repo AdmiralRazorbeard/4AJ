@@ -1,6 +1,6 @@
 <?php
 function addLivreOr($nom, $email, $contenu)
-// Insert dans le livre d'or
+// Insertion dans le livre d'or
 {
 	run('INSERT INTO livreor(nom,mail,contenu) VALUES ("'.$nom.'", "'.$email.'", "'.$contenu.'")');
 }
@@ -58,7 +58,7 @@ function isAdminLivreOr()
 						AND fonction.isAdminLivreOr = 1');
 		$tmp = $tmp->fetch_object();
 		if($tmp->nbre >= 1)
-		// Ou si il a une des fonctions dont il fait parti qui est admin sur le livre d'or
+		// Ou si une des fonctions dont il fait parti est: admin sur le livre d'or
 		{
 			return true;
 		}
@@ -67,6 +67,7 @@ function isAdminLivreOr()
 }
 function deleteLivreOr($id)
 {
+	//verification si l'element existe
 	$tmp = run('SELECT COUNT(*) AS nbre FROM livreor WHERE id='.$id)->fetch_object();
 	$tmp = $tmp->nbre;
 	if($tmp == 1)
