@@ -23,4 +23,8 @@ elseif ($_GET['section'] == 'modifierNews')
 {
 	include_once('controller/modifierNews.php');
 }
+elseif ($_GET['section'] == 'livreOrAConfirmer')
+{
+	include_once('controller/livreOrAConfirmer.php');
+}
 ?>

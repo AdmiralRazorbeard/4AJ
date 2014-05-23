@@ -1,8 +1,8 @@
 <?php
-function addLivreOr($nom, $email, $contenu)
+function addLivreOrAConfirmer($nom, $email, $contenu)
 // Insertion dans le livre d'or
 {
-	run('INSERT INTO livreor(nom,mail,contenu) VALUES ("'.$nom.'", "'.$email.'", "'.$contenu.'")');
+	run('INSERT INTO livreoraconfirmer(nom,mail,contenu) VALUES ("'.$nom.'", "'.$email.'", "'.$contenu.'")');
 }
 function nbrePage($nbreBilletParPage)
 // Compte le nombre de page qu'il doit y avoir, le nombre passé en paramètre et le nombre de billet par page.
