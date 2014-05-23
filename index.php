@@ -89,4 +89,24 @@ elseif ($_GET['section'] == 'faireUnDon')
 {
 	include_once 'controller/faireUnDon.php';
 }
+elseif ($_GET['section'] == 'accompagner')
+{
+	include_once 'controller/plateformeLogement/accompagner.php';
+}
+elseif ($_GET['section'] == 'accueillir')
+{
+	include_once 'controller/plateformeLogement/accueillir.php';
+}
+elseif ($_GET['section'] == 'atelier')
+{
+	include_once 'controller/plateformeLogement/atelier.php';
+}
+elseif ($_GET['section'] == 'contact')
+{
+	include_once 'controller/plateformeLogement/contact.php';
+}
+elseif ($_GET['section'] == 'informer')
+{
+	include_once 'controller/plateformeLogement/informer.php';
+}
 ?>
