@@ -64,7 +64,36 @@ function addActualite($titre, $typeActualite, $contenu, $idMembre)
 // Ajoute une actualité
 {
 	run('INSERT INTO news(id_membre, titreNewsFR, contenuNewsFR, id_Type_d_actualite) VALUES ('.$idMembre.', "'.$titre.'", "'.$contenu.'", '.$typeActualite.')');
+	verifNombreActualite();
 }
 
+function nbreActualite()
+// Nombre total d'actualite
+{
+	$nbreActualite = run('SELECT COUNT(*) as nbre FROM news')->fetch_object();
+	$nbreActualite = $nbreActualite->nbre;	
+	return $nbreActualite;
+}
+function deleteNews($id)
+{
+
+	// Supprime la news ainsi que toute les Foreign Keys
+	run('DELETE FROM newsfonction WHERE id='.$id);
+	run('DELETE FROM news WHERE id='.$id);
+}
+function verifNombreActualite()
+// Cela supprimer au fur et à mesure les anciennes news pour éviter de surcharger la base
+{
+	$nbreTotalAdmis = run('SELECT nombreTotalBilletActualite FROM infolivreoractualite')->fetch_object();
+	$nbreTotalAdmis = $nbreTotalAdmis->nombreTotalBilletActualite;
+	$nbreActualite = nbreActualite();
+	while($nbreActualite > $nbreTotalAdmis)
+	{
+		$dernierIdActualite = run('SELECT id FROM news ORDER BY id LIMIT 0,1')->fetch_object();
+		$dernierIdActualite = $dernierIdActualite->id;
+		deleteNews($dernierIdActualite);
+		$nbreActualite--;
+	}
+}
 
 ?>

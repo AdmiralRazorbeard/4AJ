@@ -17,8 +17,16 @@ if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBille
 {
 	newNombreBilletParPage(intval($_POST['nbreBilletParPage']));
 }
+
+	// Changer le nombre total d'acutalite
+if($admin && !empty($_POST['nbreTotalActualite']) && is_numeric($_POST['nbreTotalActualite']))
+{
+	newNombreTotalActualite(intval($_POST['nbreTotalActualite']));
+}
+
 	// Initialisation des actualités
 $nbreBilletParPage = returnNombreBilletParPage();
+$nbreTotalActualite = returnNombreTotalActualite();
 $nbrePage = nbrePage($nbreBilletParPage, $typeChoisi);
 if(!empty($_GET['page']) && is_numeric($_GET['page']) && intval($_GET['page']) == $_GET['page'] && $_GET['page'] >= 1 && $_GET['page'] <= $nbrePage)
 {

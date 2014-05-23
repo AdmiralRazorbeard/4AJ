@@ -62,10 +62,11 @@ CREATE TABLE livreOr(
 
 
 CREATE TABLE InfoLivreOrActualite(
-	id                           int (11) Auto_increment  NOT NULL ,
-	nombreBilletLivreOrParPage   Int ,
-	nombreBilletActualiteParPage Int ,
-	PRIMARY KEY (id )
+        id                           int (11) Auto_increment  NOT NULL ,
+        nombreBilletLivreOrParPage   Int ,
+        nombreBilletActualiteParPage Int ,
+        nombreTotalBilletActualite   Int ,
+        PRIMARY KEY (id )
 )ENGINE=InnoDB;
 
 
@@ -96,7 +97,7 @@ INSERT INTO `fonction`(`nomFonctionFR`, `nomFonctionEN`, `isAccesJeunes`, `isAdm
 INSERT INTO `fonction`(`nomFonctionFR`, `nomFonctionEN`, `isAccesJeunes`, `isAdminLivreOr`) VALUES ('Jeunes','Young',1,0);
 INSERT INTO `fonction`(`nomFonctionFR`, `nomFonctionEN`, `isAccesJeunes`, `isAdminLivreOr`, `isAdminActualite`) VALUES ('Directeur','Director',0,1,1);
 
-INSERT INTO `InfoLivreOrActualite`(`nombreBilletLivreOrParPage`,`nombreBilletActualiteParPage`) VALUES (20, 10);
+INSERT INTO `InfoLivreOrActualite`(`nombreBilletLivreOrParPage`,`nombreBilletActualiteParPage`, `nombreTotalBilletActualite`) VALUES (20, 10, 100);
 INSERT INTO `Type_d_actualite`(`nom`) VALUES ("ActualitÃ©");
 ALTER TABLE  `livreor` CHANGE  `timestampLivreOr`  `timestampLivreOr` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
 ALTER TABLE  `livreoraconfirmer` CHANGE  `timestampLivreOr`  `timestampLivreOr` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
