@@ -2,19 +2,19 @@
 function addLivreOrAConfirmer($nom, $email, $contenu)
 // Insertion dans le livre d'or
 {
-	run('INSERT INTO livreoraconfirmer(nom,mail,contenu) VALUES ("'.$nom.'", "'.$email.'", "'.$contenu.'")');
+	run('INSERT INTO livreor(nom,mail,contenu) VALUES ("'.$nom.'", "'.$email.'", "'.$contenu.'")');
 }
 function nbrePage($nbreBilletParPage)
 // Compte le nombre de page qu'il doit y avoir, le nombre passé en paramètre et le nombre de billet par page.
 {
-	$tmp = run('SELECT COUNT(*) as nbre FROM livreOr')->fetch_object();
+	$tmp = run('SELECT COUNT(*) as nbre FROM livreOr WHERE afficher=1')->fetch_object();
 	$tmp = $tmp->nbre;
 	return ceil($tmp/$nbreBilletParPage);
 }
 function returnLivreOr($page, $nbreBilletParPage)
 {
 // Retourne un tableau contenant toutes les données du livre d'or
-	$nbreLivreOr = run('SELECT COUNT(*) AS nbre FROM livreor')->fetch_object();
+	$nbreLivreOr = run('SELECT COUNT(*) AS nbre FROM livreor WHERE afficher=1')->fetch_object();
 	$nbreLivreOr = $nbreLivreOr->nbre;
 	$livreOr = NULL;
 
@@ -23,7 +23,11 @@ function returnLivreOr($page, $nbreBilletParPage)
 	if($nbreLivreOr >= 1)
 	// Vérifie qu'il y ai bien des entrées
 	{
-		$SQLLivreOr = run('SELECT id,nom,mail,contenu, DATE_FORMAT(timestampLivreOr, "%d/%m/%y à %H:%i") AS timeLivreOr FROM livreor ORDER BY timestampLivreOr DESC LIMIT '.$premierLivreorASortir.','.$nbreBilletParPage);
+		$SQLLivreOr = run('	SELECT id,nom,mail,contenu, DATE_FORMAT(timestampLivreOr, "%d/%m/%y à %H:%i") AS timeLivreOr 
+							FROM livreor 
+							WHERE afficher=1
+							ORDER BY timestampLivreOr DESC 
+							LIMIT '.$premierLivreorASortir.','.$nbreBilletParPage);
 		while($tmp = $SQLLivreOr->fetch_object())
 		{
 			$livreOr[$tmp->id]['id'] = $tmp->id;

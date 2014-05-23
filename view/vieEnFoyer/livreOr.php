@@ -34,6 +34,9 @@ function v_maxlength(id, crid, max)
 					<b>Admin</b> : nombre de billet par page : 
 					<input type="text" required size="1" placeholder="<?php echo $nbreBilletParPage; ?>" name="nbreBilletParPage" /><input type="submit" colls="2" /><br /><br />
 				</form>
+				<p>
+					<b><a href="admin/index.php?section=livreOrAConfirmer">Partie admin</a></b>
+				</p>
 				<?php } ?>
 				<div id="div_livredor">
 					<?php	
