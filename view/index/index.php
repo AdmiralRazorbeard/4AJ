@@ -11,7 +11,6 @@
 			<p>
 				<a href="admin/">Partie admin</a><br />
 				<a href="membre/">Partie jeunes</a><br />
-				<a href="index.php?section=inscription">Inscription</a><br />
 				<a href="index.php?section=livreor">Livre d'or</a>
 			</p>
 		</div>
