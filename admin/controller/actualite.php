@@ -1,5 +1,6 @@
 <?php
 include_once 'request/actualite.php';
+include_once '../textToolBox.php';
 $admin = false;
 if(isAdminActualite())
 { $admin = true; }

@@ -40,7 +40,7 @@
 						<?php if($admin) { ?><a href="admin/index.php?section=modifierNews&id=<?php echo $key; ?>">Modifier</a>,
 						<a href="admin/index.php?section=supprimerNews&id=<?php echo $key; ?>">Suprimmer</a><?php } ?></h4>
 						<p>
-							<?php echo nl2br(htmlspecialchars($value['contenu'])); ?>
+							<?php echo regexTextBox($value['contenu']); ?>
 						</p>
 	<?php			} 
 				} 

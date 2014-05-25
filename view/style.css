@@ -258,3 +258,15 @@ animation:siteslide 45s ease 0s infinite;
     border: 1px solid #686868;
     background-color: #fff;
 }
+
+
+/*  ----------------  */
+/*  --- TOOL BOX ---  */
+/*  ----------------  */
+
+.ttpetit { font-size: xx-small; }
+.tpetit  { font-size: x-small; }
+.petit   { font-size: small; }
+.gros    { font-size: large; }
+.tgros   { font-size: x-large; }
+.ttgros  { font-size: xx-large; }
