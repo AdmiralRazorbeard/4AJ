@@ -108,6 +108,6 @@ function regexTextBox($contenu)
 	$contenu = preg_replace('#&lt;italique&gt;(.+)&lt;/italique&gt;#', '<em>$1</em>', $contenu);
 	$contenu = preg_replace('#&lt;taille valeur=&quot;(.+)&quot;&gt;(.+)&lt;/taille&gt;#', '<span class="$1">$2</span>', $contenu);
 	$contenu = preg_replace('#&lt;lien url=&quot;(.+)&quot;&gt;(.+)&lt;/lien&gt;#', '<a href="$1">$2</a>', $contenu);	
-return $contenu;
+	return $contenu;
 }
 ?>
