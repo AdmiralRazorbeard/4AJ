@@ -37,6 +37,10 @@ elseif ($_GET['section'] == 'actualites')
 {
 	include_once 'controller/actualites.php';
 }
+elseif ($_GET['section'] == 'plateformeLogement' || ($_GET['section'] == 'plateformeLogement' && !empty($_GET['subSection'])))
+{
+	include_once 'controller/plateformeLogement.php';
+}
 elseif ($_GET['section'] == 'liensUtiles')
 {
 	include_once 'controller/liensUtiles.php';

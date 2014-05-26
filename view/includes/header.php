@@ -41,7 +41,13 @@
 		<nav id="mainMenu">
 			<ul>
 				<li><a <?php if (openSection('index')){?>id="active_item0"<?php } else { ?>id="item0"<?php } ?> href="index.php?section=index">Accueil</a></li>
-				<li><a <?php if (openSection('association')){?>id="active_item1"<?php } else { ?>id="item1"<?php } ?> href="index.php?section=association">L'association</a></li>
+				<li><a <?php if (openSection('association')){?>id="active_item1"<?php } else { ?>id="item1"<?php } ?> href="index.php?section=association">L'association</a>
+					<ul id="s_item1">
+      					<li><a href="index.php?section=quiSommesNous">Qui sommes-nous ?</a></li>
+      					<li><a href="index.php?section=plateformeLogement">Plateforme Logement</a></li>
+      					<li><a class="last_item" href="index.php?section=les3Fjt">Les 3 FJT</a></li>
+    				</ul>
+    			</li>	
 				<li><a <?php if (openSection('actualites')){?>id="active_item2"<?php } else { ?>id="item2"<?php } ?> href="index.php?section=actualites">Actualités</a></li>
 				<li><a <?php if (openSection('liensUtiles')){?>id="active_item3"<?php } else { ?>id="item3"<?php } ?> href="index.php?section=liensUtiles">Liens utiles</a></li>
 				<li><a <?php if (openSous_Section_vieEnFoyer()){?>id="active_item4"<?php } else { ?>id="item4"<?php } ?> href="index.php?section=vieEnFoyer">Vie en foyer</a>
