@@ -100,7 +100,6 @@ INSERT INTO `fonction`(`nomFonctionFR`, `nomFonctionEN`, `isAccesJeunes`, `isAdm
 INSERT INTO `InfoLivreOrActualite`(`nombreBilletLivreOrParPage`,`nombreBilletActualiteParPage`, `nombreTotalBilletActualite`) VALUES (20, 10, 100);
 INSERT INTO `Type_d_actualite`(`nom`) VALUES ("ActualitÃ©");
 ALTER TABLE  `livreor` CHANGE  `timestampLivreOr`  `timestampLivreOr` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
-ALTER TABLE  `livreoraconfirmer` CHANGE  `timestampLivreOr`  `timestampLivreOr` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
 ALTER TABLE  `fonction` CHANGE  `isAdminActualite`  `isAdminActualite` TINYINT( 1 ) NOT NULL DEFAULT  '0';
 ALTER TABLE  `fonction` CHANGE  `isAdminLivreOr`  `isAdminLivreOr` TINYINT( 1 ) NOT NULL DEFAULT  '0';
 ALTER TABLE  `news` CHANGE  `id_Type_d_actualite`  `id_Type_d_actualite` INT( 11 ) NOT NULL DEFAULT  '1';
