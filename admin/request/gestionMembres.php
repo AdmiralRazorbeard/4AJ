@@ -1,6 +1,9 @@
 <?php
+// // // // // // //
+// Ce controller correspond à gestionmembre, deleteMembre, et modifierMembre
+// // // // // // //
 function isAdminMembres()
-// Fonction pour savoir si le membre est admin d'actualite
+// Fonction pour savoir si le membre est super admin (seul eux ont accès à la liste des membres)
 {
 	$mysqli = connection();
 	if(!empty($_SESSION['log']) && $_SESSION['log'] == 1 && !empty($_SESSION['mail']))
@@ -16,6 +19,7 @@ function isAdminMembres()
 	}
 	return false;
 }
+
 
 function nbreMembres()
 // Liste des membres
@@ -42,7 +46,8 @@ function listeMembre()
 		$fonction = run('	SELECT id_fonction, nomFonctionFR 
 							FROM fonction,membrefonction 
 							WHERE fonction.id = membrefonction.id_fonction
-							AND membrefonction.id = '.$donnees->id);
+							AND membrefonction.id = '.$donnees->id.'
+							ORDER BY id_fonction DESC');
 		while($temp = $fonction->fetch_object())
 		{
 			$listeMembre[$donnees->id]['fonction'][$temp->id_fonction]['id'] = $temp->id_fonction;
@@ -51,5 +56,12 @@ function listeMembre()
 		$listeMembre[$donnees->id]['isSuperAdmin'] = $donnees->isSuperAdmin; 
 	}
 	return $listeMembre;
+}
+
+function supprimerMembre($id)
+{
+	run('DELETE FROM membrefonction WHERE id='.$id);
+	run('UPDATE news SET id_membre=NULL WHERE id_membre='.$id);
+	run('DELETE FROM membre WHERE id='.$id);
 }
 ?>
