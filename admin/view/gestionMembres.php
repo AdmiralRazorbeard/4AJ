@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-			<title>ADMIN | Actualité</title>
+			<title>ADMIN | Membres</title>
 			<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 			<link rel="stylesheet" href="../view/style.css" />
 	</head> 
