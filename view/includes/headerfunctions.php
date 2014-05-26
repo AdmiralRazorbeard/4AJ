@@ -39,6 +39,17 @@ function openSection($page)
 }
 ?>
 <?php
+function openSous_Section_association()
+//idem que openSection sauf que cette classe active ne s'appliquera que sur le bouton principal lorsque l'un des boutons sera utilisé du menu déroulant
+{
+	if($_GET['section'] == 'association' || $_GET['section'] == 'quiSommesNous' || $_GET['section'] == 'plateformeLogement' || $_GET['section'] == 'les3Fjt')
+	{
+		return true;
+	}
+	return false;
+}
+?>
+<?php
 function openSous_Section_vieEnFoyer()
 //idem que openSection sauf que cette classe active ne s'appliquera que sur le bouton principal lorsque l'un des boutons sera utilisé du menu déroulant
 {

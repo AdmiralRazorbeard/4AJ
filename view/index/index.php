@@ -12,6 +12,7 @@
 				<a href="admin/">Partie admin</a><br />
 				<a href="membre/">Partie jeunes</a><br />
 				<a href="index.php?section=livreor">Livre d'or</a>
+				<a href="membre/index.php?deleteAccount=true">Se désinscrire</a>
 			</p>
 		</div>
 	</body>

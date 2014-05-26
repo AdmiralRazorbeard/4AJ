@@ -68,8 +68,8 @@
 								<option value="2">Février</option>
 								<option value="3">Mars</option>
 								<option value="4">Avril</option>
-								<option value="5">Mail</option>
-								<option value="6">>Juin</option>
+								<option value="5">Mai</option>
+								<option value="6">Juin</option>
 								<option value="7">Juillet</option>
 								<option value="8">Août</option>
 								<option value="9">Septembre</option>
