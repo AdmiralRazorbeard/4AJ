@@ -88,7 +88,7 @@
 			<input type="submit" />
 		</form>
 		<hr />
-		<?php if(!empty($allFonction[$_GET['fonction']]['nom']))
+		<?php if(!empty($_GET['fonction']) && !empty($allFonction[$_GET['fonction']]['nom']))
 			// Si l'utilisateur à choisi une fonction, on affiche la liste des membres 
 		{ ?>
 			<h3>
