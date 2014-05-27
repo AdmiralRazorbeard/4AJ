@@ -102,6 +102,7 @@ if(isConnected())
 		unset($_SESSION['mail']);
 		unset($_SESSION['log']);
 		$_SESSION['message'] = "Vous êtes déconnecté.";
+		header('location:index.php?section='.$_GET['section']);
 	} 
 }
 if(!empty($_POST['mail']) && !empty($_POST['password']))	
