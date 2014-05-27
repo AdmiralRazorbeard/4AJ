@@ -43,4 +43,8 @@ elseif ($_GET['section'] == 'modifierFonctionMembres')
 {
 	include_once('controller/modifierFonctionMembres.php');
 }
+elseif ($_GET['section'] == 'fonction')
+{
+	include_once('controller/fonction.php');
+}
 ?>
