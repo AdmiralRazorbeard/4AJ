@@ -78,4 +78,13 @@ function FonctionNotMembre($id)
 	}
 	return $fonction;
 }
+
+function updateMembre($id, $nom, $prenom, $adresse, $dateNaissance, $telFixe, $telPortable, $isSuperAdmin, $password = '0')
+{
+	run('UPDATE membre SET nomMembre="'.$nom.'", prenomMembre="'.$prenom.'", adresse ="'.$adresse.'", dateNaissance="'.$dateNaissance.'", telFixe="'.$telFixe.'", telPortable="'.$telPortable.'", isSuperAdmin='.$isSuperAdmin.' WHERE id='.$id);
+	if($password != 0)
+	{
+		run('UPDATE membre SET password="'.$password.'" WHERE id='.$id);
+	}
+}
 ?>
