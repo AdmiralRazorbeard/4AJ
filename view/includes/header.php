@@ -13,6 +13,8 @@
 		<div id="connexion">
 			<?php
 			if(isConnected()) {?>
+				<div class="connexion_text connexion_bold">Bienvenue</br></div>
+				<div class="connexion_text"><a href="membre/index.php?section=parameters">Paramètres</a></div>
 				<div class="connexion_text"><a href="index.php?section=index&dislog=true">Se déconnecter</a></div>
 			<?php }
 			else { ?>
