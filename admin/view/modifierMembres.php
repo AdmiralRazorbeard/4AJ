@@ -9,6 +9,8 @@
 		<div>
 			<h1>Modifier <em><?php echo $infoMembre['nomMembre']; ?></em></h1>
 			<form method="post">
+				<?php if(!empty($message))
+				{ echo '<em>'.$message.'</em><br />'; } ?>
 				<input type="hidden" name="id" value="<?php echo $infoMembre['id']; ?>" />
 				<label for="nom">Nom : </label><input type="text" id="nom" name="nom" value="<?php echo $infoMembre['nomMembre']; ?>"  /><br />
 				<label for="prenom">Prénom : </label><input type="text" id="prenom" name="prenom" value="<?php echo $infoMembre['prenomMembre']; ?>" /><br />
