@@ -13,6 +13,8 @@
 		<div id="connexion">
 			<?php
 			if(isConnected()) {?>
+				<div class="connexion_text connexion_bold">Bienvenue</br></div>
+				<div class="connexion_text"><a href="membre/index.php?section=parameters">Paramètres</a></div>
 				<div class="connexion_text"><a href="index.php?section=index&dislog=true">Se déconnecter</a></div>
 			<?php }
 			else { ?>
@@ -41,7 +43,7 @@
 		<nav id="mainMenu">
 			<ul>
 				<li><a <?php if (openSection('index')){?>id="active_item0"<?php } else { ?>id="item0"<?php } ?> href="index.php?section=index">Accueil</a></li>
-				<li><a <?php if (openSection('association')){?>id="active_item1"<?php } else { ?>id="item1"<?php } ?> href="index.php?section=association">L'association</a>
+				<li><a <?php if (openSous_Section_association()){?>id="active_item1"<?php } else { ?>id="item1"<?php } ?> href="index.php?section=association">L'association</a>
 					<ul id="s_item1">
       					<li><a href="index.php?section=quiSommesNous">Qui sommes-nous ?</a></li>
       					<li><a href="index.php?section=plateformeLogement">Plateforme Logement</a></li>
