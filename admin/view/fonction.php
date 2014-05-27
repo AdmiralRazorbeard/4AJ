@@ -61,19 +61,69 @@
 			foreach ($allFonction as $key => $value) { ?>
 			<tr>
 				<td>
-					<?php echo $value['nom']; ?>
-				</td>	<!-- Création du tableau affichant, ça affiche la couleur, et pouvant être cliqué en utilisant la fonction changerFonction -->
+					<a href="index.php?section=fonction&fonction=<?php echo $value['id']; ?>">
+						<!-- Ceci permettra d'afficher les membres de la fonction -->
+						<?php echo $value['nom']; ?>
+					</a>
+				</td>	
+				<!-- Création du tableau affichant, ça affiche la couleur, et pouvant être cliqué en utilisant la fonction changerFonction -->
 				<td onclick="changerFonction(1, <?php echo $value['id'] ?>);" <?php if($value['isAccesJeunes']) { echo 'class="true"'; } else { echo 'class="false"'; } ?>>
 				</td>
 				<td onclick="changerFonction(2, <?php echo $value['id'] ?>);" <?php if($value['isAdminLivreOr']) { echo 'class="true"'; } else { echo 'class="false"'; } ?>>
 				</td>
 				<td onclick="changerFonction(3, <?php echo $value['id'] ?>);" <?php if($value['isAdminActualite']) { echo 'class="true"'; } else { echo 'class="false"'; } ?>>
 				</td>
+				<?php if($value['id'] != 1) { ?>
+				<!-- On ne peut pas supprimer la fonction "public" -->
+				<td>
+					<a href="index.php?section=fonction&delete=<?php echo $value['id']; ?>">Supprimer</a>
+				</td>
+				<?php } ?>
 			</tr>
-
 	<?php	} ?>
-
-
 		</table>
+		<form method="post">
+			<!-- Ajout d'une nouvelle fonction -->
+			<label for="nom">Ajouter une nouvelle fonction : </label><input type="text" name="nom" id="nom" />
+			<input type="submit" />
+		</form>
+		<hr />
+		<?php if(!empty($allFonction[$_GET['fonction']]['nom']))
+			// Si l'utilisateur à choisi une fonction, on affiche la liste des membres 
+		{ ?>
+			<h3>
+				Fonction <?php echo $allFonction[$_GET['fonction']]['nom']; ?>
+			</h3>
+	<?php	if(!empty($allMembreIn)) { ?>
+				<!-- Si il ya des membres dans la fonction, on les affiches -->
+			<ul>
+				<?php foreach ($allMembreIn as $key => $value) { ?>
+				<!-- On affiche la liste des membres -->
+				<li><?php echo $value['nom']; ?>
+					<?php if($_GET['fonction'] != 1) { ?>
+					<!-- On ne peut supprimer un membre d'une fonction que si ce n'est pas la fonction public -->
+					, <a href="index.php?section=fonction&fonction=<?php echo $_GET['fonction']; ?>&supprimerMembre=<?php echo $value['id']; ?>">Supprimer</a></li>
+					<?php } ?>
+		<?php	} ?>
+			</ul>
+	<?php 	} 
+			/* FIN DE SI */
+			/* --------- */
+			if(!empty($allMembreNotInFonction))
+				// Si il reste des membres qui ne sont pas dans la fonction, on propose de les ajouters 
+			{ ?>
+			<form method="post">
+				<input type="hidden" name="idFonction" value="<?php echo $_GET['fonction']; ?>" />
+				<select name="addMembreInFonction">
+				<?php foreach ($allMembreNotInFonction as $key => $value) { ?>
+					<option value="<?php echo $value['id']; ?>">
+						<?php echo $value['nom']; ?>
+					</option>
+		<?php		} ?>
+				</select>
+				<input type="submit" value="Ajouter à la fonction" />
+			</form>
+	<?php 	} 
+		} ?>
 	</body>
 </html>

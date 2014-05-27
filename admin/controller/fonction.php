@@ -4,11 +4,39 @@ if(!isAdminFonction())
 {
 	header('location:../index.php');
 }
-$allFonction = allFonction();
 if(!empty($_GET['type']) && !empty($_GET['id']) && is_numeric($_GET['id']) && is_numeric($_GET['type']))
 {
 	changerPouvoir($_GET['type'], $_GET['id']);
 	header('location:index.php?section=fonction');
 }
+if(!empty($_POST['nom']))
+{
+	ajouterFonction($mysqli->real_escape_string($_POST['nom']));
+}
+if(!empty($_GET['delete']) && is_numeric($_GET['delete']) && $_GET['delete'] > 1)
+	// Supprime seulement si ce n'est pas la fonction "public"
+{
+	supprimerFonction($_GET['delete']);
+}
+if(!empty($_POST['addMembreInFonction']) && !empty($_POST['idFonction']) && is_numeric($_POST['addMembreInFonction']) && is_numeric($_POST['idFonction']))
+	// Si l'utilisateur veut ajouter un membre à la fonction
+{
+	ajouterMembreAFonction($_POST['addMembreInFonction'], $_POST['idFonction']); 
+}
+if(!empty($_GET['fonction']) && is_numeric($_GET['fonction']))
+	// Si l'utilisateur a choisi une fonction, on récupère la liste des membres
+{
+	if(!empty($_GET['supprimerMembre']) && is_numeric($_GET['supprimerMembre']))
+		/* Si en plus d'avoir choisi une fonction, il choisit une membre, 
+		il enlève le membre de la fonciton associé */
+	{
+		supprimerFonctionMembre($_GET['supprimerMembre'], $_GET['fonction']);
+	}
+	$allMembreIn = allMembre($_GET['fonction']);
+	// On récupère la liste des membres de la fonciton
+	$allMembreNotInFonction = allMembreNotIn($_GET['fonction']);
+	// On récupère ici la liste de tous les membres ne faisant pas parti de la fonction
+}
+$allFonction = allFonction();
 include_once 'view/fonction.php';
 ?>
