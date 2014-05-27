@@ -1,5 +1,5 @@
 <?php
-function toolBox ($id, $cols = 50, $rows = 15)
+function toolBox ($id)
 // On Renseigne juste l'id du text area (et si besoin cols & rows)
 { ?>
 	<script type="text/javascript">
@@ -92,13 +92,11 @@ function preview(textareaId, previewDiv) {
 	</p>
 	<p>
 		<input name="previsualisation" type="checkbox" id="previsualisation" value="previsualisation" />
-		<label for="previsualisation">Prévisualisation automatique</label>
+		<label for="previsualisation">Prévisualisation en temps réel</label>
 	</p>
 </div>
-<textarea name="<?php echo $id; ?>" id="<?php echo $id; ?>" onkeyup="preview(this, 'viewDiv');" onselect="preview(this, 'viewDiv');" cols="<?php echo $cols; ?>" rows="<?php echo $rows; ?>"></textarea><br />
-<div id="viewDiv">
-	<!-- Affichage de la prévisualisation -->
-</div><br />
+<textarea name="<?php echo $id; ?>" id="<?php echo $id; ?>" onkeyup="preview(this, 'contenu_previsualisation');" onselect="preview(this, 'contenu_previsualisation');"></textarea><br />
+<div id="contenu_previsualisation"></div>
 <?php
 }
 function regexTextBox($contenu)

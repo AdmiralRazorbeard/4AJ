@@ -1,0 +1,191 @@
+body {
+    font-family: 'Trebuchet', sans-serif;
+    padding: 0px;
+    margin: 0px;
+    margin: auto;
+    background-color:#04467e;
+}
+.mainWrapper{
+    width: 980px;
+    margin:auto;
+    background-color:#f7f7f7;
+    -moz-box-shadow: 1px 1px 4px 0px black;
+    -webkit-box-shadow: 1px 1px 4px 0px black;
+    -o-box-shadow: 1px 1px 4px 0px black;
+    box-shadow: 1px 1px 4px 0px black;
+    /*  ombre du mainWrapper  adaptée aux differents navigateurs  */
+}
+
+/*  ------------    */
+/*  --- MENU ---    */
+/*  ------------    */
+nav ul {
+    margin:0;
+    padding:0;
+    list-style-type:none;
+    text-align:center;
+}
+nav li {
+    float:left;
+    margin:auto;
+    padding:0;
+}
+#menu_item{background-color:#f7f7f7;color:#4b4b4b;}
+#menu_item:hover{
+background-color:#646464;color:#f7f7f7;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-ms-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+transition: all 0.3s ease-in-out;
+}
+#active_menu_item{background-color:#646464;color:#f7f7f7;}
+/*  Couleur des items du menu, hover ou non, actif ou non */
+}
+nav li ul {
+    position:absolute;
+}
+#menu li a {
+    display:block;
+    width:153px;
+    text-decoration:none;
+    padding:10px 5px 10px 5px;
+    border-bottom:1px solid #646464;
+    font-weight: bold;
+    font-style:normal;
+    font-size:13px;
+}
+nav ul li ul {
+    display:none;
+    z-index: 1;
+}
+nav ul li:hover ul {
+    display:block;
+    
+}
+nav li:hover ul li {
+    float:none;
+}
+
+/*  --------------  */
+/*  -- BANNIERE --  */
+/*  --------------  */
+/*  ----Connexion-----  */
+#connexion{
+    padding-left:15px;
+    padding-right:15px;
+    background-color:#075da6;
+    height:29px;
+    font-size:12px;
+    color:white;
+}
+#connexion a{
+    color:white;
+    font-weight: bold;
+}
+#connexion div{
+    height:29px;
+    float:left;
+    padding-left:4px;
+    padding-right:4px;
+}
+#connexion .connexion_text, .connexion_inscription{
+    position:relative;
+    top:6px;
+}
+#connexion .connexion_bold{
+    font-weight: bold;
+}
+#connexion #mail, #password {
+    height:14px;
+    width:100px;
+    margin-right:10px;
+    position:relative;
+    top:4px;
+}
+#connexion input[type=password], input[type=name]{
+   background-color: #075da6;
+   color:white;
+}
+#connexion .connexion_submit{
+    position:relative;
+    top:2px;
+}
+#connexion #submit {
+    width: 80px;
+    padding-left: 6px;
+    background-color:#075da6;
+    color:white;
+    border-radius:3px;
+} 
+#connexion #submit:hover {
+    background-color: #377fbd;
+}
+#connexion .connexion_inscription{
+    float:right;
+}
+
+/*  --------------  */
+/*  --- CONTENU --  */
+/*  --------------  */
+/*  --- Propriétés de inscription --  */
+h1{
+    text-align:center;
+}
+#actualite{
+    width:700px;
+    margin:auto;
+    
+}
+#actualite .actualite_info{
+    text-align:center;
+    font-size:12px;
+}
+#actualite .form-field {
+    clear: both;
+    margin: 5px;
+    overflow: hidden;
+    margin:auto;
+}
+#actualite .form-field label{
+    float:left;
+    width:30%;
+    padding: 5px; 
+}
+#actualite .form-field input,.form-field textarea{
+    float: left;
+    width: 55%;
+    padding: 5px;
+    border: 1px solid #686868;
+    background: #fff;
+}
+#actualite .form-field-visibilite-element{
+    float: left;
+    margin-right: 30px;
+}
+#actualite #contenu{
+    width:650px;
+    height:250px;
+    margin-left: 25px;
+    resize: none;
+}
+#actualite #contenu_previsualisation{
+    width:656px;
+    height:150px;
+    margin-left: 25px;
+    overflow-y: scroll;   
+    word-wrap: break-word;
+    border:1px solid #abadb3;
+    border-radius: 4px;
+}
+
+/*  ----------------  */
+/*  --- TOOL BOX ---  */
+/*  ----------------  */
+
+.ttpetit { font-size: xx-small; }
+.tpetit  { font-size: x-small; }
+.petit   { font-size: small; }
+.gros    { font-size: large; }
+.tgros   { font-size: x-large; }
+.ttgros  { font-size: xx-large; }
