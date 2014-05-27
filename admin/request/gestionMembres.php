@@ -1,6 +1,6 @@
 <?php
 // // // // // // //
-// Ce controller correspond à gestionmembre, deleteMembre, et modifierMembre
+// Ce controller correspond à gestionmembre et deleteMembre
 // // // // // // //
 function isAdminMembres()
 // Fonction pour savoir si le membre est super admin (seul eux ont accès à la liste des membres)

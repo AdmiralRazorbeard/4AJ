@@ -35,4 +35,12 @@ elseif ($_GET['section'] == 'deleteMembres')
 {
 	include_once('controller/deleteMembres.php');
 }
+elseif ($_GET['section'] == 'modifierMembres')
+{
+	include_once('controller/modifierMembres.php');
+}
+elseif ($_GET['section'] == 'modifierFonctionMembres')
+{
+	include_once('controller/modifierFonctionMembres.php');
+}
 ?>
