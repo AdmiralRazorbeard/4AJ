@@ -72,6 +72,17 @@ function openSous_Section_contact()
 }
 ?>
 <?php
+function openSubSection($page)
+//permet de regarder quelle section est ouverte et creer un classe active pour les boutons du menu
+{
+	if($_GET['subSection'] == $page)
+	{
+		return true;
+	}
+	return false;
+}
+?>
+<?php
 if(isConnected()) 
 // Pour se déconnecter
 {
