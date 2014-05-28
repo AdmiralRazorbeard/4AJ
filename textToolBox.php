@@ -1,5 +1,5 @@
 <?php
-function toolBox ($id)
+function toolBox ($id, $contenu = '')
 // On Renseigne juste l'id du text area (et si besoin cols & rows)
 { ?>
 	<script type="text/javascript">
@@ -95,7 +95,9 @@ function preview(textareaId, previewDiv) {
 		<label for="previsualisation">Prévisualisation en temps réel</label>
 	</p>
 </div>
-<textarea name="<?php echo $id; ?>" id="<?php echo $id; ?>" onkeyup="preview(this, 'contenu_previsualisation');" onselect="preview(this, 'contenu_previsualisation');"></textarea><br />
+<textarea name="<?php echo $id; ?>" id="<?php echo $id; ?>" onkeyup="preview(this, 'contenu_previsualisation');" onselect="preview(this, 'contenu_previsualisation');">
+<?php echo $contenu; ?>
+</textarea><br />
 <div id="contenu_previsualisation"></div>
 <?php
 }

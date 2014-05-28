@@ -1,5 +1,6 @@
 <?php
 include_once 'request/modifierNews.php';
+include_once '../textToolBox.php';
 if(!isAdminActualite())
 {
 	$_SESSION['message'] = "Vous n'avez pas accès à cette page.";

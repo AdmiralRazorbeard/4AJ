@@ -6,7 +6,8 @@ include_once '/view/includes/header.php';
 				<h1>Modifier la news n°<?php echo $infoNews['id']; ?></h1>
 				<form method="post">
 					<input type="text" value="<?php echo $infoNews['titre']; ?>" name="titre"/><br />
-					<textarea name="contenu" id="contenu" cols="50" rows="15"><?php echo $infoNews['contenu']; ?></textarea><br />
+					<label for="contenu">Contenu: </label>
+					<?php toolBox('contenu', $infoNews['contenu']); ?>
 					<input type="submit">
 				</form>
 			</div>
