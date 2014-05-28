@@ -128,14 +128,14 @@ nav li:hover ul li {
 /*  --------------  */
 /*  --- CONTENU --  */
 /*  --------------  */
-/*  --- Propriétés de inscription --  */
+/*  --- Propriétés de actualités --  */
 h1{
     text-align:center;
 }
 #actualite{
     width:700px;
     margin:auto;
-    
+    padding-left: 50px;
 }
 #actualite .actualite_info{
     text-align:center;
@@ -150,7 +150,9 @@ h1{
 #actualite .form-field label{
     float:left;
     width:30%;
-    padding: 5px; 
+}
+#form-field #typeActualite {
+    width:20%;
 }
 #actualite .form-field input,.form-field textarea{
     float: left;
@@ -159,20 +161,23 @@ h1{
     border: 1px solid #686868;
     background: #fff;
 }
+#actualite .form-field-visibilite p{
+    margin: 15px 0px 0px 0px;
+}
 #actualite .form-field-visibilite-element{
-    float: left;
     margin-right: 30px;
+}
+#actualite #p_form-field-contenu{
+    margin: 15px 0px -15px 0px;
 }
 #actualite #contenu{
     width:650px;
     height:250px;
-    margin-left: 25px;
     resize: none;
 }
 #actualite #contenu_previsualisation{
     width:656px;
     height:150px;
-    margin-left: 25px;
     overflow-y: scroll;   
     word-wrap: break-word;
     border:1px solid #abadb3;
