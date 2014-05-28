@@ -64,10 +64,12 @@ function preview(textareaId, previewDiv) {
 		field = field.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 		field = field.replace(/\n/g, '<br />').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
 		field = field.replace(/&lt;gras&gt;([\s\S]*?)&lt;\/gras&gt;/g, '<strong>$1</strong>');
+		field = field.replace(/&lt;souligne&gt;([\s\S]*?)&lt;\/souligne&gt;/g, '<span class="underline">$1</span>');
 		field = field.replace(/&lt;italique&gt;([\s\S]*?)&lt;\/italique&gt;/g, '<em>$1</em>');
 		field = field.replace(/&lt;lien&gt;([\s\S]*?)&lt;\/lien&gt;/g, '<a href="$1">$1</a>');
 		field = field.replace(/&lt;lien url="([\s\S]*?)"&gt;([\s\S]*?)&lt;\/lien&gt;/g, '<a href="$1" title="$2">$2</a>');
 		field = field.replace(/&lt;taille valeur=\"(.*?)\"&gt;([\s\S]*?)&lt;\/taille&gt;/g, '<span class="$1">$2</span>');
+
 
 		
 		document.getElementById(previewDiv).innerHTML = field;
@@ -79,6 +81,7 @@ function preview(textareaId, previewDiv) {
 	<p>
 		<input type="button" value="G" onclick="insertTag('<gras>','</gras>','contenu');"/>
 		<input type="button" value="I" onclick="insertTag('<italique>','</italique>','contenu');"/>
+		<input type="button" value="S" onclick="insertTag('<souligne>','</souligne>', 'contenu');" class="underline" />
 		<input type="button" value="Lien" onclick="insertTag('','','contenu','lien');"/>
 		<select onchange="insertTag('<taille valeur=&quot;' + this.options[this.selectedIndex].value + '&quot;>', '</taille>', 'contenu');">
 			<option value="none" class="selected" selected="selected">Taille</option>
@@ -106,6 +109,7 @@ function regexTextBox($contenu)
 	$contenu = nl2br(htmlspecialchars($contenu));
 	$contenu = preg_replace('#&lt;gras&gt;(.+)&lt;/gras&gt;#', '<b>$1</b>', $contenu);
 	$contenu = preg_replace('#&lt;italique&gt;(.+)&lt;/italique&gt;#', '<em>$1</em>', $contenu);
+	$contenu = preg_replace('#&lt;souligne&gt;(.+)&lt;/souligne&gt;#', '<span class="underline">$1</span>', $contenu);
 	$contenu = preg_replace('#&lt;taille valeur=&quot;(.+)&quot;&gt;(.+)&lt;/taille&gt;#', '<span class="$1">$2</span>', $contenu);
 	$contenu = preg_replace('#&lt;lien url=&quot;(.+)&quot;&gt;(.+)&lt;/lien&gt;#', '<a href="$1">$2</a>', $contenu);	
 	return $contenu;

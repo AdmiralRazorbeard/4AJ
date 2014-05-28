@@ -189,3 +189,4 @@ h1{
 .gros    { font-size: large; }
 .tgros   { font-size: x-large; }
 .ttgros  { font-size: xx-large; }
+.underline { text-decoration: underline; }
