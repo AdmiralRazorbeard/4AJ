@@ -14,8 +14,8 @@
 			<?php
 			if(isConnected()) {?>
 				<div class="connexion_text connexion_bold">Bienvenue</br></div>
-				<div class="connexion_text"><a href="membre/index.php?section=parameters">Paramètres</a></div>
-				<div class="connexion_text"><a href="index.php?section=index&dislog=true">Se déconnecter</a></div>
+				<div class="connexion_text"><a href="../membre/index.php?section=parameters">Paramètres</a></div>
+				<div class="connexion_text"><a href="../index.php?section=index&dislog=true">Se déconnecter</a></div>
 			<?php }
 			else { ?>
 			<div class="connexion_text connexion_bold">Connexion</br></div>
@@ -24,7 +24,7 @@
 				<div class="connexion_text"><legend for="password">Mot de passe :</div><div></legend><input type="password" id="password" name="password" /></div>
 				<div class="connexion_submit"><input id="submit" type="submit"/></div>
 			</form>
-			<div class="connexion_inscription connexion_bold"><a href="index.php?section=inscription">Inscription</a></div>
+			<div class="connexion_inscription connexion_bold"><a href="../index.php?section=inscription">Inscription</a></div>
 			<?php } ?>
 			<?php
 			if(!empty($message))
@@ -36,10 +36,10 @@
 		</div>
 		<nav id="menu">
 			<ul>
-				<li><a <?php if (openSection('item1')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="#">Item1</a></li>
-				<li><a <?php if (openSection('item2')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="#">Item2</a></li>
-				<li><a <?php if (openSection('item3')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="#">Item3</a></li>
-				<li><a <?php if (openSection('item4')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="#">Item4</a></li>
+				<li><a <?php if (openSection('item1')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=gestionMembres">Gestion des membres</a></li>
+				<li><a <?php if (openSection('item2')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=fonction">Fonction des membres</a></li>
+				<li><a <?php if (openSection('item3')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=actualite">Gestion des actualités</a></li>
+				<li><a <?php if (openSection('item4')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=livreOrAConfirmer">Livre d'or à confirmer</a></li>
 				<li><a <?php if (openSection('item5')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="#">Item5</a></li>
 				<li><a <?php if (openSection('item6')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="#">Item6</a></li>		
 			</ul>
