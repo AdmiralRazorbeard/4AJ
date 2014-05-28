@@ -1,6 +1,11 @@
 <?php
 function pageDynamique($page)
 { 
+	$mysqli = connection();
+	if(!empty($_POST['contenu']) && isSuperAdmin())
+	{
+		run('UPDATE informationpage SET contenu="'.$mysqli->real_escape_string($_POST['contenu']).'" WHERE page="'.$page.'"');
+	}
 	$contenu = run('SELECT contenu FROM informationpage WHERE page="'.$page.'"')->fetch_object();
 	if(!empty($_SESSION['superAdminOn']) && isSuperAdmin())
 	{ ?>
@@ -20,7 +25,7 @@ function pageDynamique($page)
 <?php
 } 
 function toolBox ($id, $contenu = '')
-// On Renseigne juste l'id du text area (et si besoin cols & rows)
+// On Renseigne juste l'id du text area
 { ?>
 	<script type="text/javascript">
 	function insertTag(startTag, endTag, textareaId, tagType) {
@@ -60,6 +65,20 @@ function toolBox ($id, $contenu = '')
 					currentSelection = label;                     
 			}			
 		}
+		if(tagType == 'mailto') {
+			// Si c'est un mail 
+			endTag = "</mail>";
+			if (currentSelection) 
+			{ // Il y a une sélection
+				var MAIL = prompt("Quelle est le mail ?");
+				startTag = "<mail url=\"" + MAIL + "\">";
+			} else { // Pas de sélection, donc on demande le mail et le libelle
+					var MAIL = prompt("Quelle est le mail ?") || "";
+					var label = prompt("Quel est le libellé du mail ?") || "";
+					startTag = "<mail url=\"" + MAIL + "\">";
+					currentSelection = label;                     
+			}			
+		}
 		
 		/* === Partie 3 : on insère le tout === */
 		if (window.ActiveXObject) {
@@ -85,9 +104,12 @@ function preview(textareaId, previewDiv) {
 		field = field.replace(/\n/g, '<br />').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
 		field = field.replace(/&lt;gras&gt;([\s\S]*?)&lt;\/gras&gt;/g, '<strong>$1</strong>');
 		field = field.replace(/&lt;souligne&gt;([\s\S]*?)&lt;\/souligne&gt;/g, '<span class="underline">$1</span>');
+		field = field.replace(/&lt;titre&gt;([\s\S]*?)&lt;\/titre&gt;/g, '<h1>$1</h1>');
+		field = field.replace(/&lt;stitre&gt;([\s\S]*?)&lt;\/stitre&gt;/g, '<h3>$1</h3>');
 		field = field.replace(/&lt;italique&gt;([\s\S]*?)&lt;\/italique&gt;/g, '<em>$1</em>');
 		field = field.replace(/&lt;lien&gt;([\s\S]*?)&lt;\/lien&gt;/g, '<a href="$1">$1</a>');
 		field = field.replace(/&lt;lien url="([\s\S]*?)"&gt;([\s\S]*?)&lt;\/lien&gt;/g, '<a href="$1" title="$2">$2</a>');
+		field = field.replace(/&lt;mail url="([\s\S]*?)"&gt;([\s\S]*?)&lt;\/mail&gt;/g, '<a href="mailto:$1" title="$2">$2</a>');
 		field = field.replace(/&lt;taille valeur=\"(.*?)\"&gt;([\s\S]*?)&lt;\/taille&gt;/g, '<span class="$1">$2</span>');
 
 
@@ -103,6 +125,7 @@ function preview(textareaId, previewDiv) {
 		<input type="button" value="I" onclick="insertTag('<italique>','</italique>','contenu');"/>
 		<input type="button" value="S" onclick="insertTag('<souligne>','</souligne>', 'contenu');" class="underline" />
 		<input type="button" value="Lien" onclick="insertTag('','','contenu','lien');"/>
+		<input type="button" value="Mail" onclick="insertTag('','','contenu','mailto');"/>
 		<select onchange="insertTag('<taille valeur=&quot;' + this.options[this.selectedIndex].value + '&quot;>', '</taille>', 'contenu');">
 			<option value="none" class="selected" selected="selected">Taille</option>
 			<option value="ttpetit">Très très petit</option>
@@ -112,6 +135,8 @@ function preview(textareaId, previewDiv) {
 			<option value="tgros">Très gros</option>
 			<option value="ttgros">Très très gros</option>
 		</select>
+		<input type="button" value="Titre" onclick="insertTag('<titre>', '</titre>', 'contenu');">
+		<input type="button" value="Sous-titre" onclick="insertTag('<stitre>', '</stitre>', 'contenu');">
 	</p>
 	<p>
 		<input name="previsualisation" type="checkbox" id="previsualisation" value="previsualisation" />
@@ -132,6 +157,10 @@ function regexTextBox($contenu)
 	$contenu = preg_replace('#&lt;souligne&gt;(.+)&lt;/souligne&gt;#', '<span class="underline">$1</span>', $contenu);
 	$contenu = preg_replace('#&lt;taille valeur=&quot;(.+)&quot;&gt;(.+)&lt;/taille&gt;#', '<span class="$1">$2</span>', $contenu);
 	$contenu = preg_replace('#&lt;lien url=&quot;(.+)&quot;&gt;(.+)&lt;/lien&gt;#', '<a href="$1">$2</a>', $contenu);	
+	$contenu = preg_replace('#&lt;mail url=&quot;(.+)&quot;&gt;(.+)&lt;/mail&gt;#', '<a href="mailto:$1">$2</a>', $contenu);	
+	$contenu = preg_replace('#&lt;titre&gt;(.+)&lt;/titre&gt;#', '<h1>$1</h1>', $contenu);
+	$contenu = preg_replace('#&lt;stitre&gt;(.+)&lt;/stitre&gt;#', '<h3>$1</h3>', $contenu);
+
 	return $contenu;
 }
 ?>

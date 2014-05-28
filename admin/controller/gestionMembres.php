@@ -15,6 +15,6 @@ else
 {
 	$page = 1;
 }
-$listeMembre = listeMembre($page, $nbreBilletParPage); 
+$listeMembre = listeMembre($page, $nbreMembreParPage); 
 include_once 'view/gestionMembres.php';
 ?>
