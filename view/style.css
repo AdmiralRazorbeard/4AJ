@@ -227,9 +227,10 @@ animation:siteslide 45s ease 0s infinite;
 }
 #div_livredor{
     padding-top:20px;
-    text-align:center;
     width:600px;
     margin:auto;
+    text-align:center;
+    word-wrap: break-word;
 }
 #message_livredor{
     width:700px;

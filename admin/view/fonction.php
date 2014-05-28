@@ -32,10 +32,12 @@ include_once '/view/includes/header.php';
 					foreach ($allFonction as $key => $value) { ?>
 					<tr>
 						<td>
-							<a href="index.php?section=fonction&fonction=<?php echo $value['id']; ?>">
-								<!-- Ceci permettra d'afficher les membres de la fonction -->
-								<?php echo $value['nom']; ?>
-							</a>
+							<div>
+								<a href="index.php?section=fonction&fonction=<?php echo $value['id']; ?>">
+									<!-- Ceci permettra d'afficher les membres de la fonction -->
+									<?php echo $value['nom']; ?>
+								</a>
+							</div>
 						</td>	
 						<!-- Création du tableau affichant, ça affiche la couleur, et pouvant être cliqué en utilisant la fonction changerFonction -->
 						<td onclick="changerFonction(1, <?php echo $value['id'] ?>);" <?php if($value['isAccesJeunes']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>

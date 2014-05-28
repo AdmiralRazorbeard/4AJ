@@ -2,23 +2,7 @@
 include_once '/view/includes/header.php';
 ?>
 		<div id="mainWrapper">
-			<div class="contentWrapper">
-				<style>
-				table
-				{
-				    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
-				    background-color:white;
-				}
-				td
-				{
-				    border: 1px solid black;
-				}
-				th
-				{
-					width: 150px;
-					border-left:1px solid black;
-				}
-				</style>
+			<div class="contentWrapper memberGestion">
 				<h1>Gestion des membres</h1>
 				<h4>Liste des membres</h4>
 				<table>
@@ -49,16 +33,24 @@ include_once '/view/includes/header.php';
 					{ ?>
 					<tr>
 						<td>
-							<?php echo $value['id']; ?>
+							<div>
+								<?php echo $value['id']; ?>
+							</div>
 						</td>
 						<td>
-							<?php echo $value['nomMembre']; ?>
+							<div>
+								<?php echo $value['nomMembre']; ?>
+							</div>
 						</td>
 						<td>
+							<div>
 							<?php echo $value['prenomMembre']; ?>
+							</div>
 						</td>
 						<td>
+							<div>
 							<?php echo $value['mail']; ?>
+							</div>
 						</td>
 						<td>
 							<select>

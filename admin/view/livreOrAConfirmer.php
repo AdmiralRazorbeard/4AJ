@@ -2,7 +2,7 @@
 include_once '/view/includes/header.php';
 ?>
 		<div id="mainWrapper">
-			<div class="contentWrapper">
+			<div class="contentWrapper livreOr">
 			<h1>Gestion du livre d'or </h1>
 			<?php
 			if($nbreLivreOrAConfirmer <= 0)
