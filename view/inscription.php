@@ -11,7 +11,9 @@
 			<div class="contentWrapper">
 				<div>
 					<h1>S'incrire à 4AJ, un tremplin pour les jeunes</h1>
-					<?php if(isConnect()) { ?><em>Vous êtes déjà connecter : <a href="index.php?section=connection&dislog=true">Se déconnecter</a></em><?php } ?>
+					<p id="info_inscription">
+						<a href="index.php?section=index">Retourner a l'accueil</a>
+					<?php if(isConnect()) { ?><em>Vous êtes déjà connecté : <a href="index.php?section=connection&dislog=true">Se déconnecter</a></em><?php } ?>
 					<?php if(!empty($message))
 					{ ?>
 						<em><?php echo $message; ?></em></br>
@@ -24,7 +26,7 @@
 					{ ?>
 						<em><?php echo $message3; ?></em></br>
 					<?php } ?>
-					</br>
+					</p>
 					<form method="post">
 						<fieldset id="inscription">
 							<p class="form-field">

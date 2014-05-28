@@ -18,6 +18,9 @@ body {
     /*  ombre du mainWrapper  adaptée aux differents navigateurs  */
 }
 /*  --- Propriétés de inscription --  */
+#info_inscription{
+    margin:0px 0px 10px 15px;
+}
 h1{
     text-align:center;
 }

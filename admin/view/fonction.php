@@ -2,33 +2,7 @@
 include_once '/view/includes/header.php';
 ?>
 		<div id="mainWrapper">
-			<div class="contentWrapper">
-				<style>
-					table
-					{
-					    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
-					    background-color:white;
-					}
-					td
-					{
-					    border: 1px solid black;
-					}
-					th
-					{
-						width: 150px;
-						border-left:1px solid black;
-					}
-					.false
-					{
-						background-color:red;
-						cursor:pointer;
-					}
-					.true
-					{
-						background-color: green;
-						cursor:pointer;
-					}
-				</style> 
+			<div class="contentWrapper fonction">
 				<script type="text/javascript">
 				function changerFonction(type, id)
 				{	/*Fonction redirige sur la même page en mettant les paramètres en GET */
@@ -64,16 +38,22 @@ include_once '/view/includes/header.php';
 							</a>
 						</td>	
 						<!-- Création du tableau affichant, ça affiche la couleur, et pouvant être cliqué en utilisant la fonction changerFonction -->
-						<td onclick="changerFonction(1, <?php echo $value['id'] ?>);" <?php if($value['isAccesJeunes']) { echo 'class="true"'; } else { echo 'class="false"'; } ?>>
+						<td onclick="changerFonction(1, <?php echo $value['id'] ?>);" <?php if($value['isAccesJeunes']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
 						</td>
-						<td onclick="changerFonction(2, <?php echo $value['id'] ?>);" <?php if($value['isAdminLivreOr']) { echo 'class="true"'; } else { echo 'class="false"'; } ?>>
+						<td onclick="changerFonction(2, <?php echo $value['id'] ?>);" <?php if($value['isAdminLivreOr']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
 						</td>
-						<td onclick="changerFonction(3, <?php echo $value['id'] ?>);" <?php if($value['isAdminActualite']) { echo 'class="true"'; } else { echo 'class="false"'; } ?>>
+						<td onclick="changerFonction(3, <?php echo $value['id'] ?>);" <?php if($value['isAdminActualite']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
 						</td>
+
 						<?php if($value['id'] != 1) { ?>
 						<!-- On ne peut pas supprimer la fonction "public" -->
 						<td>
 							<a href="index.php?section=fonction&delete=<?php echo $value['id']; ?>">Supprimer</a>
+						</td>
+						<?php }
+						else {?>
+						<td>
+							<p id="impossible">Supprimer</p>
 						</td>
 						<?php } ?>
 					</tr>

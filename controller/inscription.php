@@ -87,7 +87,7 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		if($error == 0)
 		{
 			addMembers($nom, $prenom, $adresse, $telFixe, $telPortable, $mail, $dateNaissance, $password);
-			$message ="<br />L'inscription est réussie, vous pouvez désormais vous connecter sur la page d'accueil<br /><a href=\"index.php?section=index\">Retourner a l'accueil</a>";
+			$message ="<br />L'inscription est réussie, vous pouvez désormais vous connecter sur la page d'accueil<br />";
 		}
 		else
 		{
