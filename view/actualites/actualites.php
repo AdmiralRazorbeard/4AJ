@@ -11,7 +11,7 @@
 				<form method="post">
 					<b>Admin</b> : nombre total d'actualité :
 					<input type="text" required size="1" placeholder="<?php echo $nbreTotalActualite; ?>" name="nbreTotalActualite" /><input type="submit" colls="2" /><br />
-
+				</form>
 			</p>
 			<?php } ?>
 
