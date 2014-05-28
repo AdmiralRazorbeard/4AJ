@@ -83,6 +83,16 @@ CREATE TABLE newsFonction(
 	PRIMARY KEY (id ,id_fonction )
 )ENGINE=InnoDB;
 
+
+CREATE TABLE informationPage(
+        id      int (11) Auto_increment  NOT NULL ,
+        page    Varchar (255) ,
+        contenu Text ,
+        PRIMARY KEY (id ) ,
+        UNIQUE (page )
+)ENGINE=InnoDB;
+
+
 ALTER TABLE news ADD CONSTRAINT FK_news_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
 ALTER TABLE news ADD CONSTRAINT FK_news_id_Type_d_actualite FOREIGN KEY (id_Type_d_actualite) REFERENCES Type_d_actualite(id);
 ALTER TABLE membreFonction ADD CONSTRAINT FK_membreFonction_id FOREIGN KEY (id) REFERENCES membre(id);

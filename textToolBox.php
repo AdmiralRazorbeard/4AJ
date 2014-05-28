@@ -1,4 +1,24 @@
 <?php
+function pageDynamique($page)
+{ 
+	$contenu = run('SELECT contenu FROM informationpage WHERE page="'.$page.'"')->fetch_object();
+	if(!empty($_SESSION['superAdminOn']) && isSuperAdmin())
+	{ ?>
+		<form method="post">
+			<?php toolBox('contenu', $contenu->contenu); ?><br />
+			<input type="submit" />
+		</form>
+<?php
+	}
+	else
+	{	
+		echo regexTextBox($contenu->contenu); 
+	}
+	?>
+
+
+<?php
+} 
 function toolBox ($id, $contenu = '')
 // On Renseigne juste l'id du text area (et si besoin cols & rows)
 { ?>

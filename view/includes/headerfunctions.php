@@ -51,8 +51,6 @@ function openSous_Section_vieEnFoyer()
 	}
 	return false;
 }
-?>
-<?php
 function openSous_Section_devenirResidant()
 //idem que openSection sauf que cette classe active ne s'appliquera que sur le bouton principal lorsque l'un des boutons sera utilisé du menu déroulant
 {
@@ -104,6 +102,41 @@ function isAdminSomewhere()
 	}
 	return false;
 }
+
+function isSuperAdmin()
+// Vérifie si l'utilisateur est super admin
+{	
+	if(!empty($_SESSION['mail']))
+	{
+		$mysqli = connection();
+		$mail = $mysqli->real_escape_string($_SESSION['mail']);
+		$isSuperAdmin = run('SELECT isSuperAdmin FROM membre WHERE mail="'.$mail.'"')->fetch_object();
+		if($isSuperAdmin->isSuperAdmin == 1)
+		{
+			return true;
+		}
+	}
+	return false;	
+}
+
+if(!empty($_GET['superAdminOn']) && $_GET['superAdminOn'])
+{
+	if(isSuperAdmin())
+	{
+		$_SESSION['superAdminOn'] = true;
+	}
+}
+if(!empty($_GET['finSuperAdminOn']))
+{
+	unset($_SESSION['superAdminOn']);
+}
+if(!empty($_SESSION['superAdminOn']))
+{
+	if(!isSuperAdmin())
+	{
+		unset($_SESSION['superAdminOn']);
+	}
+}
 if(isConnected()) 
 // Pour se déconnecter
 {
@@ -111,10 +144,12 @@ if(isConnected())
 	{	
 		unset($_SESSION['mail']);
 		unset($_SESSION['log']);
+		unset($_SESSION['superAdminOn']);
 		$_SESSION['message'] = "Vous êtes déconnecté.";
 		header('location:index.php?section='.$_GET['section']);
 	} 
 }
+
 if(!empty($_POST['mail']) && !empty($_POST['password']))	
 //Connexion
 {

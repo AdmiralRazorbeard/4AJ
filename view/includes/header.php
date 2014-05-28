@@ -19,7 +19,18 @@
 		<?php 	if(isAdminSomewhere())
 				// Si l'utilisateur est admin
 				{ ?> 
-					<div class="connexion_inscription connexion_bold"><a href="admin/index.php?section=gestionMembres">Partie administrateur</a></div>
+					<div class="connexion_inscription connexion_bold">
+						<?php if(isSuperAdmin()) { ?>
+							<!-- Si super admin, il peut passer en mode édition -->
+							<?php if(empty($_SESSION['superAdminOn'])) { ?>
+								<a href="index.php?section=index&superAdminOn=true">Mode édition</a> 
+							<?php } else { ?>
+								<!-- Cela veut dire qu'il est déjà superAdmin, donc lien pour désactiver -->
+								<a href="index.php?section=index&finSuperAdminOn=true">Fin mode édition</a>
+						<?php 	} 
+							}?>
+						<a href="admin/index.php?section=gestionMembres">Partie administrateur</a>
+					</div>
 			<?php 
 				}
 			}
