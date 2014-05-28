@@ -37,6 +37,19 @@ function v_maxlength(id, crid, max)
 				<p>
 					<b><a href="admin/index.php?section=livreOrAConfirmer">Partie admin</a></b>
 				</p>
+				<?php
+				// Si l'utilisateur à envoyé un message :
+				if(!empty($_SESSION['confirm']))
+				{ ?>
+					<p>
+						<em>
+							<?php echo $_SESSION['confirm']; ?>
+						</em>
+					</p>
+					
+		<?php	unset($_SESSION['confirm']);
+				}
+				?>
 				<?php } ?>
 				<div id="div_livredor">
 					<?php	

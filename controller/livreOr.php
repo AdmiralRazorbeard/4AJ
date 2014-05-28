@@ -27,6 +27,7 @@ if(!empty($_POST['nom']) && !empty($_POST['contenu']))
 			$email = $mysqli->real_escape_string($_POST['mail']);
 		}
 		addLivreOrAConfirmer($nom,$email,$contenu);
+		$_SESSION['confirm'] = "Votre message a bien été envoyé, il sera affiché une fois confirmé par un administrateur.";
 	}
 }
 $nbreBilletParPage = returnNombreBilletParPage();
