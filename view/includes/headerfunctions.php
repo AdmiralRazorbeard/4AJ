@@ -8,8 +8,6 @@ function isConnected()
 	}
 	return false;
 }
-?>
-<?php
 function countMembers($mail, $password)
 //Retourne 1 si valide, 1.5 si seulement mail valide
 {
@@ -26,8 +24,6 @@ function countMembers($mail, $password)
 	}
 	return 0;
 }
-?>
-<?php
 function openSection($page)
 //permet de regarder quelle section est ouverte et creer un classe active pour les boutons du menu
 {
@@ -37,8 +33,6 @@ function openSection($page)
 	}
 	return false;
 }
-?>
-<?php
 function openSous_Section_association()
 //idem que openSection sauf que cette classe active ne s'appliquera que sur le bouton principal lorsque l'un des boutons sera utilisé du menu déroulant
 {
@@ -48,8 +42,6 @@ function openSous_Section_association()
 	}
 	return false;
 }
-?>
-<?php
 function openSous_Section_vieEnFoyer()
 //idem que openSection sauf que cette classe active ne s'appliquera que sur le bouton principal lorsque l'un des boutons sera utilisé du menu déroulant
 {
@@ -59,8 +51,6 @@ function openSous_Section_vieEnFoyer()
 	}
 	return false;
 }
-?>
-<?php
 function openSous_Section_devenirResidant()
 //idem que openSection sauf que cette classe active ne s'appliquera que sur le bouton principal lorsque l'un des boutons sera utilisé du menu déroulant
 {
@@ -70,8 +60,6 @@ function openSous_Section_devenirResidant()
 	}
 	return false;
 }
-?>
-<?php
 function openSous_Section_contact()
 //idem que openSection sauf que cette classe active ne s'appliquera que sur le bouton principal lorsque l'un des boutons sera utilisé du menu déroulant
 {
@@ -81,8 +69,6 @@ function openSous_Section_contact()
 	}
 	return false;
 }
-?>
-<?php
 function openSubSection($page)
 //permet de regarder quelle section est ouverte et creer un classe active pour les boutons du menu
 {
@@ -92,8 +78,65 @@ function openSubSection($page)
 	}
 	return false;
 }
-?>
-<?php
+
+function isAdminSomewhere()
+// Cette fonction détermine si l'utilisateur à des pouvoirs au niveau de la partie admin
+{
+	if(!empty($_SESSION['mail']))
+	{
+		$mysqli = connection();
+		$mail = $mysqli->real_escape_string($_SESSION['mail']);
+		$isSuperAdmin = run('SELECT isSuperAdmin FROM membre WHERE mail="'.$mail.'"')->fetch_object();
+		if($isSuperAdmin->isSuperAdmin == 1)
+			{ return true; }
+		$tmp = run('	SELECT COUNT(*) as nbre
+						FROM membre,membrefonction,fonction 
+						WHERE membre.id = membrefonction.id 
+						AND membrefonction.id_fonction = fonction.id  
+						AND membre.mail="'.$mail.'" 
+						AND (isAdminLivreOr = 1 OR isAdminActualite=1)')->fetch_object();
+		if($tmp->nbre >= 1)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+function isSuperAdmin()
+// Vérifie si l'utilisateur est super admin
+{	
+	if(!empty($_SESSION['mail']))
+	{
+		$mysqli = connection();
+		$mail = $mysqli->real_escape_string($_SESSION['mail']);
+		$isSuperAdmin = run('SELECT isSuperAdmin FROM membre WHERE mail="'.$mail.'"')->fetch_object();
+		if($isSuperAdmin->isSuperAdmin == 1)
+		{
+			return true;
+		}
+	}
+	return false;	
+}
+
+if(!empty($_GET['superAdminOn']) && $_GET['superAdminOn'])
+{
+	if(isSuperAdmin())
+	{
+		$_SESSION['superAdminOn'] = true;
+	}
+}
+if(!empty($_GET['finSuperAdminOn']))
+{
+	unset($_SESSION['superAdminOn']);
+}
+if(!empty($_SESSION['superAdminOn']))
+{
+	if(!isSuperAdmin())
+	{
+		unset($_SESSION['superAdminOn']);
+	}
+}
 if(isConnected()) 
 // Pour se déconnecter
 {
@@ -101,10 +144,12 @@ if(isConnected())
 	{	
 		unset($_SESSION['mail']);
 		unset($_SESSION['log']);
+		unset($_SESSION['superAdminOn']);
 		$_SESSION['message'] = "Vous êtes déconnecté.";
 		header('location:index.php?section='.$_GET['section']);
 	} 
 }
+
 if(!empty($_POST['mail']) && !empty($_POST['password']))	
 //Connexion
 {
@@ -135,8 +180,7 @@ if(isConnected())
 		$_SESSION['message'] = $message;
 	}
 }
-?>
-<?php
+
 if(!empty($_SESSION['message']))
 {
 	$message = '<em>'.htmlspecialchars($_SESSION['message']).'</em>';

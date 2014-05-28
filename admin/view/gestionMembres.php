@@ -78,9 +78,19 @@ include_once '/view/includes/header.php';
 					<?php 	} ?>
 						</td>
 					</tr>
-			<?php 	}
-		?>
+			<?php 	}	?>
 				</table>
+					<!-- Affiche les pages -->
+					<p>
+						<?php 
+						$i = 1;
+						for($i; $i <= $nbrePage; $i ++)
+						{ ?>
+							<?php if($i == $page) {echo '<b>'; }?>
+							<a href="index.php?section=gestionMembres&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+							<?php if($i == $page) {echo '</b>'; }?>
+				<?php	} ?>
+					</p>
 			</div>
 		</div>
 	</body>

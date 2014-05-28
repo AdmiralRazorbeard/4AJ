@@ -16,7 +16,24 @@
 				<div class="connexion_text connexion_bold">Bienvenue</br></div>
 				<div class="connexion_text"><a href="membre/index.php?section=parameters">Paramètres</a></div>
 				<div class="connexion_text"><a href="index.php?section=index&dislog=true">Se déconnecter</a></div>
-			<?php }
+		<?php 	if(isAdminSomewhere())
+				// Si l'utilisateur est admin
+				{ ?> 
+					<div class="connexion_inscription connexion_bold">
+						<?php if(isSuperAdmin()) { ?>
+							<!-- Si super admin, il peut passer en mode édition -->
+							<?php if(empty($_SESSION['superAdminOn'])) { ?>
+								<a href="index.php?section=index&superAdminOn=true">Mode édition</a> 
+							<?php } else { ?>
+								<!-- Cela veut dire qu'il est déjà superAdmin, donc lien pour désactiver -->
+								<a href="index.php?section=index&finSuperAdminOn=true">Fin mode édition</a>
+						<?php 	} 
+							}?>
+						<a href="admin/index.php?section=gestionMembres">Partie administrateur</a>
+					</div>
+			<?php 
+				}
+			}
 			else { ?>
 			<div class="connexion_text connexion_bold">Connexion</br></div>
 			<form method="post">

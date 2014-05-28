@@ -5,7 +5,5 @@ if(!empty($_SESSION['message']))
 	$message = '<em>'.htmlspecialchars($_SESSION['message']).'</em>';
 	unset($_SESSION['message']);
 }
-
-
 include_once 'view/index/index.php';
 ?>
