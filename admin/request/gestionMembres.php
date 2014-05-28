@@ -29,9 +29,19 @@ function nbreMembres()
 }
 
 
-function listeMembre()
+function listeMembre($page, $nbreBilletParPage)
 {
-	$tmp = run('SELECT id, nomMembre, prenomMembre, adresse, dateNaissance, telFixe, telPortable, mail, isSuperAdmin FROM membre ORDER BY id DESC'); 
+	$nbreMembre = run('SELECT COUNT(*) AS nbre FROM membre')->fetch_object();
+	$nbreMembre = $nbreMembre->nbre;
+
+	// Si on est à la page n° $page, alors les entrés commence à partir de :
+	$premierMembreASortir = ($page-1)*$nbreBilletParPage;
+
+
+	$tmp = run('SELECT id, nomMembre, prenomMembre, adresse, dateNaissance, telFixe, telPortable, mail, isSuperAdmin 
+				FROM membre 
+				ORDER BY id DESC
+				LIMIT '.$premierMembreASortir.','.$nbreBilletParPage); 
 	$listeMembre = NULL;
 	while($donnees = $tmp->fetch_object())
 	{
@@ -64,4 +74,17 @@ function supprimerMembre($id)
 	run('UPDATE news SET id_membre=NULL WHERE id_membre='.$id);
 	run('DELETE FROM membre WHERE id='.$id);
 }
+
+
+// -------------- //
+// ---- PAGE ---- //
+// -------------- //
+function nbrePage($nbreBilletParPage)
+// Compte le nombre de page qu'il doit y avoir, le nombre passé en paramètre et le nombre de billet par page.
+{
+	$tmp = run('SELECT COUNT(*) as nbre FROM membre')->fetch_object();
+	$tmp = $tmp->nbre;
+	return ceil($tmp/$nbreBilletParPage);
+}
+
 ?>

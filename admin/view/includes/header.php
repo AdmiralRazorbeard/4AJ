@@ -24,8 +24,8 @@
 				<div class="connexion_text"><legend for="password">Mot de passe :</div><div></legend><input type="password" id="password" name="password" /></div>
 				<div class="connexion_submit"><input id="submit" type="submit"/></div>
 			</form>
-			<div class="connexion_inscription connexion_bold"><a href="../index.php?section=inscription">Inscription</a></div>
 			<?php } ?>
+			<div class="connexion_inscription connexion_bold"><a href="../">Accueil</a></div>
 			<?php
 			if(!empty($message))
 			{
