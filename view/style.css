@@ -190,6 +190,20 @@ animation:siteslide 45s ease 0s infinite;
 .element h2{
     font-size: 17px;
 }
+/*  --- Propriétés du mode edition --  */
+.edition_mode #contenu{
+    width:930px;
+    height:250px;
+    resize: none;
+}
+.edition_mode #contenu_previsualisation{
+    width:936px;
+    height:250px;
+    overflow-y: scroll;   
+    word-wrap: break-word;
+    border:1px solid #abadb3;
+    border-radius: 4px;
+}
 /*  --- Propriétés de la section association --  */
 .association h1{
     color:#2797e8;

@@ -1,10 +1,13 @@
 <?php include_once '/view/includes/header.php'; ?>
 			<div>
+
+				<div id="img_index">
+
 					<!-- Gaffe, doit pas y avoir deux ids :O -->
-				<div id="img_index img_index1"><div></div></div>
-				<div id="img_index img_index2"></div>
-				<div id="img_index img_index3"></div>
-				<div id="img_index img_index4"></div>
+				<div class="img_index img_index1"></div>
+				<div class="img_index img_index2"></div>
+				<div class="img_index img_index3"></div>
+				<div class="img_index img_index4"></div>
 			</div>
 			<div>
 				<h1>4AJ, un tremplin pour les jeunes</h1>
