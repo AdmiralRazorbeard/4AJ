@@ -1,7 +1,6 @@
 <?php
 include_once '/view/includes/header.php';
 ?>
-		<div id="mainWrapper">
 			<div class="contentWrapper memberGestion">
 				<h1>Gestion des membres</h1>
 				<h4>Liste des membres</h4>

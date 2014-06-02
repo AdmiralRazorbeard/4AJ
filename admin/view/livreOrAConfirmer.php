@@ -1,7 +1,6 @@
 <?php
 include_once '/view/includes/header.php';
 ?>
-		<div id="mainWrapper">
 			<div class="contentWrapper livreOr">
 			<h1>Gestion du livre d'or </h1>
 			<?php
@@ -17,8 +16,8 @@ include_once '/view/includes/header.php';
 					<?php if($value['mail'] != 'null') { echo ', <a href="mailto:'.$value['mail'].'">'.$value['mail'].'</a>'; } ?></h4>	
 					<p>
 						<?php echo $value['contenu']; ?><br /><br />
-						<em><a href="index.php?section=livreOrAConfirmer&confirm=<?php echo $key; ?>">Confirmer</a></em><br />
-						<em><a href="index.php?section=livreOrAConfirmer&delete=<?php echo $key; ?>">Supprimer</a></em>
+						<em><a href="index.php?section=livreOrAConfirmer&amp;confirm=<?php echo $key; ?>">Confirmer</a></em><br />
+						<em><a href="index.php?section=livreOrAConfirmer&amp;delete=<?php echo $key; ?>">Supprimer</a></em>
 					</p>
 	<?php		}
 			}

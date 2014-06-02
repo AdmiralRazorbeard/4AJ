@@ -14,7 +14,7 @@ if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBille
 	newNombreBilletParPage(intval($_POST['nbreBilletParPage']));
 }
 
-	// Ajouter un nouvea billet
+	// Ajouter un nouveau billet
 if(!empty($_POST['nom']) && !empty($_POST['contenu']))
 {
 	if(!is_numeric($_POST['nom']) && !is_numeric($_POST['contenu']) && strlen($_POST['contenu'] <= 305))
