@@ -1,7 +1,6 @@
 <?php
 include_once '/view/includes/header.php';
 ?>
-		<div id="mainWrapper">
 			<div class="contentWrapper">
 				<h1>Gestion des actualités </h1>
 				<fieldset id="actualite">
@@ -12,7 +11,7 @@ include_once '/view/includes/header.php';
 						</div>
 						<div class="form-field">
 						<label for="typeActualite">Type d'actualité : </label>
-						<select name="typeActualite" id="typeActualite"onchange="
+						<select name="typeActualite" id="typeActualite" onchange="
 							if(this.selectedIndex == <?php echo $nbreTypeActualite; ?>)
 							{
 								javascript:location.href='index.php?section=typeActualite'

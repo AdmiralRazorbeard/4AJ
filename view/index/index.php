@@ -8,6 +8,7 @@
 				<div class="img_index img_index2"></div>
 				<div class="img_index img_index3"></div>
 				<div class="img_index img_index4"></div>
+				</div>
 			</div>
 			<div>
 				<h1>4AJ, un tremplin pour les jeunes</h1>

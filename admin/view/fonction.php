@@ -1,7 +1,6 @@
 <?php
 include_once '/view/includes/header.php';
 ?>
-		<div id="mainWrapper">
 			<div class="contentWrapper fonction">
 				<script type="text/javascript">
 				function changerFonction(type, id)

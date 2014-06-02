@@ -1,11 +1,11 @@
 <?php
 include_once '/view/includes/header.php';
 ?>
-		<div id="mainWrapper">
 			<div class="contentWrapper">
 				<h1>
 					Fonction du membre <?php echo $infoMembre['nomMembre']; ?>
 				</h1>
+				<a href="index.php?section=modifierMembres&amp;modif=<?php echo $_GET['id'] ?>">Retour</a>
 				<div>
 					Fonction actuel : 
 					<select>

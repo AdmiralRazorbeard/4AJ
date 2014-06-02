@@ -1,9 +1,9 @@
 <?php
 include_once '/view/includes/header.php';
 ?>
-		<div id="mainWrapper">
 			<div class="contentWrapper changeMember">
 				<h1>Modifier <em><?php echo $infoMembre['nomMembre']; ?></em></h1>
+				<a href="index.php?section=gestionMembres">Retour</a>
 				<form method="post">
 					<fieldset id="changeMember">
 						<p id="info_changeMember">
@@ -21,7 +21,7 @@ include_once '/view/includes/header.php';
 						<label for="email">Email : </label><input type="mail" id="email" name="email" value="<?php echo $infoMembre['mail']; ?>" disabled />
 						</p>
 						<p class="form-field">
-						<label for="adresse">Adresse : </label><input type="text" id="adresse" name="adresse"value="<?php echo $infoMembre['adresse']; ?>"  />
+						<label for="adresse">Adresse : </label><input type="text" id="adresse" name="adresse" value="<?php echo $infoMembre['adresse']; ?>"  />
 						</p>
 						<p class="form-field">
 						<label for="dateNaissance">Date de naissance : </label><input type="text" name="dateNaissance" id="dateNaissance" value="<?php echo $infoMembre['dateNaissance']; ?>"  />
@@ -41,15 +41,14 @@ include_once '/view/includes/header.php';
 					<?php		} ?>
 						</select>
 						<a href="index.php?section=modifierFonctionMembres&amp;id=<?php echo $infoMembre['id']; ?>">Changer les fonctions du membres</a>
-						</p></br>
+						<br></p>
 						<label for="changePassword">Changer le mot de passe : </label><input type="password" id="changePassword" name="password"/>
-						</p>
 						<p class="form-field">
 						<label for="isSuperAdmin">Super Administrateur : </label><input type="checkbox" id="isSuperAdmin" name="isSuperAdmin" <?php if($infoMembre['isSuperAdmin']) { echo 'checked'; } ?> />
 						</p>
 						<input type="submit" />
-						</br>
-					</fielset>
+						<br>
+					</fieldset>
 				</form>
 			</div>
 		</div>
