@@ -30,13 +30,27 @@ th {
 <script type="text/javascript">
 function confirmerRepas(jour, mois, annee, midi)
 {	/*Fonction redirige sur la même page en mettant les paramètres en GET */
-	javascript:location.href='index.php?section=repas&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi;
+	javascript:location.href='index.php?section=repas&semaine=<?php echo $semaineDu; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi;
 }
 </script>
 			<div class="contentWrapper">
 				<h1>
 					Repas
 				</h1>
+				<form method="post">
+					<label for="semaine">Semaine du : </label>
+					<select name="semaine" id="semaine">
+						<?php
+						$i = 0;
+						while($i < 8)
+						{ ?>
+							<option <?php if(!empty($semaineDu) && $semaineDu==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '-1'; } else { echo $i; } ?>"><?php echo date('d', strtotime('this Monday', strtotime('+'.$i.' week'))); ?> <?php echo $mois[date('n', strtotime('this Monday', strtotime('+'.$i.' week')))]; ?></option>
+				<?php	$i ++;
+						}
+						?>
+					</select>
+					<input type="submit">
+				</form>
 				<table>
 						<!-- Tableau de la semaine -->
 					<tr>

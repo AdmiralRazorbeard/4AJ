@@ -40,7 +40,7 @@
 				<li><a <?php if (openSection('item2')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=fonction">Fonction des membres</a></li>
 				<li><a <?php if (openSection('item3')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=actualite">Gestion des actualités</a></li>
 				<li><a <?php if (openSection('item4')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=livreOrAConfirmer">Livre d'or à confirmer</a></li>
-				<li><a <?php if (openSection('item5')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="#">Item5</a></li>
+				<li><a <?php if (openSection('item5')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=gestionRepas">Inscrits aux repas</a></li>
 				<li><a <?php if (openSection('item6')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="#">Item6</a></li>		
 			</ul>
 		</nav>
