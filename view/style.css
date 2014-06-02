@@ -182,7 +182,7 @@ animation:siteslide 45s ease 0s infinite;
 /*  --- CONTENU --  */
 /*  --------------  */
 .contentWrapper{   
-    padding: 0px 20px 5px 20px;;
+    padding: 35px 20px 5px 20px;;
 }
 .element h1,.element .a_title{
     font-size: 20px;
@@ -276,7 +276,10 @@ animation:siteslide 45s ease 0s infinite;
     border: 1px solid #686868;
     background-color: #fff;
 }
-
+/*  --- Propriétés de la section memberParameters --  */
+.memberParameters fieldset{
+width: 50%
+}
 
 /*  ----------------  */
 /*  --- TOOL BOX ---  */

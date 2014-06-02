@@ -89,4 +89,13 @@ elseif ($_GET['section'] == 'faireUnDon')
 {
 	include_once 'controller/faireUnDon.php';
 }
+//paramètres membres 
+elseif ($_GET['section'] == 'parameters')
+{
+	include_once('controller/parameters.php');
+}
+elseif ($_GET['section'] == 'deleteAccount')
+{
+	include_once('controller/deleteAccount.php');
+}
 ?>
