@@ -2,7 +2,7 @@
 include_once '/view/includes/header.php';
 ?>
 		<div id="mainWrapper">
-			<div class="contentWrapper">
+			<div class="contentWrapper changeMember">
 				<h1>Modifier <em><?php echo $infoMembre['nomMembre']; ?></em></h1>
 				<form method="post">
 					<fieldset id="changeMember">

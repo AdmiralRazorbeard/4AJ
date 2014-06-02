@@ -19,9 +19,7 @@ function pageDynamique($page)
 	{	
 		echo regexTextBox($contenu->contenu); 
 	}
-	?>
-
-
+?>
 <?php
 } 
 function toolBox ($id, $contenu = '')
