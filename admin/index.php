@@ -3,11 +3,7 @@ session_start();
 date_default_timezone_set('Europe/Paris');
 include_once('../request/connectionSQL.php');
 $mysqli = connection();
-if (empty($_GET['section']) OR $_GET['section'] == 'index')
-{
-	include_once('controller/index.php');
-}
-elseif ($_GET['section'] == 'actualite')
+if ($_GET['section'] == 'actualite')
 {
 	include_once('controller/actualite.php');
 }
@@ -46,5 +42,9 @@ elseif ($_GET['section'] == 'modifierFonctionMembres')
 elseif ($_GET['section'] == 'fonction')
 {
 	include_once('controller/fonction.php');
+}
+elseif ($_GET['section'] == 'gestionRepas')
+{
+	include_once('controller/gestionRepas.php');
 }
 ?>
