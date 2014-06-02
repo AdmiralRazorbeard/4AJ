@@ -27,7 +27,7 @@ function semaine($nbreWeekPlus=0)
 }
 
 function boutonReserver($numero, $mois, $annee, $midi)
-	// Retourne true si il a le droit de s'incrire, false sinon
+	// Retourne 1 si il a le droit de s'incrire, 2 si il est déjà inscrit, et 3 sinon
 {
 	if(empty($_SESSION['log']))
 	{
@@ -60,19 +60,18 @@ function boutonReserver($numero, $mois, $annee, $midi)
 				// Vérifie que le membre ne s'est pas déjà inscrit
 			if($tmp->inscrit == 0)
 			{
-				return true;
+				return 1;
 			}
 			else
 			{
-				return false;
+				return 2;
 			}
 		}
 		else
 		{
-			return false;
+			return 3;
 		}
-		echo $midi;
-		return;
+		return 3;
 	}
 }
 ?>
