@@ -43,14 +43,8 @@ function allTypeActualite()
 		if(!empty($_SESSION['mail']))
 		// si connecté	
 		{
-			$superAdmin = run('SELECT COUNT(*) as admin FROM membre WHERE mail = "'.$_SESSION['mail'].'" AND isSuperAdmin = 1')->fetch_object();
-			if($superAdmin->admin == 1)
-			{
-				//si c'est le superAdmin
-				$typeActualite[$donnees->id]['id'] = $donnees->id;
-				$typeActualite[$donnees->id]['nom'] = $donnees->nom;
-			}
-			else
+			$superAdmin = run('SELECT COUNT(*) as nbre FROM membre WHERE mail = "'.$_SESSION['mail'].'" AND isSuperAdmin = 1')->fetch_object();
+			if($superAdmin->admin != 1)
 			{
 				//si juste membre, teste si l'utilisateur peut acceder à ce type d'actualités
 				$actu = run('	SELECT COUNT(*) as nbre
@@ -61,11 +55,6 @@ function allTypeActualite()
 						 		AND fonction.id = membrefonction.id_fonction
 						 		AND membre.mail = "'.$_SESSION["mail"].'"
 						 		AND id_Type_d_actualite = '.$donnees->id.'')->fetch_object();	
-				if($actu->nbre >= 1)
-				{
-					$typeActualite[$donnees->id]['id'] = $donnees->id;
-					$typeActualite[$donnees->id]['nom'] = $donnees->nom;
-				}
 			}
 		}
 		else
@@ -77,12 +66,12 @@ function allTypeActualite()
 					 		AND fonction.id = newsfonction.id_fonction 
 					 		AND newsfonction.id_fonction = 1
 					 		AND id_Type_d_actualite = '.$donnees->id.'')->fetch_object();
-			if($actu->nbre >= 1)
-			{
-				$typeActualite[$donnees->id]['id'] = $donnees->id;
-				$typeActualite[$donnees->id]['nom'] = $donnees->nom;
-			}		
 		}
+		if($actu->nbre >= 1)
+		{
+			$typeActualite[$donnees->id]['id'] = $donnees->id;
+			$typeActualite[$donnees->id]['nom'] = $donnees->nom;
+		}		
 	}
 	return $typeActualite;
 }
@@ -288,9 +277,8 @@ function nbreActualite()
 	return $nbreActualite;
 }
 function deleteNews($id)
+// Supprime la news ainsi que toute les Foreign Keys
 {
-
-	// Supprime la news ainsi que toute les Foreign Keys
 	run('DELETE FROM newsfonction WHERE id='.$id);
 	run('DELETE FROM news WHERE id='.$id);
 }
