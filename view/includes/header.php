@@ -21,24 +21,25 @@
 				// Si l'utilisateur est admin
 				{ ?> 
 					<div class="connexion_inscription connexion_bold">
+						<a href="admin/index.php?section=gestionMembres">Partie administrateur</a>
+					</div>
+					<div class="connexion_inscription connexion_bold">
 						<?php if(isSuperAdmin()) { ?>
 							<!-- Si super admin, il peut passer en mode édition -->
 							<?php if(empty($_SESSION['superAdminOn'])) { ?>
-								<a href="index.php?section=index&amp;superAdminOn=true">Mode édition</a> 
+								<a href="index.php?section=index&amp;superAdminOn=true">Mode édition</a></div> 
 							<?php } else { ?>
 								<!-- Cela veut dire qu'il est déjà superAdmin, donc lien pour désactiver -->
-								<a href="index.php?section=index&amp;finSuperAdminOn=true">Fin mode édition</a>
+								<a href="index.php?section=index&amp;finSuperAdminOn=true">Fin mode édition</a></div>
 						<?php 	} 
 							}?>
-						<a href="admin/index.php?section=gestionMembres">Partie administrateur</a>
-					</div>
 			<?php 
 				}
 			}
 			else { ?>
 			<div class="connexion_text connexion_bold">Connexion</div>
 			<form method="post">
-				<div class="connexion_text"><label for="mail">Votre email :</label></div><div><input type="text" id="mail" name="mail" /></div>
+				<div class="connexion_text"><label for="mail">Votre email :</label></div><div><input type="name" id="mail" name="mail" /></div>
 				<div class="connexion_text"><label for="password">Mot de passe :</label></div><div><input type="password" id="password" name="password" /></div>
 				<div class="connexion_submit"><input id="submit" type="submit"/></div>
 			</form>

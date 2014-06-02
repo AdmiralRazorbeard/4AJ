@@ -99,7 +99,7 @@ function v_maxlength(id, crid, max)
 							<input type="text" name="mail" id="email" />
 							</p>
 							<p class="message_info"> 
-							<em>(Ceci est optionnel et ne sera pas afficher au public, mais peut nous permettre de vous recontacter)</em>
+							<em>(L'Email est optionnel et ne sera pas affiché au public, mais peut nous permettre de vous recontacter)</em>
 							</p>
 							<p class="form-field">
 							<label for="contenu">Contenu : </label>
@@ -111,7 +111,10 @@ function v_maxlength(id, crid, max)
 								<!--
 									maxlength_textarea('contenu','carac_reste_textarea_1',500);
 								-->
-						    </script><br />
+						    </script>
+						    <p class="message_info"> 
+							<em>(Votre message ne s'affichera sur la page qu'après validation de l'administrateur)</em>
+							</p>
 							<input type="submit"><input type="reset">
 						</form>
 					</fieldset>

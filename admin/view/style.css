@@ -250,7 +250,16 @@ h1{
 #changeMember #changePassword{
     margin-left: 18px;
 }
-
+/*  --- Propriétés de modifierFonctionMembres --  */
+.changeMemberFunction{
+    width:550px;
+    margin:auto;
+}
+.changeMemberFunction label{
+    width:50%;
+    float: left;
+    margin:auto;
+}
 
 /*  --- Propriétés de gestionMembres --  */
 .memberGestion table{
@@ -275,7 +284,15 @@ h1{
     border-bottom: 1px solid black;
 }
 
-livreOr
+/*  --- Propriétés de livreOrAConfirmer --  */
+.livreOr{
+    padding:0px 10px 0px 10px;
+    text-align: center;
+    word-wrap: break-word;
+}
+.livreOr p{
+    margin-top: -20px;
+}
 
 /*  ----------------  */
 /*  --- TOOL BOX ---  */
