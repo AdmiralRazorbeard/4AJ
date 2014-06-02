@@ -44,7 +44,11 @@ function allTypeActualite()
 		// si connecté	
 		{
 			$superAdmin = run('SELECT COUNT(*) as nbre FROM membre WHERE mail = "'.$_SESSION['mail'].'" AND isSuperAdmin = 1')->fetch_object();
-			if($superAdmin->nbre != 1)
+			if($superAdmin->nbre == 1)
+			{
+				$actu = run('SELECT COUNT(*) as nbre FROM news WHERE id_Type_d_actualite = '.$donnees->id.'')->fetch_object();
+			}
+			else
 			{
 				//si juste membre, teste si l'utilisateur peut acceder à ce type d'actualités
 				$actu = run('	SELECT COUNT(*) as nbre
