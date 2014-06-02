@@ -33,7 +33,7 @@ include_once '/view/includes/header.php';
 					<tr>
 						<td>
 							<div>
-								<a href="index.php?section=fonction&fonction=<?php echo $value['id']; ?>">
+								<a href="index.php?section=fonction&amp;fonction=<?php echo $value['id']; ?>">
 									<!-- Ceci permettra d'afficher les membres de la fonction -->
 									<?php echo $value['nom']; ?>
 								</a>
@@ -50,7 +50,7 @@ include_once '/view/includes/header.php';
 						<?php if($value['id'] != 1) { ?>
 						<!-- On ne peut pas supprimer la fonction "public" -->
 						<td>
-							<a href="index.php?section=fonction&delete=<?php echo $value['id']; ?>">Supprimer</a>
+							<a href="index.php?section=fonction&amp;delete=<?php echo $value['id']; ?>">Supprimer</a>
 						</td>
 						<?php }
 						else {?>
@@ -81,7 +81,7 @@ include_once '/view/includes/header.php';
 						<li><?php echo $value['nom']; ?>
 							<?php if($_GET['fonction'] != 1) { ?>
 							<!-- On ne peut supprimer un membre d'une fonction que si ce n'est pas la fonction public -->
-							, <a href="index.php?section=fonction&fonction=<?php echo $_GET['fonction']; ?>&supprimerMembre=<?php echo $value['id']; ?>">Supprimer</a></li>
+							, <a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;supprimerMembre=<?php echo $value['id']; ?>">Supprimer</a></li>
 							<?php } ?>
 				<?php	} ?>
 					</ul>

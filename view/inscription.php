@@ -89,11 +89,11 @@
 							</select>
 							</p>
 							<p class="form-field">
-							<label for="password">Mot de passe* : </label>
-							<input required type="password" name="password" id="password">
-								<p class="inscription_info">
+								<label for="password">Mot de passe* : </label>
+								<input required type="password" name="password" id="password">
+							</p>
+							<p class="inscription_info">
 								<em>Les champs marqués d'un * sont obligatoires.</em>
-								</p>
 							</p>
 							<input type="submit">
 							<input type="reset">

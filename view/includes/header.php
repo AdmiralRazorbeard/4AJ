@@ -1,5 +1,6 @@
-<?php include_once('/view/includes/headerfunctions.php');?>
-<!-- Gestion des classes actives pour les boutons et de la connexion-->
+<?php include_once('/view/includes/headerfunctions.php')
+ // Gestion des classes actives pour les boutons et de la connexion
+;?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,7 +16,7 @@
 			if(isConnected()) {?>
 				<div class="connexion_text connexion_bold">Bienvenue</div>
 				<div class="connexion_text"><a href="membre/index.php?section=parameters">Paramètres</a></div>
-				<div class="connexion_text"><a href="index.php?section=index&dislog=true">Se déconnecter</a></div>
+				<div class="connexion_text"><a href="index.php?section=index&amp;dislog=true">Se déconnecter</a></div>
 		<?php 	if(isAdminSomewhere())
 				// Si l'utilisateur est admin
 				{ ?> 
@@ -23,10 +24,10 @@
 						<?php if(isSuperAdmin()) { ?>
 							<!-- Si super admin, il peut passer en mode édition -->
 							<?php if(empty($_SESSION['superAdminOn'])) { ?>
-								<a href="index.php?section=index&superAdminOn=true">Mode édition</a> 
+								<a href="index.php?section=index&amp;superAdminOn=true">Mode édition</a> 
 							<?php } else { ?>
 								<!-- Cela veut dire qu'il est déjà superAdmin, donc lien pour désactiver -->
-								<a href="index.php?section=index&finSuperAdminOn=true">Fin mode édition</a>
+								<a href="index.php?section=index&amp;finSuperAdminOn=true">Fin mode édition</a>
 						<?php 	} 
 							}?>
 						<a href="admin/index.php?section=gestionMembres">Partie administrateur</a>
@@ -35,10 +36,10 @@
 				}
 			}
 			else { ?>
-			<div class="connexion_text connexion_bold">Connexion</br></div>
+			<div class="connexion_text connexion_bold">Connexion</div>
 			<form method="post">
-				<div class="connexion_text"><legend for="mail">Votre email :</div><div></legend><input type="name" id="mail" name="mail" /></div>
-				<div class="connexion_text"><legend for="password">Mot de passe :</div><div></legend><input type="password" id="password" name="password" /></div>
+				<div class="connexion_text"><label for="mail">Votre email :</label></div><div><input type="text" id="mail" name="mail" /></div>
+				<div class="connexion_text"><label for="password">Mot de passe :</label></div><div><input type="password" id="password" name="password" /></div>
 				<div class="connexion_submit"><input id="submit" type="submit"/></div>
 			</form>
 			<div class="connexion_inscription connexion_bold"><a href="index.php?section=inscription">Inscription</a></div>
@@ -51,10 +52,10 @@
 		</div>
 		<div id="banniere">
 			<ul id="sContent">
-				<li><img src="/4AJ/view/graphicRessources/1.jpg"/></li>
-				<li><img src="/4AJ/view/graphicRessources/2.jpg"/></li>
-				<li><img src="/4AJ/view/graphicRessources/3.jpg"/></li>
-				<li><img src="/4AJ/view/graphicRessources/1.jpg"/></li>
+				<li><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></li>
+				<li><img src="/4AJ/view/graphicRessources/2.jpg" alt="image bannière"/></li>
+				<li><img src="/4AJ/view/graphicRessources/3.jpg" alt="image bannière"/></li>
+				<li><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></li>
 			</ul>
 		</div>
 		<nav id="mainMenu">
