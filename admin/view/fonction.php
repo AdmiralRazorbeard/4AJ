@@ -27,6 +27,12 @@ include_once '/view/includes/header.php';
 						<th>
 							Admin Actualité
 						</th>
+						<th>
+							Autorisation manger midi
+						</th>
+						<th>
+							Autorisation manger soir et week end
+						</th>
 					</tr>
 					<?php
 					foreach ($allFonction as $key => $value) { ?>
@@ -45,6 +51,10 @@ include_once '/view/includes/header.php';
 						<td onclick="changerFonction(2, <?php echo $value['id'] ?>);" <?php if($value['isAdminLivreOr']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
 						</td>
 						<td onclick="changerFonction(3, <?php echo $value['id'] ?>);" <?php if($value['isAdminActualite']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						</td>
+						<td onclick="changerFonction(4, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerMidi']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						</td>
+						<td onclick="changerFonction(5, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerSoir']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
 						</td>
 
 						<?php if($value['id'] != 1) { ?>

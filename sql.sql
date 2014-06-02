@@ -93,13 +93,24 @@ CREATE TABLE informationPage(
 )ENGINE=InnoDB;
 
 
+CREATE TABLE reserveRepas(
+        id          int (11) Auto_increment  NOT NULL ,
+        dateReserve Date ,
+        midi        Int ,
+        residence   Int ,
+        id_membre   Int ,
+        PRIMARY KEY (id )
+)ENGINE=InnoDB;
+
+
+
 ALTER TABLE news ADD CONSTRAINT FK_news_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
 ALTER TABLE news ADD CONSTRAINT FK_news_id_Type_d_actualite FOREIGN KEY (id_Type_d_actualite) REFERENCES Type_d_actualite(id);
 ALTER TABLE membreFonction ADD CONSTRAINT FK_membreFonction_id FOREIGN KEY (id) REFERENCES membre(id);
 ALTER TABLE membreFonction ADD CONSTRAINT FK_membreFonction_id_fonction FOREIGN KEY (id_fonction) REFERENCES fonction(id);
 ALTER TABLE newsFonction ADD CONSTRAINT FK_newsFonction_id FOREIGN KEY (id) REFERENCES news(id);
 ALTER TABLE newsFonction ADD CONSTRAINT FK_newsFonction_id_fonction FOREIGN KEY (id_fonction) REFERENCES fonction(id);
-
+ALTER TABLE reserveRepas ADD CONSTRAINT FK_reserveRepas_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
 
 ALTER TABLE  `news` CHANGE  `timestampNews`  `timestampNews` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
 ALTER TABLE  `livreor` CHANGE  `afficher`  `afficher` TINYINT( 1 ) NOT NULL DEFAULT  '0';
