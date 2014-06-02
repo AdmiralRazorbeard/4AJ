@@ -1,22 +1,19 @@
 <?php include '/view/includes/header.php'; ?>
-			<div>
-				<h1>Actualité</h1>
+			<div class="contentWrapper actualites">
 				<?php if($admin) { ?>
-				<p>
-					<em><a href="admin/index.php?section=actualite">Partie admin</a></em>
+					<em><a href="admin/index.php?section=actualite">Rédiger une nouvelle actualité</a></em>
 					<form method="post">
-						<b>Admin</b> : nombre de billet par page : 
-						<input type="text" required size="1" placeholder="<?php echo $nbreBilletParPage; ?>" name="nbreBilletParPage" /><input type="submit" colls="2" /><br /><br />
+						<label><b>Admin</b> : nombre de billet par page :</label>
+						<input type="text" required size="1" placeholder="<?php echo $nbreBilletParPage; ?>" name="nbreBilletParPage" /><input type="submit" colls="2" />
 					</form>
 					<form method="post">
-						<b>Admin</b> : nombre total d'actualité :
-						<input type="text" required size="1" placeholder="<?php echo $nbreTotalActualite; ?>" name="nbreTotalActualite" /><input type="submit" colls="2" /><br />
+						<label><b>Admin</b> : nombre total d'actualité :</label>
+						<input type="text" required size="1" placeholder="<?php echo $nbreTotalActualite; ?>" name="nbreTotalActualite" /><input type="submit" colls="2" />
 					</form>
-				</p>
 				<?php } ?>
 
 				<form method="get">
-					Choisir un type : 
+					<em>Choisir un type :</em>
 					<!-- Liste tout les types d'actualités -->
 					<select name="typeActualite">
 							<option value="all">Tout</option>
@@ -36,10 +33,13 @@
 						// un message d'erreur
 					{
 						foreach ($listeActualite as $key => $value) { ?>
-							<h4><?php echo htmlspecialchars($value['titre']); ?>, le <?php echo $value['timestamp']; ?>, 
+							<h2><?php echo htmlspecialchars($value['titre']); ?></h2> 
+							<p class="a_info" >
+								 <?php echo $value['timestamp']; ?>
+							</p>
 							<?php if($admin) { ?><a href="admin/index.php?section=modifierNews&amp;id=<?php echo $key; ?>">Modifier</a>,
-							<a href="admin/index.php?section=supprimerNews&amp;id=<?php echo $key; ?>">Suprimmer</a><?php } ?></h4>
-							<p>
+							<a href="admin/index.php?section=supprimerNews&amp;id=<?php echo $key; ?>">Suprimmer</a><?php } ?>
+							<p class="a_content" >
 								<?php echo regexTextBox($value['contenu']); ?>
 							</p>
 		<?php			} 
