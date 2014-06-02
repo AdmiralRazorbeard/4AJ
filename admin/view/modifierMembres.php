@@ -40,7 +40,7 @@ include_once '/view/includes/header.php';
 									<option><?php echo $v['nom']; ?></option>
 					<?php		} ?>
 						</select>
-						<a href="index.php?section=modifierFonctionMembres&id=<?php echo $infoMembre['id']; ?>">Changer les fonctions du membres</a>
+						<a href="index.php?section=modifierFonctionMembres&amp;id=<?php echo $infoMembre['id']; ?>">Changer les fonctions du membres</a>
 						</p></br>
 						<label for="changePassword">Changer le mot de passe : </label><input type="password" id="changePassword" name="password"/>
 						</p>

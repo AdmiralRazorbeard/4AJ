@@ -61,7 +61,7 @@ include_once '/view/includes/header.php';
 							</select>
 						</td>
 						<td>
-							<a href="index.php?section=modifierMembres&modif=<?php echo $value['id']; ?>">
+							<a href="index.php?section=modifierMembres&amp;modif=<?php echo $value['id']; ?>">
 								Modifier
 							</a>
 						</td>
@@ -72,7 +72,7 @@ include_once '/view/includes/header.php';
 									Supprimer
 								</a>
 					<?php 	} else { ?>
-								<a href="index.php?section=deleteMembres&delete=<?php echo $value['id']; ?>" onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce membre ?'));">
+								<a href="index.php?section=deleteMembres&amp;delete=<?php echo $value['id']; ?>" onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce membre ?'));">
 									Supprimer
 								</a>
 					<?php 	} ?>
@@ -87,7 +87,7 @@ include_once '/view/includes/header.php';
 						for($i; $i <= $nbrePage; $i ++)
 						{ ?>
 							<?php if($i == $page) {echo '<b>'; }?>
-							<a href="index.php?section=gestionMembres&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+							<a href="index.php?section=gestionMembres&amp;page=<?php echo $i; ?>"><?php echo $i; ?></a>
 							<?php if($i == $page) {echo '</b>'; }?>
 				<?php	} ?>
 					</p>
