@@ -26,6 +26,9 @@ CREATE TABLE fonction(
 	isAccesJeunes    Bool ,
 	isAdminLivreOr   Bool ,
 	isAdminActualite Bool ,
+	isAdminRepas	 Bool ,
+	autorisationMangerMidi Bool,
+	autorisationMangerSoir Bool
 	PRIMARY KEY (id )
 )ENGINE=InnoDB;
 

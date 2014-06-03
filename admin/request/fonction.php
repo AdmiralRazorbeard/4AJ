@@ -2,16 +2,17 @@
 function allFonction()
 // Retourne toutes les fonctions
 {
-	$tmp = run('SELECT id, nomFonctionFR as nom, isAccesJeunes, isAdminLivreOr, isAdminActualite, autorisationMangerMidi, autorisationMangerSoir FROM fonction');
+	$tmp = run('SELECT id, nomFonctionFR as nom, isAccesJeunes, isAdminLivreOr, isAdminActualite, isAdminRepas, autorisationMangerMidi, autorisationMangerSoir FROM fonction');
 	while($donnees = $tmp->fetch_object())
 	{
-		$fonction[$donnees->id]['id'] = $donnees->id;
-		$fonction[$donnees->id]['nom'] = htmlspecialchars($donnees->nom);
-		$fonction[$donnees->id]['isAccesJeunes'] = $donnees->isAccesJeunes;
-		$fonction[$donnees->id]['isAdminLivreOr'] = $donnees->isAdminLivreOr;
-		$fonction[$donnees->id]['isAdminActualite'] = $donnees->isAdminActualite;
-		$fonction[$donnees->id]['autorisationMangerMidi'] = $donnees->autorisationMangerMidi;
-		$fonction[$donnees->id]['autorisationMangerSoir'] = $donnees->autorisationMangerSoir;
+		$fonction[$donnees->id]['id'] 						= $donnees->id;
+		$fonction[$donnees->id]['nom'] 						= htmlspecialchars($donnees->nom);
+		$fonction[$donnees->id]['isAccesJeunes'] 			= $donnees->isAccesJeunes;
+		$fonction[$donnees->id]['isAdminLivreOr'] 			= $donnees->isAdminLivreOr;
+		$fonction[$donnees->id]['isAdminActualite'] 		= $donnees->isAdminActualite;
+		$fonction[$donnees->id]['isAdminRepas'] 			= $donnees->isAdminRepas;
+		$fonction[$donnees->id]['autorisationMangerMidi'] 	= $donnees->autorisationMangerMidi;
+		$fonction[$donnees->id]['autorisationMangerSoir'] 	= $donnees->autorisationMangerSoir;
 	}
 	return $fonction;
 }
@@ -51,10 +52,14 @@ function changerPouvoir($type, $id)
 			break;
 
 		case '4':
-			$type = 'autorisationMangerMidi';
+			$type = 'isAdminRepas';
 			break;
 
 		case '5':
+			$type = 'autorisationMangerMidi';
+			break;
+
+		case '6':
 			$type = 'autorisationMangerSoir';
 			break;
 

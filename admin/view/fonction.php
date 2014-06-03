@@ -27,6 +27,9 @@ include_once '/view/includes/header.php';
 							Admin Actualité
 						</th>
 						<th>
+							Admin Repas
+						</th>
+						<th>
 							Autorisation manger midi
 						</th>
 						<th>
@@ -51,9 +54,11 @@ include_once '/view/includes/header.php';
 						</td>
 						<td onclick="changerFonction(3, <?php echo $value['id'] ?>);" <?php if($value['isAdminActualite']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
 						</td>
-						<td onclick="changerFonction(4, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerMidi']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						<td onclick="changerFonction(4, <?php echo $value['id'] ?>);" <?php if($value['isAdminRepas']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						</td>	
+						<td onclick="changerFonction(5, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerMidi']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
 						</td>
-						<td onclick="changerFonction(5, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerSoir']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						<td onclick="changerFonction(6, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerSoir']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
 						</td>
 
 						<?php if($value['id'] != 1) { ?>
