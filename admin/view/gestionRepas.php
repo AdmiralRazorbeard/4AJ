@@ -31,6 +31,9 @@ th {
 </style>
 			<div class="contentWrapper">
 				<h1>Nombre des repas par jours</h1>
+				<p>
+					<em><a href="index.php?section=verouillerRepas">Verrouiller un jour pour les repas</a></em>
+				</p>
 				<fieldset>
 					<legend>
 						Anne Frank

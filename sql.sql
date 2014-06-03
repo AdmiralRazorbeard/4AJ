@@ -26,7 +26,7 @@ CREATE TABLE fonction(
 	isAccesJeunes    Bool ,
 	isAdminLivreOr   Bool ,
 	isAdminActualite Bool ,
-	isAdminRepas	 Bool ,
+	isAdminRepas	 Bool ,q
 	autorisationMangerMidi Bool,
 	autorisationMangerSoir Bool
 	PRIMARY KEY (id )
@@ -50,6 +50,13 @@ CREATE TABLE Type_d_actualite(
 	id  int (11) Auto_increment  NOT NULL ,
 	nom Varchar (255) ,
 	PRIMARY KEY (id )
+)ENGINE=InnoDB;
+
+
+CREATE TABLE verouillerJourRepas(
+        id             int (11) Auto_increment  NOT NULL ,
+        dateVerouiller Date ,
+        PRIMARY KEY (id )
 )ENGINE=InnoDB;
 
 

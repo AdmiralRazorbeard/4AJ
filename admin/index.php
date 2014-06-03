@@ -47,4 +47,8 @@ elseif ($_GET['section'] == 'gestionRepas')
 {
 	include_once('controller/gestionRepas.php');
 }
+elseif ($_GET['section'] == 'verouillerRepas')
+{
+	include_once('controller/verouillerRepas.php');
+}
 ?>

@@ -1,5 +1,8 @@
 <?php
 include_once 'request/repas.php';
+
+####################
+	/* Vérification si on change de semaine */
 if(!empty($_POST['semaineClairLogis']) && is_numeric($_POST['semaineClairLogis']))
 {
 	header('location:index.php?section=repas&semaineClairLogis='.$_POST['semaineClairLogis']);
@@ -27,10 +30,14 @@ if(!empty($_GET['semaineNobel']) && is_numeric($_GET['semaineNobel']) && $_GET['
 {
 	$semaineDuNobel = $_GET['semaineNobel'];
 }
+	/* Fin vérification */
+####################
+	/* Initialisation variable */
 $mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 $semaineAnneFrank = semaine($semaineDuAnneFrank);
 $semaineClairLogis = semaine($semaineDuClairLogis);
 $semaineNobel = semaine($semaineDuNobel);
+
 if(!empty($_GET['jour']) && is_numeric($_GET['jour']) && !empty($_GET['mois']) && is_numeric($_GET['mois']) && !empty($_GET['annee']) && is_numeric($_GET['annee']) && isset($_GET['midi']) && is_numeric($_GET['midi']) && !empty($_GET['residence']) && is_numeric($_GET['residence']))
 	// Si l'utilisateur a saisi des variables
 {
