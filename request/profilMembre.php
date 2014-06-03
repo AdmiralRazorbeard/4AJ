@@ -40,6 +40,7 @@ function getPassword($mail)
 	return $pass->password;
 }
 function updateMembre($adresse, $telFixe, $telPortable, $password, $mail)
+// mets à jour le profil
 {
 	run('UPDATE membre SET adresse="'.$adresse.'", telFixe="'.$telFixe.'", telPortable="'.$telPortable.'", password="'.$password.'" WHERE mail="'.$mail.'"');
 }

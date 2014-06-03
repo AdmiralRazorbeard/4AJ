@@ -31,8 +31,8 @@ nav li {
     padding:0;
 }
 #item0{background-color:#2e115a;}#item1,#s_item1 a{background-color:#2797e8;}#item2{background-color:#f8d617;}#item3{background-color:#a4b819;}#item4, #s_item4 a{background-color:#ce7526;}{background-color:#ce7526;}#item5, #s_item5 a{background-color:#6f0006;}#item6, #s_item6 a{background-color:#955359;}
-#item0:hover{background-color:#503080;}#item1:hover,#s_item1 a:hover{background-color:#5bade7;}#item2:hover{background-color:#f8de4d;}#item3:hover{background-color:#bfd241;}#item4:hover, #s_item4 a:hover{background-color:#e8964d;}#item5:hover, #s_item5 a:hover{background-color:#a90008;}#item6:hover, #s_item6 a:hover{background-color:#b0757a;}
-#active_item0{background-color:#503080;}#active_item1{background-color:#5bade7;}#active_item2{background-color:#f8de4d;}#active_item3{background-color:#bfd241;}#active_item4{background-color:#e8964d;}#active_item5{background-color:#a90008;}#active_item6{background-color:#b0757a;}
+#item0:hover{background-color:#6c5981;}#item1:hover,#s_item1 a:hover{background-color:#7ec4f4;}#item2:hover{background-color:#fdec8b;}#item3:hover{background-color:#d4e752;}#item4:hover, #s_item4 a:hover{background-color:#eca25f;}#item5:hover, #s_item5 a:hover{background-color:#a90008;}#item6:hover, #s_item6 a:hover{background-color:#b0757a;}
+#active_item0{background-color:#6c5981;}#active_item1{background-color:#7ec4f4;}#active_item2{background-color:#fdec8b;}#active_item3{background-color:#d4e752;}#active_item4{background-color:#eca25f;}#active_item5{background-color:#a90008;}#active_item6{background-color:#b0757a;}
 /*  Couleur des items du menu, hover ou non, actif ou non */
 #submenu_item{background-color:#f7f7f7;color:#4b4b4b;}
 #submenu_item:hover{

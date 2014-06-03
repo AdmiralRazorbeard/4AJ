@@ -7,6 +7,7 @@ if(isset($_POST['deleteAccount']))
 	//Il faut s'assurer que l'utilisateur est vraiment connecté
 	{
 		if(deleteAccount() == true)
+		// Suppression possible du compte dans la condition	
 		{
 			$_SESSION['message'] = "Suppression du compte réussie.";
 		}
