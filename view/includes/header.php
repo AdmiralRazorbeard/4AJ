@@ -52,6 +52,7 @@
 			} ?>
 		</div>
 		<div id="banniere">
+			<img id="bannierelogo" src="/4AJ/view/graphicRessources/bannierelogo.png" alt="logo bannière"/>
 			<ul id="sContent">
 				<li><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></li>
 				<li><img src="/4AJ/view/graphicRessources/2.jpg" alt="image bannière"/></li>
