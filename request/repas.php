@@ -26,16 +26,15 @@ function semaine($nbreWeekPlus=0)
 	return $semaine;	
 }
 
-function boutonReserver($numero, $mois, $annee, $midi)
+function boutonReserver($numero, $mois, $annee, $midi, $residence)
 	// Retourne 1 si il a le droit de s'incrire, 2 si il est déjà inscrit, et 3 sinon
 {
-	if(empty($_SESSION['log']))
-	{
-		echo 'class="invalide" ';
-		return; 
-	}
 	if(!empty($_SESSION['log']) && !empty($_SESSION['mail']))
 	{
+		if(strtotime($numero.'-'.$mois.'-'.$annee.' 14:00') <= strtotime("now"))
+		{
+			return 3;
+		}
 		if(!$midi || date('N', strtotime($numero.'-'.$mois.'-'.$annee)) == 6 || date('N', strtotime($numero.'-'.$mois.'-'.$annee)) == 7)	// Si on est le soir ou le week end
 		{
 			$tmp = run('SELECT COUNT(*) as allowed FROM membre,membrefonction,fonction
@@ -56,7 +55,8 @@ function boutonReserver($numero, $mois, $annee, $midi)
 						FROM membre, reserverepas
 						WHERE membre.id = reserverepas.id_membre
 						AND dateReserve = "'.$annee.'-'.$mois.'-'.$numero.'"
-						AND midi = '.$midi)->fetch_object();
+						AND midi = '.$midi.'
+						AND residence = '.$residence)->fetch_object();
 				// Vérifie que le membre ne s'est pas déjà inscrit
 			if($tmp->inscrit == 0)
 			{
