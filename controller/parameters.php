@@ -1,6 +1,7 @@
 <?php
 include_once 'request/profilMembre.php';
 if(isset($_POST['modification']))
+//Verification de l'utilisation du formulaire
 {
 	$mail = $_SESSION['mail'];
 	$adresse = '';
@@ -8,6 +9,7 @@ if(isset($_POST['modification']))
 	$telFixe = '';
 	$telPortable = '';
 	$newPassword = getPassword($mail);
+	//récupération du mot de passe de l'utilisateur
 	$messageMdp = '';
 	if(!empty($_POST['adresse']))
 	{
@@ -40,7 +42,9 @@ if(isset($_POST['modification']))
 		}
 	}
 	updateMembre($adresse, $telFixe, $telPortable, $newPassword, $mail);
+	//Les vérifications ont été réalisées donc on peut mettre à jour le profil du membre
 }
 $infoMembre = infoMembre($_SESSION['mail']);
+//Recuperation des infos du membre par le biais de son adresse mail
 include_once 'view/membre/parameters.php';
 ?>
