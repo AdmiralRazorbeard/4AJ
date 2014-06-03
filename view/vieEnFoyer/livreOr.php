@@ -26,99 +26,97 @@ function v_maxlength(id, crid, max)
 }
 -->
 </script>
-			<div id="mainWrapper">
-				<div class="contentWrapper">	
-					<img id="img_livredor" src="/4AJ/view/graphicRessources/livredor.png" alt="livreOr" />
-					<?php if($admin) { ?>
-					<form method="post">
-						<b>Admin</b> : nombre de billet par page : 
-						<input type="text" required size="1" placeholder="<?php echo $nbreBilletParPage; ?>" name="nbreBilletParPage" /><input type="submit" colls="2" /><br /><br />
-					</form>
+			<div class="contentWrapper">	
+				<img id="img_livredor" src="/4AJ/view/graphicRessources/livredor.png" alt="livreOr" />
+				<?php if($admin) { ?>
+				<form method="post">
+					<b>Admin</b> : nombre de billet par page : 
+					<input type="text" required size="1" placeholder="<?php echo $nbreBilletParPage; ?>" name="nbreBilletParPage" /><input type="submit" colls="2" /><br /><br />
+				</form>
+				<p>
+					<b><a href="admin/index.php?section=livreOrAConfirmer">Partie admin</a></b>
+				</p>
+				<?php
+				// Si l'utilisateur à envoyé un message :
+				if(!empty($_SESSION['confirm']))
+				{ ?>
 					<p>
-						<b><a href="admin/index.php?section=livreOrAConfirmer">Partie admin</a></b>
+						<em>
+							<?php echo $_SESSION['confirm']; ?>
+						</em>
 					</p>
-					<?php
-					// Si l'utilisateur à envoyé un message :
-					if(!empty($_SESSION['confirm']))
-					{ ?>
-						<p>
-							<em>
-								<?php echo $_SESSION['confirm']; ?>
-							</em>
-						</p>
-						
-			<?php	unset($_SESSION['confirm']);
-					}
-					?>
-					<?php } ?>
-					<div id="div_livredor">
-						<?php	
-						// Affiche le livre d'or
-						if(!empty($livreOr))
-						{
-							foreach($livreOr as $k => $v)
-							{ ?>
-								<b><?php echo $v['nom']; ?></b>
+					
+		<?php	unset($_SESSION['confirm']);
+				}
+				?>
+				<?php } ?>
+				<div id="div_livredor">
+					<?php	
+					// Affiche le livre d'or
+					if(!empty($livreOr))
+					{
+						foreach($livreOr as $k => $v)
+						{ ?>
+							<b><?php echo $v['nom']; ?></b>
 
-								<!-- Si admin, cela affiche l'adresse mail -->
-								<?php if($admin && !empty($v['mail']) && $v['mail'] != "null") { ?>
-								(<a href="mailto:<?php echo $v['mail']; ?>"><?php echo $v['mail']; ?></a>)
-								<?php } ?>
-								<!-- Affiche la date -->
-								, le <?php echo $v['timeLivreOr']; ?>
-								<!-- Rajoute un bouton supprimer si admin -->
-								<?php if($admin) { ?>
-								<a href="index.php?section=livreOr&amp;delete=<?php echo $v['id']; ?>">Supprimer</a> 
-								<?php } ?>
-								 : <br />
-								<?php echo $v['contenu']; ?><br /><br />
-					<?php	}
-						} 
-						?>
-						<!-- Affiche les pages -->
-						<p>
-							<?php 
-							$i = 1;
-							for($i; $i <= $nbrePage; $i ++)
-							{ ?>
-								<?php if($i == $page) {echo '<b>'; }?>
-								<a href="index.php?section=livreOr&amp;page=<?php echo $i; ?>"><?php echo $i; ?></a>
-								<?php if($i == $page) {echo '</b>'; }?>
-					<?php	} ?>
-						</p>	
-					</div>
-					<fieldset id="message_livredor">
-						<legend>Laissez un message</legend>
-						<form method="post">
-							<p class="form-field">
-							<label for="nom">Votre nom : </label>
-							<input type="text" name="nom" id="nom" />
-							</p>
-							<p class="form-field">
-							<label for="email">Votre email : </label>
-							<input type="text" name="mail" id="email" />
-							</p>
-							<p class="message_info"> 
-							<em>(L'Email est optionnel et ne sera pas affiché au public, mais peut nous permettre de vous recontacter)</em>
-							</p>
-							<p class="form-field">
-							<label for="contenu">Contenu : </label>
-							<textarea name="contenu" id="contenu" cols="50" rows="10" ></textarea>
-							</p>
-							<p class="message_info"><em>Il vous reste <span id="carac_reste_textarea_1"></span> caractères.</em></p>
-							<!-- Script pour le nombre de caractère -->
-							<script type="text/javascript">
-								<!--
-									maxlength_textarea('contenu','carac_reste_textarea_1',500);
-								-->
-						    </script>
-						    <p class="message_info"> 
-							<em>(Votre message ne s'affichera sur la page qu'après validation de l'administrateur)</em>
-							</p>
-							<input type="submit"><input type="reset">
-						</form>
-					</fieldset>
-				</div>	
+							<!-- Si admin, cela affiche l'adresse mail -->
+							<?php if($admin && !empty($v['mail']) && $v['mail'] != "null") { ?>
+							(<a href="mailto:<?php echo $v['mail']; ?>"><?php echo $v['mail']; ?></a>)
+							<?php } ?>
+							<!-- Affiche la date -->
+							, le <?php echo $v['timeLivreOr']; ?>
+							<!-- Rajoute un bouton supprimer si admin -->
+							<?php if($admin) { ?>
+							<a href="index.php?section=livreOr&amp;delete=<?php echo $v['id']; ?>">Supprimer</a> 
+							<?php } ?>
+							 : <br />
+							<?php echo $v['contenu']; ?><br /><br />
+				<?php	}
+					} 
+					?>
+					<!-- Affiche les pages -->
+					<p>
+						<?php 
+						$i = 1;
+						for($i; $i <= $nbrePage; $i ++)
+						{ ?>
+							<?php if($i == $page) {echo '<b>'; }?>
+							<a href="index.php?section=livreOr&amp;page=<?php echo $i; ?>"><?php echo $i; ?></a>
+							<?php if($i == $page) {echo '</b>'; }?>
+				<?php	} ?>
+					</p>	
+				</div>
+				<fieldset id="message_livredor">
+					<legend>Laissez un message</legend>
+					<form method="post">
+						<p class="form-field">
+						<label for="nom">Votre nom : </label>
+						<input type="text" name="nom" id="nom" />
+						</p>
+						<p class="form-field">
+						<label for="email">Votre email : </label>
+						<input type="text" name="mail" id="email" />
+						</p>
+						<p class="message_info"> 
+						<em>(L'Email est optionnel et ne sera pas affiché au public, mais peut nous permettre de vous recontacter)</em>
+						</p>
+						<p class="form-field">
+						<label for="contenu">Contenu : </label>
+						<textarea name="contenu" id="contenu" cols="50" rows="10" ></textarea>
+						</p>
+						<p class="message_info"><em>Il vous reste <span id="carac_reste_textarea_1"></span> caractères.</em></p>
+						<!-- Script pour le nombre de caractère -->
+						<script type="text/javascript">
+							<!--
+								maxlength_textarea('contenu','carac_reste_textarea_1',500);
+							-->
+					    </script>
+					    <p class="message_info"> 
+						<em>(Votre message ne s'affichera sur la page qu'après validation de l'administrateur)</em>
+						</p>
+						<input type="submit"><input type="reset">
+					</form>
+				</fieldset>
 			</div>
 		</div>
 	</body>

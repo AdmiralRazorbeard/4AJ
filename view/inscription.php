@@ -89,8 +89,12 @@
 							</select>
 							</p>
 							<p class="form-field">
-								<label for="password">Mot de passe* : </label>
-								<input required type="password" name="password" id="password">
+								<label for="password1">Mot de passe* : </label>
+								<input required type="password" name="password1" id="password1">
+							</p>
+							<p class="form-field">
+								<label for="password2">Repeter mot de passe* : </label>
+								<input required type="password" name="password2" id="password2">
 							</p>
 							<p class="inscription_info">
 								<em>Les champs marqués d'un * sont obligatoires.</em>

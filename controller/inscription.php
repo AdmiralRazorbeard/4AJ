@@ -1,9 +1,9 @@
 <?php
 include_once 'request/inscription.php';
-if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) || !empty($_POST['password']))
+if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) || !empty($_POST['password1']) || !empty($_POST['password2']))
 // Si quelqu'un a complété le formulaire : 
 {
-	if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['password']))
+	if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['password1']) && !empty($_POST['password2']))
 	// Et si il a bien complété le formulaire :
 	{		
 			// INITIALISATION
@@ -44,14 +44,21 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		$mail = $mysqli->real_escape_string($_POST['mail']);
 
 			// PASSWORD
-		if(strlen($_POST['password']) <= 6)
+		if($_POST['password1'] == $_POST['password2'])
 		{
-			$errorPassword = true;
-			$error ++;
+			if(strlen($_POST['password1']) <= 6)
+			{
+				$errorPassword = true;
+				$error ++;
+			}
+			else
+			{ 
+				$password = md5($_POST['password1']);
+			}
 		}
 		else
-		{ 
-			$password = md5($_POST['password']);
+		{
+			$error ++;
 		}
 
 			// ADRESSE

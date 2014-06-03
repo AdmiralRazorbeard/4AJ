@@ -143,8 +143,9 @@ nav li:hover ul li {
     float:right;
 }
 /*  ----Images-----  */
-#banniere{overflow:hidden;height:220px;}
-#banniere img{width:980px;height:220px;}
+#bannierelogo{position:absolute;}
+#banniere{overflow:hidden;height:190px;}
+#sContent img{width:980px;height:190px;}
 #banniere ul{display:table;width:2700px;margin:0;padding-left:0%;
 -webkit-animation:siteslide 45s ease 0s infinite;
 -moz-animation:siteslide 45s ease 0s infinite;
@@ -152,7 +153,7 @@ nav li:hover ul li {
 -o-animation:siteslide 45s ease 0s infinite;
 animation:siteslide 45s ease 0s infinite;
 }
-#banniere ul li{display:table-cell;width:980px;height:220px;list-style:none;}
+#banniere ul li{display:table-cell;width:980px;height:190px;list-style:none;}
 @-webkit-keyframes siteslide{
 0%,23%{margin-left:0px;} 
 30%,53% {margin-left:-980px;}
@@ -182,7 +183,7 @@ animation:siteslide 45s ease 0s infinite;
 /*  --- CONTENU --  */
 /*  --------------  */
 .contentWrapper{   
-    padding: 0px 20px 5px 20px;;
+    padding: 35px 20px 5px 20px;;
 }
 .element h1,.element .a_title{
     font-size: 20px;
@@ -210,7 +211,11 @@ animation:siteslide 45s ease 0s infinite;
     text-shadow:1px 1px 0.6px #103b5a;
 }
 /*  --- Propriétés de la section actualités --  */
-.actualites .a_title{
+.actualites label{
+    float: left;
+    width: 30%;
+}
+.actualites h2{
     color:#f8d617;
     text-shadow:1px 1px 0.6px #5a4c00;
 }
@@ -218,7 +223,7 @@ animation:siteslide 45s ease 0s infinite;
     font-size: 12px;
     font-style: italic;
     color: #B1B1B1;
-    padding-bottom: 10px;
+    margin-top: -20px;
 }
 .actualites .a_content {
     padding-bottom: 10px;
@@ -272,7 +277,28 @@ animation:siteslide 45s ease 0s infinite;
     border: 1px solid #686868;
     background-color: #fff;
 }
-
+/*  --- Propriétés de la section parameters --  */
+.parameters fieldset{
+    width:700px;
+    margin:auto;
+}
+.parameters .form-field {
+    clear: both;
+    margin: 5px;
+    overflow: hidden;
+    margin: 2px 0px 0px 0px;
+}
+.parameters .form-field label{
+    float:left;
+    width:30%;
+}
+.parameters .form-field input{
+    float: left;
+    width: 55%;
+    padding: 5px;
+    border: 1px solid #686868;
+    background: #fff;
+}
 
 /*  ----------------  */
 /*  --- TOOL BOX ---  */

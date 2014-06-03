@@ -15,7 +15,7 @@
 			<?php
 			if(isConnected()) {?>
 				<div class="connexion_text connexion_bold">Bienvenue</div>
-				<div class="connexion_text"><a href="membre/index.php?section=parameters">Paramètres</a></div>
+				<div class="connexion_text"><a href="index.php?section=parameters">Paramètres</a></div>
 				<div class="connexion_text"><a href="index.php?section=index&amp;dislog=true">Se déconnecter</a></div>
 		<?php 	if(isAdminSomewhere())
 				// Si l'utilisateur est admin
@@ -52,6 +52,7 @@
 			} ?>
 		</div>
 		<div id="banniere">
+			<img id="bannierelogo" src="/4AJ/view/graphicRessources/bannierelogo.png" alt="logo bannière"/>
 			<ul id="sContent">
 				<li><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></li>
 				<li><img src="/4AJ/view/graphicRessources/2.jpg" alt="image bannière"/></li>

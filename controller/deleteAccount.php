@@ -20,11 +20,11 @@ if(isset($_POST['deleteAccount']))
 			$message = '<em>'.htmlspecialchars($_SESSION['message']).'</em>';
 			unset($_SESSION['message']);
 		}
-		header('location:../index.php');
+		header('location:index.php');
 	}
 	else
 	{
-		header('location:../index.php');
+		header('location:index.php');
 	}
 }
 ?>
