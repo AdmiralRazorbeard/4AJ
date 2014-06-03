@@ -276,9 +276,27 @@ animation:siteslide 45s ease 0s infinite;
     border: 1px solid #686868;
     background-color: #fff;
 }
-/*  --- Propriétés de la section memberParameters --  */
-.memberParameters fieldset{
-width: 50%
+/*  --- Propriétés de la section parameters --  */
+.parameters fieldset{
+    width:700px;
+    margin:auto;
+}
+.parameters .form-field {
+    clear: both;
+    margin: 5px;
+    overflow: hidden;
+    margin: 2px 0px 0px 0px;
+}
+.parameters .form-field label{
+    float:left;
+    width:30%;
+}
+.parameters .form-field input{
+    float: left;
+    width: 55%;
+    padding: 5px;
+    border: 1px solid #686868;
+    background: #fff;
 }
 
 /*  ----------------  */
