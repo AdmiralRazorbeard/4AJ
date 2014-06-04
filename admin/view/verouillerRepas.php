@@ -46,7 +46,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){	/*Fonction redirige
 				<h1>Verrouiller un jour</h1>
 				<fieldset>
 					<legend>
-						Vérouiller un jour de repas à résidence Anne Frank
+						Verrouiller un jour de repas à résidence Anne Frank
 					</legend>
 					<form method="post">
 						<label for="semaineAnneFrank">Semaine du : </label>
@@ -105,7 +105,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){	/*Fonction redirige
 
 				<fieldset>
 					<legend>
-						Vérouiller un jour de repas à résidence Clair Logis
+						Verrouiller un jour de repas à résidence Clair Logis
 					</legend>
 					<form method="post">
 						<label for="semaineClairLogis">Semaine du : </label>

@@ -28,15 +28,28 @@ if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && 
 	}
 	if(!empty($_POST['telFixe']))
 	{
-		$telFixe = $mysqli->real_escape_string($_POST['telFixe']);
+		if(is_numeric($_POST['telFixe']))
+		{
+			$telFixe = $mysqli->real_escape_string($_POST['telFixe']);
+		}
 	}
 	if(!empty($_POST['telPortable']))
 	{
-		$telPortable = $mysqli->real_escape_string($_POST['telPortable']);
+		if(is_numeric($_POST['telPortable']))
+		{
+			$telPortable = $mysqli->real_escape_string($_POST['telPortable']);
+		}
 	}
 	if(!empty($_POST['password']))
 	{
-		$password = md5($_POST['password']);
+		if(strlen($_POST['password']) >= 7)
+		{
+			$password = md5($_POST['password']);
+		}
+		else
+		{
+			$message = "Le mot de passe doit avoir plus de 6 caractères.\nLe mot de passe n'a donc pas été modifier.";
+		}
 	}
 	if(!empty($_POST['isSuperAdmin']))
 	{
