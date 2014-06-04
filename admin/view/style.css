@@ -32,6 +32,7 @@ nav li {
     padding:0;
 }
 #menu_item{background-color:#f7f7f7;color:#4b4b4b;}
+#menu_item2{background-color:#ffd46d;color:#4b4b4b;}
 #menu_item:hover{
 background-color:#646464;color:#f7f7f7;
 -webkit-transition: all 0.3s ease-in-out;
@@ -41,6 +42,7 @@ background-color:#646464;color:#f7f7f7;
 transition: all 0.3s ease-in-out;
 }
 #active_menu_item{background-color:#646464;color:#f7f7f7;}
+#active_menu_item2{background-color:#ffd46d;color:#f7f7f7;}
 /*  Couleur des items du menu, hover ou non, actif ou non */
 }
 nav li ul {
