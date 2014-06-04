@@ -53,9 +53,18 @@ CREATE TABLE Type_d_actualite(
 )ENGINE=InnoDB;
 
 
+CREATE TABLE residenceRepas(
+        id           int (11) Auto_increment  NOT NULL ,
+        nomResidence Varchar (255) ,
+        PRIMARY KEY (id )
+)ENGINE=InnoDB;
+
+
 CREATE TABLE verouillerJourRepas(
         id             int (11) Auto_increment  NOT NULL ,
         dateVerouiller Date ,
+        midi           Bool ,
+        residence      Int ,
         PRIMARY KEY (id )
 )ENGINE=InnoDB;
 

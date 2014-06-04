@@ -51,27 +51,37 @@ function boutonReserver($numero, $mois, $annee, $midi, $residence)
 		}
 		if($tmp->allowed >= 1)
 		{
-			$tmp = run('SELECT COUNT(*) as inscrit
-						FROM membre, reserverepas
-						WHERE membre.id = reserverepas.id_membre
-						AND dateReserve = "'.$annee.'-'.$mois.'-'.$numero.'"
-						AND midi = '.$midi.'
+			// Vérification que le jour n'est pas verrouiller
+			$tmp = run('SELECT COUNT(*) as nbre 
+						FROM verrouillerjourrepas 
+						WHERE dateVerouiller="'.$annee.'-'.$mois.'-'.$numero.'" 
+						AND midi = '.$midi.' 
 						AND residence = '.$residence)->fetch_object();
-				// Vérifie que le membre ne s'est pas déjà inscrit
-			if($tmp->inscrit == 0)
+			if($tmp->nbre == 0)
 			{
-				return 1;
+				$tmp = run('SELECT COUNT(*) as inscrit
+							FROM membre, reserverepas
+							WHERE membre.id = reserverepas.id_membre
+							AND dateReserve = "'.$annee.'-'.$mois.'-'.$numero.'"
+							AND midi = '.$midi.'
+							AND residence = '.$residence)->fetch_object();
+					// Vérifie que le membre ne s'est pas déjà inscrit
+				if($tmp->inscrit == 0)
+				{
+					return 1;
+				}
+				else
+				{
+					return 2;
+				}
 			}
-			else
-			{
-				return 2;
-			}
-		}
-		else
-		{
-			return 3;
 		}
 		return 3;
 	}
+}
+
+function calendrierResidence($idResidence)
+{
+	
 }
 ?>

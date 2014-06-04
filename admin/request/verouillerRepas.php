@@ -54,4 +54,16 @@ function semaine($nbreWeekPlus=0)
 	$semaine['dimanche']['annee'] = date('Y', strtotime('Sunday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	return $semaine;	
 }
+
+function boutonVerrouiller($jour, $mois, $annee, $midi, $residence)
+/* Retourne true si le jour est verrouiller, false sinon */
+{
+	$date = $annee.'-'.$mois.'-'.$jour;
+	$tmp = run('SELECT COUNT(*) as nbre FROM verrouillerjourrepas WHERE dateVerouiller = "'.$date.'" AND midi = '.$midi.' AND residence = '.$residence)->fetch_object();
+	if($tmp->nbre >= 1)
+	{
+		return true;
+	}
+	return false;
+}
 ?>
