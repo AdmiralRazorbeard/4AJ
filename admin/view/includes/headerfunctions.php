@@ -8,6 +8,16 @@ function isConnected()
 	}
 	return false;
 }
+function nouveauLivreOrAConfirmer()
+{
+	$tmp = run('SELECT COUNT(*) as nbre FROM livreor WHERE afficher = 0')->fetch_object();
+	$tmp = $tmp->nbre;
+	if($tmp >= 1)
+	{
+		return true;
+	}
+	return false;
+}
 ?>
 <?php
 function countMembers($mail, $password)
