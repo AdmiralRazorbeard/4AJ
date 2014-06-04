@@ -28,7 +28,8 @@ th {
 }
 </style>
 <script type="text/javascript">
-function confirmerRepas(jour, mois, annee, midi, residence){	/*Fonction redirige sur la même page en mettant les paramètres en GET */
+function confirmerRepas(jour, mois, annee, midi, residence){	
+	/*Fonction redirige sur la même page en mettant les paramètres en GET */
 	if(residence == 1)
 	{
 		javascript:location.href='index.php?section=repas&semaineAnneFrank=<?php echo $semaineDuAnneFrank; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi+'&residence='+residence;
