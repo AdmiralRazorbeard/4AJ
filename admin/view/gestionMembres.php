@@ -4,6 +4,17 @@ include_once '/view/includes/header.php';
 			<div class="contentWrapper memberGestion">
 				<h1>Gestion des membres</h1>
 				<h4>Liste des membres</h4>
+				<form method="post">
+                    <p class="form-field">
+                        <label>Trier par:</label>
+                        <select name="orderBy">
+                        	<option value="1" <?php if($selected==1){ ?>selected="selected" <?php } ?>>Nom</option>
+                        	<option value="2" <?php if($selected==2){ ?>selected="selected" <?php } ?>>Prenom</option>
+                            <option value="3" <?php if($selected==3){ ?>selected="selected" <?php } ?>>Ordre d'inscription</option>
+                        </select>
+                        <input type="submit">
+                    </p>
+                </form>
 				<table>
 					<tr>
 						<th>
@@ -86,7 +97,7 @@ include_once '/view/includes/header.php';
 						for($i; $i <= $nbrePage; $i ++)
 						{ ?>
 							<?php if($i == $page) {echo '<b>'; }?>
-							<a href="index.php?section=gestionMembres&amp;page=<?php echo $i; ?>"><?php echo $i; ?></a>
+							<a href="index.php?section=gestionMembres&amp;page=<?php echo $i; ?>&amp;orderBy=<?php echo $orderBy; ?>"><?php echo $i; ?></a>
 							<?php if($i == $page) {echo '</b>'; }?>
 				<?php	} ?>
 					</p>
