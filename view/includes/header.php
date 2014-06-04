@@ -11,45 +11,50 @@
 	</head> 
 	<body>
 	<div class="mainWrapper">
-		<div id="connexion">
-			<?php
-			if(isConnected()) {?>
-				<div class="connexion_text connexion_bold">Bienvenue</div>
-				<div class="connexion_text"><a href="index.php?section=parameters">Paramètres</a></div>
-				<div class="connexion_text"><a href="index.php?section=index&amp;dislog=true">Se déconnecter</a></div>
-		<?php 	if(isAdminSomewhere())
-				// Si l'utilisateur est admin
-				{ ?> 
-					<div class="connexion_inscription connexion_bold">
-						<a href="admin/index.php?section=gestionMembres">Partie administrateur</a>
-					</div>
-					<div class="connexion_inscription connexion_bold">
-						<?php if(isSuperAdmin()) { ?>
-							<!-- Si super admin, il peut passer en mode édition -->
-							<?php if(empty($_SESSION['superAdminOn'])) { ?>
-								<a href="index.php?section=index&amp;superAdminOn=true">Mode édition</a></div> 
-							<?php } else { ?>
-								<!-- Cela veut dire qu'il est déjà superAdmin, donc lien pour désactiver -->
-								<a href="index.php?section=index&amp;finSuperAdminOn=true">Fin mode édition</a></div>
-						<?php 	} 
-							}?>
-			<?php 
+		<div>
+			<div class="box1 boxAdresse">FJT ANNE FRANCK<br>21, rue du bloc 62000 ARRAS</div>
+			<div class="box2 boxAdresse">FJT CLAIR LOGIS<br>3, rue du Paul Perin 62000 ARRAS</div>
+			<div class="box3 boxAdresse">FJT NOBEL<br>7, rue Diderot 62000 ARRAS</div>
+			<div id="connexion">
+				<?php
+				if(isConnected()) {?>
+					<div class="connexion_text connexion_bold">Bienvenue</div>
+					<div class="connexion_text"><a href="index.php?section=parameters">Paramètres</a></div>
+					<div class="connexion_text"><a href="index.php?section=index&amp;dislog=true">Se déconnecter</a></div>
+			<?php 	if(isAdminSomewhere())
+					// Si l'utilisateur est admin
+					{ ?> 
+						<div class="connexion_inscription connexion_bold">
+							<a href="admin/index.php?section=gestionMembres">Partie administrateur</a>
+						</div>
+						<div class="connexion_inscription connexion_bold">
+							<?php if(isSuperAdmin()) { ?>
+								<!-- Si super admin, il peut passer en mode édition -->
+								<?php if(empty($_SESSION['superAdminOn'])) { ?>
+									<a href="index.php?section=index&amp;superAdminOn=true">Mode édition</a></div> 
+								<?php } else { ?>
+									<!-- Cela veut dire qu'il est déjà superAdmin, donc lien pour désactiver -->
+									<a href="index.php?section=index&amp;finSuperAdminOn=true">Fin mode édition</a></div>
+							<?php 	} 
+								}?>
+				<?php 
+					}
 				}
-			}
-			else { ?>
-			<div class="connexion_text connexion_bold">Connexion</div>
-			<form method="post">
-				<div class="connexion_text"><label for="mail">Votre email :</label></div><div><input type="name" id="mail" name="mail" /></div>
-				<div class="connexion_text"><label for="password">Mot de passe :</label></div><div><input type="password" id="password" name="password" /></div>
-				<div class="connexion_submit"><input id="submit" type="submit"/></div>
-			</form>
-			<div class="connexion_inscription connexion_bold"><a href="index.php?section=inscription">Inscription</a></div>
-			<?php } ?>
-			<?php
-			if(!empty($message))
-			{
-				echo '<div class="connexion_text"><em>'.$message.'</em></div>'; 
-			} ?>
+				else { ?>
+				<div class="connexion_text connexion_bold">Connexion</div>
+				<form method="post">
+					<div class="connexion_text"><label for="mail">Votre email :</label></div><div><input type="name" id="mail" name="mail" /></div>
+					<div class="connexion_text"><label for="password">Mot de passe :</label></div><div><input type="password" id="password" name="password" /></div>
+					<div class="connexion_submit"><input id="submit" type="submit"/></div>
+				</form>
+				<div class="connexion_inscription connexion_bold"><a href="index.php?section=inscription">Inscription</a></div>
+				<?php } ?>
+				<?php
+				if(!empty($message))
+				{
+					echo '<div class="connexion_text"><em>'.$message.'</em></div>'; 
+				} ?>
+			</div>
 		</div>
 		<div id="banniere">
 			<img id="bannierelogo" src="/4AJ/view/graphicRessources/bannierelogo.png" alt="logo bannière"/>

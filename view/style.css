@@ -90,10 +90,12 @@ nav li:hover ul li {
 /*  --------------  */
 /*  ----Connexion-----  */
 #connexion{
+    position: relative;
+    z-index: 1;
+    height:29px;
     padding-left:15px;
     padding-right:15px;
     background-color:#075da6;
-    height:29px;
     font-size:12px;
     color:white;
 }
@@ -177,6 +179,105 @@ animation:siteslide 45s ease 0s infinite;
 30%,53% {margin-left:-980px;}
 60%,83% {margin-left:-1960px;}  
 100%{margin-left:-2940px;}
+}
+.boxAdresse{
+    position: absolute;
+    z-index: 1;
+    height: 30px;
+    width: 190px;
+    background-color:#075da6;
+    opacity: 0.8;
+    filter:alpha(opacity=80);
+    -moz-opacity:0.8;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    color:white;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+}
+.box1{
+-webkit-animation:animationBoxOne 45s ease 0s infinite;
+-moz-animation:animationBoxOne 45s ease 0s infinite;
+-ms-animation:animationBoxOne 45s ease 0s infinite;
+-o-animation:animationBoxOne 45s ease 0s infinite;
+animation:animationBoxOne 45s ease 0s infinite;
+}
+.box2{
+-webkit-animation:animationBoxTwo 45s ease 0s infinite;
+-moz-animation:animationBoxTwo 45s ease 0s infinite;
+-ms-animation:animationBoxTwo 45s ease 0s infinite;
+-o-animation:animationBoxTwo 45s ease 0s infinite;
+animation:animationBoxTwo 45s ease 0s infinite; 
+}
+.box3{
+-webkit-animation:animationBoxThree 45s ease 0s infinite;
+-moz-animation:animationBoxThree 45s ease 0s infinite;
+-ms-animation:animationBoxThree 45s ease 0s infinite;
+-o-animation:animationBoxThree 45s ease 0s infinite;
+animation:animationBoxThree 45s ease 0s infinite;
+}
+@-webkit-keyframes animationBoxOne{
+0%,25%{top:-25px;margin-left:775px;} 
+32%,51% {top:35px;margin-left:775px;}
+58%,100% {top:-25px;margin-left:775px;}
+}
+@-ms-keyframes animationBoxOne{
+0%,25%{top:-25px;margin-left:775px;} 
+32%,51% {top:35px;margin-left:775px;}
+58%,100% {top:-25px;margin-left:775px;}
+}
+@-o-keyframes animationBoxOne{
+0%,25%{top:-25px;margin-left:775px;} 
+32%,51% {top:35px;margin-left:775px;}
+58%,100% {top:-25px;margin-left:775px;}
+}
+@keyframes animationBoxOne{
+0%,25%{top:-25px;margin-left:775px;} 
+32%,51% {top:35px;margin-left:775px;}
+58%,100% {top:-25px;margin-left:775px;}
+}
+@-webkit-keyframes animationBoxTwo{
+0%,55%{top:-25px;margin-left:775px;} 
+62%,81% {top:35px;margin-left:775px;}
+88%,100% {top:-25px;margin-left:775px;}
+}
+@-ms-keyframes animationBoxTwo{
+0%,55%{top:-25px;margin-left:775px;} 
+62%,81% {top:35px;margin-left:775px;}
+88%,100% {top:-25px;margin-left:775px;}
+}
+@-o-keyframes animationBoxTwo{
+0%,55%{top:-25px;margin-left:775px;} 
+62%,81% {top:35px;margin-left:775px;}
+88%,100% {top:-25px;margin-left:775px;}
+}
+@keyframes animationBoxTwo{
+0%,55%{top:-25px;margin-left:775px;} 
+62%,81% {top:35px;margin-left:775px;}
+88%,100% {top:-25px;margin-left:775px;}
+}
+@-webkit-keyframes animationBoxThree{
+0%,19% {top:35px;margin-left:775px;}
+23%,93%{top:-25px;margin-left:775px;} 
+100% {top:35px;margin-left:775px;}
+}
+@-ms-keyframes animationBoxThree{
+0%,19% {top:35px;margin-left:775px;}
+23%,93%{top:-25px;margin-left:775px;} 
+100% {top:35px;margin-left:775px;}
+}
+@-o-keyframes animationBoxThree{
+0%,19% {top:35px;margin-left:775px;}
+23%,93%{top:-25px;margin-left:775px;} 
+100% {top:35px;margin-left:775px;}
+}
+@keyframes animationBoxThree{
+0%,19% {top:35px;margin-left:775px;}
+23%,93%{top:-25px;margin-left:775px;} 
+100% {top:35px;margin-left:775px;}
 }
 
 /*  --------------  */
