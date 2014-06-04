@@ -35,11 +35,11 @@
 								<?php } else { ?>
 									<!-- Cela veut dire qu'il est déjà superAdmin, donc lien pour désactiver -->
 									<a href="index.php?section=index&amp;finSuperAdminOn=true">Fin mode édition</a></div>
-							<?php 	} 
+								<?php 	} 
 								}?>
-				<?php 
+					<?php 
+						}
 					}
-				}
 				else { ?>
 				<div class="connexion_text connexion_bold">Connexion</div>
 				<form method="post">
@@ -47,6 +47,7 @@
 					<div class="connexion_text"><label for="password">Mot de passe :</label></div><div><input type="password" id="password" name="password" /></div>
 					<div class="connexion_submit"><input id="submit" type="submit"/></div>
 				</form>
+				<div><em><a href="index.php?section=lostPassword">Mot de passe perdu ?</a></em></div>
 				<div class="connexion_inscription connexion_bold"><a href="index.php?section=inscription">Inscription</a></div>
 				<?php } ?>
 				<?php
@@ -72,7 +73,7 @@
 					<ul id="s_item1">
       					<li><a href="index.php?section=quiSommesNous">Qui sommes-nous ?</a></li>
       					<li><a href="index.php?section=plateformeLogement">Plateforme Logement</a></li>
-      					<li><a class="last_item" href="index.php?section=les3Fjt">Les 3 FJT</a></li>
+      					<li><a class="last_item" href="index.php?section=3FJT">Les 3 FJT</a></li>
     				</ul>
     			</li>	
 				<li><a <?php if (openSection('actualites')){?>id="active_item2"<?php } else { ?>id="item2"<?php } ?> href="index.php?section=actualites">Actualités</a></li>

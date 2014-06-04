@@ -33,6 +33,14 @@ elseif ($_GET['section'] == 'association')
 {
 	include_once 'controller/association.php';
 }
+elseif ($_GET['section'] == '3FJT')
+{
+	include_once 'controller/3FJT.php';
+}
+elseif ($_GET['section'] == 'quiSommesNous')
+{
+	include_once 'controller/quiSommesNous.php';
+}
 elseif ($_GET['section'] == 'actualites')
 {
 	include_once 'controller/actualites.php';
@@ -88,6 +96,10 @@ elseif ($_GET['section'] == 'memento')
 elseif ($_GET['section'] == 'faireUnDon')
 {
 	include_once 'controller/faireUnDon.php';
+}
+elseif ($_GET['section'] == 'lostPassword')
+{
+	include_once 'controller/lostPassword.php';
 }
 //paramètres membres 
 elseif ($_GET['section'] == 'parameters')

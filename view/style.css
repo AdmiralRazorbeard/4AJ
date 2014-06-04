@@ -331,10 +331,9 @@ animation:animationBoxThree 45s ease 0s infinite;
     border-bottom: 1px solid #B1B1B1;
 }
 /*  --- Propriétés de la section liensUtiles --  */
-.liensUtiles h2{
-    font-size: 16px;
+.liensUtiles h1{
     color:#a4b819;
-    text-shadow:1px 1px 0.6px #323807; 
+    text-shadow:1px 1px 0.6px #103b5a;
 }
 .liensUtiles p{
     position:relative;
