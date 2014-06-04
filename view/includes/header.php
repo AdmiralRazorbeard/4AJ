@@ -43,6 +43,7 @@
 				<div class="connexion_text"><label for="password">Mot de passe :</label></div><div><input type="password" id="password" name="password" /></div>
 				<div class="connexion_submit"><input id="submit" type="submit"/></div>
 			</form>
+			<div><em><a href="index.php?section=lostPassword">Mot de passe perdu ?</a></em></div>
 			<div class="connexion_inscription connexion_bold"><a href="index.php?section=inscription">Inscription</a></div>
 			<?php } ?>
 			<?php

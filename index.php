@@ -89,6 +89,10 @@ elseif ($_GET['section'] == 'faireUnDon')
 {
 	include_once 'controller/faireUnDon.php';
 }
+elseif ($_GET['section'] == 'lostPassword')
+{
+	include_once 'controller/lostPassword.php';
+}
 //paramètres membres 
 elseif ($_GET['section'] == 'parameters')
 {
