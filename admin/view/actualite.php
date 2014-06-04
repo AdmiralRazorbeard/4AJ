@@ -35,9 +35,9 @@ include_once '/view/includes/header.php';
 								<?php } ?>
 						</div>
 						<div class="form-field-contenu">
-						<p id="p_form-field-contenu">Contenu:</p>
-						<?php toolBox('contenu'); ?>
-						<input type="submit">
+							<p id="p_form-field-contenu">Contenu:</p>
+							<?php toolBox('contenu'); ?>
+							<input type="submit">
 						</div>
 					</form>
 				</fieldset>
