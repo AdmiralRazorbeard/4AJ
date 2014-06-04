@@ -68,7 +68,7 @@
 					<ul id="s_item1">
       					<li><a href="index.php?section=quiSommesNous">Qui sommes-nous ?</a></li>
       					<li><a href="index.php?section=plateformeLogement">Plateforme Logement</a></li>
-      					<li><a class="last_item" href="index.php?section=les3Fjt">Les 3 FJT</a></li>
+      					<li><a class="last_item" href="index.php?section=3FJT">Les 3 FJT</a></li>
     				</ul>
     			</li>	
 				<li><a <?php if (openSection('actualites')){?>id="active_item2"<?php } else { ?>id="item2"<?php } ?> href="index.php?section=actualites">Actualités</a></li>
