@@ -29,7 +29,7 @@ function nbreMembres()
 }
 
 
-function listeMembre($page, $nbreBilletParPage)
+function listeMembre($page, $nbreBilletParPage, $orderBy)
 {
 	$nbreMembre = run('SELECT COUNT(*) AS nbre FROM membre')->fetch_object();
 	$nbreMembre = $nbreMembre->nbre;
@@ -40,7 +40,7 @@ function listeMembre($page, $nbreBilletParPage)
 
 	$tmp = run('SELECT id, nomMembre, prenomMembre, adresse, dateNaissance, telFixe, telPortable, mail, isSuperAdmin 
 				FROM membre 
-				ORDER BY id DESC
+				ORDER BY '.$orderBy.' ASC
 				LIMIT '.$premierMembreASortir.','.$nbreBilletParPage); 
 	$listeMembre = NULL;
 	while($donnees = $tmp->fetch_object())
