@@ -311,6 +311,10 @@ animation:animationBoxThree 45s ease 0s infinite;
     color:#2797e8;
     text-shadow:1px 1px 0.6px #103b5a;
 }
+.association h3{
+    color:#003c66;
+    font-size: 17px;
+}
 /*  --- Propriétés de la section actualités --  */
 .actualites label{
     float: left;
@@ -319,6 +323,10 @@ animation:animationBoxThree 45s ease 0s infinite;
 .actualites h2{
     color:#f8d617;
     text-shadow:1px 1px 0.6px #5a4c00;
+}
+.actualites h3{
+    color:#583e00;
+    font-size: 17px;
 }
 .actualites .a_info {
     font-size: 12px;
@@ -335,9 +343,31 @@ animation:animationBoxThree 45s ease 0s infinite;
     color:#a4b819;
     text-shadow:1px 1px 0.6px #103b5a;
 }
+.liensUtiles h3{
+    color:#334405;
+    font-size: 17px;
+}
 .liensUtiles p{
     position:relative;
     bottom:15px;
+}
+/*  --- Propriétés de la section vieEnFoyer --  */
+.vieEnFoyer h1{
+    color:#e3944e;
+    text-shadow:1px 1px 0.6px #3b2714;
+}
+.vieEnFoyer h3{
+    color:#5a3a1d;
+    font-size: 17px;
+}
+/*  --- Propriétés de la section devenirResidant --  */
+.devenirResidant h1{
+    color:#990007;
+    text-shadow:1px 1px 0.6px #350003;
+}
+.devenirResidant h3{
+    color:#5a0004;
+    font-size: 17px;
 }
 /*  --- Propriétés de la section livredor --  */
 #img_livredor{
@@ -376,6 +406,15 @@ animation:animationBoxThree 45s ease 0s infinite;
     padding: 5px;
     border: 1px solid #686868;
     background-color: #fff;
+}
+/*  --- Propriétés de la section contact --  */
+.contact h1{
+    color:#9c5b61;
+    text-shadow:1px 1px 0.6px #2c1719;
+}
+.contact h3{
+    color:#4e2a2d;
+    font-size: 17px;
 }
 /*  --- Propriétés de la section parameters --  */
 .parameters fieldset{
