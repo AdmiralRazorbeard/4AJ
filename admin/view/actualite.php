@@ -4,7 +4,7 @@ include_once '/view/includes/header.php';
 			<div class="contentWrapper">
 				<h1>Gestion des actualités </h1>
 				<fieldset id="actualite">
-				<form method="post">
+					<form method="post">
 						<div class="form-field">
 						<label for="titre">Titre :</label>
 						<input type="text" name="titre" id="titre" />
