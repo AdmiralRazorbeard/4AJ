@@ -3,6 +3,7 @@ include_once '/view/includes/header.php';
 ?>
 			<div class="contentWrapper">
 				<h1>Modifier la news n°<?php echo $infoNews['id']; ?></h1>
+				<em><a href="../index.php?section=actualites">Retourner à la section: actualités</a></em>
 				<fieldset id="modifierNews">
 					<form method="post">
 						<div class="form-field">
@@ -11,7 +12,7 @@ include_once '/view/includes/header.php';
 						</div>
 						<div class="form-field-contenu">
 						<p id="p_form-field-contenu">Contenu:</p>
-						<?php toolBox('modifierNews', $infoNews['contenu']); ?>
+						<?php toolBox('contenu', $infoNews['contenu']); ?>
 						<input type="submit">
 						</div>
 					</form>

@@ -133,9 +133,13 @@ function preview(textareaId, previewDiv) {
 			<option value="tgros">Très gros</option>
 			<option value="ttgros">Très très gros</option>
 		</select>
-		<?php if($id != 'actualite')
+		<?php if($id == 'actualite' || $id =='modifierNews')
+		//Si la section est en rapport avec les actualités (création ou modification), alors on ne peut pas inserer de titre
 		{ ?>
+		<input type="button" value="Sous-titre" onclick="insertTag('<stitre>', '</stitre>', 'contenu');">
+		<?php } else {?>
 		<input type="button" value="Titre" onclick="insertTag('<titre>', '</titre>', 'contenu');">
+		<input type="button" value="Sous-titre" onclick="insertTag('<stitre>', '</stitre>', 'contenu');">
 		<?php } ?>
 	</p>
 	<p>
