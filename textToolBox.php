@@ -133,8 +133,11 @@ function preview(textareaId, previewDiv) {
 			<option value="tgros">Très gros</option>
 			<option value="ttgros">Très très gros</option>
 		</select>
+		<?php if($id != 'actualite')
+		{ ?>
 		<input type="button" value="Titre" onclick="insertTag('<titre>', '</titre>', 'contenu');">
 		<input type="button" value="Sous-titre" onclick="insertTag('<stitre>', '</stitre>', 'contenu');">
+		<?php } ?>
 	</p>
 	<p>
 		<input name="previsualisation" type="checkbox" id="previsualisation" value="previsualisation" />

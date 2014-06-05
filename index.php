@@ -110,4 +110,8 @@ elseif ($_GET['section'] == 'deleteAccount')
 {
 	include_once('controller/deleteAccount.php');
 }
+elseif ($_GET['section'] == 'findPassword')
+{
+	include_once('controller/findPassword.php');
+}
 ?>

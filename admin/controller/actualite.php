@@ -12,11 +12,11 @@ if(!$admin)
 $typeActualite = allTypeActualite();
 $nbreTypeActualite = nombreTypeActualite();
 $allFonction = allFonction();
-if(!empty($_POST['titre']) && !empty($_POST['typeActualite']) && !empty($_POST['contenu']))
+if(!empty($_POST['titre']) && !empty($_POST['typeActualite']) && !empty($_POST['actualite']))
 {
 	$titre = $mysqli->real_escape_string($_POST['titre']);
 	$idTypeActualite = $mysqli->real_escape_string($_POST['typeActualite']);
-	$contenu = $mysqli->real_escape_string($_POST['contenu']);
+	$contenu = $mysqli->real_escape_string($_POST['actualite']);
 	$idMembre = run('SELECT id FROM membre WHERE mail = "'.$mysqli->real_escape_string($_SESSION['mail']).'"')->fetch_object();
 	$idMembre = $idMembre->id;
 	// Est-ce que l'utilisateur a sélectionné une fonction :

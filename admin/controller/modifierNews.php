@@ -10,9 +10,9 @@ elseif(empty($_GET['id']) || !is_numeric($_GET['id']))
 {
 	header('location:../index.php?section=actualites');
 }
-if(!empty($_POST['titre']) && !empty($_POST['contenu']))
+if(!empty($_POST['titre']) && !empty($_POST['actualite']))
 {
-	updateNews($_GET['id'], $_POST['titre'], $_POST['contenu']);
+	updateNews($_GET['id'], $_POST['titre'], $_POST['actualite']);
 }
 $_GET['id'];
 $infoNews = infoNews($_GET['id']);

@@ -123,6 +123,16 @@ CREATE TABLE reserveRepas(
 
 
 
+CREATE TABLE oublieMotDePasseSecurite(
+        id               int (11) Auto_increment  NOT NULL ,
+        securite         Varchar (255) ,
+        CurrentTimestamp Date ,
+        id_membre        Int ,
+        PRIMARY KEY (id )
+)ENGINE=InnoDB;
+
+
+ALTER TABLE oublieMotDePasseSecurite ADD CONSTRAINT FK_oublieMotDePasseSecurite_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
 ALTER TABLE news ADD CONSTRAINT FK_news_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
 ALTER TABLE news ADD CONSTRAINT FK_news_id_Type_d_actualite FOREIGN KEY (id_Type_d_actualite) REFERENCES Type_d_actualite(id);
 ALTER TABLE membreFonction ADD CONSTRAINT FK_membreFonction_id FOREIGN KEY (id) REFERENCES membre(id);
@@ -143,3 +153,6 @@ ALTER TABLE  `livreor` CHANGE  `timestampLivreOr`  `timestampLivreOr` TIMESTAMP 
 ALTER TABLE  `fonction` CHANGE  `isAdminActualite`  `isAdminActualite` TINYINT( 1 ) NOT NULL DEFAULT  '0';
 ALTER TABLE  `fonction` CHANGE  `isAdminLivreOr`  `isAdminLivreOr` TINYINT( 1 ) NOT NULL DEFAULT  '0';
 ALTER TABLE  `news` CHANGE  `id_Type_d_actualite`  `id_Type_d_actualite` INT( 11 ) NOT NULL DEFAULT  '1';
+ALTER TABLE  `oubliemotdepassesecurite` ADD UNIQUE (
+`securite`
+);

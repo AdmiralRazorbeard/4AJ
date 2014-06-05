@@ -4,18 +4,36 @@ function resetPassword($mail)
 {	
 	$mysqli = connection();
 	$mail = $mysqli->real_escape_string($mail);
-	$tmp = run('SELECT COUNT(*) as nbre FROM membre WHERE mail="'.$mail.'"')->fetch_object();
-	if($tmp->nbre != 1)
+	$temp = run('SELECT COUNT(*) as nbre, id FROM membre WHERE mail="'.$mail.'"')->fetch_object();
+	if($temp->nbre != 1)
 	{
 		return false;
 	}
-	$motDePasse = motDePasse(10);
-	sendMail($mail, $motDePasse);
-	run('UPDATE membre SET password="'.md5($motDePasse).'" WHERE mail="'.$mail.'"');
+	cleanOublierPassword();
+	$resetPassword = motDePasse(50);
+	// Vérifie que la clé de sécurité n'a pas déjà été utiliser
+	$tmp = run('SELECT COUNT(*) as nbre, id FROM oubliemotdepassesecurite WHERE securite = "'.$resetPassword.'"')->fetch_object();
+	while($tmp->nbre == 1)
+	{
+		$resetPassword = motDePasse(50);
+		$tmp = run('SELECT COUNT(*) as nbre, id FROM oubliemotdepassesecurite WHERE securite = "'.$resetPassword.'"')->fetch_object();
+	}
+	sendMail($mail, $resetPassword);
+	run('INSERT INTO oubliemotdepassesecurite(id_membre, securite) VALUES('.$temp->id.', "'.$resetPassword.'")');
 	return true;
-
 }
-function sendMail($mail, $motDePasse)
+function cleanOublierPassword()
+// Nettoie la table oublier password pour tout les clés de sécurité datant de plus de 2 heures
+{
+	$now = strtotime("now");
+	$tmp = run('SELECT id FROM oubliemotdepassesecurite 
+		 		WHERE UNIX_TIMESTAMP(CurrentTimestamp) < "'.strtotime("-2 hours").'"');
+	while($donnees = $tmp->fetch_object())
+	{
+		run('DELETE FROM oubliemotdepassesecurite WHERE id='.$donnees->id);
+	}
+}
+function sendMail($mail, $resetPassword)
 {
 	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
 	{
@@ -27,11 +45,10 @@ function sendMail($mail, $motDePasse)
 	}
 	//=====Déclaration des messages au format texte et au format HTML.
 	$message_txt = "R&eacute;initialisation du mot de passe pour 4AJ.fr
-	Voici le nouveau mot de passe, vous pouvez le changer &agrave; tout moment en le r&eacute;glant dans vos param&egrave;tres.
-	Mot de passe : ".$motDePasse;	
+	Pour r&eacute;initialiser votre mot de passe, veuillez suivre ce lien : http://4AJ.fr/index.php?section=findPassword&id=".$resetPassword."";	
 	$message_html = "R&eacute;initialisation du mot de passe pour 4AJ.fr<br />
-	Voici le nouveau mot de passe, vous pouvez le changer &agrave; tout moment en le r&eacute;glant dans vos param&egrave;tres.<br />
-	Mot de passe : ".$motDePasse;
+	Pour r&eacute;initialiser votre mot de passe, veuillez suivre ce lien : <a href='http://4AJ.fr/index.php?section=findPassword&id=".$resetPassword."'>http://4AJ.fr/index.php?section=findPassword&id=".$resetPassword."</a>";	
+
 	//==========
 	 
 	//=====Création de la boundary
