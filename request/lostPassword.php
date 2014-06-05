@@ -9,15 +9,15 @@ function resetPassword($mail)
 	{
 		return false;
 	}
-	/*cleanOublierPassword();*/
+	cleanOublierPassword();
 	$resetPassword = motDePasse(50);
 	// Vérifie que la clé de sécurité n'a pas déjà été utiliser
-/*	$tmp = run('SELECT COUNT(*) as nbre, id FROM oubliemotdepassesecurite WHERE securite = "'.$resetPassword.'"')->fetch_object();
+	$tmp = run('SELECT COUNT(*) as nbre, id FROM oubliemotdepassesecurite WHERE securite = "'.$resetPassword.'"')->fetch_object();
 	while($tmp->nbre == 1)
 	{
 		$resetPassword = motDePasse(50);
 		$tmp = run('SELECT COUNT(*) as nbre, id FROM oubliemotdepassesecurite WHERE securite = "'.$resetPassword.'"')->fetch_object();
-	}*/
+	}
 	sendMail($mail, $resetPassword);
 	run('INSERT INTO oubliemotdepassesecurite(id_membre, securite) VALUES('.$temp->id.', "'.$resetPassword.'")');
 	return true;
