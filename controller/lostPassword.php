@@ -5,11 +5,11 @@ if(!empty($_POST['email']))
 	$result = resetPassword($_POST['email']);	/* Envoie le mail si il y a un membre avec ce mail et retourne true, sinon return false */
 	if(!$result)
 	{
-		$message = "Le mail ne correspond a aucun membre.";
+		$message = "Le mail ne correspond à aucun membre.";
 	}
 	else
 	{
-		$message = "Le mot de passe a été réinitialisé, vous retrouverez le nouveau dans votre boite mail.";
+		$message = "Un mail vous a été envoyé.";
 	}
 }
 
