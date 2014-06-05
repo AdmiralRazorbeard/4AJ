@@ -3,6 +3,7 @@ include_once '/view/includes/header.php';
 ?>
 			<div class="contentWrapper">
 				<h1>Gestion des actualités </h1>
+				<em><a href="../index.php?section=actualites">Retourner à la section: actualités</a></em>
 				<fieldset id="actualite">
 					<form method="post">
 						<div class="form-field">
