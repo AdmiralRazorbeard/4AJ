@@ -1,10 +1,9 @@
-<?php
+<?php 
 include_once '/view/includes/header.php';
 include_once '/view/includes/submenuPlateformeLogement.php';
 ?>
-	<body>
-		<div id="mainWrapper">
-			<div class="contentWrapper">
+			<div class="contentWrapper plateformeLogement element edition_mode">
+					<?php pageDynamique('informer_plateformeLogement'); ?>
 			</div>
 		</div>		
 	</body>

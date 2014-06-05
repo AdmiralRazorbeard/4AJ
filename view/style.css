@@ -34,16 +34,16 @@ nav li {
 #item0:hover{background-color:#6c5981;}#item1:hover,#s_item1 a:hover{background-color:#7ec4f4;}#item2:hover{background-color:#fdec8b;}#item3:hover{background-color:#d4e752;}#item4:hover, #s_item4 a:hover{background-color:#eca25f;}#item5:hover, #s_item5 a:hover{background-color:#a90008;}#item6:hover, #s_item6 a:hover{background-color:#b0757a;}
 #active_item0{background-color:#6c5981;}#active_item1{background-color:#7ec4f4;}#active_item2{background-color:#fdec8b;}#active_item3{background-color:#d4e752;}#active_item4{background-color:#eca25f;}#active_item5{background-color:#a90008;}#active_item6{background-color:#b0757a;}
 /*  Couleur des items du menu, hover ou non, actif ou non */
-#submenu_item{background-color:#f7f7f7;color:#4b4b4b;}
+#submenu_item{background-color:#f7f7f7;color:#177f80;}
 #submenu_item:hover{
-background-color:#646464;color:#f7f7f7;
+background-color:#177f80;color:#f7f7f7;
 -webkit-transition: all 0.3s ease-in-out;
 -moz-transition: all 0.3s ease-in-out;
 -ms-transition: all 0.3s ease-in-out;
 -o-transition: all 0.3s ease-in-out;
 transition: all 0.3s ease-in-out;
 }
-#active_submenu_item{background-color:#646464;color:#f7f7f7;}
+#active_submenu_item{background-color:#177f80;color:#f7f7f7;}
 /*  Couleur des items du sous-menu, hover ou non, actif ou non */
 .last_item{
     border-radius: 0px 0px 6px 6px;
@@ -68,7 +68,7 @@ nav li ul {
     width:153px;
     text-decoration:none;
     padding:10px 5px 10px 5px;
-    border-bottom:1px solid #646464;
+    border-bottom:1px solid #177f80;
     font-weight: bold;
     font-style:normal;
     font-size:13px;
@@ -180,6 +180,7 @@ animation:siteslide 45s ease 0s infinite;
 60%,83% {margin-left:-1960px;}  
 100%{margin-left:-2940px;}
 }
+/*  ----Les boites adresses-----  */
 .boxAdresse{
     position: absolute;
     z-index: 1;
@@ -284,7 +285,8 @@ animation:animationBoxThree 45s ease 0s infinite;
 /*  --- CONTENU --  */
 /*  --------------  */
 .contentWrapper{   
-    padding: 35px 20px 5px 20px;;
+    padding: 35px 20px 20px 20px;
+    word-wrap: break-word;
 }
 .element h1,.element .a_title{
     font-size: 20px;
@@ -310,10 +312,12 @@ animation:animationBoxThree 45s ease 0s infinite;
 .association h1{
     color:#2797e8;
     text-shadow:1px 1px 0.6px #103b5a;
+    margin: 20px 0px -10px 0px;
 }
 .association h3{
     color:#003c66;
     font-size: 17px;
+    margin: 0px 0px -20px 0px;
 }
 /*  --- Propriétés de la section actualités --  */
 .actualites label{
@@ -323,16 +327,17 @@ animation:animationBoxThree 45s ease 0s infinite;
 .actualites h2{
     color:#f8d617;
     text-shadow:1px 1px 0.6px #5a4c00;
+    margin: 20px 0px -10px 0px;
 }
 .actualites h3{
     color:#583e00;
     font-size: 17px;
+    margin: 0px 0px -20px 0px;    
 }
 .actualites .a_info {
     font-size: 12px;
     font-style: italic;
     color: #B1B1B1;
-    margin-top: -20px;
 }
 .actualites .a_content {
     padding-bottom: 10px;
@@ -342,10 +347,12 @@ animation:animationBoxThree 45s ease 0s infinite;
 .liensUtiles h1{
     color:#a4b819;
     text-shadow:1px 1px 0.6px #103b5a;
+    margin: 20px 0px -10px 0px;
 }
 .liensUtiles h3{
     color:#334405;
     font-size: 17px;
+    margin: 0px 0px -20px 0px;
 }
 .liensUtiles p{
     position:relative;
@@ -355,19 +362,23 @@ animation:animationBoxThree 45s ease 0s infinite;
 .vieEnFoyer h1{
     color:#e3944e;
     text-shadow:1px 1px 0.6px #3b2714;
+    margin: 20px 0px -10px 0px;
 }
 .vieEnFoyer h3{
     color:#5a3a1d;
     font-size: 17px;
+    margin: 0px 0px -20px 0px;
 }
 /*  --- Propriétés de la section devenirResidant --  */
 .devenirResidant h1{
     color:#990007;
     text-shadow:1px 1px 0.6px #350003;
+    margin: 20px 0px -10px 0px;
 }
 .devenirResidant h3{
     color:#5a0004;
     font-size: 17px;
+    margin: 0px 0px -20px 0px;
 }
 /*  --- Propriétés de la section livredor --  */
 #img_livredor{
@@ -411,10 +422,23 @@ animation:animationBoxThree 45s ease 0s infinite;
 .contact h1{
     color:#9c5b61;
     text-shadow:1px 1px 0.6px #2c1719;
+    margin: 20px 0px -10px 0px;
 }
 .contact h3{
     color:#4e2a2d;
     font-size: 17px;
+    margin: 0px 0px -20px 0px;
+}
+/*  --- Propriétés de la section plateformeLogement --  */
+.plateformeLogement h1{
+    color:#177f80;
+    text-shadow:1px 1px 0.6px #052020;
+    margin: 20px 0px -10px 0px;
+}
+.plateformeLogement h3{
+    color:#0e5152;
+    font-size: 17px;
+    margin: 0px 0px -20px 0px;
 }
 /*  --- Propriétés de la section parameters --  */
 .parameters fieldset{

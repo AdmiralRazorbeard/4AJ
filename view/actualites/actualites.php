@@ -38,7 +38,7 @@
 								 <?php echo $value['timestamp']; ?>
 							</p>
 							<?php if($admin) { ?><a href="admin/index.php?section=modifierNews&amp;id=<?php echo $key; ?>">Modifier</a>,
-							<a href="admin/index.php?section=supprimerNews&amp;id=<?php echo $key; ?>">Suprimmer</a><?php } ?>
+							<a href="admin/index.php?section=supprimerNews&amp;id=<?php echo $key; ?>">Supprimer</a><?php } ?>
 							<p class="a_content" >
 								<?php echo regexTextBox($value['contenu']); ?>
 							</p>
