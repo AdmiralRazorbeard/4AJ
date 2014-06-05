@@ -12,7 +12,7 @@ include_once '/view/includes/header.php';
 						</div>
 						<div class="form-field-contenu">
 						<p id="p_form-field-contenu">Contenu:</p>
-						<?php toolBox('contenu', $infoNews['contenu']); ?>
+						<?php toolBox('actualite', $infoNews['contenu']); ?>
 						<input type="submit">
 						</div>
 					</form>
