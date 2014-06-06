@@ -81,6 +81,13 @@ CREATE TABLE livreOr(
 )ENGINE=InnoDB;
 
 
+CREATE TABLE nombreVisiteur(
+        id     int (11) Auto_increment  NOT NULL ,
+        nombre Int ,
+        PRIMARY KEY (id )
+)ENGINE=InnoDB;
+
+
 CREATE TABLE InfoLivreOrActualite(
         id                           int (11) Auto_increment  NOT NULL ,
         nombreBilletLivreOrParPage   Int ,
@@ -154,6 +161,5 @@ ALTER TABLE  `livreor` CHANGE  `timestampLivreOr`  `timestampLivreOr` TIMESTAMP 
 ALTER TABLE  `fonction` CHANGE  `isAdminActualite`  `isAdminActualite` TINYINT( 1 ) NOT NULL DEFAULT  '0';
 ALTER TABLE  `fonction` CHANGE  `isAdminLivreOr`  `isAdminLivreOr` TINYINT( 1 ) NOT NULL DEFAULT  '0';
 ALTER TABLE  `news` CHANGE  `id_Type_d_actualite`  `id_Type_d_actualite` INT( 11 ) NOT NULL DEFAULT  '1';
-ALTER TABLE  `oubliemotdepassesecurite` ADD UNIQUE (
-`securite`
-);
+ALTER TABLE  `oubliemotdepassesecurite` ADD UNIQUE (`securite`);
+INSERT INTO `4aj`.`nombrevisiteur` (`id`, `nombre`) VALUES (NULL, '1');
