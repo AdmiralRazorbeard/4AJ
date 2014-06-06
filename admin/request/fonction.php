@@ -2,12 +2,11 @@
 function allFonction()
 // Retourne toutes les fonctions
 {
-	$tmp = run('SELECT id, nomFonctionFR as nom, isAccesJeunes, isAdminLivreOr, isAdminActualite, isAdminRepas, autorisationMangerMidi, autorisationMangerSoir FROM fonction');
+	$tmp = run('SELECT id, nomFonctionFR as nom, isAdminLivreOr, isAdminActualite, isAdminRepas, autorisationMangerMidi, autorisationMangerSoir FROM fonction');
 	while($donnees = $tmp->fetch_object())
 	{
 		$fonction[$donnees->id]['id'] 						= $donnees->id;
 		$fonction[$donnees->id]['nom'] 						= htmlspecialchars($donnees->nom);
-		$fonction[$donnees->id]['isAccesJeunes'] 			= $donnees->isAccesJeunes;
 		$fonction[$donnees->id]['isAdminLivreOr'] 			= $donnees->isAdminLivreOr;
 		$fonction[$donnees->id]['isAdminActualite'] 		= $donnees->isAdminActualite;
 		$fonction[$donnees->id]['isAdminRepas'] 			= $donnees->isAdminRepas;
@@ -38,11 +37,7 @@ function isAdminFonction()
 function changerPouvoir($type, $id)
 {
 	/* En fonction du pouvoir, inverse (true => false, false => true)*/
-	switch ($type) {
-		case '1':
-			$type = 'isAccesJeunes';
-			break;
-		
+	switch ($type) {		
 		case '2':
 			$type = 'isAdminLivreOr';
 			break;

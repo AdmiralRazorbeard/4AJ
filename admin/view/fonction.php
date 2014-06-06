@@ -18,9 +18,6 @@ include_once '/view/includes/header.php';
 							Nom Fonction
 						</th>
 						<th>
-							Accès Partie Jeune
-						</th>
-						<th>
 							Admin Livre Or
 						</th>
 						<th>
@@ -48,8 +45,6 @@ include_once '/view/includes/header.php';
 							</div>
 						</td>	
 						<!-- Création du tableau affichant, ça affiche la couleur, et pouvant être cliqué en utilisant la fonction changerFonction -->
-						<td onclick="changerFonction(1, <?php echo $value['id'] ?>);" <?php if($value['isAccesJeunes']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
-						</td>
 						<td onclick="changerFonction(2, <?php echo $value['id'] ?>);" <?php if($value['isAdminLivreOr']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
 						</td>
 						<td onclick="changerFonction(3, <?php echo $value['id'] ?>);" <?php if($value['isAdminActualite']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
