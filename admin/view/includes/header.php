@@ -38,7 +38,7 @@
 			<ul>
 				<li><a <?php if (openSection('item1')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=gestionMembres">Gestion des membres</a></li>
 				<li><a <?php if (openSection('item2')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=fonction">Fonction des membres</a></li>
-				<li><a <?php if (openSection('item3')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=actualite">Gestion des actualités</a></li>
+				<li><a <?php if (openSection('item3')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=actualite">Nouvelle actualité</a></li>
 				<li><a <?php if (openSection('item4')){?><?php if(nouveauLivreOrAConfirmer()){ ?>id="active_menu_item2"<?php } else {?>id="active_menu_item"<?php } ?><?php } else { ?><?php if(nouveauLivreOrAConfirmer()){ ?>id="menu_item2"<?php } else {?>id="menu_item"<?php } ?><?php } ?> href="index.php?section=livreOrAConfirmer">Livre d'or à confirmer</a></li>
 				<li><a <?php if (openSection('item5')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=gestionRepas">Inscrits aux repas</a></li>
 				<li><a <?php if (openSection('item6')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="#">Item6</a></li>		

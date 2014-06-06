@@ -133,8 +133,11 @@ function preview(textareaId, previewDiv) {
 			<option value="tgros">Très gros</option>
 			<option value="ttgros">Très très gros</option>
 		</select>
-		<?php if($id != 'actualite')
+		<?php if($id == 'actualite' || $id =='modifierNews')
+		//Si la section est en rapport avec les actualités (création ou modification), alors on ne peut pas inserer de titre
 		{ ?>
+		<input type="button" value="Sous-titre" onclick="insertTag('<stitre>', '</stitre>', 'contenu');">
+		<?php } else {?>
 		<input type="button" value="Titre" onclick="insertTag('<titre>', '</titre>', 'contenu');">
 		<input type="button" value="Sous-titre" onclick="insertTag('<stitre>', '</stitre>', 'contenu');">
 		<?php } ?>
@@ -144,7 +147,7 @@ function preview(textareaId, previewDiv) {
 		<label for="previsualisation">Prévisualisation en temps réel</label>
 	</p>
 </div>
-<textarea name="<?php echo $id; ?>" id="<?php echo $id; ?>" onkeyup="preview(this, 'contenu_previsualisation');" onselect="preview(this, 'contenu_previsualisation');">
+<textarea name="<?php echo $id; ?>" id="contenu" onkeyup="preview(this, 'contenu_previsualisation');" onselect="preview(this, 'contenu_previsualisation');">
 <?php echo $contenu; ?>
 </textarea><br />
 <div id="contenu_previsualisation"></div>

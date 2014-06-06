@@ -20,6 +20,5 @@ if(empty($infoNews))
 	// Vérifie que info n'est pas vide
 	{ header('location:../index.php?section=actualites'); }
 
-
 include_once 'view/modifierNews.php'
 ?>
