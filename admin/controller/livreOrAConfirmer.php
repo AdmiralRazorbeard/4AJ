@@ -3,7 +3,7 @@ include_once 'request/livreOrAConfirmer.php';
 if(!isAdminLivreOr())
 { 
 	$_SESSION['message'] = "Vous n'avez pas accès à cette partie du forum";
-	header('location:../index.php'); 
+	header('location:index.php?section=main'); 
 }
 if(!empty($_GET['confirm']) && is_numeric($_GET['confirm']))
 {
