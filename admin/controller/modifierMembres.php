@@ -20,11 +20,16 @@ if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && 
 	{
 		$adresse = $mysqli->real_escape_string($_POST['adresse']);
 	}
-	if(!empty($_POST['dateNaissance']))
+	if(!empty($_POST['dateNaissance']) && preg_match('#^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}$#', $_POST['dateNaissance']))
 	{
-		$date = $mysqli->real_escape_string($_POST['dateNaissance']);
-		$date = explode('/', $date);
-		$dateNaissance = $date[2].'-'.$date[1].'-'.$date[0];
+		// Remplace les / en . pour correspondre au format français jj-mm-yyyy
+		$date = preg_replace('#^([0-9]{1,2})/([0-9]{1,2})/([0-9]{4})$#', '$1.$2.$3', $_POST['dateNaissance']);
+		if(date('j.n.Y', strtotime($date)) == $date || date('d.m.Y', strtotime($date)) == $date || date('j.m.Y', strtotime($date)) == $date || date('d.n.Y', strtotime($date)) == $date)
+		{
+
+			$date = explode('.', $date);
+			$dateNaissance = $date[2].'-'.$date[1].'-'.$date[0];
+		}
 	}
 	if(!empty($_POST['telFixe']))
 	{

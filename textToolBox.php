@@ -11,16 +11,22 @@ function pageDynamique($page)
 	}
 	$contenu = run('SELECT contenu FROM informationpage WHERE page="'.$page.'"')->fetch_object();
 	if(!empty($_SESSION['superAdminOn']) && isSuperAdmin())
-	{ ?>
+	{ 
+			// Evite d'avoir une valeur vide pour ensuite l'afficher.
+		if(empty($contenu->contenu)) { $contenu = ""; }
+		else { $contenu = $contenu->contenu; } ?>
 		<form method="post">
-			<?php toolBox('contenu', $contenu->contenu); ?><br />
+			<?php toolBox('contenu', $contenu); ?><br />
 			<input type="submit" />
 		</form>
 <?php
 	}
 	else
 	{	
-		echo regexTextBox($contenu->contenu); 
+		if(!empty($contenu->contenu))
+		{
+			echo regexTextBox($contenu->contenu); 
+		}
 	}
 ?>
 <?php

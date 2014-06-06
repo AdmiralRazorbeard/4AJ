@@ -51,9 +51,9 @@ function boutonReserver($numero, $mois, $annee, $midi, $residence)
 		}
 		if($tmp->allowed >= 1)
 		{
-			// Vérification que le jour n'est pas verrouiller
+			// Vérification que le jour n'est pas verrouillé
 			$tmp = run('SELECT COUNT(*) as nbre 
-						FROM verrouillerjourrepas 
+						FROM verouillerjourrepas 
 						WHERE dateVerouiller="'.$annee.'-'.$mois.'-'.$numero.'" 
 						AND midi = '.$midi.' 
 						AND residence = '.$residence)->fetch_object();

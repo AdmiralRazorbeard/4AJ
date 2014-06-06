@@ -4,19 +4,19 @@
 
 
 CREATE TABLE membre(
-	id            int (11) Auto_increment  NOT NULL ,
-	nomMembre     Varchar (255) ,
-	prenomMembre  Varchar (255) ,
-	adresse       Varchar (255) ,
-	dateNaissance Date ,
-	telFixe       Varchar (12) ,
-	telPortable   Varchar (12) ,
-	mail          Varchar (255) ,
-	password      Varchar (255) ,
-    recevoirMailQuandNews Bool ,
-	isSuperAdmin  Bool ,
-	PRIMARY KEY (id ) ,
-	UNIQUE (mail )
+        id                    int (11) Auto_increment  NOT NULL ,
+        nomMembre             Varchar (255) ,
+        prenomMembre          Varchar (255) ,
+        adresse               Varchar (255) ,
+        dateNaissance         Date ,
+        telFixe               Int ,
+        telPortable           Int ,
+        mail                  Varchar (255) ,
+        password              Varchar (255) ,
+        recevoirMailQuandNews Bool ,
+        isSuperAdmin          Bool ,
+        PRIMARY KEY (id ) ,
+        UNIQUE (mail )
 )ENGINE=InnoDB;
 
 
@@ -27,9 +27,9 @@ CREATE TABLE fonction(
 	isAccesJeunes    Bool ,
 	isAdminLivreOr   Bool ,
 	isAdminActualite Bool ,
-	isAdminRepas	 Bool ,q
+	isAdminRepas	 Bool ,
 	autorisationMangerMidi Bool,
-	autorisationMangerSoir Bool
+	autorisationMangerSoir Bool,
 	PRIMARY KEY (id )
 )ENGINE=InnoDB;
 
@@ -142,6 +142,7 @@ CREATE TABLE oublieMotDePasseSecurite(
 
 ALTER TABLE oublieMotDePasseSecurite ADD CONSTRAINT FK_oublieMotDePasseSecurite_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
 ALTER TABLE news ADD CONSTRAINT FK_news_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
+ALTER TABLE  `news` CHANGE  `id_Type_d_actualite`  `id_Type_d_actualite` INT( 11 ) NOT NULL DEFAULT  '1';
 ALTER TABLE news ADD CONSTRAINT FK_news_id_Type_d_actualite FOREIGN KEY (id_Type_d_actualite) REFERENCES Type_d_actualite(id);
 ALTER TABLE membreFonction ADD CONSTRAINT FK_membreFonction_id FOREIGN KEY (id) REFERENCES membre(id);
 ALTER TABLE membreFonction ADD CONSTRAINT FK_membreFonction_id_fonction FOREIGN KEY (id_fonction) REFERENCES fonction(id);
@@ -160,6 +161,26 @@ INSERT INTO `Type_d_actualite`(`nom`) VALUES ("ActualitÃ©");
 ALTER TABLE  `livreor` CHANGE  `timestampLivreOr`  `timestampLivreOr` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
 ALTER TABLE  `fonction` CHANGE  `isAdminActualite`  `isAdminActualite` TINYINT( 1 ) NOT NULL DEFAULT  '0';
 ALTER TABLE  `fonction` CHANGE  `isAdminLivreOr`  `isAdminLivreOr` TINYINT( 1 ) NOT NULL DEFAULT  '0';
-ALTER TABLE  `news` CHANGE  `id_Type_d_actualite`  `id_Type_d_actualite` INT( 11 ) NOT NULL DEFAULT  '1';
 ALTER TABLE  `oubliemotdepassesecurite` ADD UNIQUE (`securite`);
 INSERT INTO `4aj`.`nombrevisiteur` (`id`, `nombre`) VALUES (NULL, '1');
+INSERT INTO `informationpage` (`id`, `page`, `contenu`) VALUES
+(1, 'association', ''),
+(2, 'quiSommesNous', ''),
+(3, 'PlateformeLogement', ''),
+(4, '3FJT', ''),
+(5, 'liensUtiles', ''),
+(6, 'vieEnFoyer', ''),
+(7, 'services', ''),
+(8, 'devenirResidant', ''),
+(9, 'conditions', ''),
+(10, 'logements', ''),
+(11, 'contact', ''),
+(12, 'faq', ''),
+(13, 'memento', ''),
+(14, 'faireUnDon', ''),
+(15, 'accueillir_plateformeLogement', ''),
+(16, 'informer_plateformeLogement', ''),
+(17, 'atelier_plateformeLogement', ''),
+(18, 'accompagner_plateformeLogement', ''),
+(19, 'documenter_plateformeLogement', ''),
+(20, 'contact_plateformeLogement', '');
