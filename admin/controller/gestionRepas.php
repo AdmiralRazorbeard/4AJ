@@ -1,7 +1,7 @@
 <?php
 include_once 'request/gestionRepas.php';
 if(!isAdminRepas())
-{ header('location:index.php?section=main'); }
+{ header('location:index.php?section=error'); }
 #######################
 	/*	Vérification pour changer de semaine, si on a changer de semaine, on redirige pour l'avoir en get */
 if(!empty($_POST['semaineClairLogis']) && is_numeric($_POST['semaineClairLogis']))

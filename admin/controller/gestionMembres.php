@@ -2,8 +2,7 @@
 include_once 'request/gestionMembres.php';
 if(!isAdminMembres())
 {
-	$_SESSION['message'] = 'Vous n\'êtes pas autorisé à accéder à cette partie.';
-	header('location:index.php?section=main');
+	header('location:index.php?section=error');
 }
 $orderBy="nomMembre";
 $selected=1;

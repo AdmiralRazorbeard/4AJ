@@ -299,6 +299,11 @@ h1{
 .livreOr p{
     margin-top: -20px;
 }
+/*  --- Propriétés de error --  */
+.error img{
+    display: block;
+    margin: auto;
+}
 
 /*  ----------------  */
 /*  --- TOOL BOX ---  */

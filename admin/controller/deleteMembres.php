@@ -15,6 +15,6 @@ if(isAdminMembres())
 }
 else
 {
-	header('location:index.php?section=main');
+	header('location:index.php?section=error');
 }
 ?>

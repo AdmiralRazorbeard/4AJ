@@ -2,8 +2,7 @@
 include_once 'request/supprimerNews.php';
 if(!isAdminActualite())
 {
-	$_SESSION['message'] = 'Vous n\'êtes pas autorisé à accéder à cette partie du site.';
-	header('location:index.php?section=main');
+	header('location:index.php?section=error');
 }
 else
 {

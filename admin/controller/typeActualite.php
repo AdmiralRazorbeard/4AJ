@@ -5,8 +5,7 @@ if(isAdminActualite())
 { $admin = true; }
 if(!$admin)
 {	
-	$_SESSION['message'] = 'Vous n\'êtes pas autorisé à accéder à cette partie du site.';
-	header('location:index.php?section=main');
+	header('location:index.php?section=error');
 }
 if(!empty($_POST['delete']) && is_numeric($_POST['delete']))
 {

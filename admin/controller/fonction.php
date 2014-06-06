@@ -2,7 +2,7 @@
 include_once 'request/fonction.php';
 if(!isAdminFonction())
 {
-	header('location:index.php?section=main');
+	header('location:index.php?section=error');
 }
 if(!empty($_GET['type']) && !empty($_GET['id']) && is_numeric($_GET['id']) && is_numeric($_GET['type']))
 {

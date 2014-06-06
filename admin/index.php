@@ -11,6 +11,10 @@ elseif ($_GET['section'] == 'main')
 {
 	include_once('controller/main.php');
 }
+elseif ($_GET['section'] == 'error')
+{
+	include_once('controller/error.php');
+}
 elseif ($_GET['section'] == 'actualite')
 {
 	include_once('controller/actualite.php');

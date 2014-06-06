@@ -3,8 +3,7 @@ include_once 'request/modifierNews.php';
 include_once '../textToolBox.php';
 if(!isAdminActualite())
 {
-	$_SESSION['message'] = "Vous n'avez pas accès à cette page.";
-	header('location:index.php?section=main');
+	header('location:index.php?section=error');
 }
 elseif(empty($_GET['id']) || !is_numeric($_GET['id']))
 {
