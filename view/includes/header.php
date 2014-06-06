@@ -25,11 +25,11 @@
 					// Si l'utilisateur est admin
 					{ ?> 
 						<div class="connexion_inscription connexion_bold">
-							<a href="admin/index.php?section=gestionMembres">Partie administrateur</a>
+							<a href="admin/index.php?section=main">Partie administrateur</a>
 						</div>
-						<div class="connexion_inscription connexion_bold">
 							<?php if(isSuperAdmin()) { ?>
 								<!-- Si super admin, il peut passer en mode édition -->
+								<div class="connexion_inscription connexion_bold">
 								<?php if(empty($_SESSION['superAdminOn'])) { ?>
 									<a href="index.php?section=index&amp;superAdminOn=true">Mode édition</a></div> 
 								<?php } else { ?>
@@ -53,7 +53,7 @@
 				<?php
 				if(!empty($message))
 				{
-					echo '<div class="connexion_text"><em>'.$message.'</em></div>'; 
+					echo '<div class="connexion_text">'.$message.'</div>'; 
 				} ?>
 			</div>
 		</div>

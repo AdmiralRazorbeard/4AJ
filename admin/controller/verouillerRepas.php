@@ -1,6 +1,7 @@
 <?php
 include_once 'request/verouillerRepas.php';
-
+if(!isAdminRepas())
+{ header('location:index.php?section=main'); }
 ####################
 	/* Vérification si on change de semaine */
 if(!empty($_POST['semaineClairLogis']) && is_numeric($_POST['semaineClairLogis']))

@@ -2,7 +2,7 @@
 include_once 'request/modifierMembres.php';
 if(!isAdminMembres() || empty($_GET['modif']) || !is_numeric($_GET['modif']))
 {
-	header('location:index.php');
+	header('location:index.php?section=main');
 }
 
 if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && !empty($_POST['prenom']))

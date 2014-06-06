@@ -3,7 +3,15 @@ session_start();
 date_default_timezone_set('Europe/Paris');
 include_once('../request/connectionSQL.php');
 $mysqli = connection();
-if ($_GET['section'] == 'actualite')
+if (empty($_GET['section']))	
+{
+    header('location:index.php?section=main');
+}
+elseif ($_GET['section'] == 'main')
+{
+	include_once('controller/main.php');
+}
+elseif ($_GET['section'] == 'actualite')
 {
 	include_once('controller/actualite.php');
 }
