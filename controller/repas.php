@@ -1,6 +1,10 @@
 <?php
 include_once 'request/repas.php';
-
+$accesRepas = false;
+if(accesRepas())
+{
+	$accessRepas = true;
+}
 ####################
 	/* Vérification si on change de semaine */
 if(!empty($_POST['semaineClairLogis']) && is_numeric($_POST['semaineClairLogis']))
@@ -76,5 +80,4 @@ if(!empty($_GET['jour']) && is_numeric($_GET['jour']) && !empty($_GET['mois']) &
 
 include_once 'view/vieEnFoyer/repas.php';
 
-/*Regarder message Frenea ! A demander urgent !*/
 ?>
