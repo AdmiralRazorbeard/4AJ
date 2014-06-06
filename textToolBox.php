@@ -4,7 +4,10 @@ function pageDynamique($page)
 	$mysqli = connection();
 	if(!empty($_POST['contenu']) && isSuperAdmin())
 	{
-		run('UPDATE informationpage SET contenu="'.$mysqli->real_escape_string($_POST['contenu']).'" WHERE page="'.$page.'"');
+		if(strlen($_POST['contenu']) <= 64000)
+		{
+			run('UPDATE informationpage SET contenu="'.$mysqli->real_escape_string($_POST['contenu']).'" WHERE page="'.$page.'"');
+		}
 	}
 	$contenu = run('SELECT contenu FROM informationpage WHERE page="'.$page.'"')->fetch_object();
 	if(!empty($_SESSION['superAdminOn']) && isSuperAdmin())
@@ -143,7 +146,7 @@ function preview(textareaId, previewDiv) {
 		<?php } ?>
 	</p>
 	<p>
-		<input name="previsualisation" type="checkbox" id="previsualisation" value="previsualisation" />
+		<input name="previsualisation" type="checkbox" id="previsualisation" value="previsualisation" checked="checked" />
 		<label for="previsualisation">Prévisualisation en temps réel</label>
 	</p>
 </div>
