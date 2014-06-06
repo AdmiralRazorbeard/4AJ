@@ -12,7 +12,10 @@ elseif(empty($_GET['id']) || !is_numeric($_GET['id']))
 }
 if(!empty($_POST['titre']) && !empty($_POST['actualite']))
 {
-	updateNews($_GET['id'], $_POST['titre'], $_POST['actualite']);
+	if(strlen($_POST['titre']) <= 4 && strlen($_POST['actualite']) <= 64000)
+	{
+		updateNews($_GET['id'], $_POST['titre'], $_POST['actualite']);
+	}
 }
 $_GET['id'];
 $infoNews = infoNews($_GET['id']);

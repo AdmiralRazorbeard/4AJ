@@ -7,7 +7,7 @@
 						<input type="text" required size="1" placeholder="<?php echo $nbreBilletParPage; ?>" name="nbreBilletParPage" /><input type="submit" colls="2" />
 					</form>
 					<form method="post">
-						<label><b>Admin</b> : nombre total d'actualité :</label>
+						<label><b>Admin</b> : nombre total d'actualités :</label>
 						<input type="text" required size="1" placeholder="<?php echo $nbreTotalActualite; ?>" name="nbreTotalActualite" /><input type="submit" colls="2" />
 					</form>
 				<?php } ?>
@@ -45,7 +45,7 @@
 		<?php			} 
 					} 
 					else { ?>
-						<p><em>Il n'y a pas de news a affiché.</em></p>
+						<p><em>Il n'y a pas de news à afficher.</em></p>
 			<?php }?>
 
 				</div>

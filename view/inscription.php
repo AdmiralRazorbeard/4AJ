@@ -97,6 +97,7 @@
 								<input required type="password" name="password2" id="password2">
 							</p>
 							<p class="inscription_info">
+								<em>Le mot de passe doit contenir 7 caractères au minimun.</em><br>
 								<em>Les champs marqués d'un * sont obligatoires.</em>
 							</p>
 							<input type="submit">
