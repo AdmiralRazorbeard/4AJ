@@ -33,6 +33,7 @@
 			} ?>
 		</div>
 		<div id="banniere">
+			<img src="/4AJ/admin/view/graphicRessources/administration.jpg" alt="image bannière"/>
 		</div>
 		<nav id="menu">
 			<ul>
