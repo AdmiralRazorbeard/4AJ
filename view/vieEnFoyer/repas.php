@@ -47,6 +47,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 				<h1>
 					Repas
 				</h1>
+				<?php if($accessRepas) { ?> 
 				<fieldset>
 					<legend>Repas Anne Frank</legend>
 					<form method="post">
@@ -158,6 +159,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 						</tr>
 					</table>
 				</fieldset>
+				<?php } ?>
 			</div>
 		</div>
 	</body>
