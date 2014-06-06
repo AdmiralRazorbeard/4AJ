@@ -152,7 +152,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){	/*Fonction redirige
 							</td>
 							<?php 	/*Affiche les cases pour réserver ou non (ici pour le soir)*/
 							foreach ($semaineClairLogis as $key => $value) { 
-							$tmp = boutonVerrouiller($value['numero'], $value['mois'], $value['annee'], 0, 1)
+							$tmp = boutonVerrouiller($value['numero'], $value['mois'], $value['annee'], 0, 2)
 								?>
 								<td onclick="confirmerRepas(<?php echo $value['numero']; ?>, <?php echo $value['mois']; ?>, <?php echo $value['annee']; ?>, 0, 2)" <?php if($tmp == 1) { echo 'class="false"'; } else { echo 'class = "true"'; } ?>>
 									<!-- Colore en rouge si le jour est verrouiller, en vert sinon -->
