@@ -1,11 +1,11 @@
 <?php include_once '/view/includes/header.php'; ?>
+<?php include_once '/view/includes/footerfunctions.php'; ?>
 			<div>
 				<?php if(!empty($_SESSION['changerMotDePasse']))
 				{
 					echo '<em>'.$_SESSION['changerMotDePasse'].'</em>'; 
 					unset($_SESSION['changerMotDePasse']);
 				} ?>
-
 				<div id="img_index">
 
 					<!-- Gaffe, doit pas y avoir deux ids :O -->
