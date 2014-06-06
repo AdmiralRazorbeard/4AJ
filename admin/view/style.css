@@ -127,6 +127,9 @@ nav li:hover ul li {
 #connexion .connexion_inscription{
     float:right;
 }
+#banniere{
+    height:190px;
+}
 
 /*  --------------  */
 /*  --- CONTENU --  */
