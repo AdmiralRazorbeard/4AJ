@@ -33,7 +33,7 @@
 			} ?>
 		</div>
 		<div id="banniere">
-			<img src="/4AJ/admin/view/graphicRessources/administration.jpg" alt="image bannière"/>
+			<a href="index.php?section=main"><img src="/4AJ/admin/view/graphicRessources/administration.jpg" alt="image bannière"/></a>
 		</div>
 		<nav id="menu">
 			<ul>
