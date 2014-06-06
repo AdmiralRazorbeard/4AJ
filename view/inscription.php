@@ -89,6 +89,9 @@
 							</select>
 							</p>
 							<p class="form-field">
+								<label for="recevoirMail">Recevoir des newsletters : </label>
+								<input type="checkbox" name="recevoirMail" id="recevoirMail">
+							<p class="form-field">
 								<label for="password1">Mot de passe* : </label>
 								<input required type="password" name="password1" id="password1">
 							</p>

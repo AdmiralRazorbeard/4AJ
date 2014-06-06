@@ -94,7 +94,7 @@ function isAdminSomewhere()
 						WHERE membre.id = membrefonction.id 
 						AND membrefonction.id_fonction = fonction.id  
 						AND membre.mail="'.$mail.'" 
-						AND (isAdminLivreOr = 1 OR isAdminActualite=1)')->fetch_object();
+						AND (isAdminLivreOr = 1 OR isAdminActualite=1 OR isAdminRepas=1)')->fetch_object();
 		if($tmp->nbre >= 1)
 		{
 			return true;

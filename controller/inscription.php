@@ -15,6 +15,7 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		$telFixe = "NULL";
 		$telPortable = "NULL";
 		$dateNaissance = "NULL";
+		$recevoirMailQuandNews = 0;
 			// NOM
 		$nom = $mysqli->real_escape_string($_POST['nom']);
 		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['nom']))
@@ -42,7 +43,11 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 			$error ++;
 		}
 		$mail = $mysqli->real_escape_string($_POST['mail']);
-
+			// recevoirMailQuandNews
+		if(!empty($_POST['recevoirMail']))
+		{
+			$recevoirMailQuandNews = 1;
+		}
 			// PASSWORD
 		if($_POST['password1'] == $_POST['password2'])
 		{
@@ -93,7 +98,7 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		}
 		if($error == 0)
 		{
-			addMembers($nom, $prenom, $adresse, $telFixe, $telPortable, $mail, $dateNaissance, $password);
+			addMembers($nom, $prenom, $adresse, $telFixe, $telPortable, $mail, $dateNaissance, $recevoirMailQuandNews, $password);
 			$message ="<br />L'inscription est réussie, vous pouvez désormais vous connecter sur la page d'accueil<br />";
 		}
 		else
