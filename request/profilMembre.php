@@ -8,7 +8,7 @@ function formatDate($date)
 function infoMembre($mail)
 // Récupère les infos du membre
 {
-	$tmp = run('SELECT id, nomMembre, prenomMembre, adresse, dateNaissance, telFixe, telPortable FROM membre WHERE mail="'.$mail.'"'); 
+	$tmp = run('SELECT id, nomMembre, prenomMembre, adresse, dateNaissance, telFixe, telPortable, recevoirMailQuandNews FROM membre WHERE mail="'.$mail.'"'); 
 	$infoMembre = NULL;
 	while($donnees = $tmp->fetch_object())
 	{
@@ -19,6 +19,7 @@ function infoMembre($mail)
 		$infoMembre['dateNaissance'] = formatDate($donnees->dateNaissance); 
 		$infoMembre['telFixe'] = $donnees->telFixe; 
 		$infoMembre['telPortable'] = $donnees->telPortable; 
+		$infoMembre['recevoirMailQuandNews'] = $donnees->recevoirMailQuandNews;
 		$fonction = run('	SELECT id_fonction, nomFonctionFR 
 							FROM fonction,membrefonction 
 							WHERE fonction.id = membrefonction.id_fonction

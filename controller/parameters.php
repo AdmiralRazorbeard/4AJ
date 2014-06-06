@@ -1,5 +1,23 @@
 <?php
 include_once 'request/profilMembre.php';
+if(!empty($_POST['recevoirMail']))
+{
+	$recevoirMailQuandNews = false;
+	$mail = $_SESSION['mail'];
+	if(!empty($_POST['recevoirMailQuandNews']))
+	{
+		$recevoirMailQuandNews = true;
+	}
+	if($recevoirMailQuandNews)
+	{
+		run('UPDATE membre SET recevoirMailQuandNews = 1 WHERE mail="'.$mail.'"');
+	}
+	else
+	{
+		run('UPDATE membre SET recevoirMailQuandNews = 0 WHERE mail="'.$mail.'"');
+	}
+
+}
 if(isset($_POST['modification']))
 //Verification de l'utilisation du formulaire
 {

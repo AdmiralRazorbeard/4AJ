@@ -13,6 +13,7 @@ CREATE TABLE membre(
 	telPortable   Varchar (12) ,
 	mail          Varchar (255) ,
 	password      Varchar (255) ,
+    recevoirMailQuandNews Bool ,
 	isSuperAdmin  Bool ,
 	PRIMARY KEY (id ) ,
 	UNIQUE (mail )

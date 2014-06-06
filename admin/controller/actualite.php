@@ -38,6 +38,7 @@ if(!empty($_POST['titre']) && !empty($_POST['typeActualite']) && !empty($_POST['
 				run('INSERT INTO newsfonction(id, id_fonction) VALUES ('.$idLastNews.', '.$key.')');
 			}
 		}
+		envoieMail($idLastNews);
 	}
 }
 

@@ -49,6 +49,15 @@
 						<input type="submit" />
 					</fieldset>
 				</form>
+				<form method="post">
+					<fieldset>
+						<input type="hidden" name="recevoirMail" value="true"/>
+						<p>
+							<label for="recevoirMailQuandNews">Recevoir un mail lors d'une news : </label><input type="checkbox"  id="recevoirMailQuandNews" <?php if($infoMembre['recevoirMailQuandNews']) { echo 'checked'; } ?> name="recevoirMailQuandNews"> 
+						</p>
+						<input type="submit">
+					</fieldset>
+				</form>
 				<?php 	
 				if(isSuperAdmin() == false) { ?>
 				<!-- Si superAdmin: impossible de se désinscrire -->
@@ -59,7 +68,7 @@
                 	</fieldset>
             	</form>
             	<?php }	?>
-			</div>
+			</div>	
 		</div>		
 	</body>
 </html>
