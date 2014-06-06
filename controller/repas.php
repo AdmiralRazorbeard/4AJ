@@ -1,6 +1,6 @@
 <?php
 include_once 'request/repas.php';
-$accesRepas = false;
+$accessRepas = false;
 if(accesRepas())
 {
 	$accessRepas = true;
