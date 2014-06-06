@@ -41,6 +41,7 @@ if(!empty($_POST['titre']) && !empty($_POST['typeActualite']) && !empty($_POST['
 				}
 			}
 		}
+		envoieMail($idLastNews);
 	}
 }
 
