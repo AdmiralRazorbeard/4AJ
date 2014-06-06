@@ -21,7 +21,7 @@ function isAdminActualite()
 						AND fonction.isAdminActualite = 1');
 		$tmp = $tmp->fetch_object();
 		if($tmp->nbre >= 1)
-		// Ou si il a une des fonctions dont il fait parti qui est admin sur le livre d'or
+		// Ou si il a une des fonctions dont il fait parti qui est admin sur les actualites
 		{
 			return true;
 		}
