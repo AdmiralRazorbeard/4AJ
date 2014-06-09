@@ -16,7 +16,7 @@ if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && 
 	$telPortable = '';
 	$password = '0';
 	$isSuperAdmin = '0';
-	if(!empty($_POST['adresse']))
+	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254)
 	{
 		$adresse = $mysqli->real_escape_string($_POST['adresse']);
 	}
@@ -47,7 +47,7 @@ if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && 
 	}
 	if(!empty($_POST['password']))
 	{
-		if(strlen($_POST['password']) >= 7)
+		if(strlen($_POST['password']) >= 7 && strlen($_POST['password']) <= 100)
 		{
 			$password = md5($_POST['password']);
 		}

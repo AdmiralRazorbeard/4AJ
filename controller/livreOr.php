@@ -11,7 +11,10 @@ if($admin && !empty($_GET['delete']) && is_numeric($_GET['delete']))
 	// Changer le nombre de billet par page
 if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBilletParPage']))
 {
-	newNombreBilletParPage(intval($_POST['nbreBilletParPage']));
+	if($_POST['nbreBilletParPage']>=1 && $_POST['nbreBilletParPage']< 200)
+	{
+		newNombreBilletParPage(intval($_POST['nbreBilletParPage']));
+	}
 }
 
 	// Ajouter un nouveau billet
@@ -27,7 +30,6 @@ if(!empty($_POST['nom']) && !empty($_POST['contenu']))
 			$email = $mysqli->real_escape_string($_POST['mail']);
 		}
 		addLivreOrAConfirmer($nom,$email,$contenu);
-		$_SESSION['confirm'] = "Votre message a bien été envoyé, il sera affiché une fois confirmé par un administrateur.";
 	}
 }
 $nbreBilletParPage = returnNombreBilletParPage();

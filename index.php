@@ -3,7 +3,7 @@ session_start();
 date_default_timezone_set('Europe/Paris');
 include_once('request/connectionSQL.php');
 $mysqli = connection();
-
+//Ce fichier permet de gerer la section à afficher en appellant ensuite le controleur
 if(isset($_GET['typeActualite']) && empty($_GET['section']))
 // Au cas où on vient d'actualite
 {

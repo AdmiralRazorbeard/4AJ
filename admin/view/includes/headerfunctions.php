@@ -52,11 +52,11 @@ function openSection($page)
 if(isConnected()) 
 // Pour se déconnecter
 {
-	if(!empty($_GET['dislog']) && $_GET['dislog'] == true)
+	if(!empty($_GET['dislog']) && $_GET['dislog'] == 'true')
 	{	
 		unset($_SESSION['mail']);
 		unset($_SESSION['log']);
-		$_SESSION['message'] = "Vous êtes déconnecté.";
+		unset($_SESSION['superAdminOn']);
 		header('location:index.php?section='.$_GET['section']);
 	} 
 }

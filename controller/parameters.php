@@ -29,7 +29,7 @@ if(isset($_POST['modification']))
 	$newPassword = getPassword($mail);
 	//récupération du mot de passe de l'utilisateur
 	$messageMdp = '';
-	if(!empty($_POST['adresse']))
+	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254)
 	{
 		$adresse = $mysqli->real_escape_string($_POST['adresse']);
 	}
@@ -49,7 +49,7 @@ if(isset($_POST['modification']))
 	}
 	if((!empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['password3'])) && ((md5($_POST['password1']) == $newPassword) && ($_POST['password2'] == $_POST['password3'])))
 	{
-		if(strlen($_POST['password2']) > 6)
+		if(strlen($_POST['password2']) > 6 && strlen($_POST['password2']) <= 100)
 		{
 			$newPassword = md5($_POST['password2']);
 			$messageMdp ="Le mot de passe a été modifié avec succès.";

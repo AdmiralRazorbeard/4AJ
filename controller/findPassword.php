@@ -31,7 +31,7 @@ if(!empty($_POST['password']) || !empty($_POST['securite']))
 		if(strlen($_POST['password']) >= 6)
 		{
 			$password = md5($_POST['password']);
-			// On vérifie qu'il y a bien une clé de sécurité comme ça
+			// On vérifie qu'il y a bien une clé de sécurité qui correspond dans la table
 			$nbre = run('SELECT COUNT(*) as nbre FROM oubliemotdepassesecurite WHERE securite="'.$securite.'"')->fetch_object();
 			if($nbre->nbre == 1)
 			{
@@ -45,7 +45,7 @@ if(!empty($_POST['password']) || !empty($_POST['securite']))
 					run('UPDATE membre SET password="'.$password.'" WHERE id='.$idMembre->id_membre);
 					// On supprime l'entrée dans oubliemotdepassesecurite
 					run('DELETE FROM oubliemotdepassesecurite WHERE securite="'.$securite.'"');
-					$_SESSION['changerMotDePasse'] = "Le mot de passe a bien été modifier.";
+					$_SESSION['changerMotDePasse'] = "Le mot de passe a bien été modifié.";
 					header('location:index.php');
 				}
 			}

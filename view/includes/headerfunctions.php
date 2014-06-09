@@ -140,12 +140,11 @@ if(!empty($_SESSION['superAdminOn']))
 if(isConnected()) 
 // Pour se déconnecter
 {
-	if(!empty($_GET['dislog']) && $_GET['dislog'] == true)
+	if(!empty($_GET['dislog']) && $_GET['dislog'] == 'true')
 	{	
 		unset($_SESSION['mail']);
 		unset($_SESSION['log']);
 		unset($_SESSION['superAdminOn']);
-		$_SESSION['message'] = "Vous êtes déconnecté.";
 		header('location:index.php?section='.$_GET['section']);
 	} 
 }
@@ -154,7 +153,7 @@ if(!empty($_POST['mail']) && !empty($_POST['password']))
 //Connexion
 {
 	$mail = $mysqli->real_escape_string($_POST['mail']); 
-	$password = md5($_POST['password']);
+	$password = md5($mysqli->real_escape_string($_POST['password']));
 	$nbreMembre = countMembers($mail, $password);	
 	// Count membre retourne 1 si valide
 	// 1,5 si le mail est valide mais pas le password

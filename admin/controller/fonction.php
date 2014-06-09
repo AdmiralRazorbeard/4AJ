@@ -31,13 +31,13 @@ if(!empty($_GET['fonction']) && is_numeric($_GET['fonction']))
 {
 	if(!empty($_GET['supprimerMembre']) && is_numeric($_GET['supprimerMembre']))
 		/* Si en plus d'avoir choisi une fonction, il choisit une membre, 
-		il enlève le membre de la fonciton associé */
+		il enlève le membre de la fonction associée */
 	{
 		supprimerFonctionMembre($_GET['supprimerMembre'], $_GET['fonction']);
 		header('location:index.php?section=fonction&fonction='.$_GET['fonction']);
 	}
 	$allMembreIn = allMembre($_GET['fonction']);
-	// On récupère la liste des membres de la fonciton
+	// On récupère la liste des membres de la fonction
 	$allMembreNotInFonction = allMembreNotIn($_GET['fonction']);
 	// On récupère ici la liste de tous les membres ne faisant pas parti de la fonction
 }

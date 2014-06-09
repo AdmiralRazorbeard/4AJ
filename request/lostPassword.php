@@ -11,15 +11,15 @@ function resetPassword($mail)
 	}
 	cleanOublierPassword();
 	$resetPassword = motDePasse(50);
-	// Vérifie que la clé de sécurité n'a pas déjà été utiliser
 	$tmp = run('SELECT COUNT(*) as nbre, id FROM oubliemotdepassesecurite WHERE securite = "'.$resetPassword.'"')->fetch_object();
 	while($tmp->nbre == 1)
 	{
+		// Vérifie que la clé de sécurité n'a pas déjà été utilisée
 		$resetPassword = motDePasse(50);
 		$tmp = run('SELECT COUNT(*) as nbre, id FROM oubliemotdepassesecurite WHERE securite = "'.$resetPassword.'"')->fetch_object();
 	}
-	sendMail($mail, $resetPassword);
 	run('INSERT INTO oubliemotdepassesecurite(id_membre, securite) VALUES('.$temp->id.', "'.$resetPassword.'")');
+	sendMail($mail, $resetPassword);
 	return true;
 }
 function cleanOublierPassword()
@@ -35,7 +35,8 @@ function cleanOublierPassword()
 }
 function sendMail($mail, $resetPassword)
 {
-	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
+	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail))
+	// On filtre les serveurs qui rencontrent des bogues.
 	{
 	    $passage_ligne = "\r\n";
 	}

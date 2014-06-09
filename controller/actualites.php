@@ -16,13 +16,21 @@ if(!empty($_GET['typeActualite']) && is_numeric($_GET['typeActualite']))
 	// Changer le nombre de billet par page
 if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBilletParPage']))
 {
-	newNombreBilletParPage(intval($_POST['nbreBilletParPage']));
+	if($_POST['nbreBilletParPage']>=1 && $_POST['nbreBilletParPage']< 200)
+	//une valeur négative fait crasher le site
+	{
+		newNombreBilletParPage(intval($_POST['nbreBilletParPage']));
+	}
+
 }
 
 	// Changer le nombre total d'acutalite
 if($admin && !empty($_POST['nbreTotalActualite']) && is_numeric($_POST['nbreTotalActualite']))
 {
-	newNombreTotalActualite(intval($_POST['nbreTotalActualite']));
+	if($_POST['nbreTotalActualite']>=1 && $_POST['nbreBilletParPage']< 10000)
+	{
+		newNombreTotalActualite(intval($_POST['nbreTotalActualite']));
+	}
 }
 
 	// Initialisation des actualités

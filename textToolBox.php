@@ -12,7 +12,7 @@ function pageDynamique($page)
 	$contenu = run('SELECT contenu FROM informationpage WHERE page="'.$page.'"')->fetch_object();
 	if(!empty($_SESSION['superAdminOn']) && isSuperAdmin())
 	{ 
-			// Evite d'avoir une valeur vide pour ensuite l'afficher.
+		// Evite d'avoir une valeur vide pour ensuite l'afficher sinon cela provoque une erreur
 		if(empty($contenu->contenu)) { $contenu = ""; }
 		else { $contenu = $contenu->contenu; } ?>
 		<form method="post">
