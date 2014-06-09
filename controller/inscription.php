@@ -18,7 +18,7 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		$recevoirMailQuandNews = 0;
 			// NOM
 		$nom = $mysqli->real_escape_string($_POST['nom']);
-		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['nom']) || strlen($_POST['nom']) > 100)
+		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $nom) || strlen($nom) > 100 || ctype_space($nom))
 		{
 			$errorGlobalName=true;
 			$error ++;
@@ -26,23 +26,24 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 
 			// PRENOM
 		$prenom = $mysqli->real_escape_string($_POST['prenom']);
-		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['prenom']) || strlen($_POST['prenom']) > 100)
+		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $prenom) || strlen($prenom) > 100 || ctype_space($prenom))
 		{
 			$errorGlobalName=true;
 			$error ++;
 		}
 
 			// MAIL
-		if(!preg_match("#^[a-zA-Z0-9.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $_POST['mail']) || strlen($_POST['mail']) > 100)
+		$mail = $mysqli->real_escape_string($_POST['mail']);
+		if(!preg_match("#^[a-zA-Z0-9.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $mail) || strlen($mail) > 100)
 		{
 			$error ++;
 		}
-		if (mailExist($_POST['mail']))
+		if (mailExist($mail))
 		{
 			$errorMail=true;
 			$error ++;
 		}
-		$mail = $mysqli->real_escape_string($_POST['mail']);
+
 			// recevoirMailQuandNews
 		if(!empty($_POST['recevoirMail']))
 		{
@@ -51,14 +52,14 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 			// PASSWORD
 		if($_POST['password1'] == $_POST['password2'])
 		{
-			if(strlen($_POST['password1']) <= 6 || strlen($_POST['password1']) > 100)
+			if(strlen($_POST['password1']) <= 6 || strlen($_POST['password1']) > 100 || ctype_space($_POST['password1']))
 			{
 				$errorPassword = true;
 				$error ++;
 			}
 			else
 			{ 
-				$password = md5($_POST['password1']);
+				$password = md5($mysqli->real_escape_string($_POST['password1']));
 			}
 		}
 		else
@@ -67,7 +68,7 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		}
 
 			// ADRESSE
-		if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254)
+		if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254 && !ctype_space($_POST['adresse']))
 		{
 			$adresse = $mysqli->real_escape_string($_POST['adresse']);
 		}

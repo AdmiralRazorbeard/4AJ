@@ -10,7 +10,7 @@ if(!empty($_GET['type']) && !empty($_GET['id']) && is_numeric($_GET['id']) && is
 	changerPouvoir($_GET['type'], $_GET['id']);
 	header('location:index.php?section=fonction');
 }
-if(!empty($_POST['nom']))
+if(!empty($_POST['nom']) && !ctype_space($_POST['nom']))
 {
 	// Ajout d'une fonction
 	ajouterFonction($mysqli->real_escape_string($_POST['nom']));

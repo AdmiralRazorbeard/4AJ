@@ -5,7 +5,7 @@ if(!isAdminMembres() || empty($_GET['modif']) || !is_numeric($_GET['modif']))
 	header('location:index.php?section=main');
 }
 
-if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && !empty($_POST['prenom']))
+if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && !ctype_space($_POST['nom']) && !empty($_POST['prenom']) && !ctype_space($_POST['prenom']))
 {
 	$id = $_POST['id'];
 	$nom = $mysqli->real_escape_string($_POST['nom']);
@@ -16,7 +16,7 @@ if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && 
 	$telPortable = '';
 	$password = '0';
 	$isSuperAdmin = '0';
-	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254)
+	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254 && !ctype_space($_POST['adresse']))
 	{
 		$adresse = $mysqli->real_escape_string($_POST['adresse']);
 	}
@@ -33,23 +33,23 @@ if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && 
 	}
 	if(!empty($_POST['telFixe']))
 	{
-		if(is_numeric($_POST['telFixe']))
+		if(preg_match("#^[0-9]{10,11}$#", $_POST['telFixe']))
 		{
 			$telFixe = $mysqli->real_escape_string($_POST['telFixe']);
 		}
 	}
 	if(!empty($_POST['telPortable']))
 	{
-		if(is_numeric($_POST['telPortable']))
+		if(preg_match("#^[0-9]{10,11}$#", $_POST['telPortable']))
 		{
 			$telPortable = $mysqli->real_escape_string($_POST['telPortable']);
 		}
 	}
 	if(!empty($_POST['password']))
 	{
-		if(strlen($_POST['password']) >= 7 && strlen($_POST['password']) <= 100)
+		if(strlen($_POST['password']) >= 7 && strlen($_POST['password']) <= 100 && !ctype_space($_POST['password']))
 		{
-			$password = md5($_POST['password']);
+			$password = md5($mysqli->real_escape_string($_POST['password']));
 		}
 		else
 		{

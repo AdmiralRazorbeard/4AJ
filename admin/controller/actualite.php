@@ -13,7 +13,7 @@ $nbreTypeActualite = nombreTypeActualite();
 $allFonction = allFonction();
 if(!empty($_POST['titre']) && !empty($_POST['typeActualite']) && !empty($_POST['actualite']))
 {
-	if(strlen($_POST['titre']) <= 254 && strlen($_POST['actualite']) <= 64000)
+	if(strlen($_POST['titre']) <= 254 && strlen($_POST['actualite']) <= 64000 && !ctype_space($_POST['titre']) && !ctype_space($_POST['actualite']))
 	{
 		$titre = $mysqli->real_escape_string($_POST['titre']);
 		$idTypeActualite = $mysqli->real_escape_string($_POST['typeActualite']);

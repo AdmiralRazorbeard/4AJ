@@ -8,7 +8,7 @@ if($admin && !empty($_GET['delete']) && is_numeric($_GET['delete']))
 	deleteLivreOr($_GET['delete']);
 }
 
-	// Changer le nombre de billet par page
+// Changer le nombre de billet par page
 if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBilletParPage']))
 {
 	if($_POST['nbreBilletParPage']>=1 && $_POST['nbreBilletParPage']< 200)
@@ -17,10 +17,10 @@ if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBille
 	}
 }
 
-	// Ajouter un nouveau billet
+// Ajouter un nouveau billet
 if(!empty($_POST['nom']) && !empty($_POST['contenu']))
 {
-	if(!is_numeric($_POST['nom']) && !is_numeric($_POST['contenu']) && strlen($_POST['contenu'] <= 305))
+	if(!is_numeric($_POST['nom']) && !is_numeric($_POST['contenu']) && !ctype_space($_POST['nom']) && !ctype_space($_POST['contenu']) && strlen($_POST['contenu'] <= 305))
 	{
 		$nom = $mysqli->real_escape_string($_POST['nom']);
 		$contenu = $mysqli->real_escape_string($_POST['contenu']);

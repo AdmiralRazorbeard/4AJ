@@ -13,7 +13,7 @@ if(!empty($_GET['typeActualite']) && is_numeric($_GET['typeActualite']))
 		$typeChoisi = 0;
 	}
 }
-	// Changer le nombre de billet par page
+// Changer le nombre de billet par page
 if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBilletParPage']))
 {
 	if($_POST['nbreBilletParPage']>=1 && $_POST['nbreBilletParPage']< 200)
@@ -24,7 +24,7 @@ if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBille
 
 }
 
-	// Changer le nombre total d'acutalite
+// Changer le nombre total d'acutalite
 if($admin && !empty($_POST['nbreTotalActualite']) && is_numeric($_POST['nbreTotalActualite']))
 {
 	if($_POST['nbreTotalActualite']>=1 && $_POST['nbreBilletParPage']< 10000)
@@ -33,7 +33,7 @@ if($admin && !empty($_POST['nbreTotalActualite']) && is_numeric($_POST['nbreTota
 	}
 }
 
-	// Initialisation des actualités
+// Initialisation des actualités
 $nbreBilletParPage = returnNombreBilletParPage();
 $nbreTotalActualite = returnNombreTotalActualite();
 $nbrePage = nbrePage($nbreBilletParPage, $typeChoisi);

@@ -29,7 +29,7 @@ if(isset($_POST['modification']))
 	$newPassword = getPassword($mail);
 	//récupération du mot de passe de l'utilisateur
 	$messageMdp = '';
-	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254)
+	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254 && !ctype_space($_POST['adresse']))
 	{
 		$adresse = $mysqli->real_escape_string($_POST['adresse']);
 	}
@@ -47,11 +47,11 @@ if(isset($_POST['modification']))
 			$telPortable = $mysqli->real_escape_string($_POST['telPortable']);
 		}
 	}
-	if((!empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['password3'])) && ((md5($_POST['password1']) == $newPassword) && ($_POST['password2'] == $_POST['password3'])))
+	if((!empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['password3'])) && ((md5($mysqli->real_escape_string($_POST['password1'])) == $newPassword) && ($_POST['password2'] == $_POST['password3'])))
 	{
-		if(strlen($_POST['password2']) > 6 && strlen($_POST['password2']) <= 100)
+		if(strlen($_POST['password2']) > 6 && strlen($_POST['password2']) <= 100 && !ctype_space($_POST['password2']))
 		{
-			$newPassword = md5($_POST['password2']);
+			$newPassword = md5($mysqli->real_escape_string($_POST['password2']));
 			$messageMdp ="Le mot de passe a été modifié avec succès.";
 		}
 		else

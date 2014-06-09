@@ -2,7 +2,7 @@
 include_once 'request/lostPassword.php';
 if(!empty($_POST['email']))
 {
-	$result = resetPassword($_POST['email']);
+	$result = resetPassword($mysqli->real_escape_string($_POST['email']));
 	/* Envoie le mail si il y a un membre avec ce mail et retourne true, sinon return false */
 	if(!$result)
 	{
