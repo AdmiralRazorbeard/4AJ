@@ -369,13 +369,13 @@ animation:animationBoxThree 45s ease 0s infinite;
     font-size: 17px;
     margin: 0px 0px -20px 0px;
 }
-/*  --- Propriétés de la section devenirResidant --  */
-.devenirResidant h1{
+/*  --- Propriétés de la section devenirResident --  */
+.devenirResident h1{
     color:#990007;
     text-shadow:1px 1px 0.6px #350003;
     margin: 20px 0px -10px 0px;
 }
-.devenirResidant h3{
+.devenirResident h3{
     color:#5a0004;
     font-size: 17px;
     margin: 0px 0px -20px 0px;

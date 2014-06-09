@@ -69,9 +69,9 @@ elseif ($_GET['section'] == 'livreOr')
 {
 	include_once 'controller/livreOr.php';
 }
-elseif ($_GET['section'] == 'devenirResidant')
+elseif ($_GET['section'] == 'devenirResident')
 {
-	include_once 'controller/devenirResidant.php';
+	include_once 'controller/devenirResident.php';
 }
 elseif ($_GET['section'] == 'conditions')
 {

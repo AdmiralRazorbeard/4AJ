@@ -51,10 +51,10 @@ function openSous_Section_vieEnFoyer()
 	}
 	return false;
 }
-function openSous_Section_devenirResidant()
+function openSous_Section_devenirResident()
 //idem que openSection sauf que cette classe active ne s'appliquera que sur le bouton principal lorsque l'un des boutons sera utilisé du menu déroulant
 {
-	if($_GET['section'] == 'devenirResidant' || $_GET['section'] == 'conditions' || $_GET['section'] == 'logements')
+	if($_GET['section'] == 'devenirResident' || $_GET['section'] == 'conditions' || $_GET['section'] == 'logements')
 	{
 		return true;
 	}

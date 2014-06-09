@@ -85,7 +85,7 @@
       					<li><a class="last_item" href="index.php?section=livreOr">Livre d'or</a></li>
     				</ul>
     			</li>
-				<li><a <?php if (openSous_Section_devenirResidant()){?>id="active_item5"<?php } else { ?>id="item5"<?php } ?> href="index.php?section=devenirResidant">Devenir résidant</a>
+				<li><a <?php if (openSous_Section_devenirResident()){?>id="active_item5"<?php } else { ?>id="item5"<?php } ?> href="index.php?section=devenirResident">Devenir résident</a>
 				    <ul id="s_item5">
       					<li><a href="index.php?section=conditions">Conditions</a></li>
       					<li><a class="last_item" href="index.php?section=logements">Logements</a></li>
