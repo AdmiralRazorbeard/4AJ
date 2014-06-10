@@ -161,7 +161,7 @@ h1{
     float:left;
     width:20%;
 }
-#actualite .form-field input,.form-field textarea, #modifierNews .form-field input{
+#actualite .form-field #titre,.form-field textarea, #modifierNews .form-field input{
     float: left;
     width: 55%;
     padding: 5px;
