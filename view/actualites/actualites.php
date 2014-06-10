@@ -38,13 +38,11 @@
 							<p class="a_info" >
 								 <?php echo $value['timestamp']; ?>
 							</p>
-							<?php if($admin) { ?><a href="admin/index.php?section=modifierNews&amp;id=<?php echo $key; ?>">Modifier</a>,
-							<a href="admin/index.php?section=supprimerNews&amp;id=<?php echo $key; ?>">Supprimer</a><?php } ?>
+							<?php if($admin) { ?><a class ="modificationArticle" href="admin/index.php?section=modifierNews&amp;id=<?php echo $key; ?>">Modifier</a>
+							<a class ="modificationArticle" href="admin/index.php?section=supprimerNews&amp;id=<?php echo $key; ?>">Supprimer</a><?php } ?>
 								<!-- Affiche le pdf -->
 							<?php if($value['fichierPDF'] != '') { ?>
-							<p class="pdf">
-								<a href="fichierPDF/<?php echo $value['fichierPDF']; ?>">Fichier pdf</a>
-							</p>
+							<div class="pdfObject"><img src="/4AJ/view/graphicRessources/pdf.png" alt="pdf"/><a href="fichierPDF/<?php echo $value['fichierPDF']; ?>">Fichier pdf</a></div>
 							<?php } ?>
 							<p class="a_content" >
 								<?php echo regexTextBox($value['contenu']); ?>

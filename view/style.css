@@ -343,6 +343,20 @@ animation:animationBoxThree 45s ease 0s infinite;
     padding-bottom: 10px;
     border-bottom: 1px solid #B1B1B1;
 }
+.actualites .modificationArticle{
+    position: relative;
+    bottom: 12px;
+}
+.actualites .pdfObject{
+    width: 110px;
+}
+.actualites .pdfObject img{
+    margin-right: 5px;
+}
+.actualites .pdfObject a{
+    position:relative;
+    bottom: 5px;
+}
 /*  --- Propriétés de la section liensUtiles --  */
 .liensUtiles h1{
     color:#a4b819;
