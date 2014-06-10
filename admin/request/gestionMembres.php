@@ -71,6 +71,7 @@ function listeMembre($page, $nbreBilletParPage, $orderBy)
 function supprimerMembre($id)
 {
 	run('DELETE FROM membrefonction WHERE id='.$id);
+	run('DELETE FROM reserverepas WHERE id_membre='.$id);
 	run('UPDATE news SET id_membre=NULL WHERE id_membre='.$id);
 	run('DELETE FROM membre WHERE id='.$id);
 }
