@@ -76,7 +76,13 @@ function nbreActualite()
 }
 function deleteNews($id)
 {
-
+	// Test si il y a un pdf
+	$isPDF = run('SELECT fichierPDF FROM news WHERE id='.$id)->fetch_object();
+	if($isPDF->fichierPDF != '')
+	{	
+		// Supprime le pdf
+		unlink('../fichierPDF/'.$isPDF->fichierPDF);
+	}
 	// Supprime la news ainsi que toute les Foreign Keys
 	run('DELETE FROM newsfonction WHERE id='.$id);
 	run('DELETE FROM news WHERE id='.$id);

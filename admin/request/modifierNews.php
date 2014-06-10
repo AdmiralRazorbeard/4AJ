@@ -45,19 +45,53 @@ function infoNews($id)
 	return $info;
 }
 
-function updatenews($id, $titre, $contenu)
+function updatenews($id, $titre, $contenu, $nomFichier)
 // On mets à jour (en vérifiant que la news existe évidemment)
+// Nom fichier vaut 0 si on y touche pas, -1 si on veut le supprimer, et le nom du fichier si il faut le changer
 {
-	$nbre = run('SELECT COUNT(*) as nbre FROM news WHERE id='.$id)->fetch_object();
-	$nbre = $nbre->nbre;
+	$nbre = run('SELECT COUNT(*) as nbre, fichierPDF FROM news WHERE id='.$id)->fetch_object();
+	$tmp = $nbre->nbre;
 	$info = NULL;
 	$mysqli = connection();
 	$titre = $mysqli->real_escape_string($titre);
 	$contenu = $mysqli->real_escape_string($contenu);
 
-	if($nbre == 1)
+	if($tmp == 1)
 	{
-		run('UPDATE news SET titreNewsFR="'.$titre.'", contenuNewsFR="'.$contenu.'" WHERE id='.$id);
+		if($nomFichier == -1)
+		{
+			$nomFichier = "";
+			if(file_exists('../fichierPDF/'.$nbre->fichierPDF))
+			{
+				@unlink('../fichierPDF/'.$nbre->fichierPDF);
+			}
+		}
+		elseif($nomFichier == 1)
+		{
+			$nomFichier = $mysqli->real_escape_string($nbre->fichierPDF);
+		}
+		else
+		{
+			$nomFichier = $mysqli->real_escape_string($nomFichier);
+			if(file_exists('../fichierPDF/'.$nbre->fichierPDF))
+			{
+				@unlink('../fichierPDF/'.$nbre->fichierPDF);
+			}
+		}
+		run('UPDATE news SET titreNewsFR="'.$titre.'", contenuNewsFR="'.$contenu.'", fichierPDF = "'.$nomFichier.'" WHERE id='.$id);
 	}
+}
+function genererCle($nb_car, $chaine = '1234567890AZERTYUIOPQSDFGHJKLMWXCVBNazertyuiopmlkjhgfdsqwxcvbn')
+// Générer une clé aléatoire
+{
+    $nb_lettres = strlen($chaine) - 1;
+    $generation = '';
+    for($i=0; $i < $nb_car; $i++)
+    {
+        $pos = mt_rand(0, $nb_lettres);
+        $car = $chaine[$pos];
+        $generation .= $car;
+    }
+    return $generation;
 }
 ?>
