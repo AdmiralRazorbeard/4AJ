@@ -68,7 +68,7 @@ function updatenews($id, $titre, $contenu, $nomFichier)
 		}
 		elseif($nomFichier == 1)
 		{
-			$nomFichier = $nbre->fichierPDF;
+			$nomFichier = $mysqli->real_escape_string($nbre->fichierPDF);
 		}
 		else
 		{
