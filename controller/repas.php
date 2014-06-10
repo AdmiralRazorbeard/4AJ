@@ -1,5 +1,6 @@
 <?php
 include_once 'request/repas.php';
+include_once 'textToolBox.php';
 $accessRepas = false;
 if(accesRepas())
 {

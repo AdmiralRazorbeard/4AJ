@@ -36,7 +36,7 @@ function allTypeActualite()
 	while ($donnees = $tmp->fetch_object())
 	{
 		$typeActualite[$donnees->id]['id'] = $donnees->id;
-		$typeActualite[$donnees->id]['nom'] = $donnees->nom;
+		$typeActualite[$donnees->id]['nom'] = htmlspecialchars($donnees->nom);
 	}
 	return $typeActualite;
 }
@@ -55,7 +55,7 @@ function allFonction()
 	while($donnees = $tmp->fetch_object())
 	{
 		$fonction[$donnees->id]['id'] = $donnees->id;
-		$fonction[$donnees->id]['nom'] = $donnees->nom;
+		$fonction[$donnees->id]['nom'] = htmlspecialchars($donnees->nom);
 	}
 	return $fonction;
 }
@@ -110,7 +110,7 @@ function envoieMail($lastNews)
 				AND news.id = '.$lastNews);
 	while($donnees = $tmp->fetch_object())
 	{
-		sendMail($donnees->mail, $infoLastNews->titreNewsFR, $infoLastNews->contenuNewsFR);
+		sendMail($donnees->mail, htmlspecialchars($infoLastNews->titreNewsFR), $infoLastNews->contenuNewsFR);
 	}
 }
 function sendMail($mail, $titre, $contenu)
@@ -167,7 +167,7 @@ Vous pouvez retrouver cette actualité sur http://4AJ.fr/index.php?section=actua
 	
 	 
 	//=====Envoi de l'e-mail.
-/*	mail($mail,$sujet,$message,$header);*/
+	mail($mail,$sujet,$message,$header);
 	//==========
 }
 ?>

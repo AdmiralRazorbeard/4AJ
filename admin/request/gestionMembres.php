@@ -61,7 +61,7 @@ function listeMembre($page, $nbreBilletParPage, $orderBy)
 		while($temp = $fonction->fetch_object())
 		{
 			$listeMembre[$donnees->id]['fonction'][$temp->id_fonction]['id'] = $temp->id_fonction;
-			$listeMembre[$donnees->id]['fonction'][$temp->id_fonction]['nom'] = $temp->nomFonctionFR;
+			$listeMembre[$donnees->id]['fonction'][$temp->id_fonction]['nom'] = htmlspecialchars($temp->nomFonctionFR);
 		}
 		$listeMembre[$donnees->id]['isSuperAdmin'] = $donnees->isSuperAdmin; 
 	}
