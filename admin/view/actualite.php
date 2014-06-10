@@ -36,7 +36,10 @@ include_once '/view/includes/header.php';
 								<?php } ?>
 						</div>
 						<div class="form-field">
-							<label for="uploadFichier">Fichier pdf : </label><input type="file" name="uploadFichier" id="uploadFichier" />
+							<br>
+							<label for="uploadFichier">Fichier pdf (40Mo Maximum): </label>
+							<input type="hidden" name="MAX_FILE_SIZE" value="41943040" />
+							<input type="file" name="uploadFichier" id="uploadFichier" />
 						</div>
 						<div class="form-field-contenu">
 							<p id="p_form-field-contenu">Contenu:</p>
