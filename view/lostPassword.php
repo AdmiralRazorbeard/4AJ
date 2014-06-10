@@ -1,9 +1,9 @@
 <?php include_once '/view/includes/header.php'; ?>
 			<div class="contentWrapper">
 				<h1>Changer de mot de passe</h1>
-				<?php if(!empty($message)) { ?>
+				<?php if(!empty($error)) { ?>
 				<p>
-					<em><?php echo $message; ?></em>
+					<em><?php echo $error; ?></em>
 				</p>
 				<?php } ?>
 				<form method="post">
