@@ -30,7 +30,25 @@ if(!empty($_POST['titre']) && !empty($_POST['typeActualite']) && !empty($_POST['
 		}
 		if($issetFonctionChoisi)
 		{
-			addActualite($titre, $idTypeActualite, $contenu, $idMembre);
+			########## GESTION FICHIER ##########
+			$nomFichier = '';
+			if ($_FILES['uploadFichier']['error'] == 0)
+			{
+				if($_FILES['uploadFichier']['type'] == 'application/pdf')
+				// Vérifie que c'est du pdf
+				{
+					$nomFichier = genererCle(10).preg_replace('# #', '_', $_FILES['uploadFichier']['name']);
+					$tmp = run('SELECT COUNT(*) as nbre FROM news WHERE fichierPDF="'.$nomFichier.'"')->fetch_object();
+					while($tmp->nbre != 0)
+					{
+						$nomFichier = genererCle(10).preg_replace('# #', '_', $_FILES['uploadFichier']['name']);
+						$tmp = run('SELECT COUNT(*) as nbre FROM news WHERE fichierPDF="'.$nomFichier.'"')->fetch_object();
+					}
+					$resultat = move_uploaded_file($_FILES['uploadFichier']['tmp_name'],'../fichierPDF/'.$nomFichier);
+				}
+			}
+			########### FIN GESTION FICHIER ###########
+			addActualite($titre, $idTypeActualite, $contenu, $idMembre, $mysqli->real_escape_string($nomFichier));
 			$idLastNews = run('SELECT id FROM news ORDER BY id DESC LIMIT 0,1')->fetch_object();
 			$idLastNews = $idLastNews->id;
 			foreach ($allFonction as $key => $value) {

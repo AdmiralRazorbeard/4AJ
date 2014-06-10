@@ -60,10 +60,10 @@ function allFonction()
 	return $fonction;
 }
 
-function addActualite($titre, $typeActualite, $contenu, $idMembre)
+function addActualite($titre, $typeActualite, $contenu, $idMembre, $nomFichier)
 // Ajoute une actualité
 {
-	run('INSERT INTO news(id_membre, titreNewsFR, contenuNewsFR, id_Type_d_actualite) VALUES ('.$idMembre.', "'.$titre.'", "'.$contenu.'", '.$typeActualite.')');
+	run('INSERT INTO news(id_membre, titreNewsFR, contenuNewsFR, id_Type_d_actualite, fichierPDF) VALUES ('.$idMembre.', "'.$titre.'", "'.$contenu.'", '.$typeActualite.', "'.$nomFichier.'")');
 	verifNombreActualite();
 }
 
@@ -169,5 +169,19 @@ Vous pouvez retrouver cette actualité sur http://4AJ.fr/index.php?section=actua
 	//=====Envoi de l'e-mail.
 	mail($mail,$sujet,$message,$header);
 	//==========
+}
+
+function genererCle($nb_car, $chaine = '1234567890AZERTYUIOPQSDFGHJKLMWXCVBNazertyuiopmlkjhgfdsqwxcvbn')
+// Générer une clé aléatoire
+{
+    $nb_lettres = strlen($chaine) - 1;
+    $generation = '';
+    for($i=0; $i < $nb_car; $i++)
+    {
+        $pos = mt_rand(0, $nb_lettres);
+        $car = $chaine[$pos];
+        $generation .= $car;
+    }
+    return $generation;
 }
 ?>

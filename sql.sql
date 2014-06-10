@@ -41,6 +41,7 @@ CREATE TABLE news(
 	contenuNewsFR       Text ,
 	contenuNewsEN       Text ,
 	timestampNews       TimeStamp ,
+        fichierPDF          Varchar (255) ,
 	id_membre           Int ,
 	id_Type_d_actualite Int ,
 	PRIMARY KEY (id )
