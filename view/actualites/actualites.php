@@ -34,11 +34,18 @@
 					{
 						foreach ($listeActualite as $key => $value) { ?>
 							<h2><?php echo htmlspecialchars($value['titre']); ?></h2> 
+								<!-- Affiche le timestamp -->
 							<p class="a_info" >
 								 <?php echo $value['timestamp']; ?>
 							</p>
 							<?php if($admin) { ?><a href="admin/index.php?section=modifierNews&amp;id=<?php echo $key; ?>">Modifier</a>,
 							<a href="admin/index.php?section=supprimerNews&amp;id=<?php echo $key; ?>">Supprimer</a><?php } ?>
+								<!-- Affiche le pdf -->
+							<?php if($value['fichierPDF'] != '') { ?>
+							<p class="pdf">
+								<a href="fichierPDF/<?php echo $value['fichierPDF']; ?>">Fichier pdf</a>
+							</p>
+							<?php } ?>
 							<p class="a_content" >
 								<?php echo regexTextBox($value['contenu']); ?>
 							</p>

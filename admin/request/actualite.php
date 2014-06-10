@@ -36,7 +36,7 @@ function allTypeActualite()
 	while ($donnees = $tmp->fetch_object())
 	{
 		$typeActualite[$donnees->id]['id'] = $donnees->id;
-		$typeActualite[$donnees->id]['nom'] = $donnees->nom;
+		$typeActualite[$donnees->id]['nom'] = htmlspecialchars($donnees->nom);
 	}
 	return $typeActualite;
 }
@@ -55,15 +55,15 @@ function allFonction()
 	while($donnees = $tmp->fetch_object())
 	{
 		$fonction[$donnees->id]['id'] = $donnees->id;
-		$fonction[$donnees->id]['nom'] = $donnees->nom;
+		$fonction[$donnees->id]['nom'] = htmlspecialchars($donnees->nom);
 	}
 	return $fonction;
 }
 
-function addActualite($titre, $typeActualite, $contenu, $idMembre)
+function addActualite($titre, $typeActualite, $contenu, $idMembre, $nomFichier)
 // Ajoute une actualité
 {
-	run('INSERT INTO news(id_membre, titreNewsFR, contenuNewsFR, id_Type_d_actualite) VALUES ('.$idMembre.', "'.$titre.'", "'.$contenu.'", '.$typeActualite.')');
+	run('INSERT INTO news(id_membre, titreNewsFR, contenuNewsFR, id_Type_d_actualite, fichierPDF) VALUES ('.$idMembre.', "'.$titre.'", "'.$contenu.'", '.$typeActualite.', "'.$nomFichier.'")');
 	verifNombreActualite();
 }
 
@@ -110,7 +110,7 @@ function envoieMail($lastNews)
 				AND news.id = '.$lastNews);
 	while($donnees = $tmp->fetch_object())
 	{
-		sendMail($donnees->mail, $infoLastNews->titreNewsFR, $infoLastNews->contenuNewsFR);
+		sendMail($donnees->mail, htmlspecialchars($infoLastNews->titreNewsFR), $infoLastNews->contenuNewsFR);
 	}
 }
 function sendMail($mail, $titre, $contenu)
@@ -167,7 +167,21 @@ Vous pouvez retrouver cette actualité sur http://4AJ.fr/index.php?section=actua
 	
 	 
 	//=====Envoi de l'e-mail.
-/*	mail($mail,$sujet,$message,$header);*/
+	mail($mail,$sujet,$message,$header);
 	//==========
+}
+
+function genererCle($nb_car, $chaine = '1234567890AZERTYUIOPQSDFGHJKLMWXCVBNazertyuiopmlkjhgfdsqwxcvbn')
+// Générer une clé aléatoire
+{
+    $nb_lettres = strlen($chaine) - 1;
+    $generation = '';
+    for($i=0; $i < $nb_car; $i++)
+    {
+        $pos = mt_rand(0, $nb_lettres);
+        $car = $chaine[$pos];
+        $generation .= $car;
+    }
+    return $generation;
 }
 ?>

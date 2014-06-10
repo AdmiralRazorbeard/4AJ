@@ -43,10 +43,10 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 	}
 }
 </script>
-			<div class="contentWrapper">
+			<div class="vieEnFoyer element contentWrapper edition_mode">
 				<h1>
 					Repas
-				</h1>
+				</h1><br />
 				<?php if($accessRepas) { ?> 
 				<fieldset>
 					<legend>Repas Anne Frank</legend>
@@ -159,7 +159,8 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 						</tr>
 					</table>
 				</fieldset>
-				<?php } ?>
+				<?php } ?><br />
+				<?php pageDynamique('repas'); ?>
 			</div>
 			<?php include_once '/view/includes/footer.php'; ?>
 		</div>

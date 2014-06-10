@@ -29,7 +29,7 @@ if(!empty($_POST['addMembreInFonction']) && !empty($_POST['idFonction']) && is_n
 if(!empty($_GET['fonction']) && is_numeric($_GET['fonction']))
 	// Si l'utilisateur a choisi une fonction, on récupère la liste des membres
 {
-	if(!empty($_GET['supprimerMembre']) && is_numeric($_GET['supprimerMembre']))
+	if(!empty($_GET['supprimerMembre']) && is_numeric($_GET['supprimerMembre']) && $_GET['fonction'] > 1)
 		/* Si en plus d'avoir choisi une fonction, il choisit une membre, 
 		il enlève le membre de la fonction associée */
 	{

@@ -163,14 +163,14 @@ function listeActualite($page, $nbreBilletParPage, $type = 0)
 			$superAdmin = run('SELECT COUNT(*) as admin FROM membre WHERE mail="'.$_SESSION['mail'].'" AND isSuperAdmin = 1')->fetch_object();
 			if($superAdmin->admin == 1)
 			{	// Tout car admin
-				$actu = run('	SELECT DISTINCT news.id AS idNews, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
+				$actu = run('	SELECT DISTINCT news.id AS idNews, news.fichierPDF, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
 						 		FROM news 
 						 		ORDER BY news.timestampNews DESC
 								LIMIT '.$premierActualiteASortir.','.$nbreBilletParPage);
 			}
 			else
 			{	// seulement ta fonction
-				$actu = run('	SELECT DISTINCT news.id AS idNews, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
+				$actu = run('	SELECT DISTINCT news.id AS idNews, news.fichierPDF, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
 						 		FROM news,fonction,newsfonction,membre,membrefonction 
 						 		WHERE news.id 	= newsfonction.id 
 						 		AND fonction.id = newsfonction.id_fonction 
@@ -183,7 +183,7 @@ function listeActualite($page, $nbreBilletParPage, $type = 0)
 		}
 		else
 		{	// Pour public
-			$actu = run('	SELECT DISTINCT news.id AS idNews, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
+			$actu = run('	SELECT DISTINCT news.id AS idNews, news.fichierPDF, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
 					 		FROM news,fonction,newsfonction
 					 		WHERE news.id 	= newsfonction.id 
 					 		AND fonction.id = newsfonction.id_fonction 
@@ -200,7 +200,7 @@ function listeActualite($page, $nbreBilletParPage, $type = 0)
 			$superAdmin = run('SELECT COUNT(*) as admin FROM membre WHERE mail="'.$_SESSION['mail'].'" AND isSuperAdmin = 1')->fetch_object();
 			if($superAdmin->admin == 1)
 			{	// Tout car admin
-				$actu = run('	SELECT DISTINCT news.id AS idNews, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
+				$actu = run('	SELECT DISTINCT news.id AS idNews, news.fichierPDF, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
 						 		FROM news 
 						 		WHERE id_Type_d_actualite = '.$type.'
 						 		ORDER BY news.timestampNews DESC
@@ -208,7 +208,7 @@ function listeActualite($page, $nbreBilletParPage, $type = 0)
 			}
 			else
 			{	// seulement ta fonction
-				$actu = run('	SELECT DISTINCT news.id AS idNews, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
+				$actu = run('	SELECT DISTINCT news.id AS idNews, news.fichierPDF, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
 						 		FROM news,fonction,newsfonction,membre,membrefonction 
 						 		WHERE news.id 	= newsfonction.id 
 						 		AND fonction.id = newsfonction.id_fonction 
@@ -222,7 +222,7 @@ function listeActualite($page, $nbreBilletParPage, $type = 0)
 		}
 		else
 		{	// Pour public
-			$actu = run('	SELECT DISTINCT news.id AS idNews, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
+			$actu = run('	SELECT DISTINCT news.id AS idNews, news.fichierPDF, news.titreNewsFR, news.contenuNewsFR, news.id_Type_d_actualite, DATE_FORMAT(news.timestampNews, "%d/%m/%y à %H:%i") AS timestampNews
 					 		FROM news,fonction,newsfonction
 					 		WHERE news.id 	= newsfonction.id 
 					 		AND fonction.id = newsfonction.id_fonction 
@@ -239,6 +239,7 @@ function listeActualite($page, $nbreBilletParPage, $type = 0)
 		$liste[$tmp->idNews]['contenu']	 = $tmp->contenuNewsFR;
 		$liste[$tmp->idNews]['id_Type_d_actualite']	= $tmp->id_Type_d_actualite;
 		$liste[$tmp->idNews]['timestamp'] = $tmp->timestampNews;
+		$liste[$tmp->idNews]['fichierPDF'] = $tmp->fichierPDF;
 	}
 	if(!empty($liste))	
 		// Ceci est pour s'assurer de ne rien retourner si il n'y a aucune liste.

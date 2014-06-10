@@ -41,6 +41,7 @@ CREATE TABLE news(
 	contenuNewsFR       Text ,
 	contenuNewsEN       Text ,
 	timestampNews       TimeStamp ,
+        fichierPDF          Varchar (255) ,
 	id_membre           Int ,
 	id_Type_d_actualite Int ,
 	PRIMARY KEY (id )
@@ -183,4 +184,5 @@ INSERT INTO `informationpage` (`id`, `page`, `contenu`) VALUES
 (17, 'atelier_plateformeLogement', ''),
 (18, 'accompagner_plateformeLogement', ''),
 (19, 'documenter_plateformeLogement', ''),
-(20, 'contact_plateformeLogement', '');
+(20, 'contact_plateformeLogement', ''),
+(21, 'repas', '');

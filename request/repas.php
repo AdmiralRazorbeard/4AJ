@@ -31,11 +31,20 @@ function boutonReserver($numero, $mois, $annee, $midi, $residence)
 {
 	if(!empty($_SESSION['log']) && !empty($_SESSION['mail']))
 	{
-		if(strtotime($numero.'-'.$mois.'-'.$annee.' 14:00') <= strtotime("now"))
+
+			// On ne peut plus s'inscrire à un repas pour le midi après 14 heures
+		if(strtotime($numero.'-'.$mois.'-'.$annee.' 14:00') <= strtotime("now") && $midi)
+		{
+			return 3;
+		}
+
+			// On ne peut plus s'inscrire à un repas pour le soir après 20 heures
+		if(strtotime($numero.'-'.$mois.'-'.$annee.' 20:00') <= strtotime("now") && !$midi)
 		{
 			return 3;
 		}
 		if(!$midi || date('N', strtotime($numero.'-'.$mois.'-'.$annee)) == 6 || date('N', strtotime($numero.'-'.$mois.'-'.$annee)) == 7)	// Si on est le soir ou le week end
+			// Test si on est soit le soir, soit le week end, pour ensuite tester les autorisations
 		{
 			$tmp = run('SELECT COUNT(*) as allowed FROM membre,membrefonction,fonction
 						WHERE membre.id = membrefonction.id AND fonction.id = membrefonction.id_fonction
@@ -52,8 +61,8 @@ function boutonReserver($numero, $mois, $annee, $midi, $residence)
 		if($tmp->allowed >= 1)
 		{
 			// Vérification que le jour n'est pas verrouillé
-			$tmp = run('SELECT COUNT(*) as nbre 
-						FROM verouillerjourrepas 
+			$tmp = run('SELECT COUNT(*) as nbre 	
+						FROM verrouillerjourrepas 
 						WHERE dateVerouiller="'.$annee.'-'.$mois.'-'.$numero.'" 
 						AND midi = '.$midi.' 
 						AND residence = '.$residence)->fetch_object();

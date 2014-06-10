@@ -27,7 +27,7 @@ if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBille
 // Changer le nombre total d'acutalite
 if($admin && !empty($_POST['nbreTotalActualite']) && is_numeric($_POST['nbreTotalActualite']))
 {
-	if($_POST['nbreTotalActualite']>=1 && $_POST['nbreBilletParPage']< 10000)
+	if($_POST['nbreTotalActualite']>=1 && $_POST['nbreTotalActualite']< 10000)
 	{
 		newNombreTotalActualite(intval($_POST['nbreTotalActualite']));
 	}

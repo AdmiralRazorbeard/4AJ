@@ -5,7 +5,7 @@ include_once '/view/includes/header.php';
 				<h1>Creer une actualité</h1>
 				<em><a href="../index.php?section=actualites">Retourner à la section: actualités</a></em>
 				<fieldset id="actualite">
-					<form method="post">
+					<form method="post"  enctype="multipart/form-data">
 						<div class="form-field">
 						<label for="titre">Titre :</label>
 						<input type="text" name="titre" id="titre" />
@@ -34,6 +34,9 @@ include_once '/view/includes/header.php';
 										<label for="<?php echo $k; ?>"><?php echo $v['nom']; ?></label>
 									</div>
 								<?php } ?>
+						</div>
+						<div class="form-field">
+							<label for="uploadFichier">Fichier pdf : </label><input type="file" name="uploadFichier" id="uploadFichier" />
 						</div>
 						<div class="form-field-contenu">
 							<p id="p_form-field-contenu">Contenu:</p>
