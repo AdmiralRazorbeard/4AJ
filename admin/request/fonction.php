@@ -80,8 +80,8 @@ function ajouterFonction($nom)
 
 function supprimerFonction($id)
 {
-	run('DELETE FROM newsfonction WHERE id_fonction='.$id);
-	run('DELETE FROM membrefonction WHERE id_fonction='.$id);
+	run('DELETE FROM newsfonction WHERE id_fonction='.$id)
+;	run('DELETE FROM membrefonction WHERE id_fonction='.$id);
 	run('DELETE FROM fonction WHERE id='.$id);
 }
 

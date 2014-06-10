@@ -4,7 +4,7 @@
 				<?php
 				if(!empty($_SESSION['erreur']) && !empty($_SESSION['count']))
 				{ ?>
-					<em><?php echo $_SESSION['yolo']; ?></em>
+					<em><?php echo $_SESSION['erreur']; ?></em>
 		<?php		if($_SESSION['count'] == 2)
 					{	$_SESSION['count']--; }
 					else 

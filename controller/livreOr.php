@@ -20,7 +20,7 @@ if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBille
 // Ajouter un nouveau billet
 if(!empty($_POST['nom']) && !empty($_POST['contenu']))
 {
-	if(!is_numeric($_POST['nom']) && !is_numeric($_POST['contenu']) && !ctype_space($_POST['nom']) && !ctype_space($_POST['contenu']) && strlen($_POST['contenu'] <= 305))
+	if(!is_numeric($_POST['nom']) && !is_numeric($_POST['contenu']) && !ctype_space($_POST['nom']) && !ctype_space($_POST['contenu']) && strlen($_POST['contenu']) <= 505)
 	{
 		$nom = $mysqli->real_escape_string($_POST['nom']);
 		$contenu = $mysqli->real_escape_string($_POST['contenu']);
