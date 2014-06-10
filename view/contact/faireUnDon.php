@@ -2,6 +2,7 @@
 			<div class="contentWrapper contact element edition_mode">
 					<?php pageDynamique('faireUnDon'); ?>
 			</div>
+			<?php include_once '/view/includes/footer.php'; ?>
 		</div>
 	</body>
 </html>

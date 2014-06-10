@@ -161,6 +161,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 				</fieldset>
 				<?php } ?>
 			</div>
+			<?php include_once '/view/includes/footer.php'; ?>
 		</div>
 	</body>
 </html>

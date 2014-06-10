@@ -1,6 +1,7 @@
-<?php include_once('/view/includes/headerfunctions.php')
+<?php include_once('/view/includes/headerfunctions.php');
+include_once('/view/includes/footerfunctions.php');
  // Gestion des classes actives pour les boutons et de la connexion
-;?>
+?>
 <!DOCTYPE html>
 <html>
 	<head>

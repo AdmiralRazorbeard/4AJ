@@ -13,5 +13,4 @@ function nombreVisiteur()
 	$tmp = $tmp->nombre;
 	return $tmp;
 }
-
 ?>

@@ -118,6 +118,7 @@ function v_maxlength(id, crid, max)
 					</form>
 				</fieldset>
 			</div>
+			<?php include_once '/view/includes/footer.php'; ?>
 		</div>
 	</body>
 </html>
