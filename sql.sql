@@ -141,6 +141,14 @@ CREATE TABLE oublieMotDePasseSecurite(
 )ENGINE=InnoDB;
 
 
+CREATE TABLE mail(
+        id                     int (11) Auto_increment  NOT NULL ,
+        mailMain               Varchar (255) ,
+        mailPlateformeLogement Varchar (255) ,
+        PRIMARY KEY (id )
+)ENGINE=InnoDB;
+
+
 ALTER TABLE oublieMotDePasseSecurite ADD CONSTRAINT FK_oublieMotDePasseSecurite_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
 ALTER TABLE news ADD CONSTRAINT FK_news_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
 ALTER TABLE  `news` CHANGE  `id_Type_d_actualite`  `id_Type_d_actualite` INT( 11 ) NOT NULL DEFAULT  '1';
@@ -156,6 +164,7 @@ ALTER TABLE  `livreor` CHANGE  `afficher`  `afficher` TINYINT( 1 ) NOT NULL DEFA
 INSERT INTO `fonction`(`nomFonctionFR`, `nomFonctionEN`, `isAccesJeunes`, `isAdminLivreOr`) VALUES ('Public','Public',0,0);
 INSERT INTO `fonction`(`nomFonctionFR`, `nomFonctionEN`, `isAccesJeunes`, `isAdminLivreOr`) VALUES ('Jeunes','Young',1,0);
 INSERT INTO `fonction`(`nomFonctionFR`, `nomFonctionEN`, `isAccesJeunes`, `isAdminLivreOr`, `isAdminActualite`) VALUES ('Directeur','Director',0,1,1);
+INSERT INTO `4aj`.`mail` (`id`, `mailMain`, `mailPlateformeLogement`) VALUES (NULL, 'contact@4AJ.fr', 'plateformelogement@4AJ.fr');
 
 INSERT INTO `InfoLivreOrActualite`(`nombreBilletLivreOrParPage`,`nombreBilletActualiteParPage`, `nombreTotalBilletActualite`) VALUES (20, 10, 100);
 INSERT INTO `Type_d_actualite`(`nom`) VALUES ("ActualitÃ©");

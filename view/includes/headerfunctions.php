@@ -125,10 +125,18 @@ if(!empty($_GET['superAdminOn']) && $_GET['superAdminOn'])
 	{
 		$_SESSION['superAdminOn'] = true;
 	}
+	if(!empty($_GET['get']))
+	{
+		header('location:index.php?section='.$_GET['get']);
+	}
 }
 if(!empty($_GET['finSuperAdminOn']))
 {
 	unset($_SESSION['superAdminOn']);
+	if(!empty($_GET['get']))
+	{
+		header('location:index.php?section='.$_GET['get']);
+	}
 }
 if(!empty($_SESSION['superAdminOn']))
 {

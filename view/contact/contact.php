@@ -1,8 +1,6 @@
 <?php include_once 'view/includes/header.php'; ?>
-			<div class="contentWrapper contact element">
-				<h1>
-					Formulaire de contact
-				</h1><br />
+			<div class="contentWrapper contact element edition_mode">
+			<?php pageDynamique('contact'); ?><br /><br />
 				<fieldset id="mainContact">
 					<form method="post">
 						<p class="form-field">

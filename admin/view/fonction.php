@@ -10,7 +10,7 @@ include_once '/view/includes/header.php';
 				</script>
 				<h1>Ajouter, modifier les fonctions</h1>
 				<p>
-					<em>Vous pouvez modifier les droits en cliquants</em>
+					<em>Vous pouvez modifier les droits en cliquant</em>
 				</p>
 				<table>
 					<tr>

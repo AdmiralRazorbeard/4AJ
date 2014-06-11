@@ -41,7 +41,7 @@ include_once '/view/includes/header.php';
 					</tr>
 		<?php 		foreach ($listeMembre as $key => $value) 
 					{ ?>
-					<tr>
+					<tr <?php if($value['isSuperAdmin']) { echo 'class="superAdminMembre"'; } ?>>
 						<td>
 							<div>
 								<?php echo $value['id']; ?>
