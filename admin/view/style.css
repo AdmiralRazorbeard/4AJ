@@ -159,9 +159,9 @@ h1{
 }
 #modifierNews .form-field label{
     float:left;
-    width:20%;
+    width:30%;
 }
-#actualite .form-field #titre,.form-field textarea, #modifierNews .form-field input{
+#actualite .form-field #titre,.form-field textarea, #modifierNews .form-field #titre{
     float: left;
     width: 55%;
     padding: 5px;

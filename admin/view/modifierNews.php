@@ -8,11 +8,13 @@ include_once '/view/includes/header.php';
 					<form method="post" enctype="multipart/form-data">
 						<div class="form-field">
 							<label for="titre">Titre :</label>
-							<input type="text" value="<?php echo $infoNews['titre']; ?>" name="titre"/><br />
+							<input type="text" id="titre" value="<?php echo $infoNews['titre']; ?>" name="titre"/><br />
 						</div>
 						<div class="form-field">
 							<label for="uploadFile">
-								Ajouter un fichier <em>Cela supprimera l'ancien</em> :
+								Ajouter un fichier :
+								<br><em>Cela supprimera l'ancien</em>
+								<br><br>
 							</label>
 							<input type="file" name="uploadFile" id="uploadFile">
 						</div>

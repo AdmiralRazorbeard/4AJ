@@ -31,8 +31,8 @@ nav li {
     padding:0;
 }
 #item0{background-color:#2e115a;}#item1,#s_item1 a{background-color:#2797e8;}#item2{background-color:#f8d617;}#item3{background-color:#a4b819;}#item4, #s_item4 a{background-color:#ce7526;}{background-color:#ce7526;}#item5, #s_item5 a{background-color:#6f0006;}#item6, #s_item6 a{background-color:#955359;}
-#item0:hover{background-color:#6c5981;}#item1:hover,#s_item1 a:hover{background-color:#7ec4f4;}#item2:hover{background-color:#fdec8b;}#item3:hover{background-color:#d4e752;}#item4:hover, #s_item4 a:hover{background-color:#eca25f;}#item5:hover, #s_item5 a:hover{background-color:#a90008;}#item6:hover, #s_item6 a:hover{background-color:#b0757a;}
-#active_item0{background-color:#6c5981;}#active_item1{background-color:#7ec4f4;}#active_item2{background-color:#fdec8b;}#active_item3{background-color:#d4e752;}#active_item4{background-color:#eca25f;}#active_item5{background-color:#a90008;}#active_item6{background-color:#b0757a;}
+#item0:hover{background-color:#4e2887;}#item1:hover,#s_item1 a:hover{background-color:#7ec4f4;}#item2:hover{background-color:#fdec8b;}#item3:hover{background-color:#d4e752;}#item4:hover, #s_item4 a:hover{background-color:#eca25f;}#item5:hover, #s_item5 a:hover{background-color:#a90008;}#item6:hover, #s_item6 a:hover{background-color:#b0757a;}
+#active_item0{background-color:#4e2887;}#active_item1{background-color:#7ec4f4;}#active_item2{background-color:#fdec8b;}#active_item3{background-color:#d4e752;}#active_item4{background-color:#eca25f;}#active_item5{background-color:#a90008;}#active_item6{background-color:#b0757a;}
 /*  Couleur des items du menu, hover ou non, actif ou non */
 #submenu_item{background-color:#f7f7f7;color:#177f80;}
 #submenu_item:hover{
@@ -149,36 +149,40 @@ nav li:hover ul li {
 #banniere{overflow:hidden;height:190px;}
 #sContent img{width:980px;height:190px;}
 #banniere ul{display:table;width:2700px;margin:0;padding-left:0%;
--webkit-animation:siteslide 45s ease 0s infinite;
--moz-animation:siteslide 45s ease 0s infinite;
--ms-animation:siteslide 45s ease 0s infinite;
--o-animation:siteslide 45s ease 0s infinite;
-animation:siteslide 45s ease 0s infinite;
+-webkit-animation:siteslide 60s ease 0s infinite;
+-moz-animation:siteslide 60s ease 0s infinite;
+-ms-animation:siteslide 60s ease 0s infinite;
+-o-animation:siteslide 60s ease 0s infinite;
+animation:siteslide 60s ease 0s infinite;
 }
 #banniere ul li{display:table-cell;width:980px;height:190px;list-style:none;}
 @-webkit-keyframes siteslide{
-0%,23%{margin-left:0px;} 
-30%,53% {margin-left:-980px;}
-60%,83% {margin-left:-1960px;}  
-100%{margin-left:-2940px;}
+0%,19%{margin-left:0px;} 
+25%,44% {margin-left:-980px;}
+50%,69% {margin-left:-1960px;}  
+75%,94%{margin-left:-2940px;}
+100%{margin-left:-3920px;}
 }
 @-ms-keyframes siteslide{
-0%,23%{margin-left:0px;} 
-30%,53% {margin-left:-980px;}
-60%,83% {margin-left:-1960px;}  
-100%{margin-left:-2940px;}
+0%,19%{margin-left:0px;} 
+25%,44% {margin-left:-980px;}
+50%,69% {margin-left:-1960px;}  
+75%,94%{margin-left:-2940px;}
+100%{margin-left:-3920px;}
 }
 @-o-keyframes siteslide{
-0%,23%{margin-left:0px;} 
-30%,53% {margin-left:-980px;}
-60%,83% {margin-left:-1960px;}  
-100%{margin-left:-2940px;}
+0%,19%{margin-left:0px;} 
+25%,44% {margin-left:-980px;}
+50%,69% {margin-left:-1960px;}  
+75%,94%{margin-left:-2940px;}
+100%{margin-left:-3920px;}
 }
 @keyframes siteslide{
-0%,23%{margin-left:0px;} 
-30%,53% {margin-left:-980px;}
-60%,83% {margin-left:-1960px;}  
-100%{margin-left:-2940px;}
+0%,19%{margin-left:0px;} 
+25%,44% {margin-left:-980px;}
+50%,69% {margin-left:-1960px;}  
+75%,94%{margin-left:-2940px;}
+100%{margin-left:-3920px;}
 }
 /*  ----Les boites adresses-----  */
 .boxAdresse{
@@ -200,84 +204,118 @@ animation:siteslide 45s ease 0s infinite;
     text-align: center;
 }
 .box1{
--webkit-animation:animationBoxOne 45s ease 0s infinite;
--moz-animation:animationBoxOne 45s ease 0s infinite;
--ms-animation:animationBoxOne 45s ease 0s infinite;
--o-animation:animationBoxOne 45s ease 0s infinite;
-animation:animationBoxOne 45s ease 0s infinite;
+-webkit-animation:animationBoxOne 60s ease 0s infinite;
+-moz-animation:animationBoxOne 60s ease 0s infinite;
+-ms-animation:animationBoxOne 60s ease 0s infinite;
+-o-animation:animationBoxOne 60s ease 0s infinite;
+animation:animationBoxOne 60s ease 0s infinite;
 }
 .box2{
--webkit-animation:animationBoxTwo 45s ease 0s infinite;
--moz-animation:animationBoxTwo 45s ease 0s infinite;
--ms-animation:animationBoxTwo 45s ease 0s infinite;
--o-animation:animationBoxTwo 45s ease 0s infinite;
-animation:animationBoxTwo 45s ease 0s infinite; 
+-webkit-animation:animationBoxTwo 60s ease 0s infinite;
+-moz-animation:animationBoxTwo 60s ease 0s infinite;
+-ms-animation:animationBoxTwo 60s ease 0s infinite;
+-o-animation:animationBoxTwo 60s ease 0s infinite;
+animation:animationBoxTwo 60s ease 0s infinite; 
 }
 .box3{
--webkit-animation:animationBoxThree 45s ease 0s infinite;
--moz-animation:animationBoxThree 45s ease 0s infinite;
--ms-animation:animationBoxThree 45s ease 0s infinite;
--o-animation:animationBoxThree 45s ease 0s infinite;
-animation:animationBoxThree 45s ease 0s infinite;
+-webkit-animation:animationBoxThree 60s ease 0s infinite;
+-moz-animation:animationBoxThree 60s ease 0s infinite;
+-ms-animation:animationBoxThree 60s ease 0s infinite;
+-o-animation:animationBoxThree 60s ease 0s infinite;
+animation:animationBoxThree 60s ease 0s infinite;
+}
+.box3{
+-webkit-animation:animationBoxThree 60s ease 0s infinite;
+-moz-animation:animationBoxThree 60s ease 0s infinite;
+-ms-animation:animationBoxThree 60s ease 0s infinite;
+-o-animation:animationBoxThree 60s ease 0s infinite;
+animation:animationBoxThree 60s ease 0s infinite;
+}
+.box4{
+-webkit-animation:animationBoxFour 60s ease 0s infinite;
+-moz-animation:animationBoxFour 60s ease 0s infinite;
+-ms-animation:animationBoxFour 60s ease 0s infinite;
+-o-animation:animationBoxFour 60s ease 0s infinite;
+animation:animationBoxFour 60s ease 0s infinite;
 }
 @-webkit-keyframes animationBoxOne{
-0%,25%{top:-25px;margin-left:775px;} 
-32%,51% {top:35px;margin-left:775px;}
-58%,100% {top:-25px;margin-left:775px;}
+0%,21%{top:-25px;margin-left:775px;} 
+24%,43% {top:35px;margin-left:775px;}
+47%,100% {top:-25px;margin-left:775px;}
 }
 @-ms-keyframes animationBoxOne{
-0%,25%{top:-25px;margin-left:775px;} 
-32%,51% {top:35px;margin-left:775px;}
-58%,100% {top:-25px;margin-left:775px;}
+0%,21%{top:-25px;margin-left:775px;} 
+24%,43% {top:35px;margin-left:775px;}
+47%,100% {top:-25px;margin-left:775px;}
 }
 @-o-keyframes animationBoxOne{
-0%,25%{top:-25px;margin-left:775px;} 
-32%,51% {top:35px;margin-left:775px;}
-58%,100% {top:-25px;margin-left:775px;}
+0%,21%{top:-25px;margin-left:775px;} 
+24%,43% {top:35px;margin-left:775px;}
+47%,100% {top:-25px;margin-left:775px;}
 }
 @keyframes animationBoxOne{
-0%,25%{top:-25px;margin-left:775px;} 
-32%,51% {top:35px;margin-left:775px;}
-58%,100% {top:-25px;margin-left:775px;}
+0%,21%{top:-25px;margin-left:775px;} 
+24%,43% {top:35px;margin-left:775px;}
+47%,100% {top:-25px;margin-left:775px;}
 }
 @-webkit-keyframes animationBoxTwo{
-0%,55%{top:-25px;margin-left:775px;} 
-62%,81% {top:35px;margin-left:775px;}
-88%,100% {top:-25px;margin-left:775px;}
+0%,46%{top:-25px;margin-left:775px;} 
+49%,68% {top:35px;margin-left:775px;}
+72%,100% {top:-25px;margin-left:775px;}
 }
 @-ms-keyframes animationBoxTwo{
-0%,55%{top:-25px;margin-left:775px;} 
-62%,81% {top:35px;margin-left:775px;}
-88%,100% {top:-25px;margin-left:775px;}
+0%,46%{top:-25px;margin-left:775px;} 
+49%,68% {top:35px;margin-left:775px;}
+72%,100% {top:-25px;margin-left:775px;}
 }
 @-o-keyframes animationBoxTwo{
-0%,55%{top:-25px;margin-left:775px;} 
-62%,81% {top:35px;margin-left:775px;}
-88%,100% {top:-25px;margin-left:775px;}
+0%,46%{top:-25px;margin-left:775px;} 
+49%,68% {top:35px;margin-left:775px;}
+72%,100% {top:-25px;margin-left:775px;}
 }
 @keyframes animationBoxTwo{
-0%,55%{top:-25px;margin-left:775px;} 
-62%,81% {top:35px;margin-left:775px;}
-88%,100% {top:-25px;margin-left:775px;}
+0%,46%{top:-25px;margin-left:775px;} 
+49%,68% {top:35px;margin-left:775px;}
+72%,100% {top:-25px;margin-left:775px;}
 }
 @-webkit-keyframes animationBoxThree{
-0%,19% {top:35px;margin-left:775px;}
-23%,93%{top:-25px;margin-left:775px;} 
-100% {top:35px;margin-left:775px;}
+0%,71% {top:-25px;margin-left:775px;}
+74%,93%{top:35px;margin-left:775px;} 
+97%,100% {top:-25px;margin-left:775px;}
 }
 @-ms-keyframes animationBoxThree{
-0%,19% {top:35px;margin-left:775px;}
-23%,93%{top:-25px;margin-left:775px;} 
-100% {top:35px;margin-left:775px;}
+0%,71% {top:-25px;margin-left:775px;}
+74%,93%{top:35px;margin-left:775px;} 
+97%,100% {top:-25px;margin-left:775px;}
 }
 @-o-keyframes animationBoxThree{
-0%,19% {top:35px;margin-left:775px;}
-23%,93%{top:-25px;margin-left:775px;} 
-100% {top:35px;margin-left:775px;}
+0%,71% {top:-25px;margin-left:775px;}
+74%,93%{top:35px;margin-left:775px;} 
+97%,100% {top:-25px;margin-left:775px;}
 }
 @keyframes animationBoxThree{
-0%,19% {top:35px;margin-left:775px;}
-23%,93%{top:-25px;margin-left:775px;} 
+0%,71% {top:-25px;margin-left:775px;}
+74%,93%{top:35px;margin-left:775px;} 
+97%,100% {top:-25px;margin-left:775px;}
+}
+@-webkit-keyframes animationBoxFour{
+0%,18%{top:35px;margin-left:775px;} 
+21%,97%{top:-25px;margin-left:775px;}
+100% {top:35px;margin-left:775px;}
+}
+@-ms-keyframes animationBoxFour{
+0%,18%{top:35px;margin-left:775px;} 
+21%,97%{top:-25px;margin-left:775px;}
+100% {top:35px;margin-left:775px;}
+}
+@-o-keyframes animationBoxFour{
+0%,18%{top:35px;margin-left:775px;} 
+21%,97%{top:-25px;margin-left:775px;}
+100% {top:35px;margin-left:775px;}
+}
+@keyframes animationBoxFour{
+0%,18%{top:35px;margin-left:775px;} 
+21%,97%{top:-25px;margin-left:775px;}
 100% {top:35px;margin-left:775px;}
 }
 
@@ -415,22 +453,24 @@ animation:animationBoxThree 45s ease 0s infinite;
     font-size:12px;
 }
 #message_livredor .form-field {
-    clear: both;
-    margin: 5px;
+    margin:5px;
     overflow: hidden;
     margin:auto;
 }
 #message_livredor .form-field label{
     float:left;
     width:20%;
-    padding: 5px; 
+    padding:5px; 
 }
-#message_livredor .form-field input,.form-field textarea{
-    float: left;
-    width: 55%;
-    padding: 5px;
-    border: 1px solid #686868;
-    background-color: #fff;
+#message_livredor .form-field input,#message_livredor .form-field textarea{
+    float:left;
+    width:55%;
+    padding:5px;
+    border:1px solid #686868;
+    background-color:#fff;
+}
+#message_livredor .form-field textarea{
+    resize:none;
 }
 /*  --- Propriétés de la section contact --  */
 .contact h1{
@@ -440,19 +480,48 @@ animation:animationBoxThree 45s ease 0s infinite;
 }
 .contact h3{
     color:#4e2a2d;
-    font-size: 17px;
-    margin: 0px 0px -20px 0px;
+    font-size:17px;
+    margin:0px 0px -20px 0px;
 }
 /*  --- Propriétés de la section plateformeLogement --  */
 .plateformeLogement h1{
     color:#177f80;
     text-shadow:1px 1px 0.6px #052020;
-    margin: 20px 0px -10px 0px;
+    margin:20px 0px -10px 0px;
 }
 .plateformeLogement h3{
     color:#0e5152;
-    font-size: 17px;
-    margin: 0px 0px -20px 0px;
+    font-size:17px;
+    margin:0px 0px -20px 0px;
+}
+/*  --- Propriétés de mainContact ET plateformeLogementContact--  */
+#mainContact, #plateformeLogementContact{
+    width:600px;
+    margin:auto;
+    padding-left:50px;
+}
+#mainContact .form-field, #plateformeLogementContact .form-field{
+    margin:5px;
+    overflow:hidden;
+    margin:auto;
+}
+#mainContact .form-field label, #mainContact .form-field-contenu label, #plateformeLogementContact .form-field label, #plateformeLogementContact .form-field-contenu label{
+    float:left;
+    width:35%;
+    padding: 5px; 
+}
+#mainContact .form-field input, #plateformeLogementContact .form-field input{
+    float: left;
+    width: 54%;
+    padding: 5px;
+    border: 1px solid #686868;
+    background-color: #fff;
+}
+#mainContact #contenu, #plateformeLogementContact #contenu{
+    width: 545px;
+    height:250px;
+    padding: 5px;
+    resize:none;
 }
 /*  --- Propriétés de la section parameters --  */
 .parameters fieldset{

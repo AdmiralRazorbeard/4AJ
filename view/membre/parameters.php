@@ -53,7 +53,7 @@
 					<fieldset>
 						<input type="hidden" name="recevoirMail" value="true"/>
 						<p>
-							<label for="recevoirMailQuandNews">Recevoir un mail lors d'une news : </label><input type="checkbox"  id="recevoirMailQuandNews" <?php if($infoMembre['recevoirMailQuandNews']) { echo 'checked'; } ?> name="recevoirMailQuandNews"> 
+							<label for="recevoirMailQuandNews">Autoriser la reception de newsletters : </label><input type="checkbox"  id="recevoirMailQuandNews" <?php if($infoMembre['recevoirMailQuandNews']) { echo 'checked'; } ?> name="recevoirMailQuandNews"> 
 						</p>
 						<input type="submit">
 					</fieldset>

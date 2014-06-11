@@ -16,6 +16,7 @@ include_once('/view/includes/footerfunctions.php');
 			<div class="box1 boxAdresse">FJT ANNE FRANCK<br>21, rue du bloc 62000 ARRAS</div>
 			<div class="box2 boxAdresse">FJT CLAIR LOGIS<br>3, rue du Paul Perin 62000 ARRAS</div>
 			<div class="box3 boxAdresse">FJT NOBEL<br>7, rue Diderot 62000 ARRAS</div>
+			<div class="box4 boxAdresse">PLATEFORME LOGEMENT<br>34 bis, Grand'Place 62000 ARRAS</div>
 			<div id="connexion">
 				<?php
 				if(isConnected()) {?>
@@ -64,6 +65,7 @@ include_once('/view/includes/footerfunctions.php');
 				<li><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></li>
 				<li><img src="/4AJ/view/graphicRessources/2.jpg" alt="image bannière"/></li>
 				<li><img src="/4AJ/view/graphicRessources/3.jpg" alt="image bannière"/></li>
+				<li><img src="/4AJ/view/graphicRessources/2.jpg" alt="image bannière"/></li>
 				<li><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></li>
 			</ul>
 		</div>
