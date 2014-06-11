@@ -31,7 +31,7 @@ include_once '/view/includes/header.php';
 								<?php foreach ($allFonction as $k => $v) { ?>
 									<div class="form-field-visibilite-element">
 										<input type="checkbox" <?php if($k == 1) { echo 'checked'; } ?> name="<?php echo $k; ?>" id="<?php echo $k; ?>">
-										<label for="<?php echo $k; ?>"><?php echo $v['nom']; ?></label>
+										<label for="<?php echo $k; ?>"><?php if($v['nom']=='Public'){echo "Tout le monde";}else{echo $v['nom'];} ?></label>
 									</div>
 								<?php } ?>
 						</div>
