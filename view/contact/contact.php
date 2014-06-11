@@ -1,4 +1,4 @@
-<?php include_once '/view/includes/header.php'; ?>
+<?php include_once 'view/includes/header.php'; ?>
 			<div class="contentWrapper contact element">
 				<h1>
 					Formulaire de contact
@@ -17,11 +17,10 @@
 						<label for="contenu">Contenu : </label>
 						<textarea name="contenu" id="contenu"></textarea>
 						<input type="submit">
-						</p>
 					</form>
 				</fieldset>
 			</div>
-			<?php include_once '/view/includes/footer.php'; ?>
+			<?php include_once 'view/includes/footer.php'; ?>
 		</div>
 	</body>
 </html>
