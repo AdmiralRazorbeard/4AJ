@@ -61,7 +61,7 @@ function v_maxlength(id, crid, max)
 
 							<!-- Si admin, cela affiche l'adresse mail -->
 							<?php if($admin && !empty($v['mail']) && $v['mail'] != "null") { ?>
-							(<a href="mailto:<?php echo $v['mail']; ?>"><?php echo $v['mail']; ?></a>)
+							(<a href="mailto:<?php echo $v['mail']; ?>"><?php echo $v['mail'];?></a>)
 							<?php } ?>
 							<!-- Affiche la date -->
 							, le <?php echo $v['timeLivreOr']; ?>
