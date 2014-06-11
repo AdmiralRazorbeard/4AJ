@@ -63,4 +63,8 @@ elseif ($_GET['section'] == 'verrouillerRepas')
 {
 	include_once('controller/verouillerRepas.php');
 }
+elseif ($_GET['section'] == 'formulaireContact')
+{
+	include_once('controller/formulaireContact.php');
+}
 ?>

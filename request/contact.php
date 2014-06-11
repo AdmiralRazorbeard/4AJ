@@ -4,13 +4,16 @@ function sendMailContact($plateformeLogementOu4AJ, $mail, $sujet, $contenu)
 {
 	if($plateformeLogementOu4AJ == 1)
 	{
-		$email = "contact@4AJ.fr";	// Pour 4AJ
+		$tmp = run('SELECT mailMain as mail FROM mail WHERE id=1')->fetch_object();
+		// Pour 4AJ
 	}
 	else
 	{
-		$email = "";					// Pour plateforme logement
+		$tmp = run('SELECT mailPlateformeLogement as mail FROM mail WHERE id=1')->fetch_object();
+		// Pour plateforme logement
 	}
-	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
+	$email = $tmp->mail;
+	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $email)) // On filtre les serveurs qui rencontrent des bogues.
 	{
 	    $passage_ligne = "\r\n";
 	}

@@ -33,10 +33,10 @@ include_once('/view/includes/footerfunctions.php');
 								<!-- Si super admin, il peut passer en mode édition -->
 								<div class="connexion_inscription connexion_bold">
 								<?php if(empty($_SESSION['superAdminOn'])) { ?>
-									<a href="index.php?section=index&amp;superAdminOn=true">Mode édition</a></div> 
+									<a href="index.php?section=index&amp;superAdminOn=true&amp;get=<?php echo $_GET['section']; ?>">Mode édition</a></div> 
 								<?php } else { ?>
 									<!-- Cela veut dire qu'il est déjà superAdmin, donc lien pour désactiver -->
-									<a href="index.php?section=index&amp;finSuperAdminOn=true">Fin mode édition</a></div>
+									<a href="index.php?section=index&amp;finSuperAdminOn=true&amp;get=<?php echo $_GET['section']; ?>">Fin mode édition</a></div>
 								<?php 	} 
 								}?>
 					<?php 
