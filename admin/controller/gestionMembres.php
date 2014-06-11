@@ -1,6 +1,7 @@
 <?php
 include_once 'request/gestionMembres.php';
 if(!isAdminMembres())
+//la fonction est identique à isSuperAdmin()
 {
 	header('location:index.php?section=error');
 }
