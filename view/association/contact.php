@@ -2,10 +2,8 @@
 include_once '/view/includes/header.php';
 include_once '/view/includes/submenuPlateformeLogement.php';
 ?>
-			<div class="contentWrapper plateformeLogement element">
-				<h1>
-					Formulaire de contact
-				</h1><br />
+			<div class="contentWrapper plateformeLogement edition_mode element">
+			<?php pageDynamique('contact_plateformeLogement'); ?><br /><br />
 				<fieldset id="plateformeLogementContact">
 					<form method="post">
 						<p class="form-field">
