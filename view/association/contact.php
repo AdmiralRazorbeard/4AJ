@@ -6,14 +6,19 @@ include_once '/view/includes/submenuPlateformeLogement.php';
 				<h1>
 					Formulaire de contact
 				</h1><br />
-				<fieldset>
+				<fieldset id="plateformeLogementContact">
 					<form method="post">
+						<p class="form-field">
 						<label for="email">Adresse mail de retour* : </label>
-						<input type="mail" name="email" id="email" /><br />
+						<input type="mail" name="email" id="email" />
+						</p>
+						<p class="form-field">
 						<label for="subject">Sujet du mail : </label>
-						<input type="text" name="subject" id="subject" /><br />
-						<label for="contenu">Contenu : </label><br />
-						<textarea name="contenu" id="contenu"></textarea><br />
+						<input type="text" name="subject" id="subject" />
+						</p>
+						<p class="form-field-contenu">
+						<label for="contenu">Contenu : </label>
+						<textarea name="contenu" id="contenu"></textarea>
 						<input type="submit">
 					</form>
 				</fieldset>
