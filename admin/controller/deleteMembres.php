@@ -6,7 +6,7 @@ if(isAdminMembres())
 	{
 		$tmp = run('SELECT isSuperAdmin FROM membre WHERE id='.$_GET['delete'])->fetch_object();
 		if($tmp->isSuperAdmin != 1)
-			// On ne peut pas supprimer un super admin
+			// On ne peut pas supprimer un super admin, il faut d'abord le dégrader
 		{
 			supprimerMembre($_GET['delete']);
 		}
