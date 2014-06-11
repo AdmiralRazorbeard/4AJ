@@ -41,7 +41,7 @@
 							<?php if($admin) { ?><a class ="modificationArticle" href="admin/index.php?section=modifierNews&amp;id=<?php echo $key; ?>">Modifier</a>
 							<a class ="modificationArticle" href="admin/index.php?section=supprimerNews&amp;id=<?php echo $key; ?>">Supprimer</a><?php } ?>
 								<!-- Affiche le pdf -->
-							<?php if($value['fichierPDF'] != '') { ?>
+							<?php if($value['fichierPDF'] != '' && file_exists("fichierPDF/".$value['fichierPDF'])) { ?>
 							<div class="pdfObject"><img src="/4AJ/view/graphicRessources/pdf.png" alt="pdf"/><a href="fichierPDF/<?php echo $value['fichierPDF']; ?>">Fichier pdf</a></div>
 							<?php } ?>
 							<p class="a_content" >
