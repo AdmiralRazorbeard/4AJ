@@ -46,7 +46,7 @@ function pageDynamique($page)
 		{
 			echo regexTextBox($contenu->contenuEN); 
 		}
-		elseif(!empty($contenu->contenu) && $_SESSION['langue'] == 1)
+		else
 		{
 			echo regexTextBox($contenu->contenu);
 		}
