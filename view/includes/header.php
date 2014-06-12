@@ -44,7 +44,7 @@ include_once('/view/includes/footerfunctions.php');
 						}
 					}
 				else { ?>
-				<div class="connexion_text connexion_bold"><?php langue('Connexion', 'Connection'); ?></div>
+				<div class="connexion_text connexion_bold"><?php langue('Connexion', 'Log in'); ?></div>
 				<form method="post">
 					<div class="connexion_text"><label for="mail">Email :</label></div><div><input type="name" id="mail" name="mail" /></div>
 					<div class="connexion_text"><label for="password"><?php langue('Mot de passe :', 'Password :'); ?></label></div><div><input type="password" id="password" name="password" /></div>
@@ -83,7 +83,7 @@ include_once('/view/includes/footerfunctions.php');
     			</li>	
 				<li><a <?php if (openSection('actualites')){?>id="active_item2"<?php } else { ?>id="item2"<?php } ?> href="index.php?section=actualites"><?php langue('Actualités', 'News'); ?></a></li>
 				<li><a <?php if (openSection('liensUtiles')){?>id="active_item3"<?php } else { ?>id="item3"<?php } ?> href="index.php?section=liensUtiles"><?php langue('Liens utiles', 'Helpful links'); ?></a></li>
-				<li><a <?php if (openSous_Section_vieEnFoyer()){?>id="active_item4"<?php } else { ?>id="item4"<?php } ?> href="index.php?section=vieEnFoyer"><?php langue('Vie en foyer', 'Life at 4aj'); ?></a>
+				<li><a <?php if (openSous_Section_vieEnFoyer()){?>id="active_item4"<?php } else { ?>id="item4"<?php } ?> href="index.php?section=vieEnFoyer"><?php langue('Vie en foyer', 'Life at 4AJ'); ?></a>
 				    <ul id="s_item4">
       					<li><a href="index.php?section=services">Services</a></li>
       					<li><a href="index.php?section=repas"><?php langue('Repas', 'Meal'); ?></a></li>
