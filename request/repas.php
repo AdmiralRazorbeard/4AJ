@@ -3,26 +3,47 @@ function semaine($nbreWeekPlus=0)
 // Retourne un tableau, du lundi au dimanche, contenant numéro, nom du mois, et année
 {
 	$semaine['lundi']['numero'] = date('d', strtotime('Monday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['lundi']['jourEN'] = date('l', strtotime('Monday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['lundi']['mois'] = date('n', strtotime('Monday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['lundi']['moisEN'] = date('F', strtotime('Monday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['lundi']['annee'] = date('Y', strtotime('Monday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['lundi']['suffixe'] = date('S', strtotime('Monday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['mardi']['numero'] = date('d', strtotime('Tuesday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['mardi']['jourEN'] = date('l', strtotime('Tuesday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['mardi']['mois'] = date('n', strtotime('Tuesday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['mardi']['moisEN'] = date('F', strtotime('Tuesday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['mardi']['annee'] = date('Y', strtotime('Tuesday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['mardi']['suffixe'] = date('S', strtotime('Tuesday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['mercredi']['numero'] = date('d', strtotime('Wednesday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['mercredi']['jourEN'] = date('l', strtotime('Wednesday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['mercredi']['mois'] = date('n', strtotime('Wednesday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['mercredi']['moisEN'] = date('F', strtotime('Wednesday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['mercredi']['annee'] = date('Y', strtotime('Wednesday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['mercredi']['suffixe'] = date('S', strtotime('Wednesday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['jeudi']['numero'] = date('d', strtotime('Thursday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['jeudi']['jourEN'] = date('l', strtotime('Thursday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['jeudi']['mois'] = date('n', strtotime('Thursday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['jeudi']['moisEN'] = date('F', strtotime('Thursday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['jeudi']['annee'] = date('Y', strtotime('Thursday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['jeudi']['suffixe'] = date('S', strtotime('Thursday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['vendredi']['numero'] = date('d', strtotime('Friday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['vendredi']['jourEN'] = date('l', strtotime('Friday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['vendredi']['mois'] = date('n', strtotime('Friday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['vendredi']['moisEN'] = date('F', strtotime('Friday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['vendredi']['annee'] = date('Y', strtotime('Friday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['vendredi']['suffixe'] = date('S', strtotime('Friday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['samedi']['numero'] = date('d', strtotime('Saturday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['samedi']['jourEN'] = date('l', strtotime('Saturday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['samedi']['mois'] = date('n', strtotime('Saturday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['samedi']['moisEN'] = date('F', strtotime('Saturday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['samedi']['annee'] = date('Y', strtotime('Saturday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['samedi']['suffixe'] = date('S', strtotime('Saturday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['dimanche']['numero'] = date('d', strtotime('Sunday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['dimanche']['jourEN'] = date('l', strtotime('Sunday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['dimanche']['mois'] = date('n', strtotime('Sunday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['dimanche']['moisEN'] = date('F', strtotime('Sunday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	$semaine['dimanche']['annee'] = date('Y', strtotime('Sunday this week', strtotime('+'.$nbreWeekPlus.' week')));
+	$semaine['dimanche']['suffixe'] = date('S', strtotime('Sunday this week', strtotime('+'.$nbreWeekPlus.' week')));
 	return $semaine;	
 }
 

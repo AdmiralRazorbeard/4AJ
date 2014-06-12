@@ -45,19 +45,19 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 </script>
 			<div class="vieEnFoyer element contentWrapper edition_mode">
 				<h1>
-					Repas
+					<?php langue('Repas', 'Meal'); ?>
 				</h1><br />
 				<?php if($accessRepas) { ?> 
 				<fieldset>
-					<legend>Repas Anne Frank</legend>
+					<legend><?php langue('Repas Anne Frank', 'Anne Frank meal'); ?></legend>
 					<form method="post">
-						<label for="semaineAnneFrank">Semaine du : </label>
+						<label for="semaineAnneFrank"><?php langue('Semaine du', 'Week of'); ?> : </label>
 						<select name="semaineAnneFrank" id="semaineAnneFrank">
 							<?php
 							$i = 0;
 							while($i < 8)
 							{ ?>
-								<option <?php if(!empty($semaineDuAnneFrank) && $semaineDuAnneFrank==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '-1'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); ?> <?php echo $mois[date('n', strtotime('Monday this week', strtotime('+'.$i.' week')))]; ?></option>
+								<option <?php if(!empty($semaineDuAnneFrank) && $semaineDuAnneFrank==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '-1'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); langue('', date('S', strtotime('Monday this week', strtotime('+'.$i.' week')))); echo ' '; langue($mois[date('n', strtotime('Monday this Week', strtotime('+'.$i.' week')))], date('F', strtotime('Monday this week', strtotime('+'.$i.' week')))); ?></option>
 					<?php	$i ++;
 							}
 							?>
@@ -71,14 +71,14 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 							<?php
 							foreach ($semaineAnneFrank as $key => $value) { ?>
 								<th>
-									<?php echo ucfirst($key); ?> <?php echo $value['numero']; ?> <?php echo $mois[$value['mois']]; ?>
+									<?php langue(ucfirst($key), $value['jourEN']); ?> <?php echo $value['numero']; langue('', $value["suffixe"]); ?> <?php langue($mois[$value['mois']], $value['moisEN']); ?>
 								</th>
 					<?php	}
 							?>
 						</tr>
 						<tr>
 							<td>
-								Midi
+								<?php langue('Midi', 'Lunch'); ?>
 							</td>
 							<?php 	/*Affiche les cases pour réserver ou non*/
 							foreach ($semaineAnneFrank as $key => $value) { 
@@ -90,7 +90,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 						</tr>
 						<tr>
 							<td>
-								Soir
+								<?php langue('Soir', 'Dinner'); ?>
 							</td>
 							<?php 	/*Affiche les cases pour réserver ou non (ici pour le soir)*/
 							foreach ($semaineAnneFrank as $key => $value) { 
@@ -106,15 +106,15 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 						<!--  REPAS CLAIR LOGIS -->
 
 				<fieldset>
-					<legend>Repas Clair Logis</legend>
+					<legend><?php langue('Repas Clair Logis', 'Clair Logis meal'); ?></legend>
 					<form method="post">
-						<label for="semaineClairLogis">Semaine du : </label>
+						<label for="semaineClairLogis"><?php langue('Semaine du', 'Week of'); ?> : </label>
 						<select name="semaineClairLogis" id="semaineClairLogis">
 							<?php
 							$i = 0;
 							while($i < 8)
 							{ ?>
-								<option <?php if(!empty($semaineDuClairLogis) && $semaineDuClairLogis==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '-1'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); ?> <?php echo $mois[date('n', strtotime('Monday this Week', strtotime('+'.$i.' week')))]; ?></option>
+								<option <?php if(!empty($semaineDuClairLogis) && $semaineDuClairLogis==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '-1'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); langue('', date('S', strtotime('Monday this week', strtotime('+'.$i.' week')))); echo ' '; langue($mois[date('n', strtotime('Monday this Week', strtotime('+'.$i.' week')))], date('F', strtotime('Monday this week', strtotime('+'.$i.' week')))); ?></option>
 					<?php	$i ++;
 							}
 							?>
@@ -128,14 +128,14 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 							<?php
 							foreach ($semaineClairLogis as $key => $value) { ?>
 								<th>
-									<?php echo ucfirst($key); ?> <?php echo $value['numero']; ?> <?php echo $mois[$value['mois']]; ?>
+									<?php langue(ucfirst($key), $value['jourEN']); ?> <?php echo $value['numero']; langue('', $value["suffixe"]); ?> <?php langue($mois[$value['mois']], $value['moisEN']); ?>
 								</th>
 					<?php	}
 							?>
 						</tr>
 						<tr>
 							<td>
-								Midi
+								<?php langue('Midi', 'Lunch'); ?>
 							</td>
 							<?php 	/*Affiche les cases pour réserver ou non*/
 							foreach ($semaineClairLogis as $key => $value) { 
@@ -147,7 +147,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 						</tr>
 						<tr>
 							<td>
-								Soir
+								<?php langue('Soir', 'Dinner'); ?>
 							</td>
 							<?php 	/*Affiche les cases pour réserver ou non (ici pour le soir)*/
 							foreach ($semaineClairLogis as $key => $value) { 
