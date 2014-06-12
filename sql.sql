@@ -116,6 +116,7 @@ CREATE TABLE informationPage(
         id      int (11) Auto_increment  NOT NULL ,
         page    Varchar (255) ,
         contenu Text ,
+        contenuEN Text ,
         PRIMARY KEY (id ) ,
         UNIQUE (page )
 )ENGINE=InnoDB;

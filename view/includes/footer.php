@@ -1,5 +1,7 @@
 <div id="footer">
 	<div id="visiteurs">
-		Nombre de visiteurs: <?php echo nombreVisiteur(); ?>
+		<?php 
+		if($_SESSION['langue'] == 2)	{ echo 'Number of visitors : '.nombreVisiteur(); }
+		else 							{ echo 'Nombre de visiteurs : '.nombreVisiteur(); }	?>
 	</div>
 </div>

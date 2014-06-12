@@ -2,30 +2,53 @@
 function pageDynamique($page)
 { 
 	$mysqli = connection();
-	if(!empty($_POST['contenu']) && isSuperAdmin())
+	if(!empty($_POST['contenuFR']) || !empty($_POST['contenuEN']) && isSuperAdmin())
 	{
-		if(strlen($_POST['contenu']) <= 64000)
+		if(!empty($_POST['contenu']) && strlen($_POST['contenu']) <= 64000)
 		{
 			run('UPDATE informationpage SET contenu="'.$mysqli->real_escape_string($_POST['contenu']).'" WHERE page="'.$page.'"');
 		}
+		elseif(!empty($_POST['contenuEN']) && strlen($_POST['contenuEN']) <= 64000)
+		{
+			run('UPDATE informationpage SET contenuEN="'.$mysqli->real_escape_string($_POST['contenuEN']).'" WHERE page="'.$page.'"');
+		}
 	}
-	$contenu = run('SELECT contenu FROM informationpage WHERE page="'.$page.'"')->fetch_object();
+	$contenu = run('SELECT contenu, contenuEN FROM informationpage WHERE page="'.$page.'"')->fetch_object();
 	if(!empty($_SESSION['superAdminOn']) && isSuperAdmin())
 	{ 
 		// Evite d'avoir une valeur vide pour ensuite l'afficher sinon cela provoque une erreur
-		if(empty($contenu->contenu)) { $contenu = ""; }
-		else { $contenu = $contenu->contenu; } ?>
-		<form method="post">
-			<?php toolBox('contenu', $contenu); ?><br />
-			<input type="submit" />
-		</form>
+		if($_SESSION['langue'] == 1) 
+		{
+			if(empty($contenu->contenu)) { $contenuFR = ""; }
+			else { $contenuFR = $contenu->contenu; } ?>
+			<form method="post">
+				Français : 
+				<?php toolBox('contenuFR', $contenuFR); ?><br />
+				<input type="submit" />
+			</form>
+		<?php 
+		}
+		if($_SESSION['langue'] == 2) 
+		{ ?>
+	<?php	if(empty($contenu->contenuEN)) { $contenuEN = ""; }
+			else { $contenuEN = $contenu->contenuEN; } ?>
+			<form method="post">
+				Anglais : 
+				<?php toolBox('contenuEN', $contenuEN); ?><br />
+				<input type="submit" />
+			</form>
+<?php 	} ?>
 <?php
 	}
 	else
 	{	
-		if(!empty($contenu->contenu))
+		if(!empty($contenu->contenuEN) && $_SESSION['langue'] == 2)
 		{
-			echo regexTextBox($contenu->contenu); 
+			echo regexTextBox($contenu->contenuEN); 
+		}
+		elseif(!empty($contenu->contenu) && $_SESSION['langue'] == 1)
+		{
+			echo regexTextBox($contenu->contenu);
 		}
 	}
 ?>

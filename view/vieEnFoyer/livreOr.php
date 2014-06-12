@@ -64,7 +64,7 @@ function v_maxlength(id, crid, max)
 							(<a href="mailto:<?php echo $v['mail']; ?>"><?php echo $v['mail'];?></a>)
 							<?php } ?>
 							<!-- Affiche la date -->
-							, le <?php echo $v['timeLivreOr']; ?>
+							, <?php langue('le '.$v['timeLivreOr'], 'the '.$v['timeLivreOrEN']); ?>
 							<!-- Rajoute un bouton supprimer si admin -->
 							<?php if($admin) { ?>
 							<a href="index.php?section=livreOr&amp;delete=<?php echo $v['id']; ?>">Supprimer</a> 
@@ -87,24 +87,24 @@ function v_maxlength(id, crid, max)
 					</p>	
 				</div>
 				<fieldset id="message_livredor">
-					<legend>Laissez un message</legend>
+					<legend><?php langue('Laissez un message', 'Leave a message'); ?></legend>
 					<form method="post">
 						<p class="form-field">
-						<label for="nom">Votre nom : </label>
+						<label for="nom"><?php langue('Votre nom :', 'Your name :'); ?></label>
 						<input type="text" name="nom" id="nom" />
 						</p>
 						<p class="form-field">
-						<label for="email">Votre email : </label>
+						<label for="email"><?php langue('Votre email :', 'Your mail :'); ?></label>
 						<input type="text" name="mail" id="email" />
 						</p>
 						<p class="message_info"> 
-						<em>(L'Email est optionnel et ne sera pas affiché au public, mais peut nous permettre de vous recontacter)</em>
+						<em>(<?php langue('L\'Email est optionnel et ne sera pas affiché au public, mais peut nous permettre de vous recontacter', 'Your email is optional and won\'t be display in public, this may help us to contact you.'); ?>)</em>
 						</p>
 						<p class="form-field">
-						<label for="contenu">Contenu : </label>
+						<label for="contenu"><?php langue('Votre email', 'Content'); ?> : </label>
 						<textarea name="contenu" id="contenu" cols="50" rows="10" ></textarea>
 						</p>
-						<p class="message_info"><em>Il vous reste <span id="carac_reste_textarea_1"></span> caractères.</em></p>
+						<p class="message_info"><em><?php langue('Il vous reste', 'You have'); ?> <span id="carac_reste_textarea_1"></span> <?php langue('caractères', 'characters left'); ?>.</em></p>
 						<!-- Script pour le nombre de caractère -->
 						<script type="text/javascript">
 							<!--
@@ -112,9 +112,9 @@ function v_maxlength(id, crid, max)
 							-->
 					    </script>
 					    <p class="message_info"> 
-						<em>(Votre message ne s'affichera sur la page qu'après validation de l'administrateur)</em>
+						<em>(<?php langue('Votre message ne s\'affichera sur la page qu\'après validation de l\'administrateur', 'Your message will be display only after validation by the administrator'); ?>)</em>
 						</p>
-						<input type="submit"><input type="reset">
+						<input type="submit" <?php langue('', 'value="Validate"'); ?>><input type="reset" <?php langue('', 'value="Reset"'); ?>>
 					</form>
 				</fieldset>
 			</div>
