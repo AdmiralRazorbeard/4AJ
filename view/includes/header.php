@@ -26,6 +26,7 @@ include_once('/view/includes/footerfunctions.php');
 			<?php 	if(isAdminSomewhere())
 					// Si l'utilisateur est admin
 					{ ?> 
+						<div class="language"><a href="index.php?section=FR"><img src="/4AJ/view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN"><img src="/4AJ/view/graphicRessources/uk.png" alt="uk"/></a></div>
 						<div class="connexion_inscription connexion_bold">
 							<a href="admin/index.php?section=main">Partie administrateur</a>
 						</div>
@@ -50,6 +51,7 @@ include_once('/view/includes/footerfunctions.php');
 					<div class="connexion_submit"><input id="submit" type="submit"/></div>
 				</form>
 				<div class="connexion_text"><em><a id="lostPwd" href="index.php?section=lostPassword">Mot de passe perdu ?</a></em></div>
+				<div class="language"><a href="index.php?section=FR"><img src="/4AJ/view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN"><img src="/4AJ/view/graphicRessources/uk.png" alt="uk"/></a></div>
 				<div class="connexion_inscription connexion_bold"><a href="index.php?section=inscription">Inscription</a></div>
 				<?php } ?>
 				<?php
