@@ -3,6 +3,23 @@ session_start();
 date_default_timezone_set('Europe/Paris');
 include_once('request/connectionSQL.php');
 $mysqli = connection();
+
+###### LANGUAGE #######
+// Cela permet de gérer la langue, on met une variable valant 1 si FR, 2 si EN.
+if(empty($_SESSION['langue']) || (($_SESSION['langue'] != 1) && ($_SESSION['langue'] != 2)))
+{
+	$_SESSION['langue'] = 1;
+}
+function langue($FR, $EN)
+// Cette fonction affiche, en fonction de si c'est FR ou EN, le $FR ou le $EN
+{
+	if($_SESSION['langue'] == 2) 
+		{ echo $EN; }
+	else 
+		{ echo $FR; }
+}
+####### FIN GESTION LANGUAGE #######
+
 //Ce fichier permet de gerer la section à afficher en appellant ensuite le controleur
 if(isset($_GET['typeActualite']) && empty($_GET['section']))
 // Au cas où on vient d'actualite
@@ -20,6 +37,14 @@ if(isset($_GET['typeActualite']) && empty($_GET['section']))
 elseif (empty($_GET['section']))	
 {
     header('location:index.php?section=index');
+}
+elseif ($_GET['section'] == 'FR')
+{
+	include_once 'controller/FR.php';
+}
+elseif ($_GET['section'] == 'EN')
+{
+	include_once 'controller/EN.php';
 }
 elseif ($_GET['section'] == 'index')
 {

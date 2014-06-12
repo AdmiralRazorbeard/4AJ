@@ -23,7 +23,7 @@ function returnLivreOr($page, $nbreBilletParPage)
 	if($nbreLivreOr >= 1)
 	// Vérifie qu'il y ai bien des entrées
 	{
-		$SQLLivreOr = run('	SELECT id,nom,mail,contenu, DATE_FORMAT(timestampLivreOr, "%d/%m/%y à %H:%i") AS timeLivreOr 
+		$SQLLivreOr = run('	SELECT id,nom,mail,contenu, DATE_FORMAT(timestampLivreOr, "%d/%m/%y à %H:%i") AS timeLivreOr, DATE_FORMAT(timestampLivreOr, "%m/%d/%y at %H:%i") AS timeLivreOrEN 
 							FROM livreor 
 							WHERE afficher=1
 							ORDER BY timestampLivreOr DESC 
@@ -34,6 +34,7 @@ function returnLivreOr($page, $nbreBilletParPage)
 			$livreOr[$tmp->id]['nom'] = htmlspecialchars($tmp->nom);
 			$livreOr[$tmp->id]['mail'] = htmlspecialchars($tmp->mail);
 			$livreOr[$tmp->id]['timeLivreOr'] = $tmp->timeLivreOr;
+			$livreOr[$tmp->id]['timeLivreOrEN'] = $tmp->timeLivreOrEN;
 			$livreOr[$tmp->id]['contenu'] = nl2br(htmlspecialchars($tmp->contenu));
 		}
 	}

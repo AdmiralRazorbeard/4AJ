@@ -11,7 +11,7 @@ if(!$admin)
 $typeActualite = allTypeActualite();
 $nbreTypeActualite = nombreTypeActualite();
 $allFonction = allFonction();
-if(!empty($_POST['titre']) && !empty($_POST['typeActualite']) && !empty($_POST['actualite']))
+if(!empty($_POST['titre']) && !empty($_POST['typeActualite']) && !empty($_POST['actualite']) && is_numeric($_POST['typeActualite']))
 {
 	if(strlen($_POST['titre']) <= 254 && strlen($_POST['actualite']) <= 64000 && !ctype_space($_POST['titre']) && !ctype_space($_POST['actualite']))
 	{
@@ -43,10 +43,13 @@ if(!empty($_POST['titre']) && !empty($_POST['typeActualite']) && !empty($_POST['
 						$nomFichier = genererCle(10).preg_replace('# #', '_', $_FILES['uploadFichier']['name']);
 						$tmp = run('SELECT COUNT(*) as nbre FROM news WHERE fichierPDF="'.$nomFichier.'"')->fetch_object();
 						while($tmp->nbre != 0)
+							// Génére un nom en s'assurant qu'il est unique
 						{
 							$nomFichier = genererCle(10).preg_replace('# #', '_', $_FILES['uploadFichier']['name']);
 							$tmp = run('SELECT COUNT(*) as nbre FROM news WHERE fichierPDF="'.$nomFichier.'"')->fetch_object();
 						}
+
+						// Upload le fichier dans fichierPDF/
 						$resultat = move_uploaded_file($_FILES['uploadFichier']['tmp_name'],'../fichierPDF/'.$nomFichier);
 					}
 				}
