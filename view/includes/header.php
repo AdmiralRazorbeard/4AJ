@@ -26,7 +26,7 @@ include_once('/view/includes/footerfunctions.php');
 			<?php 	if(isAdminSomewhere())
 					// Si l'utilisateur est admin
 					{ ?> 
-						<div class="language"><a href="index.php?section=FR"><img src="/4AJ/view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN"><img src="/4AJ/view/graphicRessources/uk.png" alt="uk"/></a></div>
+						<div class="language"><a href="index.php?section=FR<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/uk.png" alt="uk"/></a></div>
 						<div class="connexion_inscription connexion_bold">
 							<a href="admin/index.php?section=main">Partie administrateur</a>
 						</div>
@@ -51,7 +51,7 @@ include_once('/view/includes/footerfunctions.php');
 					<div class="connexion_submit"><input id="submit" type="submit" <?php langue('', 'value="Send"'); ?>/></div>
 				</form>
 				<div class="connexion_text"><em><a id="lostPwd" href="index.php?section=lostPassword"><?php langue('Mot de passe perdu?', 'Forgotten your password?'); ?></a></em></div>
-				<div class="language"><a href="index.php?section=FR"><img src="/4AJ/view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN"><img src="/4AJ/view/graphicRessources/uk.png" alt="uk"/></a></div>
+				<div class="language"><a href="index.php?section=FR<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/uk.png" alt="uk"/></a></div>
 				<div class="connexion_inscription connexion_bold"><a href="index.php?section=inscription"><?php langue('Inscription', 'Register'); ?></a></div>
 				<?php } ?>
 				<?php
