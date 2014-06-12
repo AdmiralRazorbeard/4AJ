@@ -48,7 +48,7 @@ include_once('/view/includes/footerfunctions.php');
 				<form method="post">
 					<div class="connexion_text"><label for="mail">Email :</label></div><div><input type="name" id="mail" name="mail" /></div>
 					<div class="connexion_text"><label for="password"><?php langue('Mot de passe :', 'Password :'); ?></label></div><div><input type="password" id="password" name="password" /></div>
-					<div class="connexion_submit"><input id="submit" type="submit" <?php langue('', 'value="Send"'); ?>/></div>
+					<div class="connexion_submit"><input id="submit" type="submit" <?php langue('value="Envoyer"', 'value="Send"'); ?>/></div>
 				</form>
 				<div class="connexion_text"><em><a id="lostPwd" href="index.php?section=lostPassword"><?php langue('Mot de passe perdu?', 'Forgotten your password?'); ?></a></em></div>
 				<div class="language"><a href="index.php?section=FR"><img src="/4AJ/view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN"><img src="/4AJ/view/graphicRessources/uk.png" alt="uk"/></a></div>
@@ -87,7 +87,7 @@ include_once('/view/includes/footerfunctions.php');
 				    <ul id="s_item4">
       					<li><a href="index.php?section=services">Services</a></li>
       					<li><a href="index.php?section=repas"><?php langue('Repas', 'Meal'); ?></a></li>
-      					<li><a class="last_item" href="index.php?section=livreOr"><?php langue('Livre d\'or', 'Visitors\' book'); ?></a></li>
+      					<li><a class="last_item" href="index.php?section=livreOr"><?php langue('Livre d\'or', 'Guest book'); ?></a></li>
     				</ul>
     			</li>
 				<li><a <?php if (openSous_Section_devenirResident()){?>id="active_item5"<?php } else { ?>id="item5"<?php } ?> href="index.php?section=devenirResident"><?php langue('Devenir résident', 'Becoming resident'); ?></a>

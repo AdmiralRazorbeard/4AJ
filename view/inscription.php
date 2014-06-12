@@ -10,7 +10,7 @@
 		<div class="mainWrapper">
 			<div class="contentWrapper">
 				<div>
-					<h1><?php langue('S`\'incrire à 4AJ, un tremplin pour les jeunes', 'Create an account for 4AJ'); ?></h1>
+					<h1><?php langue('S\'incrire à 4AJ, un tremplin pour les jeunes', 'Create an account for 4AJ'); ?></h1>
 					<p id="info_inscription">
 						<a href="index.php?section=index"><?php langue('Retourner à l\'accueil', 'Return to homepage'); ?></a>
 					<?php if(isConnect()) { ?><em><?php langue('Vous êtes déjà connecté : ', 'You are already connected :'); ?><a href="index.php?section=index&amp;dislog=true"><?php langue('Se déconnecter', 'Log out'); ?></a></em><?php } ?>
@@ -100,11 +100,11 @@
 								<input required type="password" name="password2" id="password2">
 							</p>
 							<p class="inscription_info">
-								<em><?php langue('Le mot de passe doit contenir 7 caractères au minimun.', 'The password must contain at least 7 characters'); ?></em><br>
+								<em><?php langue('Le mot de passe doit contenir 7 caractères au minimun.', 'The password must contain at least 7 characters.'); ?></em><br>
 								<em><?php langue('Les champs marqués d\'un * sont obligatoires.', 'Fields with * are mandatory.'); ?></em>
 							</p>
-							<input type="submit" <?php langue('', 'value="Submit"'); ?>>
-							<input type="reset" <?php langue('', 'value="Reset"'); ?>>
+							<input type="submit" <?php langue('value="Envoyer"', 'value="Submit"'); ?>>
+							<input type="reset" <?php langue('value="Effacer"', 'value="Reset"'); ?>>
 						</fieldset>
 					</form>
 				</div>
