@@ -2,13 +2,13 @@
 function pageDynamique($page)
 { 
 	$mysqli = connection();
-	if(!empty($_POST['contenuFR']) || !empty($_POST['contenuEN']) && isSuperAdmin())
+	if(isset($_POST['contenuFR']) || isset($_POST['contenuEN']) && isSuperAdmin())
 	{
-		if(!empty($_POST['contenu']) && strlen($_POST['contenu']) <= 64000)
+		if(isset($_POST['contenu']) && strlen($_POST['contenu']) <= 64000)
 		{
 			run('UPDATE informationpage SET contenu="'.$mysqli->real_escape_string($_POST['contenu']).'" WHERE page="'.$page.'"');
 		}
-		elseif(!empty($_POST['contenuEN']) && strlen($_POST['contenuEN']) <= 64000)
+		elseif(isset($_POST['contenuEN']) && strlen($_POST['contenuEN']) <= 64000)
 		{
 			run('UPDATE informationpage SET contenuEN="'.$mysqli->real_escape_string($_POST['contenuEN']).'" WHERE page="'.$page.'"');
 		}
