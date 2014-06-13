@@ -44,5 +44,5 @@ else
 }
 $livreOr = returnLivreOr($page, $nbreBilletParPage); 	// Récupére toutes les données du livre d'or
 
-include_once 'view/vieEnFoyer/livreOr.php';
+include_once 'view/contact/livreOr.php';
 ?>

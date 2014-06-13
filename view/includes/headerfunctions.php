@@ -42,19 +42,10 @@ function openSous_Section_association()
 	}
 	return false;
 }
-function openSous_Section_vieEnFoyer()
+function openSous_Section_nosResidences()
 //idem que openSection sauf que cette classe active ne s'appliquera que sur le bouton principal lorsque l'un des boutons sera utilisé du menu déroulant
 {
-	if($_GET['section'] == 'vieEnFoyer' || $_GET['section'] == 'services' || $_GET['section'] == 'repas' || $_GET['section'] == 'livreOr')
-	{
-		return true;
-	}
-	return false;
-}
-function openSous_Section_devenirResident()
-//idem que openSection sauf que cette classe active ne s'appliquera que sur le bouton principal lorsque l'un des boutons sera utilisé du menu déroulant
-{
-	if($_GET['section'] == 'devenirResident' || $_GET['section'] == 'conditions' || $_GET['section'] == 'logements')
+	if($_GET['section'] == 'residenceAnneFrank' || $_GET['section'] == 'residenceClairLogis' || $_GET['section'] == 'residenceNobel')
 	{
 		return true;
 	}
@@ -63,7 +54,7 @@ function openSous_Section_devenirResident()
 function openSous_Section_contact()
 //idem que openSection sauf que cette classe active ne s'appliquera que sur le bouton principal lorsque l'un des boutons sera utilisé du menu déroulant
 {
-	if($_GET['section'] == 'contact' || $_GET['section'] == 'faq' || $_GET['section'] == 'memento' || $_GET['section'] == 'faireUnDon')
+	if($_GET['section'] == 'contact' || $_GET['section'] == 'faq' || $_GET['section'] == 'memento' || $_GET['section'] == 'liensUtiles' || $_GET['section'] == 'livreOr')
 	{
 		return true;
 	}

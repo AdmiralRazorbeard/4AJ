@@ -74,10 +74,6 @@ elseif ($_GET['section'] == 'plateformeLogement' || ($_GET['section'] == 'platef
 {
 	include_once 'controller/plateformeLogement.php';
 }
-elseif ($_GET['section'] == 'liensUtiles')
-{
-	include_once 'controller/liensUtiles.php';
-}
 elseif ($_GET['section'] == 'vieEnFoyer')
 {
 	include_once 'controller/vieEnFoyer.php';
@@ -89,10 +85,6 @@ elseif ($_GET['section'] == 'services')
 elseif ($_GET['section'] == 'repas')
 {
 	include_once 'controller/repas.php';
-}
-elseif ($_GET['section'] == 'livreOr')
-{
-	include_once 'controller/livreOr.php';
 }
 elseif ($_GET['section'] == 'devenirResident')
 {
@@ -118,9 +110,13 @@ elseif ($_GET['section'] == 'memento')
 {
 	include_once 'controller/memento.php';
 }
-elseif ($_GET['section'] == 'faireUnDon')
+elseif ($_GET['section'] == 'liensUtiles')
 {
-	include_once 'controller/faireUnDon.php';
+	include_once 'controller/liensUtiles.php';
+}
+elseif ($_GET['section'] == 'livreOr')
+{
+	include_once 'controller/livreOr.php';
 }
 elseif ($_GET['section'] == 'lostPassword')
 {
