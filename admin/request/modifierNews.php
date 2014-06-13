@@ -47,7 +47,6 @@ function infoNews($id)
 
 function updatenews($id, $titre, $contenu)
 // On mets à jour (en vérifiant que la news existe évidemment)
-// Nom fichier vaut 0 si on y touche pas, -1 si on veut le supprimer, et le nom du fichier si il faut le changer
 {
 	$nbre = run('SELECT COUNT(*) as nbre FROM news WHERE id='.$id)->fetch_object();
 	$tmp = $nbre->nbre;
