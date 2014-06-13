@@ -30,13 +30,13 @@ nav li {
     margin:auto;
     padding:0;
 }
-#item0{background-color:#2e115a;}#item1,#s_item1 a{background-color:#2797e8;}#item2, #s_item2 a{background-color:#f8d617;}#item3{background-color:#a4b819;}#item4{background-color:#ce7526;}{background-color:#ce7526;}#item5, #s_item5 a{background-color:#6f0006;}#item6, #s_item6 a{background-color:#955359;}
-#item0:hover{background-color:#4e2887;}#item1:hover,#s_item1 a:hover{background-color:#7ec4f4;}#item2:hover, #s_item2 a:hover{background-color:#fdec8b;}#item3:hover{background-color:#d4e752;}#item4:hover{background-color:#eca25f;}#item5:hover, #s_item5 a:hover{background-color:#a90008;}#item6:hover, #s_item6 a:hover{background-color:#b0757a;}
-#active_item0{background-color:#4e2887;}#active_item1{background-color:#7ec4f4;}#active_item2{background-color:#fdec8b;}#active_item3{background-color:#d4e752;}#active_item4{background-color:#eca25f;}#active_item5{background-color:#a90008;}#active_item6{background-color:#b0757a;}
+#item0{background-color:#2e115a;}#item1,#s_item1 a{background-color:#2797e8;}#item2, #s_item2 a{background-color:#f8d617;}#item3{background-color:#a4b819;}#item4{background-color:#ce7526;}{background-color:#ce7526;}#item5, #s_item5 a{background-color:#6f0006;}/*#item6, #s_item6 a{background-color:#955359;}*/
+#item0:hover{background-color:#4e2887;}#item1:hover,#s_item1 a:hover{background-color:#7ec4f4;}#item2:hover, #s_item2 a:hover{background-color:#fdec8b;}#item3:hover{background-color:#d4e752;}#item4:hover{background-color:#eca25f;}#item5:hover, #s_item5 a:hover{background-color:#a90008;}/*#item6:hover, #s_item6 a:hover{background-color:#b0757a;}*/
+#active_item0{background-color:#4e2887;}#active_item1{background-color:#7ec4f4;}#active_item2{background-color:#fdec8b;}#active_item3{background-color:#d4e752;}#active_item4{background-color:#eca25f;}#active_item5{background-color:#a90008;}/*#active_item6{background-color:#b0757a;}*/
 /*  Couleur des items du menu, hover ou non, actif ou non */
-/*le style de l'item 6 existe deja pour un eventuel futur onglet*/
-#submenu_item{background-color:#f7f7f7;color:#177f80;}
-#submenu_item:hover{
+/* le style de l'item 6 existe deja pour un eventuel futur onglet */
+.submenu_item{background-color:#f7f7f7;color:#177f80;}
+.submenu_item:hover{
 background-color:#177f80;color:#f7f7f7;
 -webkit-transition: all 0.3s ease-in-out;
 -moz-transition: all 0.3s ease-in-out;
@@ -44,12 +44,12 @@ background-color:#177f80;color:#f7f7f7;
 -o-transition: all 0.3s ease-in-out;
 transition: all 0.3s ease-in-out;
 }
-#active_submenu_item{background-color:#177f80;color:#f7f7f7;}
+.active_submenu_item{background-color:#177f80;color:#f7f7f7;}
 /*  Couleur des items du sous-menu, hover ou non, actif ou non */
-.last_item{
-    border-radius: 0px 0px 6px 6px;
-    /*  Le dernier item du chaque menu déroulant a les bord inférieurs arrondis */
+#subMenu .correct_size_contactPlateforme{
+    width: 155px;
 }
+/*  correction des pixels manquant à droite pour le dernier item du submenu */
 nav li ul {
     position:absolute;
 }
@@ -62,7 +62,15 @@ nav li ul {
     text-shadow:1px 1px 1px black;
     font-weight: bold;
     font-style:normal;
-    font-size:13px;
+    font-size:14px;
+}
+#mainMenu #item5, #mainMenu .correct_size, #mainMenu #active_item5{
+    width:153px;
+}
+/*  correction des pixels manquant à droite pour le dernier item menu principal */
+.last_item{
+    border-radius: 0px 0px 6px 6px;
+    /*  Le dernier item du chaque menu déroulant a les bord inférieurs arrondis */
 }
 #subMenu li a {
     display:block;
