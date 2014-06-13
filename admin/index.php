@@ -19,10 +19,6 @@ elseif ($_GET['section'] == 'actualite')
 {
 	include_once('controller/actualite.php');
 }
-elseif ($_GET['section'] == 'typeActualite')
-{
-	include_once('controller/typeActualite.php');
-}
 elseif ($_GET['section'] == 'supprimerNews')
 {
 	include_once('controller/supprimerNews.php');
