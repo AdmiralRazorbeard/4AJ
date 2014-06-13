@@ -126,17 +126,4 @@ Vous pouvez retrouver cette actualité sur http://4AJ.fr/index.php?section=actua
 	mail($mail,$sujet,$message,$header);
 	//==========
 }
-function genererCle($nb_car, $chaine = '1234567890AZERTYUIOPQSDFGHJKLMWXCVBNazertyuiopmlkjhgfdsqwxcvbn')
-// Générer une clé aléatoire
-{
-    $nb_lettres = strlen($chaine) - 1;
-    $generation = '';
-    for($i=0; $i < $nb_car; $i++)
-    {
-        $pos = mt_rand(0, $nb_lettres);
-        $car = $chaine[$pos];
-        $generation .= $car;
-    }
-    return $generation;
-}
 ?>
