@@ -38,6 +38,7 @@ function isAdminActualite()
 function listeActualite()
 // Liste toute les actualités (tout si admin, sinon seulement ce à quoi ta fonction t'autorise, sinon seulement le public)
 {
+	verifNombreActualite();
 	if(!empty($_SESSION['mail']))
 	{
 		$superAdmin = run('SELECT COUNT(*) as admin FROM membre WHERE mail="'.$_SESSION['mail'].'" AND isSuperAdmin = 1')->fetch_object();
@@ -82,6 +83,11 @@ function listeActualite()
 		// Ceci est pour s'assurer de ne rien retourner si il n'y a aucune liste.
 	{
 		return $liste;
+	}
+	else
+	{ 
+		// ceci est pour contrer si il n'y a plus de news.
+		return array();
 	}
 }
 function deleteNews($id)
