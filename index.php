@@ -54,50 +54,47 @@ elseif ($_GET['section'] == 'inscription')
 {
 	include_once 'controller/inscription.php';
 }
+//section association
 elseif ($_GET['section'] == 'association')
 {
 	include_once 'controller/association.php';
-}
-elseif ($_GET['section'] == '3FJT')
-{
-	include_once 'controller/3FJT.php';
 }
 elseif ($_GET['section'] == 'quiSommesNous')
 {
 	include_once 'controller/quiSommesNous.php';
 }
-elseif ($_GET['section'] == 'actualites')
-{
-	include_once 'controller/actualites.php';
-}
 elseif ($_GET['section'] == 'plateformeLogement' || ($_GET['section'] == 'plateformeLogement' && !empty($_GET['subSection'])))
 {
 	include_once 'controller/plateformeLogement.php';
 }
-elseif ($_GET['section'] == 'vieEnFoyer')
+//section nos residence
+elseif ($_GET['section'] == 'nosResidences')
 {
-	include_once 'controller/vieEnFoyer.php';
+	include_once 'controller/nosResidences.php';
 }
+elseif ($_GET['section'] == 'residenceAnneFrank')
+{
+	include_once 'controller/residenceAnneFrank.php';
+}
+elseif ($_GET['section'] == 'residenceClairLogis')
+{
+	include_once 'controller/residenceClairLogis.php';
+}
+elseif ($_GET['section'] == 'residenceNobel')
+{
+	include_once 'controller/residenceNobel.php';
+}
+//section restauration
+elseif ($_GET['section'] == 'restauration')
+{
+	include_once 'controller/restauration.php';
+}
+//section services
 elseif ($_GET['section'] == 'services')
 {
 	include_once 'controller/services.php';
 }
-elseif ($_GET['section'] == 'repas')
-{
-	include_once 'controller/repas.php';
-}
-elseif ($_GET['section'] == 'devenirResident')
-{
-	include_once 'controller/devenirResident.php';
-}
-elseif ($_GET['section'] == 'conditions')
-{
-	include_once 'controller/conditions.php';
-}
-elseif ($_GET['section'] == 'logements')
-{
-	include_once 'controller/logements.php';
-}
+//section contact
 elseif ($_GET['section'] == 'contact')
 {
 	include_once 'controller/contact.php';
