@@ -10,20 +10,6 @@ include_once '/view/includes/header.php';
 							<label for="titre">Titre :</label>
 							<input type="text" id="titre" value="<?php echo $infoNews['titre']; ?>" name="titre"/><br />
 						</div>
-						<div class="form-field">
-							<label for="uploadFile">
-								Ajouter un fichier :
-								<br><em>Cela supprimera l'ancien</em>
-								<br><br>
-							</label>
-							<input type="file" name="uploadFile" id="uploadFile">
-						</div>
-						<div class="form-field">
-							<label for="deleteFile">
-								Supprimer l'ancien fichier : 
-							</label>
-							<input type="checkbox" name="deleteFile" id="deleteFile" />
-						</div>
 						<div class="form-field-contenu">
 							<p id="p_form-field-contenu">Contenu:</p>
 							<?php toolBox('actualite', $infoNews['contenu']); ?>
