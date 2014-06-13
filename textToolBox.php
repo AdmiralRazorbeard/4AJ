@@ -4,9 +4,9 @@ function pageDynamique($page)
 	$mysqli = connection();
 	if(isset($_POST['contenuFR']) || isset($_POST['contenuEN']) && isSuperAdmin())
 	{
-		if(isset($_POST['contenu']) && strlen($_POST['contenu']) <= 64000)
+		if(isset($_POST['contenuFR']) && strlen($_POST['contenuFR']) <= 64000)
 		{
-			run('UPDATE informationpage SET contenu="'.$mysqli->real_escape_string($_POST['contenu']).'" WHERE page="'.$page.'"');
+			run('UPDATE informationpage SET contenu="'.$mysqli->real_escape_string($_POST['contenuFR']).'" WHERE page="'.$page.'"');
 		}
 		elseif(isset($_POST['contenuEN']) && strlen($_POST['contenuEN']) <= 64000)
 		{
