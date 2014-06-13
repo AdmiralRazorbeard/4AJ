@@ -26,7 +26,8 @@ if(isset($_POST['modification']))
 	$dateNaissance = '';
 	$telFixe = '';
 	$telPortable = '';
-	$newPassword = getPassword($mail);
+	$oldPassword = getPassword($mail);
+	$newPassword = getPassword($mail); // Au cas où que l'utilisateur saisit un mauvais mdp
 	//récupération du mot de passe de l'utilisateur
 	$messageMdp = '';
 	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254 && !ctype_space($_POST['adresse']))
@@ -47,7 +48,7 @@ if(isset($_POST['modification']))
 			$telPortable = $mysqli->real_escape_string($_POST['telPortable']);
 		}
 	}
-	if((!empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['password3'])) && ((md5($mysqli->real_escape_string($_POST['password1'])) == $newPassword) && ($_POST['password2'] == $_POST['password3'])))
+	if((!empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['password3'])) && ((md5($mysqli->real_escape_string($_POST['password1'])) == $oldPassword) && ($_POST['password2'] == $_POST['password3'])))
 	{
 		if(strlen($_POST['password2']) > 6 && strlen($_POST['password2']) <= 100 && !ctype_space($_POST['password2']))
 		{
@@ -58,6 +59,14 @@ if(isset($_POST['modification']))
 		{
 			$messageMdp ="Le nouveau mot de passe doit comporter au minimum 7 caractères.";
 		}
+	}	// Traitement d'erreur
+	elseif((!empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['password3'])) && (md5($mysqli->real_escape_string($_POST['password1'])) != $oldPassword))
+	{
+		$messageMdp = "L'ancien mot de passe ne correspond pas.";
+	}
+	elseif((!empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['password3'])) && ($_POST['password2'] != $_POST['password3']))
+	{
+		$messageMdp= "Vous n'avez pas bien répété le mot de passe.";
 	}
 	updateMembre($adresse, $telFixe, $telPortable, $newPassword, $mail);
 	//Les vérifications ont été réalisées donc on peut mettre à jour le profil du membre
