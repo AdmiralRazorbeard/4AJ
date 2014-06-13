@@ -35,8 +35,8 @@ nav li {
 #active_item0{background-color:#4e2887;}#active_item1{background-color:#7ec4f4;}#active_item2{background-color:#fdec8b;}#active_item3{background-color:#d4e752;}#active_item4{background-color:#eca25f;}#active_item5{background-color:#a90008;}#active_item6{background-color:#b0757a;}
 /*  Couleur des items du menu, hover ou non, actif ou non */
 /*le style de l'item 6 existe deja pour un eventuel futur onglet*/
-#submenu_item{background-color:#f7f7f7;color:#177f80;}
-#submenu_item:hover{
+.submenu_item{background-color:#f7f7f7;color:#177f80;}
+.submenu_item:hover{
 background-color:#177f80;color:#f7f7f7;
 -webkit-transition: all 0.3s ease-in-out;
 -moz-transition: all 0.3s ease-in-out;
@@ -44,12 +44,12 @@ background-color:#177f80;color:#f7f7f7;
 -o-transition: all 0.3s ease-in-out;
 transition: all 0.3s ease-in-out;
 }
-#active_submenu_item{background-color:#177f80;color:#f7f7f7;}
+.active_submenu_item{background-color:#177f80;color:#f7f7f7;}
 /*  Couleur des items du sous-menu, hover ou non, actif ou non */
-.last_item{
-    border-radius: 0px 0px 6px 6px;
-    /*  Le dernier item du chaque menu déroulant a les bord inférieurs arrondis */
+#subMenu .correct_size_contactPlateforme{
+    width: 155px;
 }
+/*  correction des pixels manquant à droite pour le dernier item du submenu */
 nav li ul {
     position:absolute;
 }
@@ -63,6 +63,14 @@ nav li ul {
     font-weight: bold;
     font-style:normal;
     font-size:13px;
+}
+#mainMenu #item5, #mainMenu .correct_size, #mainMenu #active_item5{
+    width:153px;
+}
+/*  correction des pixels manquant à droite pour le dernier item menu principal */
+.last_item{
+    border-radius: 0px 0px 6px 6px;
+    /*  Le dernier item du chaque menu déroulant a les bord inférieurs arrondis */
 }
 #subMenu li a {
     display:block;
