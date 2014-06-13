@@ -354,6 +354,11 @@ animation:animationBoxFour 60s ease 0s infinite;
     border:1px solid #abadb3;
     border-radius: 4px;
 }
+/*  --- Propriétés de la section index --  */
+.img_index1 img{
+    display: block;
+    margin:auto;
+}
 /*  --- Propriétés de la section association --  */
 .association h1{
     color:#2797e8;

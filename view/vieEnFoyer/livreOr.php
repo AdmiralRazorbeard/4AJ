@@ -27,7 +27,7 @@ function v_maxlength(id, crid, max)
 -->
 </script>
 			<div class="contentWrapper">	
-				<img id="img_livredor" src="/4AJ/view/graphicRessources/livredor.png" alt="livreOr" />
+				<?php langue('<img id="img_livredor" src="/4AJ/view/graphicRessources/livredor.png" alt="livreOr" />', '<img id="img_livredor" src="/4AJ/view/graphicRessources/guestbook.png" alt="livreOr" />'); ?>
 				<?php if($admin) { ?>
 				<form method="post">
 					<b>Admin</b> : nombre de billet par page : 
@@ -114,7 +114,7 @@ function v_maxlength(id, crid, max)
 					    <p class="message_info"> 
 						<em>(<?php langue('Votre message ne s\'affichera sur la page qu\'après validation de l\'administrateur', 'Your message will be display only after validation by the administrator'); ?>)</em>
 						</p>
-						<input type="submit" <?php langue('', 'value="Validate"'); ?>><input type="reset" <?php langue('', 'value="Reset"'); ?>>
+						<input type="submit" <?php langue('', 'value="Send"'); ?>><input type="reset" <?php langue('', 'value="Reset"'); ?>>
 					</form>
 				</fieldset>
 			</div>
