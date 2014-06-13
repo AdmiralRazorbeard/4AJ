@@ -28,26 +28,6 @@ function isAdminActualite()
 	}
 	return false;
 }
-function allTypeActualite()
-// Retourne la liste de toutes les actualités
-{
-	$tmp = run('SELECT id, nom FROM type_d_actualite ORDER BY id');
-	$typeActualite = NULL;
-	while ($donnees = $tmp->fetch_object())
-	{
-		$typeActualite[$donnees->id]['id'] = $donnees->id;
-		$typeActualite[$donnees->id]['nom'] = htmlspecialchars($donnees->nom);
-	}
-	return $typeActualite;
-}
-function nombreTypeActualite()
-// Retourne le nombre d'actualité
-{
-	$tmp = run('SELECT COUNT(*) AS nbre FROM type_d_actualite')->fetch_object();
-	$tmp = $tmp->nbre;
-	return $tmp;
-}
-
 function allFonction()
 // Retourne toutes les fonctions
 {
@@ -60,46 +40,16 @@ function allFonction()
 	return $fonction;
 }
 
-function addActualite($titre, $typeActualite, $contenu, $idMembre, $nomFichier)
+function addActualite($titre, $contenu, $idMembre)
 // Ajoute une actualité
 {
-	run('INSERT INTO news(id_membre, titreNewsFR, contenuNewsFR, id_Type_d_actualite, fichierPDF) VALUES ('.$idMembre.', "'.$titre.'", "'.$contenu.'", '.$typeActualite.', "'.$nomFichier.'")');
-	verifNombreActualite();
-}
-
-function nbreActualite()
-// Nombre total d'actualite
-{
-	$nbreActualite = run('SELECT COUNT(*) as nbre FROM news')->fetch_object();
-	$nbreActualite = $nbreActualite->nbre;	
-	return $nbreActualite;
+	run('INSERT INTO news(id_membre, titreNewsFR, contenuNewsFR) VALUES ('.$idMembre.', "'.$titre.'", "'.$contenu.'")');
 }
 function deleteNews($id)
 {
-	// Test si il y a un pdf
-	$isPDF = run('SELECT fichierPDF FROM news WHERE id='.$id)->fetch_object();
-	if($isPDF->fichierPDF != '')
-	{	
-		// Supprime le pdf
-		unlink('../fichierPDF/'.$isPDF->fichierPDF);
-	}
 	// Supprime la news ainsi que toute les Foreign Keys
 	run('DELETE FROM newsfonction WHERE id='.$id);
 	run('DELETE FROM news WHERE id='.$id);
-}
-function verifNombreActualite()
-// Cela supprimer au fur et à mesure les anciennes news pour éviter de surcharger la base
-{
-	$nbreTotalAdmis = run('SELECT nombreTotalBilletActualite FROM infolivreoractualite')->fetch_object();
-	$nbreTotalAdmis = $nbreTotalAdmis->nombreTotalBilletActualite;
-	$nbreActualite = nbreActualite();
-	while($nbreActualite > $nbreTotalAdmis)
-	{
-		$dernierIdActualite = run('SELECT id FROM news ORDER BY id LIMIT 0,1')->fetch_object();
-		$dernierIdActualite = $dernierIdActualite->id;
-		deleteNews($dernierIdActualite);
-		$nbreActualite--;
-	}
 }
 function envoieMail($lastNews)
 // Envoie un mail à ceux qui ont choisi d'en recevoir un
@@ -145,7 +95,7 @@ Vous pouvez retrouver cette actualité sur http://4AJ.fr/index.php?section=actua
 	//==========
 	 
 	//=====Définition du sujet.
-	$sujet = "Nouvelle actualité sur 4AJ.fr";
+	$sujet = "Nouvelle actualite sur 4AJ.fr";
 	//=========
 	 
 	//=====Création du header de l'e-mail.
@@ -176,7 +126,6 @@ Vous pouvez retrouver cette actualité sur http://4AJ.fr/index.php?section=actua
 	mail($mail,$sujet,$message,$header);
 	//==========
 }
-
 function genererCle($nb_car, $chaine = '1234567890AZERTYUIOPQSDFGHJKLMWXCVBNazertyuiopmlkjhgfdsqwxcvbn')
 // Générer une clé aléatoire
 {

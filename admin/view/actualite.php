@@ -10,21 +10,6 @@ include_once '/view/includes/header.php';
 						<label for="titre">Titre :</label>
 						<input type="text" name="titre" id="titre" />
 						</div>
-						<div class="form-field">
-						<label for="typeActualite">Type d'actualité : </label>
-						<select name="typeActualite" id="typeActualite" onchange="
-							if(this.selectedIndex == <?php echo $nbreTypeActualite; ?>)
-							{
-								javascript:location.href='index.php?section=typeActualite'
-							}">
-							<?php 
-							foreach ($typeActualite as $k => $v) { ?>
-								<option value="<?php echo $k; ?>"><?php echo $v['nom']; ?></option>
-					<?php   } ?>
-								<!-- Redirige vers la page "new type actualité" -->
-								<option value="0">Ajouter un nouveau type d'actualité</option>
-						</select>
-						</div>
 						<div class="form-field-visibilite">
 						<p>News visibles par :</p>
 							<!-- Affiche toutes les autres "fonction" -->
@@ -34,12 +19,6 @@ include_once '/view/includes/header.php';
 										<label for="<?php echo $k; ?>"><?php if($v['nom']=='Public'){echo "Tout le monde";}else{echo $v['nom'];} ?></label>
 									</div>
 								<?php } ?>
-						</div>
-						<div class="form-field">
-							<br>
-							<label for="uploadFichier">Fichier pdf (40Mo Maximum): </label>
-							<input type="hidden" name="MAX_FILE_SIZE" value="41943040" />
-							<input type="file" name="uploadFichier" id="uploadFichier" />
 						</div>
 						<div class="form-field-contenu">
 							<p id="p_form-field-contenu">Contenu:</p>
