@@ -44,11 +44,18 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 }
 </script>
 			<div class="vieEnFoyer element contentWrapper edition_mode">
-				<h1>
-					<?php langue('Repas', 'Meal'); ?>
-				</h1><br />
+				<?php pageDynamique('restauration'); ?>
+				<br />
+				<!-- MENU DE LA SEMAINE -->
+				<p>
+
+
+
+				</p>
+				<!-- FIN MENU DE LA SEMAINE -->
+				<!-- DEBUT CALENDRIER POUR INSCRIPTION -->
 				<?php if($accessRepas) { ?> 
-				<fieldset>
+				<fieldset id="repasAnneFrank">
 					<legend><?php langue('Repas Anne Frank', 'Anne Frank meal'); ?></legend>
 					<form method="post">
 						<label for="semaineAnneFrank"><?php langue('Semaine du', 'Week of'); ?> : </label>
@@ -160,7 +167,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 					</table>
 				</fieldset>
 				<?php } ?><br />
-				<?php pageDynamique('restauration'); ?>
+				<!-- FIN CALENDRIER -->
 			</div>
 			<?php include_once '/view/includes/footer.php'; ?>
 		</div>
