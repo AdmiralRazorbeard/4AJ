@@ -118,6 +118,14 @@ CREATE TABLE newsFonction(
 )ENGINE=InnoDB;
 
 
+CREATE TABLE mail(
+        id                     int (11) Auto_increment  NOT NULL ,
+        mailMain               Varchar (255) ,
+        mailPlateformeLogement Varchar (255) ,
+        PRIMARY KEY (id )
+)ENGINE=InnoDB;
+
+
 ALTER TABLE news ADD CONSTRAINT FK_news_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
 ALTER TABLE reserveRepas ADD CONSTRAINT FK_reserveRepas_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
 ALTER TABLE oublieMotDePasseSecurite ADD CONSTRAINT FK_oublieMotDePasseSecurite_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
@@ -146,12 +154,17 @@ INSERT INTO `informationpage` (`id`, `page`, `contenu`) VALUES
 (1, 'association', ''),
 (2, 'quiSommesNous', ''),
 (3, 'PlateformeLogement', ''),
-(5, 'liensUtiles', ''),
-(7, 'services', ''),
+(4, 'residenceAnneFrank', ''),
+(5, 'residenceClairLogis', ''),
+(6, 'residenceNobel', ''),
+(7, 'liensUtiles', ''),
+(8, 'services', ''),
 (9, 'conditions', ''),
+(10, 'nosResidences', ''),
 (11, 'contact', ''),
 (12, 'faq', ''),
 (13, 'memento', ''),
+(14, '', ''),
 (15, 'accueillir_plateformeLogement', ''),
 (16, 'informer_plateformeLogement', ''),
 (17, 'atelier_plateformeLogement', ''),
