@@ -364,10 +364,36 @@ animation:animationBoxFour 60s ease 0s infinite;
     border-radius: 4px;
 }
 /*  --- Propriétés de la section index --  */
-.img_index1 img{
-    display: block;
-    margin:auto;
+#plateformeImg1{
+    position: absolute;
+    margin: 20px 0px 0px 40px;
 }
+#aLaUneImg {
+    position: relative;
+    left: 700px;
+}
+#aLaUne{
+    width: 250px;
+    height: 400px;
+    position: relative;
+    left: 710px;
+    overflow-y: scroll;
+    font-size: 11px;
+}
+#aLaUne h4{
+    color:#04467e;
+    margin-bottom: 0px;
+}
+#aLaUne #dateNews{
+    color:#85a5c0;
+}
+#aLaUne p{
+    margin: 0;
+}
+
+
+
+
 /*  --- Propriétés de la section association --  */
 .association h1{
     color:#2797e8;
@@ -379,8 +405,19 @@ animation:animationBoxFour 60s ease 0s infinite;
     font-size: 17px;
     margin: 0px 0px -20px 0px;
 }
+/*  --- Propriétés de la section Nos Residences --  */
+.nosResidences h1{
+    color:#f8d617;
+    text-shadow:1px 1px 0.6px #5a4c00;
+    margin: 20px 0px -10px 0px;
+}
+.nosResidences h3{
+    color:#583e00;
+    font-size: 17px;
+    margin: 0px 0px -20px 0px;    
+}
 /*  --- Propriétés de la section actualités --  */
-.actualites label{
+/*.actualites label{
     float: left;
     width: 30%;
 }
@@ -416,41 +453,30 @@ animation:animationBoxFour 60s ease 0s infinite;
 .actualites .pdfObject a{
     position:relative;
     bottom: 5px;
-}
-/*  --- Propriétés de la section liensUtiles --  */
-.liensUtiles h1{
+}*/
+/*  --- Propriétés de la section restauration --  */
+.restauration h1{
     color:#a4b819;
     text-shadow:1px 1px 0.6px #103b5a;
     margin: 20px 0px -10px 0px;
 }
-.liensUtiles h3{
+.restauration h3{
     color:#334405;
     font-size: 17px;
     margin: 0px 0px -20px 0px;
 }
-.liensUtiles p{
+.restauration p{
     position:relative;
     bottom:15px;
 }
-/*  --- Propriétés de la section vieEnFoyer --  */
-.vieEnFoyer h1{
+/*  --- Propriétés de la section services --  */
+.services h1{
     color:#e3944e;
     text-shadow:1px 1px 0.6px #3b2714;
     margin: 20px 0px -10px 0px;
 }
-.vieEnFoyer h3{
+.services h3{
     color:#5a3a1d;
-    font-size: 17px;
-    margin: 0px 0px -20px 0px;
-}
-/*  --- Propriétés de la section devenirResident --  */
-.devenirResident h1{
-    color:#990007;
-    text-shadow:1px 1px 0.6px #350003;
-    margin: 20px 0px -10px 0px;
-}
-.devenirResident h3{
-    color:#5a0004;
     font-size: 17px;
     margin: 0px 0px -20px 0px;
 }
@@ -496,14 +522,14 @@ animation:animationBoxFour 60s ease 0s infinite;
 }
 /*  --- Propriétés de la section contact --  */
 .contact h1{
-    color:#9c5b61;
-    text-shadow:1px 1px 0.6px #2c1719;
+    color:#990007;
+    text-shadow:1px 1px 0.6px #350003;
     margin: 20px 0px -10px 0px;
 }
 .contact h3{
-    color:#4e2a2d;
-    font-size:17px;
-    margin:0px 0px -20px 0px;
+    color:#5a0004;
+    font-size: 17px;
+    margin: 0px 0px -20px 0px;
 }
 /*  --- Propriétés de la section plateformeLogement --  */
 .plateformeLogement h1{

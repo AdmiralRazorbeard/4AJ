@@ -3,7 +3,7 @@ include_once '/view/includes/header.php';
 ?>
 			<div class="contentWrapper">
 				<h1>Modifier la news n°<?php echo $infoNews['id']; ?></h1>
-				<em><a href="../index.php?section=actualites">Retourner à la section: actualités</a></em>
+				<em><a href="../index.php?section=index">Retourner à la section: actualités</a></em>
 				<fieldset id="modifierNews">
 					<form method="post" enctype="multipart/form-data">
 						<div class="form-field">

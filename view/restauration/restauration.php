@@ -43,7 +43,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 	}
 }
 </script>
-			<div class="vieEnFoyer element contentWrapper edition_mode">
+			<div class="restauration element contentWrapper edition_mode">
 				<h1>
 					<?php langue('Repas', 'Meal'); ?>
 				</h1><br />

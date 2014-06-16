@@ -92,8 +92,8 @@ include_once('/view/includes/footerfunctions.php');
 				<li><a <?php if (openSous_Section_contact()){?>id="active_item5"<?php } else { ?>id="item5"<?php } ?> href="index.php?section=contact">Contact</a>
 					<ul id="s_item5">
       					<li><a class="correct_size" href="index.php?section=faq">FAQ</a></li>
-      					<li><a class="correct_size"href="index.php?section=liensUtiles"><?php langue('Liens utiles', 'Helpful links'); ?></a></li>
-      					<li><a class="correct_size"href="index.php?section=memento"><?php langue('Mémento', 'Summary'); ?></a></li>
+      					<li><a class="correct_size" href="index.php?section=liensUtiles"><?php langue('Liens utiles', 'Helpful links'); ?></a></li>
+      					<li><a class="correct_size" href="index.php?section=memento"><?php langue('Mémento', 'Summary'); ?></a></li>
       					<li><a class="last_item correct_size" href="index.php?section=livreOr"><?php langue('Livre d\'or', 'Guest book'); ?></a></li>
     				</ul>
     			</li>	
