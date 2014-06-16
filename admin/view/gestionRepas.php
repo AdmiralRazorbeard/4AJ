@@ -32,7 +32,8 @@ th {
 			<div class="contentWrapper">
 				<h1>Nombre des repas par jours</h1>
 				<p>
-					<em><a href="index.php?section=verrouillerRepas">Verrouiller un jour pour les repas</a></em>
+					<em><a href="index.php?section=verrouillerRepas">Verrouiller un jour pour les repas</a></em><br />
+					<em><a href="index.php?section=menuSemaine">Ajouter un menu de la semaine</a></em>
 				</p>
 				<fieldset>
 					<legend>

@@ -27,6 +27,7 @@ CREATE TABLE fonction(
         isAccesJeunes          Bool ,
         isAdminLivreOr         Bool ,
         isAdminActualite       Bool ,
+        isAdminRepas           Bool ,
         autorisationMangerMidi Bool ,
         autorisationMangerSoir Bool ,
         PRIMARY KEY (id )
@@ -82,9 +83,11 @@ CREATE TABLE reserveRepas(
 )ENGINE=InnoDB;
 
 
-CREATE TABLE verouillerJourRepas(
+CREATE TABLE verrouillerJourRepas(
         id             int (11) Auto_increment  NOT NULL ,
         dateVerouiller Date ,
+        midi           Bool ,
+        residence      Int ,
         PRIMARY KEY (id )
 )ENGINE=InnoDB;
 

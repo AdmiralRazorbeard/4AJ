@@ -55,25 +55,25 @@ if(!empty($_GET['jour']) && is_numeric($_GET['jour']) && !empty($_GET['mois']) &
 		run('INSERT INTO reserverepas(dateReserve, midi, id_membre, residence) VALUES("'.$date.'", '.$_GET['midi'].', '.$id_membre->id.', '.$residence.')');
 		if($residence == 1)
 		{
-			header('location:index.php?section=restauration&semaineAnneFrank='.$semaineDuAnneFrank);
+			header('location:index.php?section=restauration&semaineAnneFrank='.$semaineDuAnneFrank.'#repasAnneFrank');
 		}
 		elseif($residence == 2)
 		{
-			header('location:index.php?section=restauration&semaineClairLogis='.$semaineDuClairLogis);
+			header('location:index.php#repasAnneFrank?section=restauration&semaineClairLogis='.$semaineDuClairLogis.'#repasAnneFrank');
 		}
 	}
 	elseif(boutonReserver($_GET['jour'], $_GET['mois'], $_GET['annee'], $_GET['midi'], $residence) == 2)
 		// On a déjà reserver, on veut donc se annulé
 	{
 		$id_membre = run('SELECT id FROM membre WHERE mail="'.$_SESSION['mail'].'"')->fetch_object();
-		run('DELETE FROM reserverepas WHERE dateReserve="'.$date.'" AND id_membre = '.$id_membre->id.' AND residence = '.$residence);
+		run('DELETE FROM reserverepas WHERE dateReserve="'.$date.'" AND midi = '.$_GET['midi'].' AND id_membre = '.$id_membre->id.' AND residence = '.$residence);
 		if($residence == 1)
 		{
-			header('location:index.php?section=restauration&semaineAnneFrank='.$semaineDuAnneFrank);
+			header('location:index.php?section=restauration&semaineAnneFrank='.$semaineDuAnneFrank.'#repasAnneFrank');
 		}
 		elseif($residence == 2)
 		{
-			header('location:index.php?section=restauration&semaineClairLogis='.$semaineDuClairLogis);
+			header('location:index.php?section=restauration&semaineClairLogis='.$semaineDuClairLogis.'#repasAnneFrank');
 		}
 	}
 }
