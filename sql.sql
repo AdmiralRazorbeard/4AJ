@@ -130,6 +130,13 @@ CREATE TABLE mail(
 )ENGINE=InnoDB;
 
 
+CREATE TABLE menuSemaine(
+        id         int (11) Auto_increment  NOT NULL ,
+        numeroWeek Int ,
+        PRIMARY KEY (id )
+)ENGINE=InnoDB;
+
+
 ALTER TABLE news ADD CONSTRAINT FK_news_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
 ALTER TABLE reserveRepas ADD CONSTRAINT FK_reserveRepas_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
 ALTER TABLE oublieMotDePasseSecurite ADD CONSTRAINT FK_oublieMotDePasseSecurite_id_membre FOREIGN KEY (id_membre) REFERENCES membre(id);
@@ -148,6 +155,7 @@ ALTER TABLE  `livreor` CHANGE  `afficher`  `afficher` TINYINT( 1 ) NOT NULL DEFA
 ALTER TABLE  `fonction` CHANGE  `isAdminActualite`  `isAdminActualite` TINYINT( 1 ) NOT NULL DEFAULT  '0';
 ALTER TABLE  `fonction` CHANGE  `isAdminLivreOr`  `isAdminLivreOr` TINYINT( 1 ) NOT NULL DEFAULT  '0';
 ALTER TABLE  `oubliemotdepassesecurite` ADD UNIQUE (`securite`);
+ALTER TABLE  `menuSemaine` ADD UNIQUE (`numeroWeek`);
 INSERT INTO `4aj`.`nombrevisiteur` (`id`, `nombre`) VALUES (NULL, '1');
 INSERT INTO `fonction`(`nomFonctionFR`, `nomFonctionEN`, `isAccesJeunes`, `isAdminLivreOr`) VALUES ('Public','Public',0,0);
 INSERT INTO `fonction`(`nomFonctionFR`, `nomFonctionEN`, `isAccesJeunes`, `isAdminLivreOr`) VALUES ('Jeunes','Young',1,0);

@@ -1,0 +1,51 @@
+<?php
+function isAdminRepas()
+// Fonction pour savoir si le membre est admin des repas
+{
+	$mysqli = connection();
+	if(!empty($_SESSION['log']) && $_SESSION['log'] == 1 && !empty($_SESSION['mail']))
+	{
+		$mail 	= $mysqli->real_escape_string($_SESSION['mail']);
+		$tmp	= run('SELECT isSuperAdmin FROM membre WHERE mail = "'.$mail.'"');
+		$tmp 	= $tmp->fetch_object();
+		if($tmp->isSuperAdmin == 1)
+		// Si super admin, il a le pouvoir
+		{
+			return true;
+		}
+		$tmp 	= run('	SELECT COUNT(*) as nbre
+						FROM membre,membrefonction,fonction 
+						WHERE membre.id = membrefonction.id 
+						AND membrefonction.id_fonction = fonction.id 
+						AND mail = "'.$mail.'" 
+						AND fonction.isAdminRepas = 1');
+		$tmp = $tmp->fetch_object();
+		if($tmp->nbre >= 1)
+		// Ou si il a une des fonctions dont il fait parti qui est admin sur les repas
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+function cleanBDDSemaine()
+{
+	$weekNow = date('W');
+	$jusque = $weekNow + 4;
+	if($jusque >= 52)
+	{
+		$jusque = $jusque - 52;
+	}
+	echo $weekNow;
+	echo '<br />'.$jusque;
+	if($weekNow < $jusque)
+	{
+		run('DELETE FROM menusemaine WHERE numeroWeek < '.$weekNow.' OR numeroWeek > '.$jusque);
+	}
+	else
+	{
+		run('DELETE FROM menusemaine WHERE numeroWeek < '.$weekNow.' AND numeroWeek > '.$jusque);
+	}
+}
+?>
