@@ -9,9 +9,10 @@ function deleteAccount()
 		$tmp	= run('SELECT id, isSuperAdmin FROM membre WHERE mail = "'.$mail.'"');
 		$account = NULL;
 		while ($donnees = $tmp->fetch_object())
+		//recuperation des informations
 		{
-		$account[0]['id'] = $donnees->id;
-		$account[0]['isSuperAdmin'] = $donnees->isSuperAdmin;
+			$account[0]['id'] = $donnees->id;
+			$account[0]['isSuperAdmin'] = $donnees->isSuperAdmin;
 		}
 		if($account[0]['isSuperAdmin'] != 1)
 		// Si non super admin
@@ -32,3 +33,4 @@ function deleteAccount()
 	}
 	return false;
 }
+?>

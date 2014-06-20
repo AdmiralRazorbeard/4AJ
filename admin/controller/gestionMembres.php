@@ -9,7 +9,7 @@ $orderBy="nomMembre";
 $selected=1;
 //selection par défaut
 if(isset($_POST['orderBy'])){
-//le résultat envoyé par la méthode post est prioritaire sur la méthode GET
+//le résultat envoyé par la méthode post est "prioritaire" sur la méthode GET
 	if ($_POST['orderBy'] == 1){
 		$orderBy="nomMembre";
 	}
