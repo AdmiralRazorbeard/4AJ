@@ -165,41 +165,47 @@ nav li:hover ul li {
 #bannierelogo{position:absolute;}
 #banniere{overflow:hidden;height:190px;}
 #sContent img{width:980px;height:190px;}
-#banniere ul{display:table;width:2700px;margin:0;padding-left:0%;
--webkit-animation:siteslide 60s ease 0s infinite;
--moz-animation:siteslide 60s ease 0s infinite;
--ms-animation:siteslide 60s ease 0s infinite;
--o-animation:siteslide 60s ease 0s infinite;
-animation:siteslide 60s ease 0s infinite;
+#banniere ul{
+	display:table;width:2700px;margin:0;padding-left:0%;
+	-webkit-animation:siteslide 60s ease 0s infinite;
+	/* Safari 4+ */
+	-moz-animation:siteslide 60s ease 0s infinite;
+	/* Fx 5+ */
+	-ms-animation:siteslide 60s ease 0s infinite;
+	/* IE <= 10+ */
+	-o-animation:siteslide 60s ease 0s infinite;
+	/* Opera 12+ */
+	animation:siteslide 60s ease 0s infinite;
+	/* IE 10+ */
 }
 #banniere ul li{display:table-cell;width:980px;height:190px;list-style:none;}
 @-webkit-keyframes siteslide{
-0%,19%{margin-left:0px;} 
-25%,44% {margin-left:-980px;}
-50%,69% {margin-left:-1960px;}  
-75%,94%{margin-left:-2940px;}
-100%{margin-left:-3920px;}
+	0%,19%{margin-left:0px;} 
+	25%,44% {margin-left:-980px;}
+	50%,69% {margin-left:-1960px;}  
+	75%,94%{margin-left:-2940px;}
+	100%{margin-left:-3920px;}
 }
 @-ms-keyframes siteslide{
-0%,19%{margin-left:0px;} 
-25%,44% {margin-left:-980px;}
-50%,69% {margin-left:-1960px;}  
-75%,94%{margin-left:-2940px;}
-100%{margin-left:-3920px;}
+	0%,19%{margin-left:0px;} 
+	25%,44% {margin-left:-980px;}
+	50%,69% {margin-left:-1960px;}  
+	75%,94%{margin-left:-2940px;}
+	100%{margin-left:-3920px;}
 }
 @-o-keyframes siteslide{
-0%,19%{margin-left:0px;} 
-25%,44% {margin-left:-980px;}
-50%,69% {margin-left:-1960px;}  
-75%,94%{margin-left:-2940px;}
-100%{margin-left:-3920px;}
+	0%,19%{margin-left:0px;} 
+	25%,44% {margin-left:-980px;}
+	50%,69% {margin-left:-1960px;}  
+	75%,94%{margin-left:-2940px;}
+	100%{margin-left:-3920px;}
 }
 @keyframes siteslide{
-0%,19%{margin-left:0px;} 
-25%,44% {margin-left:-980px;}
-50%,69% {margin-left:-1960px;}  
-75%,94%{margin-left:-2940px;}
-100%{margin-left:-3920px;}
+	0%,19%{margin-left:0px;} 
+	25%,44% {margin-left:-980px;}
+	50%,69% {margin-left:-1960px;}  
+	75%,94%{margin-left:-2940px;}
+	100%{margin-left:-3920px;}
 }
 /*  ----Les boites adresses-----  */
 .boxAdresse{
@@ -209,8 +215,11 @@ animation:siteslide 60s ease 0s infinite;
     width: 190px;
     background-color:#075da6;
     opacity: 0.8;
+    /* Pour la plupart des navigateurs actuels (norme CSS3) */
     filter:alpha(opacity=80);
+    /* Pour les anciennes versions d'Internet Explorer */
     -moz-opacity:0.8;
+    /* Pour Mozilla (<= 1.6) et une partie des navigateurs Gecko */
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -221,119 +230,119 @@ animation:siteslide 60s ease 0s infinite;
     text-align: center;
 }
 .box1{
--webkit-animation:animationBoxOne 60s ease 0s infinite;
--moz-animation:animationBoxOne 60s ease 0s infinite;
--ms-animation:animationBoxOne 60s ease 0s infinite;
--o-animation:animationBoxOne 60s ease 0s infinite;
-animation:animationBoxOne 60s ease 0s infinite;
+	-webkit-animation:animationBoxOne 60s ease 0s infinite;
+	-moz-animation:animationBoxOne 60s ease 0s infinite;
+	-ms-animation:animationBoxOne 60s ease 0s infinite;
+	-o-animation:animationBoxOne 60s ease 0s infinite;
+	animation:animationBoxOne 60s ease 0s infinite;
 }
 .box2{
--webkit-animation:animationBoxTwo 60s ease 0s infinite;
--moz-animation:animationBoxTwo 60s ease 0s infinite;
--ms-animation:animationBoxTwo 60s ease 0s infinite;
--o-animation:animationBoxTwo 60s ease 0s infinite;
-animation:animationBoxTwo 60s ease 0s infinite; 
+	-webkit-animation:animationBoxTwo 60s ease 0s infinite;
+	-moz-animation:animationBoxTwo 60s ease 0s infinite;
+	-ms-animation:animationBoxTwo 60s ease 0s infinite;
+	-o-animation:animationBoxTwo 60s ease 0s infinite;
+	animation:animationBoxTwo 60s ease 0s infinite; 
 }
 .box3{
--webkit-animation:animationBoxThree 60s ease 0s infinite;
--moz-animation:animationBoxThree 60s ease 0s infinite;
--ms-animation:animationBoxThree 60s ease 0s infinite;
--o-animation:animationBoxThree 60s ease 0s infinite;
-animation:animationBoxThree 60s ease 0s infinite;
+	-webkit-animation:animationBoxThree 60s ease 0s infinite;
+	-moz-animation:animationBoxThree 60s ease 0s infinite;
+	-ms-animation:animationBoxThree 60s ease 0s infinite;
+	-o-animation:animationBoxThree 60s ease 0s infinite;
+	animation:animationBoxThree 60s ease 0s infinite;
 }
 .box3{
--webkit-animation:animationBoxThree 60s ease 0s infinite;
--moz-animation:animationBoxThree 60s ease 0s infinite;
--ms-animation:animationBoxThree 60s ease 0s infinite;
--o-animation:animationBoxThree 60s ease 0s infinite;
-animation:animationBoxThree 60s ease 0s infinite;
+	-webkit-animation:animationBoxThree 60s ease 0s infinite;
+	-moz-animation:animationBoxThree 60s ease 0s infinite;
+	-ms-animation:animationBoxThree 60s ease 0s infinite;
+	-o-animation:animationBoxThree 60s ease 0s infinite;
+	animation:animationBoxThree 60s ease 0s infinite;
 }
 .box4{
--webkit-animation:animationBoxFour 60s ease 0s infinite;
--moz-animation:animationBoxFour 60s ease 0s infinite;
--ms-animation:animationBoxFour 60s ease 0s infinite;
--o-animation:animationBoxFour 60s ease 0s infinite;
-animation:animationBoxFour 60s ease 0s infinite;
+	-webkit-animation:animationBoxFour 60s ease 0s infinite;
+	-moz-animation:animationBoxFour 60s ease 0s infinite;
+	-ms-animation:animationBoxFour 60s ease 0s infinite;
+	-o-animation:animationBoxFour 60s ease 0s infinite;
+	animation:animationBoxFour 60s ease 0s infinite;
 }
 @-webkit-keyframes animationBoxOne{
-0%,21%{top:-25px;margin-left:775px;} 
-24%,43% {top:35px;margin-left:775px;}
-47%,100% {top:-25px;margin-left:775px;}
+	0%,21%{top:-25px;margin-left:775px;} 
+	24%,43% {top:35px;margin-left:775px;}
+	47%,100% {top:-25px;margin-left:775px;}
 }
 @-ms-keyframes animationBoxOne{
-0%,21%{top:-25px;margin-left:775px;} 
-24%,43% {top:35px;margin-left:775px;}
-47%,100% {top:-25px;margin-left:775px;}
+	0%,21%{top:-25px;margin-left:775px;} 
+	24%,43% {top:35px;margin-left:775px;}
+	47%,100% {top:-25px;margin-left:775px;}
 }
 @-o-keyframes animationBoxOne{
-0%,21%{top:-25px;margin-left:775px;} 
-24%,43% {top:35px;margin-left:775px;}
-47%,100% {top:-25px;margin-left:775px;}
+	0%,21%{top:-25px;margin-left:775px;} 
+	24%,43% {top:35px;margin-left:775px;}
+	47%,100% {top:-25px;margin-left:775px;}
 }
 @keyframes animationBoxOne{
-0%,21%{top:-25px;margin-left:775px;} 
-24%,43% {top:35px;margin-left:775px;}
-47%,100% {top:-25px;margin-left:775px;}
+	0%,21%{top:-25px;margin-left:775px;} 
+	24%,43% {top:35px;margin-left:775px;}
+	47%,100% {top:-25px;margin-left:775px;}
 }
 @-webkit-keyframes animationBoxTwo{
-0%,46%{top:-25px;margin-left:775px;} 
-49%,68% {top:35px;margin-left:775px;}
-72%,100% {top:-25px;margin-left:775px;}
+	0%,46%{top:-25px;margin-left:775px;} 
+	49%,68% {top:35px;margin-left:775px;}
+	72%,100% {top:-25px;margin-left:775px;}
 }
 @-ms-keyframes animationBoxTwo{
-0%,46%{top:-25px;margin-left:775px;} 
-49%,68% {top:35px;margin-left:775px;}
-72%,100% {top:-25px;margin-left:775px;}
+	0%,46%{top:-25px;margin-left:775px;} 
+	49%,68% {top:35px;margin-left:775px;}
+	72%,100% {top:-25px;margin-left:775px;}
 }
 @-o-keyframes animationBoxTwo{
-0%,46%{top:-25px;margin-left:775px;} 
-49%,68% {top:35px;margin-left:775px;}
-72%,100% {top:-25px;margin-left:775px;}
+	0%,46%{top:-25px;margin-left:775px;} 
+	49%,68% {top:35px;margin-left:775px;}
+	72%,100% {top:-25px;margin-left:775px;}
 }
 @keyframes animationBoxTwo{
-0%,46%{top:-25px;margin-left:775px;} 
-49%,68% {top:35px;margin-left:775px;}
-72%,100% {top:-25px;margin-left:775px;}
+	0%,46%{top:-25px;margin-left:775px;} 
+	49%,68% {top:35px;margin-left:775px;}
+	72%,100% {top:-25px;margin-left:775px;}
 }
 @-webkit-keyframes animationBoxThree{
-0%,71% {top:-25px;margin-left:775px;}
-74%,93%{top:35px;margin-left:775px;} 
-97%,100% {top:-25px;margin-left:775px;}
+	0%,71% {top:-25px;margin-left:775px;}
+	74%,93%{top:35px;margin-left:775px;} 
+	97%,100% {top:-25px;margin-left:775px;}
 }
 @-ms-keyframes animationBoxThree{
-0%,71% {top:-25px;margin-left:775px;}
-74%,93%{top:35px;margin-left:775px;} 
-97%,100% {top:-25px;margin-left:775px;}
+	0%,71% {top:-25px;margin-left:775px;}
+	74%,93%{top:35px;margin-left:775px;} 
+	97%,100% {top:-25px;margin-left:775px;}
 }
 @-o-keyframes animationBoxThree{
-0%,71% {top:-25px;margin-left:775px;}
-74%,93%{top:35px;margin-left:775px;} 
-97%,100% {top:-25px;margin-left:775px;}
+	0%,71% {top:-25px;margin-left:775px;}
+	74%,93%{top:35px;margin-left:775px;} 
+	97%,100% {top:-25px;margin-left:775px;}
 }
 @keyframes animationBoxThree{
-0%,71% {top:-25px;margin-left:775px;}
-74%,93%{top:35px;margin-left:775px;} 
-97%,100% {top:-25px;margin-left:775px;}
+	0%,71% {top:-25px;margin-left:775px;}
+	74%,93%{top:35px;margin-left:775px;} 
+	97%,100% {top:-25px;margin-left:775px;}
 }
 @-webkit-keyframes animationBoxFour{
-0%,18%{top:35px;margin-left:775px;} 
-21%,97%{top:-25px;margin-left:775px;}
-100% {top:35px;margin-left:775px;}
+	0%,18%{top:35px;margin-left:775px;} 
+	21%,97%{top:-25px;margin-left:775px;}
+	100% {top:35px;margin-left:775px;}
 }
 @-ms-keyframes animationBoxFour{
-0%,18%{top:35px;margin-left:775px;} 
-21%,97%{top:-25px;margin-left:775px;}
-100% {top:35px;margin-left:775px;}
+	0%,18%{top:35px;margin-left:775px;} 
+	21%,97%{top:-25px;margin-left:775px;}
+	100% {top:35px;margin-left:775px;}
 }
 @-o-keyframes animationBoxFour{
-0%,18%{top:35px;margin-left:775px;} 
-21%,97%{top:-25px;margin-left:775px;}
-100% {top:35px;margin-left:775px;}
+	0%,18%{top:35px;margin-left:775px;} 
+	21%,97%{top:-25px;margin-left:775px;}
+	100% {top:35px;margin-left:775px;}
 }
 @keyframes animationBoxFour{
-0%,18%{top:35px;margin-left:775px;} 
-21%,97%{top:-25px;margin-left:775px;}
-100% {top:35px;margin-left:775px;}
+	0%,18%{top:35px;margin-left:775px;} 
+	21%,97%{top:-25px;margin-left:775px;}
+	100% {top:35px;margin-left:775px;}
 }
 
 /*  --------------  */
