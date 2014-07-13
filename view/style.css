@@ -131,7 +131,7 @@ nav li:hover ul li {
     position:relative;
     top:4px;
 }
-#connexion input[type=password], input[type=name]{
+#connexion input[type=password], #connexion input[type=text]{
    background-color: #075da6;
    color:white;
 }

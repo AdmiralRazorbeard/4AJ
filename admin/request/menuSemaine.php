@@ -31,21 +31,5 @@ function isAdminRepas()
 
 function cleanBDDSemaine()
 {
-	$weekNow = date('W');
-	$jusque = $weekNow + 4;
-	if($jusque >= 52)
-	{
-		$jusque = $jusque - 52;
-	}
-	echo $weekNow;
-	echo '<br />'.$jusque;
-	if($weekNow < $jusque)
-	{
-		run('DELETE FROM menusemaine WHERE numeroWeek < '.$weekNow.' OR numeroWeek > '.$jusque);
-	}
-	else
-	{
-		run('DELETE FROM menusemaine WHERE numeroWeek < '.$weekNow.' AND numeroWeek > '.$jusque);
-	}
 }
 ?>

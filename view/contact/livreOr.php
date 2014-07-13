@@ -27,7 +27,7 @@ function v_maxlength(id, crid, max)
 -->
 </script>
 			<div class="contentWrapper">	
-				<?php langue('<img id="img_livredor" src="/4AJ/view/graphicRessources/livredor.png" alt="livreOr" />', '<img id="img_livredor" src="/4AJ/view/graphicRessources/guestbook.png" alt="livreOr" />'); ?>
+				<img id="img_livredor" src="/4AJ/view/graphicRessources/<?php langue('livredor', 'guestbook'); ?>.png" alt="livreOr" />
 				<?php if($admin) { ?>
 				<form method="post">
 					<b>Admin</b> : nombre de billet par page : 
@@ -101,7 +101,7 @@ function v_maxlength(id, crid, max)
 						<em>(<?php langue('L\'Email est optionnel et ne sera pas affiché au public, mais peut nous permettre de vous recontacter', 'Your email is optional and won\'t be display in public, this may help us to contact you.'); ?>)</em>
 						</p>
 						<p class="form-field">
-						<label for="contenu"><?php langue('Votre email', 'Content'); ?> : </label>
+						<label for="contenu"><?php langue('Contenu', 'Content'); ?> : </label>
 						<textarea name="contenu" id="contenu" cols="50" rows="10" ></textarea>
 						</p>
 						<p class="message_info"><em><?php langue('Il vous reste', 'You have'); ?> <span id="carac_reste_textarea_1"></span> <?php langue('caractères', 'characters left'); ?>.</em></p>
@@ -114,7 +114,7 @@ function v_maxlength(id, crid, max)
 					    <p class="message_info"> 
 						<em>(<?php langue('Votre message ne s\'affichera sur la page qu\'après validation de l\'administrateur', 'Your message will be display only after validation by the administrator'); ?>)</em>
 						</p>
-						<input type="submit" <?php langue('', 'value="Send"'); ?>><input type="reset" <?php langue('', 'value="Reset"'); ?>>
+						<input type="submit" value="<?php langue('Envoyer', 'Send'); ?>"><input type="reset" value="<?php langue('Réinitialiser', 'Reset'); ?>">
 					</form>
 				</fieldset>
 			</div>

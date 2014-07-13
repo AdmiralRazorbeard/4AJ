@@ -14,9 +14,9 @@ function langue($FR, $EN)
 // Cette fonction affiche, en fonction de si c'est FR ou EN, le $FR ou le $EN
 {
 	if($_SESSION['langue'] == 2) 
-		{ echo $EN; }
+		{ echo htmlspecialchars($EN); }
 	else 
-		{ echo $FR; }
+		{ echo htmlspecialchars($FR); }
 }
 ####### FIN GESTION LANGUAGE #######
 

@@ -34,11 +34,12 @@ include_once('/view/includes/footerfunctions.php');
 								<!-- Si super admin, il peut passer en mode édition -->
 								<div class="connexion_inscription connexion_bold">
 								<?php if(empty($_SESSION['superAdminOn'])) { ?>
-									<a href="index.php?section=index&amp;superAdminOn=true&amp;get=<?php echo $_GET['section']; ?>">Mode édition</a></div> 
+									<a href="index.php?section=index&amp;superAdminOn=true&amp;get=<?php echo $_GET['section']; ?>">Mode édition</a>
 								<?php } else { ?>
 									<!-- Cela veut dire qu'il est déjà superAdmin, donc lien pour désactiver -->
-									<a href="index.php?section=index&amp;finSuperAdminOn=true&amp;get=<?php echo $_GET['section']; ?>">Fin mode édition</a></div>
-								<?php 	} 
+									<a href="index.php?section=index&amp;finSuperAdminOn=true&amp;get=<?php echo $_GET['section']; ?>">Fin mode édition</a>
+								<?php 	}
+								echo '</div>'; 
 								}?>
 					<?php 
 						}
@@ -46,9 +47,9 @@ include_once('/view/includes/footerfunctions.php');
 				else { ?>
 				<div class="connexion_text connexion_bold"><?php langue('Connexion', 'Log in'); ?></div>
 				<form method="post">
-					<div class="connexion_text"><label for="mail">Email :</label></div><div><input type="name" id="mail" name="mail" /></div>
+					<div class="connexion_text"><label for="mail">Email :</label></div><div><input type="text" id="mail" name="mail" /></div>
 					<div class="connexion_text"><label for="password"><?php langue('Mot de passe :', 'Password :'); ?></label></div><div><input type="password" id="password" name="password" /></div>
-					<div class="connexion_submit"><input id="submit" type="submit" <?php langue('value="Envoyer"', 'value="Send"'); ?>/></div>
+					<div class="connexion_submit"><input id="submit" type="submit" value="<?php langue('Envoyer', 'Send'); ?>"/></div>
 				</form>
 				<div class="connexion_text"><em><a id="lostPwd" href="index.php?section=lostPassword"><?php langue('Mot de passe perdu?', 'Forgotten your password?'); ?></a></em></div>
 				<div class="language"><a href="index.php?section=FR<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/uk.png" alt="uk"/></a></div>
