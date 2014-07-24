@@ -49,6 +49,7 @@ function semaine($nbreWeekPlus=0)
 
 function boutonReserver($numero, $mois, $annee, $midi, $residence)
 	// Retourne 1 si il a le droit de s'incrire, 2 si il est déjà inscrit, et 3 sinon
+	// midi = 1, soir = 0
 {
 	if(!empty($_SESSION['log']) && !empty($_SESSION['mail']))
 	{
