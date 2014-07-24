@@ -44,7 +44,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 }
 </script>
 			<div class="restauration element contentWrapper edition_mode">
-				<?php pageDynamique('restauration'); ?>
+				<?php tinymcetxt('restauration'); ?>
 				<br />
 				<!-- MENU DE LA SEMAINE -->
 				<p>

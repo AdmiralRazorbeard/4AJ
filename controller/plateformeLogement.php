@@ -5,37 +5,37 @@ if(isset($_GET['section']) && empty($_GET['subSection']))
 }
 elseif ($_GET['subSection'] == 'main')
 {
-	include_once 'textToolBox.php';
+	include_once 'tinymcetxt.php';
 	include_once '/view/association/plateformeLogement.php';
 }
 elseif ($_GET['subSection'] == 'accueillir')
 {
-	include_once 'textToolBox.php';
+	include_once 'tinymcetxt.php';
 	include_once '/view/association/accueillir.php';
 }
 elseif ($_GET['subSection'] == 'informer')
 {
-	include_once 'textToolBox.php';
+	include_once 'tinymcetxt.php';
 	include_once '/view/association/informer.php';
 }
 elseif ($_GET['subSection'] == 'atelier')
 {
-	include_once 'textToolBox.php';
+	include_once 'tinymcetxt.php';
 	include_once '/view/association/atelier.php';
 }
 elseif ($_GET['subSection'] == 'accompagner')
 {
-	include_once 'textToolBox.php';
+	include_once 'tinymcetxt.php';
 	include_once '/view/association/accompagner.php';
 }
 elseif ($_GET['subSection'] == 'documenter')
 {
-	include_once 'textToolBox.php';
+	include_once 'tinymcetxt.php';
 	include_once '/view/association/documenter.php';
 }
 elseif ($_GET['subSection'] == 'contact')
 {
-	include_once 'textToolBox.php';
+	include_once 'tinymcetxt.php';
 	include_once 'request/contact.php';
 	if(!empty($_POST['subject']) && !empty($_POST['email']) && !empty($_POST['contenu']))
 	{

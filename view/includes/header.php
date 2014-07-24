@@ -9,6 +9,13 @@ include_once('/view/includes/footerfunctions.php');
 		<link rel="stylesheet" type="text/css" href="/4AJ/view/style.css" />
 		<link rel="icon" type="image/png" href="/4AJ/view/graphicRessources/favicon.jpg" >
 		<meta charset="utf-8">
+		<script type="text/javascript" src="/4AJ/tinymce/tinymce.min.js"></script>
+		<script type="text/javascript">
+		tinymce.init({
+		    selector: "#txtarea",
+		    language : 'fr_FR'
+		 });
+		</script>
 	</head> 
 	<body>
 	<div class="mainWrapper">

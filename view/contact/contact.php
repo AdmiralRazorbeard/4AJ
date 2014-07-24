@@ -1,6 +1,6 @@
 <?php include_once 'view/includes/header.php'; ?>
 			<div class="contentWrapper contact element edition_mode">
-			<?php pageDynamique('contact'); ?><br /><br />
+			<?php tinymcetxt('contact'); ?><br /><br />
 				<fieldset id="mainContact">
 					<form method="post">
 						<p class="form-field">

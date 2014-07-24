@@ -1,6 +1,6 @@
 <?php
 include_once 'request/restauration.php';
-include_once 'textToolBox.php';
+include_once 'tinymcetxt.php';
 $accessRepas = false;
 if(accesRepas())
 {

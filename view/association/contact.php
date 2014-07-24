@@ -3,7 +3,7 @@ include_once '/view/includes/header.php';
 include_once '/view/includes/submenuPlateformeLogement.php';
 ?>
 			<div class="contentWrapper plateformeLogement edition_mode element">
-			<?php pageDynamique('contact_plateformeLogement'); ?><br /><br />
+			<?php tinymcetxt('contact_plateformeLogement'); ?><br /><br />
 				<fieldset id="plateformeLogementContact">
 					<form method="post">
 						<p class="form-field">
