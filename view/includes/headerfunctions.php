@@ -45,7 +45,7 @@ function openSous_Section_association()
 function openSous_Section_nosResidences()
 //idem que openSection sauf que cette classe active ne s'appliquera que sur le bouton principal lorsque l'un des boutons sera utilisé du menu déroulant
 {
-	if($_GET['section'] == 'residenceAnneFrank' || $_GET['section'] == 'residenceClairLogis' || $_GET['section'] == 'residenceNobel')
+	if($_GET['section'] == 'nosResidences' || $_GET['section'] == 'residenceAnneFrank' || $_GET['section'] == 'residenceClairLogis' || $_GET['section'] == 'residenceNobel')
 	{
 		return true;
 	}

@@ -5,6 +5,9 @@ body {
     margin: auto;
     background-color:#04467e;
 }
+.slider{
+    width: 200px;
+}
 .mainWrapper{
     width: 980px;
     margin:auto;
@@ -352,12 +355,12 @@ nav li:hover ul li {
     padding: 35px 20px 20px 20px;
     word-wrap: break-word;
 }
-.element h1,.element .a_title{
+/*.element h1,.element .a_title{
     font-size: 20px;
 }
 .element h2{
     font-size: 17px;
-}
+}*/
 /*  --- Propriétés du mode edition --  */
 .edition_mode #contenu{
     width:930px;
@@ -404,7 +407,7 @@ nav li:hover ul li {
 
 
 /*  --- Propriétés de la section association --  */
-.association h1{
+/*.association h1{
     color:#2797e8;
     text-shadow:1px 1px 0.6px #103b5a;
     margin: 20px 0px -10px 0px;
@@ -413,9 +416,9 @@ nav li:hover ul li {
     color:#003c66;
     font-size: 17px;
     margin: 0px 0px -20px 0px;
-}
+}*/
 /*  --- Propriétés de la section Nos Residences --  */
-.nosResidences h1{
+/*.nosResidences h1{
     color:#f8d617;
     text-shadow:1px 1px 0.6px #5a4c00;
     margin: 20px 0px -10px 0px;
@@ -424,7 +427,7 @@ nav li:hover ul li {
     color:#583e00;
     font-size: 17px;
     margin: 0px 0px -20px 0px;    
-}
+}*/
 /*  --- Propriétés de la section actualités --  */
 /*.actualites label{
     float: left;
@@ -464,8 +467,8 @@ nav li:hover ul li {
     bottom: 5px;
 }*/
 /*  --- Propriétés de la section restauration --  */
-.restauration h1{
-    color:#a4b819;
+/*.restauration h1{
+   color:#a4b819;
     text-shadow:1px 1px 0.6px #103b5a;
     margin: 20px 0px -10px 0px;
 }
@@ -477,9 +480,9 @@ nav li:hover ul li {
 .restauration p{
     position:relative;
     bottom:15px;
-}
+}*/
 /*  --- Propriétés de la section services --  */
-.services h1{
+/*.services h1{
     color:#e3944e;
     text-shadow:1px 1px 0.6px #3b2714;
     margin: 20px 0px -10px 0px;
@@ -488,7 +491,7 @@ nav li:hover ul li {
     color:#5a3a1d;
     font-size: 17px;
     margin: 0px 0px -20px 0px;
-}
+}*/
 /*  --- Propriétés de la section livredor --  */
 #img_livredor{
     position:relative;
@@ -530,7 +533,7 @@ nav li:hover ul li {
     resize:none;
 }
 /*  --- Propriétés de la section contact --  */
-.contact h1{
+/*.contact h1{
     color:#990007;
     text-shadow:1px 1px 0.6px #350003;
     margin: 20px 0px -10px 0px;
@@ -539,9 +542,9 @@ nav li:hover ul li {
     color:#5a0004;
     font-size: 17px;
     margin: 0px 0px -20px 0px;
-}
+}*/
 /*  --- Propriétés de la section plateformeLogement --  */
-.plateformeLogement h1{
+/*.plateformeLogement h1{
     color:#177f80;
     text-shadow:1px 1px 0.6px #052020;
     margin:20px 0px -10px 0px;
@@ -550,7 +553,7 @@ nav li:hover ul li {
     color:#0e5152;
     font-size:17px;
     margin:0px 0px -20px 0px;
-}
+}*/
 /*  --- Propriétés de mainContact ET plateformeLogementContact--  */
 #mainContact, #plateformeLogementContact{
     width:600px;
