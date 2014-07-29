@@ -5,9 +5,6 @@ body {
     margin: auto;
     background-color:#04467e;
 }
-.slider{
-    width: 200px;
-}
 .mainWrapper{
     width: 980px;
     margin:auto;
@@ -368,6 +365,29 @@ nav li:hover ul li {
     word-wrap: break-word;
     border:1px solid #abadb3;
     border-radius: 4px;
+}
+/*  --- Propriétés du slider de photos --  */
+.slider{
+    width: 200px;
+    border:5px solid white;
+    -moz-box-shadow: 1px 1px 4px 0px black;
+    -webkit-box-shadow: 1px 1px 4px 0px black;
+    -o-box-shadow: 1px 1px 4px 0px black;
+    box-shadow: 1px 1px 4px 0px black;
+}
+.caption{
+    background-color: white;
+    width: 100%;
+    padding: 2px;
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    opacity: 0.8;
+    /* Pour la plupart des navigateurs actuels (norme CSS3) */
+    filter:alpha(opacity=80);
+    /* Pour les anciennes versions d'Internet Explorer */
+    -moz-opacity:0.8;
+    /* Pour Mozilla (<= 1.6) et une partie des navigateurs Gecko */
 }
 /*  --- Propriétés de la section index --  */
 #plateformeImg1{
