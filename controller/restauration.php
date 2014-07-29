@@ -59,7 +59,7 @@ if(!empty($_GET['jour']) && is_numeric($_GET['jour']) && !empty($_GET['mois']) &
 		}
 		elseif($residence == 2)
 		{
-			header('location:index.php#repasAnneFrank?section=restauration&semaineClairLogis='.$semaineDuClairLogis.'#repasAnneFrank');
+			header('location:index.php?section=restauration&semaineClairLogis='.$semaineDuClairLogis.'#repasAnneFrank');
 		}
 	}
 	elseif(boutonReserver($_GET['jour'], $_GET['mois'], $_GET['annee'], $_GET['midi'], $residence) == 2)
