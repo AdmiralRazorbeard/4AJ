@@ -19,13 +19,13 @@ include_once('/view/includes/footerfunctions.php');
 		    height: 400,
 		    language : 'fr_FR',
 		    plugins: [
-                "advlist autolink autosave link image lists charmap print preview hr pagebreak spellchecker",
+                "advlist autolink autosave link image lists charmap preview hr spellchecker",
                 "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime nonbreaking",
                 "table contextmenu directionality textcolor paste textcolor colorpicker textpattern"
         ],
 
         toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | forecolor | bullist numlist | outdent indent blockquote | styleselect fontsizeselect | link unlink image code table | hr removeformat | subscript superscript | charmap ",
-        toolbar2: "undo redo | cut copy paste | searchreplace | print fullscreen | insertdatetime preview | spellchecker | visualchars visualblocks nonbreaking pagebreak",
+        toolbar2: "undo redo | cut copy paste | searchreplace | fullscreen | insertdatetime preview | spellchecker | visualchars visualblocks nonbreaking",
         menubar: false,
         toolbar_items_size: 'small',
 

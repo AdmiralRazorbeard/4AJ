@@ -352,6 +352,15 @@ nav li:hover ul li {
     padding: 35px 20px 20px 20px;
     word-wrap: break-word;
 }
+/*  --- Suppression des espaces sur les pages "informatives" du site --  */
+.element h1, .element h2, .element h3, .element h4, .element h5, .element h6, .element p{
+    margin-top:0px;
+    margin-bottom:0px;
+}
+.element ul{
+    margin-top:3px;
+    margin-bottom:0px; 
+}
 /*  --- Propriétés du mode edition --  */
 .edition_mode #contenu{
     width:930px;
