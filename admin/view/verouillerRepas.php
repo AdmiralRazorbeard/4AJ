@@ -18,7 +18,7 @@ th {
 }
 .false
 {
-	background-color: red;
+	background-color: grey;
 	cursor:pointer;
 }
 .invalide
@@ -44,6 +44,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){	/*Fonction redirige
 </script>
 			<div class="contentWrapper">
 				<h1>Verrouiller un jour</h1>
+				<a href="index.php?section=gestionRepas">Retour</a>
 				<fieldset>
 					<legend>
 						Verrouiller un jour de repas à résidence Anne Frank

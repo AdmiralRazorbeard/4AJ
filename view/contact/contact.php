@@ -6,7 +6,7 @@
 						<p class="form-field">
 						<label for="email">
 							<?php if($_SESSION['langue'] == 2) { echo 'Your mail address : '; }
-								else { echo 'Votre addresse mail :'; } ?> </label>
+								else { echo 'Votre adresse mail :'; } ?> </label>
 						<input type="mail" name="email" id="email" />
 						</p>
 						<p class="form-field">

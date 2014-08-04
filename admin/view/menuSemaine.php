@@ -3,6 +3,7 @@ include_once '/view/includes/header.php';
 ?>
 			<div class="contentWrapper">
 				<h1>Ajouter un menu pour une semaine</h1>
+				<a href="index.php?section=gestionRepas">Retour</a>
 				<form method="post" enctype="multipart/form-data">
 					<label for="semaine">Semaine du : </label>
 					<select name="semaine" id="semaine">

@@ -7,7 +7,7 @@ include_once '/view/includes/submenuPlateformeLogement.php';
 				<fieldset id="plateformeLogementContact">
 					<form method="post">
 						<p class="form-field">
-						<label for="email">Adresse mail de retour* : </label>
+						<label for="email">Votre adresse mail* : </label>
 						<input type="mail" name="email" id="email" />
 						</p>
 						<p class="form-field">
