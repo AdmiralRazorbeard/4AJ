@@ -3,7 +3,7 @@ include_once '/view/includes/header.php';
 ?>
 			<div class="contentWrapper memberGestion">
 				<h1>Gestion des membres</h1>
-				<h4>Liste des membres</h4>
+				<h4>Liste des membres (Les super administrateurs sont affichés en rouge)</h4>
 				<form method="post">
                     <p class="form-field">
                         <label>Trier par:</label>
