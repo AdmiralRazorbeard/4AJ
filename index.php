@@ -89,6 +89,10 @@ elseif ($_GET['section'] == 'restauration')
 {
 	include_once 'controller/restauration.php';
 }
+elseif ($_GET['section'] == 'restaurationAjax')
+{
+	include_once 'controller/restaurationAjax.php';
+}
 //section services
 elseif ($_GET['section'] == 'services')
 {

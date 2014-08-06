@@ -1,17 +1,4 @@
-<?php include_once '/view/includes/header.php'; ?>
-			<div class="restauration element contentWrapper edition_mode">
-				<?php tinymcetxt('restauration'); ?>
-				<br />
-				<!-- MENU DE LA SEMAINE -->
-				<p>
-
-
-
-				</p>
-				<!-- FIN MENU DE LA SEMAINE -->
-				<!-- DEBUT CALENDRIER POUR INSCRIPTION -->
-				<?php if($accessRepas) { ?> 
-				<div id="ajaxRepas">
+<body>
 					<style type="text/css">
 					table {
 					    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
@@ -47,8 +34,7 @@
 						{
 					      $(function() {
 					          $('#ajaxRepas').load('index.php?section=restaurationAjax&semaineAnneFrank=<?php echo $semaineDuAnneFrank; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi+'&residence='+residence);							         
-					      });
-													      
+					      });						      
 						}
 						else
 						{
@@ -178,11 +164,4 @@
 						</tr>
 					</table>
 				</fieldset>
-			</div>
-				<?php } ?><br />
-				<!-- FIN CALENDRIER -->
-			</div>
-			<?php include_once '/view/includes/footer.php'; ?>
-		</div>
 	</body>
-</html>
