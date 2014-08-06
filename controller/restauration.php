@@ -16,12 +16,7 @@ if(!empty($_POST['semaineAnneFrank']) && is_numeric($_POST['semaineAnneFrank']))
 {
 	header('location:index.php?section=restauration&semaineAnneFrank='.$_POST['semaineAnneFrank']);
 }
-if(!empty($_POST['semaineNobel']) && is_numeric($_POST['semaineNobel']))
-{
-	header('location:index.php?section=restauration&semaineNobel='.$_POST['semaineNobel']);
-}
 $semaineDuClairLogis = 0;
-$semaineDuNobel = 0;
 $semaineDuAnneFrank = 0;
 if(!empty($_GET['semaineClairLogis']) && is_numeric($_GET['semaineClairLogis']) && $_GET['semaineClairLogis'] >= 0)
 {
@@ -31,17 +26,12 @@ if(!empty($_GET['semaineAnneFrank']) && is_numeric($_GET['semaineAnneFrank']) &&
 {
 	$semaineDuAnneFrank = $_GET['semaineAnneFrank'];
 }
-if(!empty($_GET['semaineNobel']) && is_numeric($_GET['semaineNobel']) && $_GET['semaineNobel'] >= 0)
-{
-	$semaineDuNobel = $_GET['semaineNobel'];
-}
 	/* Fin vérification */
 ####################
 	/* Initialisation variable */
 $mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 $semaineAnneFrank = semaine($semaineDuAnneFrank);
 $semaineClairLogis = semaine($semaineDuClairLogis);
-$semaineNobel = semaine($semaineDuNobel);
 
 if(!empty($_GET['jour']) && is_numeric($_GET['jour']) && !empty($_GET['mois']) && is_numeric($_GET['mois']) && !empty($_GET['annee']) && is_numeric($_GET['annee']) && isset($_GET['midi']) && is_numeric($_GET['midi']) && !empty($_GET['residence']) && is_numeric($_GET['residence']))
 	// Si l'utilisateur a saisi des variables
@@ -77,8 +67,5 @@ if(!empty($_GET['jour']) && is_numeric($_GET['jour']) && !empty($_GET['mois']) &
 		}
 	}
 }
-
-
 include_once 'view/restauration/restauration.php';
-
 ?>

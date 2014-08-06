@@ -21,7 +21,6 @@ if(!empty($_POST['semaineNobel']) && is_numeric($_POST['semaineNobel']))
 	header('location:index.php?section=restauration&semaineNobel='.$_POST['semaineNobel']);
 }
 $semaineDuClairLogis = 0;
-$semaineDuNobel = 0;
 $semaineDuAnneFrank = 0;
 if(!empty($_GET['semaineClairLogis']) && is_numeric($_GET['semaineClairLogis']) && $_GET['semaineClairLogis'] >= 0)
 {
@@ -31,17 +30,12 @@ if(!empty($_GET['semaineAnneFrank']) && is_numeric($_GET['semaineAnneFrank']) &&
 {
 	$semaineDuAnneFrank = $_GET['semaineAnneFrank'];
 }
-if(!empty($_GET['semaineNobel']) && is_numeric($_GET['semaineNobel']) && $_GET['semaineNobel'] >= 0)
-{
-	$semaineDuNobel = $_GET['semaineNobel'];
-}
 	/* Fin vérification */
 ####################
 	/* Initialisation variable */
 $mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 $semaineAnneFrank = semaine($semaineDuAnneFrank);
 $semaineClairLogis = semaine($semaineDuClairLogis);
-$semaineNobel = semaine($semaineDuNobel);
 
 if(!empty($_GET['jour']) && is_numeric($_GET['jour']) && !empty($_GET['mois']) && is_numeric($_GET['mois']) && !empty($_GET['annee']) && is_numeric($_GET['annee']) && isset($_GET['midi']) && is_numeric($_GET['midi']) && !empty($_GET['residence']) && is_numeric($_GET['residence']))
 	// Si l'utilisateur a saisi des variables
@@ -55,21 +49,19 @@ if(!empty($_GET['jour']) && is_numeric($_GET['jour']) && !empty($_GET['mois']) &
 		run('INSERT INTO reserverepas(dateReserve, midi, id_membre, residence) VALUES("'.$date.'", '.$_GET['midi'].', '.$id_membre->id.', '.$residence.')');
 		if($residence == 1)
 		{ ?>
-								<script type="text/javascript">
-								      $(function() {
-					          $('#ajaxRepas').load('index.php?section=restaurationAjax&semaineAnneFrank=<?php echo $semaineDuAnneFrank; ?>#repasAnneFrank');							         
-					      });
-								      </script>
-
+		<script type="text/javascript">
+			$(function() {
+			$('#repasAnneFrank').load('index.php?section=restaurationAjax&semaineAnneFrank=<?php echo $semaineDuAnneFrank; ?>#repasAnneFrank #partie1');							         
+			});
+		</script>
 		<?php }
 		elseif($residence == 2)
 		{ ?>
-								<script type="text/javascript">
-								      $(function() {
-					          $('#ajaxRepas').load('index.php?section=restaurationAjax&semaineClairLogis=<?php echo $semaineDuClairLogis; ?>#repasAnneFrank');							         
-					      });
-								      </script>
-
+		<script type="text/javascript">
+			$(function() {
+			$('#repasClairLogis').load('index.php?section=restaurationAjax&semaineClairLogis=<?php echo $semaineDuClairLogis; ?>#repasAnneFrank #partie2');							         
+			});
+		</script>
 		<?php }
 	}
 	elseif(boutonReserver($_GET['jour'], $_GET['mois'], $_GET['annee'], $_GET['midi'], $residence) == 2)
@@ -79,26 +71,21 @@ if(!empty($_GET['jour']) && is_numeric($_GET['jour']) && !empty($_GET['mois']) &
 		run('DELETE FROM reserverepas WHERE dateReserve="'.$date.'" AND midi = '.$_GET['midi'].' AND id_membre = '.$id_membre->id.' AND residence = '.$residence);
 		if($residence == 1)
 		{ ?>
-								<script type="text/javascript">
-								      $(function() {
-					          $('#ajaxRepas').load('index.php?section=restaurationAjax&semaineAnneFrank=<?php echo $semaineDuAnneFrank; ?>#repasAnneFrank');							         
-					      });
-								      </script>
-
+		<script type="text/javascript">
+			$(function() {
+			$('#repasAnneFrank').load('index.php?section=restaurationAjax&semaineAnneFrank=<?php echo $semaineDuAnneFrank; ?>#repasAnneFrank #partie1');							         
+			});
+		</script>
 		<?php }
 		elseif($residence == 2)
 		{ ?>
-								<script type="text/javascript">
-								      $(function() {
-					          $('#ajaxRepas').load('index.php?section=restaurationAjax&semaineClairLogis=<?php echo $semaineDuClairLogis; ?>#repasAnneFrank');							         
-					      });
-								      </script>
-
+		<script type="text/javascript">
+			$(function() {
+			$('#repasClairLogis').load('index.php?section=restaurationAjax&semaineClairLogis=<?php echo $semaineDuClairLogis; ?>#repasAnneFrank #partie2');							         
+			});
+		</script>
 		<?php }
 	}
 }
-
-
 include_once 'view/restauration/restaurationAjax.php';
-
 ?>

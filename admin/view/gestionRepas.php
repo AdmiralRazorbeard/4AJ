@@ -33,7 +33,8 @@ th {
 				<h1>Nombre des repas par jours</h1>
 				<p>
 					<em><a href="index.php?section=verrouillerRepas">Verrouiller un jour pour les repas</a></em><br />
-					<em><a href="index.php?section=menuSemaine">Ajouter un menu de la semaine</a></em>
+					<em><a href="index.php?section=menuSemaine">Ajouter un menu de la semaine</a></em><br />
+					<em><a href="index.php?#">Définir un horaire limite de reservation</a></em>
 				</p>
 				<fieldset>
 					<legend>
@@ -88,7 +89,7 @@ th {
 				</fieldset>
 								<fieldset>
 					<legend>
-						Anne Frank
+						Clair Logis
 					</legend>
 					<form method="post">
 						<label for="semaineClairLogis">Semaine du : </label>

@@ -1,54 +1,6 @@
 <body>
-					<style type="text/css">
-					table {
-					    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
-					    border: 1px solid black;
-					}
-					td {
-						border: 1px solid black;
-					}
-					th {
-						border: 1px solid black;
-						width : 150px;
-					}
-					.true
-					{
-						background-color: green;
-						cursor:pointer;
-					}
-					.false
-					{
-						background-color: red;
-						cursor:pointer;
-					}
-					.invalide
-					{
-						background-color: grey;
-						cursor:not-allowed;
-					}
-					</style>
-					<script type="text/javascript">
-					function confirmerRepas(jour, mois, annee, midi, residence){	
-						/*Fonction redirige sur la même page en mettant les paramètres en GET */
-						if(residence == 1)
-						{
-					      $(function() {
-					          $('#ajaxRepas').load('index.php?section=restaurationAjax&semaineAnneFrank=<?php echo $semaineDuAnneFrank; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi+'&residence='+residence);							         
-					      });						      
-						}
-						else
-						{
-							if(residence == 2)
-							{
-								      $(function() {
-					          $('#ajaxRepas').load('index.php?section=restaurationAjax&semaineClairLogis=<?php echo $semaineDuClairLogis; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi+'&residence='+residence);							         
-					      });
-							}
-						}
-					}
-					</script>
-				<fieldset id="repasAnneFrank">
-					<legend><?php langue('Repas Anne Frank', 'Anne Frank meal'); ?></legend>
+				<div id="partie1">
+					<span><strong><?php langue('Repas Anne Frank', 'Anne Frank meal'); ?></strong></span>
 					<form method="post">
 						<label for="semaineAnneFrank"><?php langue('Semaine du', 'Week of'); ?> : </label>
 						<select name="semaineAnneFrank" id="semaineAnneFrank">
@@ -85,12 +37,6 @@
 								?>
 								<td onclick="confirmerRepas(<?php echo $value['numero']; ?>, <?php echo $value['mois']; ?>, <?php echo $value['annee']; ?>, 1, 1)" <?php if($tmp == 1) { echo 'class="false"'; } elseif($tmp == 2) { echo 'class = "true"';  } else { echo 'class="invalide"'; } ?>>
 								</td>
-
-
-
-
-
-
 					<?php	} ?>
 						</tr>
 						<tr>
@@ -106,12 +52,12 @@
 					<?php	} ?>
 						</tr>
 					</table>
-				</fieldset>
+				</div>
 
 						<!--  REPAS CLAIR LOGIS -->
 
-				<fieldset>
-					<legend><?php langue('Repas Clair Logis', 'Clair Logis meal'); ?></legend>
+				<div id="partie2">
+					<span><strong><?php langue('Repas Clair Logis', 'Clair Logis meal'); ?></strong></span>
 					<form method="post">
 						<label for="semaineClairLogis"><?php langue('Semaine du', 'Week of'); ?> : </label>
 						<select name="semaineClairLogis" id="semaineClairLogis">
@@ -163,5 +109,5 @@
 					<?php	} ?>
 						</tr>
 					</table>
-				</fieldset>
+				</div>
 	</body>

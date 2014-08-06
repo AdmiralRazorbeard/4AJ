@@ -10,8 +10,6 @@
 				</p>
 				<!-- FIN MENU DE LA SEMAINE -->
 				<!-- DEBUT CALENDRIER POUR INSCRIPTION -->
-				<?php if($accessRepas) { ?> 
-				<div id="ajaxRepas">
 					<style type="text/css">
 					table {
 					    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
@@ -40,13 +38,15 @@
 						cursor:not-allowed;
 					}
 					</style>
+				<?php if($accessRepas) { ?> 
+
 					<script type="text/javascript">
 					function confirmerRepas(jour, mois, annee, midi, residence){	
 						/*Fonction redirige sur la même page en mettant les paramètres en GET */
 						if(residence == 1)
 						{
 					      $(function() {
-					          $('#ajaxRepas').load('index.php?section=restaurationAjax&semaineAnneFrank=<?php echo $semaineDuAnneFrank; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi+'&residence='+residence);							         
+					          $('#repasAnneFrank').load('index.php?section=restaurationAjax&semaineAnneFrank=<?php echo $semaineDuAnneFrank; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi+'&residence='+residence+' #partie1');							         
 					      });
 													      
 						}
@@ -55,14 +55,14 @@
 							if(residence == 2)
 							{
 								      $(function() {
-					          $('#ajaxRepas').load('index.php?section=restaurationAjax&semaineClairLogis=<?php echo $semaineDuClairLogis; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi+'&residence='+residence);							         
+					          $('#repasClairLogis').load('index.php?section=restaurationAjax&semaineClairLogis=<?php echo $semaineDuClairLogis; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi+'&residence='+residence+' #partie2');							         
 					      });
 							}
 						}
 					}
 					</script>
 				<fieldset id="repasAnneFrank">
-					<legend><?php langue('Repas Anne Frank', 'Anne Frank meal'); ?></legend>
+					<span><strong><?php langue('Repas Anne Frank', 'Anne Frank meal'); ?></strong></span>
 					<form method="post">
 						<label for="semaineAnneFrank"><?php langue('Semaine du', 'Week of'); ?> : </label>
 						<select name="semaineAnneFrank" id="semaineAnneFrank">
@@ -99,12 +99,6 @@
 								?>
 								<td onclick="confirmerRepas(<?php echo $value['numero']; ?>, <?php echo $value['mois']; ?>, <?php echo $value['annee']; ?>, 1, 1)" <?php if($tmp == 1) { echo 'class="false"'; } elseif($tmp == 2) { echo 'class = "true"';  } else { echo 'class="invalide"'; } ?>>
 								</td>
-
-
-
-
-
-
 					<?php	} ?>
 						</tr>
 						<tr>
@@ -124,8 +118,8 @@
 
 						<!--  REPAS CLAIR LOGIS -->
 
-				<fieldset>
-					<legend><?php langue('Repas Clair Logis', 'Clair Logis meal'); ?></legend>
+				<fieldset id="repasClairLogis">
+					<span><strong><?php langue('Repas Clair Logis', 'Clair Logis meal'); ?></strong></span>
 					<form method="post">
 						<label for="semaineClairLogis"><?php langue('Semaine du', 'Week of'); ?> : </label>
 						<select name="semaineClairLogis" id="semaineClairLogis">
@@ -178,7 +172,7 @@
 						</tr>
 					</table>
 				</fieldset>
-			</div>
+
 				<?php } ?><br />
 				<!-- FIN CALENDRIER -->
 			</div>
