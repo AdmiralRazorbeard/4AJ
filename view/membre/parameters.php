@@ -55,7 +55,7 @@
 						<p>
 							<label for="recevoirMailQuandNews"><?php langue('Autoriser la réception de newsletters', 'Receive newsletters'); ?> : </label><input type="checkbox"  id="recevoirMailQuandNews" <?php if($infoMembre['recevoirMailQuandNews']) { echo 'checked'; } ?> name="recevoirMailQuandNews"> 
 						</p>
-						<input type="submit" <?php langue('value="Valider"', 'value="Validate"'); ?>>
+						<input type="submit" <?php langue('value=Valider', 'value=Validate'); ?>>
 					</fieldset>
 				</form>
 				<?php 	

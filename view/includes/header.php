@@ -8,7 +8,51 @@ include_once('/view/includes/footerfunctions.php');
 		<title>4AJ, un tremplin pour les jeunes</title>
 		<link rel="stylesheet" type="text/css" href="/4AJ/view/style.css" />
 		<link rel="icon" type="image/png" href="/4AJ/view/graphicRessources/favicon.jpg" >
+		<link rel="stylesheet" href="sss/sss.css" type="text/css" media="all">
 		<meta charset="utf-8">
+		<?php if(!empty($_SESSION['superAdminOn']) && isSuperAdmin())
+		{?>
+		<script type="text/javascript" src="/4AJ/tinymce/tinymce.min.js"></script>
+		<script type="text/javascript">
+		tinymce.init({
+		    selector: "#txtarea",
+		    height: 400,
+		    language : 'fr_FR',
+		    plugins: [
+                "advlist autolink autosave link image lists charmap preview hr spellchecker",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime nonbreaking",
+                "table contextmenu directionality textcolor paste textcolor colorpicker textpattern"
+        ],
+
+        toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | forecolor | bullist numlist | outdent indent blockquote | styleselect fontsizeselect | link unlink image code table | hr removeformat | subscript superscript | charmap ",
+        toolbar2: "undo redo | cut copy paste | searchreplace | fullscreen | insertdatetime preview | spellchecker | visualchars visualblocks nonbreaking",
+        menubar: false,
+        toolbar_items_size: 'small',
+
+        style_formats: [
+                {title: 'Titre association', block: 'h2', styles: {color: '#2797e8', textShadow:'1px 1px 0.6px #103b5a'}},
+                {title: 'Titre plateforme', block: 'h2', styles: {color: '#177f80', textShadow:'1px 1px 0.6px #052020'}},
+                {title: 'Titre résidences', block: 'h2', styles: {color: '#f8d617', textShadow:'1px 1px 0.6px #5a4c00'}},
+                {title: 'Titre restauration', block: 'h2', styles: {color: '#a4b819', textShadow:'1px 1px 0.6px #103b5a'}},
+                {title: 'Titre services', block: 'h2', styles: {color: '#e3944e', textShadow:'1px 1px 0.6px #3b2714'}},
+                {title: 'Titre contact', block: 'h2', styles: {color: '#990007', textShadow:'1px 1px 0.6px #350003'}},
+                {title: 'Sous-titre association', block: 'h3', styles: {color: '#003c66'}},
+                {title: 'Sous-titre plateforme', block: 'h3', styles: {color: '#0e5152'}},
+                {title: 'Sous-titre résidences', block: 'h3', styles: {color: '#583e00'}},
+                {title: 'Sous-titre restauration', block: 'h3', styles: {color: '#334405'}},
+                {title: 'Sous-titre services', block: 'h3', styles: {color: '#5a3a1d'}},
+                {title: 'Sous-titre contact', block: 'h3', styles: {color: '#5a0004'}}
+        ]
+});
+		</script>
+		<?php } ?>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script src="sss/sss.min.js"></script>
+		<script>
+		jQuery(function($) {
+		$('.slider').sss({speed : 5600});
+		});
+		</script>
 	</head> 
 	<body>
 	<div class="mainWrapper">

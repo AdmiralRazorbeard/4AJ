@@ -3,7 +3,7 @@ include_once '/view/includes/header.php';
 include_once '/view/includes/submenuPlateformeLogement.php';
 ?>
 			<div class="contentWrapper plateformeLogement element edition_mode">
-					<?php pageDynamique('accueillir_plateformeLogement'); ?>
+					<?php tinymcetxt('accueillir_plateformeLogement'); ?>
 			</div>
 			<?php include_once '/view/includes/footer.php'; ?>
 		</div>		

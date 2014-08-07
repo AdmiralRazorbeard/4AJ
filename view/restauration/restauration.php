@@ -1,50 +1,6 @@
 <?php include_once '/view/includes/header.php'; ?>
-<style type="text/css">
-table {
-    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
-    border: 1px solid black;
-}
-td {
-	border: 1px solid black;
-}
-th {
-	border: 1px solid black;
-	width : 150px;
-}
-.true
-{
-	background-color: green;
-	cursor:pointer;
-}
-.false
-{
-	background-color: red;
-	cursor:pointer;
-}
-.invalide
-{
-	background-color: grey;
-	cursor:not-allowed;
-}
-</style>
-<script type="text/javascript">
-function confirmerRepas(jour, mois, annee, midi, residence){	
-	/*Fonction redirige sur la même page en mettant les paramètres en GET */
-	if(residence == 1)
-	{
-		javascript:location.href='index.php?section=restauration&semaineAnneFrank=<?php echo $semaineDuAnneFrank; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi+'&residence='+residence;
-	}
-	else
-	{
-		if(residence == 2)
-		{
-			javascript:location.href='index.php?section=restauration&semaineClairLogis=<?php echo $semaineDuClairLogis; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi+'&residence='+residence;
-		}
-	}
-}
-</script>
 			<div class="restauration element contentWrapper edition_mode">
-				<?php pageDynamique('restauration'); ?>
+				<?php tinymcetxt('restauration'); ?>
 				<br />
 				<!-- MENU DE LA SEMAINE -->
 				<p>
@@ -54,9 +10,59 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 				</p>
 				<!-- FIN MENU DE LA SEMAINE -->
 				<!-- DEBUT CALENDRIER POUR INSCRIPTION -->
+					<style type="text/css">
+					table {
+					    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+					    border: 1px solid black;
+					}
+					td {
+						border: 1px solid black;
+					}
+					th {
+						border: 1px solid black;
+						width : 150px;
+					}
+					.true
+					{
+						background-color: green;
+						cursor:pointer;
+					}
+					.false
+					{
+						background-color: red;
+						cursor:pointer;
+					}
+					.invalide
+					{
+						background-color: grey;
+						cursor:not-allowed;
+					}
+					</style>
 				<?php if($accessRepas) { ?> 
+
+					<script type="text/javascript">
+					function confirmerRepas(jour, mois, annee, midi, residence){	
+						/*Fonction redirige sur la même page en mettant les paramètres en GET */
+						if(residence == 1)
+						{
+					      $(function() {
+					          $('#repasAnneFrank').load('index.php?section=restaurationAjax&semaineAnneFrank=<?php echo $semaineDuAnneFrank; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi+'&residence='+residence+' #partie1');							         
+					      });
+													      
+						}
+						else
+						{
+							if(residence == 2)
+							{
+								      $(function() {
+					          $('#repasClairLogis').load('index.php?section=restaurationAjax&semaineClairLogis=<?php echo $semaineDuClairLogis; ?>&jour='+jour+'&mois='+mois+'&annee='+annee+'&midi='+midi+'&residence='+residence+' #partie2');							         
+					      });
+							}
+						}
+					}
+					</script>
 				<fieldset id="repasAnneFrank">
-					<legend><?php langue('Repas Anne Frank', 'Anne Frank meal'); ?></legend>
+					<span><strong><?php langue('Repas Anne Frank', 'Anne Frank meal'); ?></strong></span>
 					<form method="post">
 						<label for="semaineAnneFrank"><?php langue('Semaine du', 'Week of'); ?> : </label>
 						<select name="semaineAnneFrank" id="semaineAnneFrank">
@@ -112,8 +118,8 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 
 						<!--  REPAS CLAIR LOGIS -->
 
-				<fieldset>
-					<legend><?php langue('Repas Clair Logis', 'Clair Logis meal'); ?></legend>
+				<fieldset id="repasClairLogis">
+					<span><strong><?php langue('Repas Clair Logis', 'Clair Logis meal'); ?></strong></span>
 					<form method="post">
 						<label for="semaineClairLogis"><?php langue('Semaine du', 'Week of'); ?> : </label>
 						<select name="semaineClairLogis" id="semaineClairLogis">
@@ -166,6 +172,7 @@ function confirmerRepas(jour, mois, annee, midi, residence){
 						</tr>
 					</table>
 				</fieldset>
+
 				<?php } ?><br />
 				<!-- FIN CALENDRIER -->
 			</div>

@@ -1,12 +1,12 @@
 <?php include_once 'view/includes/header.php'; ?>
 			<div class="contentWrapper contact element edition_mode">
-			<?php pageDynamique('contact'); ?><br /><br />
+			<?php tinymcetxt('contact'); ?><br /><br />
 				<fieldset id="mainContact">
 					<form method="post">
 						<p class="form-field">
 						<label for="email">
 							<?php if($_SESSION['langue'] == 2) { echo 'Your mail address : '; }
-								else { echo 'Votre addresse mail :'; } ?> </label>
+								else { echo 'Votre adresse mail :'; } ?> </label>
 						<input type="mail" name="email" id="email" />
 						</p>
 						<p class="form-field">

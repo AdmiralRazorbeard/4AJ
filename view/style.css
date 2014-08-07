@@ -352,11 +352,14 @@ nav li:hover ul li {
     padding: 35px 20px 20px 20px;
     word-wrap: break-word;
 }
-.element h1,.element .a_title{
-    font-size: 20px;
+/*  --- Suppression des espaces sur les pages "informatives" du site --  */
+.element h1, .element h2, .element h3, .element h4, .element h5, .element h6, .element p{
+    margin-top:0px;
+    margin-bottom:0px;
 }
-.element h2{
-    font-size: 17px;
+.element ul{
+    margin-top:3px;
+    margin-bottom:0px; 
 }
 /*  --- Propriétés du mode edition --  */
 .edition_mode #contenu{
@@ -372,6 +375,29 @@ nav li:hover ul li {
     border:1px solid #abadb3;
     border-radius: 4px;
 }
+/*  --- Propriétés du slider de photos --  */
+.slider{
+    width: 340px;
+    border:5px solid white;
+    -moz-box-shadow: 1px 1px 4px 0px black;
+    -webkit-box-shadow: 1px 1px 4px 0px black;
+    -o-box-shadow: 1px 1px 4px 0px black;
+    box-shadow: 1px 1px 4px 0px black;
+}
+.caption{
+    background-color: white;
+    width: 100%;
+    padding: 2px;
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    opacity: 0.7;
+    /* Pour la plupart des navigateurs actuels (norme CSS3) */
+    filter:alpha(opacity=70);
+    /* Pour les anciennes versions d'Internet Explorer */
+    -moz-opacity:0.7;
+    /* Pour Mozilla (<= 1.6) et une partie des navigateurs Gecko */
+}
 /*  --- Propriétés de la section index --  */
 #plateformeImg1{
     position: absolute;
@@ -379,7 +405,7 @@ nav li:hover ul li {
 }
 #aLaUneImg {
     position: relative;
-    left: 700px;
+    left: 690px;
 }
 #aLaUne{
     width: 250px;
@@ -398,96 +424,6 @@ nav li:hover ul li {
 }
 #aLaUne p{
     margin: 0;
-}
-
-
-
-
-/*  --- Propriétés de la section association --  */
-.association h1{
-    color:#2797e8;
-    text-shadow:1px 1px 0.6px #103b5a;
-    margin: 20px 0px -10px 0px;
-}
-.association h3{
-    color:#003c66;
-    font-size: 17px;
-    margin: 0px 0px -20px 0px;
-}
-/*  --- Propriétés de la section Nos Residences --  */
-.nosResidences h1{
-    color:#f8d617;
-    text-shadow:1px 1px 0.6px #5a4c00;
-    margin: 20px 0px -10px 0px;
-}
-.nosResidences h3{
-    color:#583e00;
-    font-size: 17px;
-    margin: 0px 0px -20px 0px;    
-}
-/*  --- Propriétés de la section actualités --  */
-/*.actualites label{
-    float: left;
-    width: 30%;
-}
-.actualites h2{
-    color:#f8d617;
-    text-shadow:1px 1px 0.6px #5a4c00;
-    margin: 20px 0px -10px 0px;
-}
-.actualites h3{
-    color:#583e00;
-    font-size: 17px;
-    margin: 0px 0px -20px 0px;    
-}
-.actualites .a_info {
-    font-size: 12px;
-    font-style: italic;
-    color: #B1B1B1;
-}
-.actualites .a_content {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #B1B1B1;
-}
-.actualites .modificationArticle{
-    position: relative;
-    bottom: 12px;
-}
-.actualites .pdfObject{
-    width: 110px;
-}
-.actualites .pdfObject img{
-    margin-right: 5px;
-}
-.actualites .pdfObject a{
-    position:relative;
-    bottom: 5px;
-}*/
-/*  --- Propriétés de la section restauration --  */
-.restauration h1{
-    color:#a4b819;
-    text-shadow:1px 1px 0.6px #103b5a;
-    margin: 20px 0px -10px 0px;
-}
-.restauration h3{
-    color:#334405;
-    font-size: 17px;
-    margin: 0px 0px -20px 0px;
-}
-.restauration p{
-    position:relative;
-    bottom:15px;
-}
-/*  --- Propriétés de la section services --  */
-.services h1{
-    color:#e3944e;
-    text-shadow:1px 1px 0.6px #3b2714;
-    margin: 20px 0px -10px 0px;
-}
-.services h3{
-    color:#5a3a1d;
-    font-size: 17px;
-    margin: 0px 0px -20px 0px;
 }
 /*  --- Propriétés de la section livredor --  */
 #img_livredor{
@@ -528,28 +464,6 @@ nav li:hover ul li {
 }
 #message_livredor .form-field textarea{
     resize:none;
-}
-/*  --- Propriétés de la section contact --  */
-.contact h1{
-    color:#990007;
-    text-shadow:1px 1px 0.6px #350003;
-    margin: 20px 0px -10px 0px;
-}
-.contact h3{
-    color:#5a0004;
-    font-size: 17px;
-    margin: 0px 0px -20px 0px;
-}
-/*  --- Propriétés de la section plateformeLogement --  */
-.plateformeLogement h1{
-    color:#177f80;
-    text-shadow:1px 1px 0.6px #052020;
-    margin:20px 0px -10px 0px;
-}
-.plateformeLogement h3{
-    color:#0e5152;
-    font-size:17px;
-    margin:0px 0px -20px 0px;
 }
 /*  --- Propriétés de mainContact ET plateformeLogementContact--  */
 #mainContact, #plateformeLogementContact{
