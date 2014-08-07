@@ -18,7 +18,7 @@ include_once '/view/includes/header.php';
 						<label for="prenom">Prénom : </label><input type="text" id="prenom" name="prenom" value="<?php echo $infoMembre['prenomMembre']; ?>" />
 						</p>
 						<p class="form-field">
-						<label for="email">Email : </label><input type="mail" id="email" name="email" value="<?php echo $infoMembre['mail']; ?>" disabled />
+						<label for="email">Email : </label><input type="text" id="email" name="email" value="<?php echo $infoMembre['mail']; ?>" disabled />
 						</p>
 						<p class="form-field">
 						<label for="adresse">Adresse : </label><input type="text" id="adresse" name="adresse" value="<?php echo $infoMembre['adresse']; ?>"  />
@@ -33,7 +33,7 @@ include_once '/view/includes/header.php';
 						<label for="telPortable">Téléphone portable : </label><input type="text" name="telPortable" id="telPortable" value="<?php echo $infoMembre['telPortable']; ?>" />
 						</p>
 						<p class="form-field">
-						<label for="fonction">Fonction : </label>
+						<label>Fonction : </label>
 						<select>
 					<?php 	foreach($infoMembre['fonction'] as $k => $v)
 								{ ?>

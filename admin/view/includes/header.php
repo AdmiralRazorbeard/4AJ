@@ -1,5 +1,6 @@
-<?php include_once('/view/includes/headerfunctions.php');?>
-<!-- Gestion des classes actives pour les boutons et de la connexion-->
+<?php include_once('/view/includes/headerfunctions.php');
+// Gestion des classes actives pour les boutons et de la connexion
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -37,11 +38,11 @@
 		</div>
 		<nav id="menu">
 			<ul>
-				<li><a <?php if (openSection('item1')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=gestionMembres">Gestion des membres</a></li>
-				<li><a <?php if (openSection('item2')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=fonction">Fonction des membres</a></li>
-				<li><a <?php if (openSection('item3')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=actualite">Nouvelle actualité</a></li>
-				<li><a <?php if (openSection('item4')){?><?php if(nouveauLivreOrAConfirmer()){ ?>id="active_menu_item2"<?php } else {?>id="active_menu_item"<?php } ?><?php } else { ?><?php if(nouveauLivreOrAConfirmer()){ ?>id="menu_item2"<?php } else {?>id="menu_item"<?php } ?><?php } ?> href="index.php?section=livreOrAConfirmer">Livre d'or à confirmer</a></li>
-				<li><a <?php if (openSection('item5')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=gestionRepas">Repas</a></li>
-				<li><a <?php if (openSection('item6')){?>id="active_menu_item"<?php } else { ?>id="menu_item"<?php } ?> href="index.php?section=formulaireContact">Formulaire de contact</a></li>		
+				<li><a <?php if (openSection('item1')){?>id="active_menu_item"<?php } else { ?>class="menu_item"<?php } ?> href="index.php?section=gestionMembres">Gestion des membres</a></li>
+				<li><a <?php if (openSection('item2')){?>id="active_menu_item"<?php } else { ?>class="menu_item"<?php } ?> href="index.php?section=fonction">Fonction des membres</a></li>
+				<li><a <?php if (openSection('item3')){?>id="active_menu_item"<?php } else { ?>class="menu_item"<?php } ?> href="index.php?section=actualite">Nouvelle actualité</a></li>
+				<li><a <?php if (openSection('item4')){?><?php if(nouveauLivreOrAConfirmer()){ ?>id="active_menu_item2"<?php } else {?>class="active_menu_item"<?php } ?><?php } else { ?><?php if(nouveauLivreOrAConfirmer()){ ?>id="menu_item2"<?php } else {?>id="menu_item"<?php } ?><?php } ?> href="index.php?section=livreOrAConfirmer">Livre d'or à confirmer</a></li>
+				<li><a <?php if (openSection('item5')){?>id="active_menu_item"<?php } else { ?>class="menu_item"<?php } ?> href="index.php?section=gestionRepas">Repas</a></li>
+				<li><a <?php if (openSection('item6')){?>id="active_menu_item"<?php } else { ?>class="menu_item"<?php } ?> href="index.php?section=formulaireContact">Formulaire de contact</a></li>		
 			</ul>
 		</nav>
