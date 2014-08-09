@@ -31,7 +31,7 @@ nav li {
     margin:auto;
     padding:0;
 }
-#menu_item{background-color:#f7f7f7;color:#4b4b4b;}
+.menu_item{background-color:#f7f7f7;color:#4b4b4b;}
 #menu_item2{background-color:#ffd46d;color:#4b4b4b;}
 #menu_item:hover{
 background-color:#646464;color:#f7f7f7;
