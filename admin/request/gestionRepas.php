@@ -58,6 +58,11 @@ function semaine($nbreWeekPlus=0)
 function nbreInscrit($jour, $mois, $annee, $midi, $residence)
 {
 	$date = $annee.'-'.$mois.'-'.$jour;
+	$count = run('SELECT COUNT(*) as nbre FROM verrouillerjourrepas WHERE dateVerouiller = "'.$date.'" AND midi = '.$midi.' AND residence = '.$residence)->fetch_object();
+	if($count->nbre >= 1)
+	{
+		return 0;
+	}
 	$tmp = run('SELECT COUNT(*) as nbre FROM reserverepas WHERE dateReserve="'.$date.'" AND midi = '.$midi.' AND residence='.$residence)->fetch_object();
 	return $tmp->nbre;
 }

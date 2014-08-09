@@ -67,4 +67,8 @@ elseif ($_GET['section'] == 'menuSemaine')
 {
 	include_once('controller/menuSemaine.php');
 }
+elseif ($_GET['section'] == 'horaireLimite')
+{
+	include_once('controller/horaireLimite.php');
+}
 ?>

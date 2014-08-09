@@ -47,21 +47,36 @@ function semaine($nbreWeekPlus=0)
 	return $semaine;	
 }
 
+function horaireLimite()
+{
+	// Retourne un tableau, de 2 dimension, la première étant midi ou soir, la seconde heure ou minute
+
+	$tmp = run('SELECT midi, soir FROM horairelimite WHERE id=1')->fetch_object();
+	$midiTMP = $tmp->midi;
+	$soirTMP = $tmp->soir;
+	$midi = array($midiTMP[0]*10 + $midiTMP[1], $midiTMP[3]*10 + $midiTMP[4]);
+	$soir = array($soirTMP[0]*10 + $soirTMP[1], $soirTMP[3]*10 + $soirTMP[4]);
+	return array($midi, $soir);
+}
+
 function boutonReserver($numero, $mois, $annee, $midi, $residence)
 	// Retourne 1 si il a le droit de s'incrire, 2 si il est déjà inscrit, et 3 sinon
 	// midi = 1, soir = 0
 {
 	if(!empty($_SESSION['log']) && !empty($_SESSION['mail']))
 	{
+		$horaireLimite = horaireLimite();
+		$heureMidi = $horaireLimite[0][0].':'.$horaireLimite[0][1];
+		$heureSoir = $horaireLimite[1][0].':'.$horaireLimite[1][1];
 
-			// On ne peut plus s'inscrire à un repas pour le midi après 14 heures
-		if(strtotime($numero.'-'.$mois.'-'.$annee.' 14:00') <= strtotime("now") && $midi)
+			// On ne peut plus s'inscrire à un repas pour le midi après l'heure choisi
+		if(strtotime($numero.'-'.$mois.'-'.$annee.' '.$heureMidi) <= strtotime("now") && $midi)
 		{
 			return 3;
 		}
 
-			// On ne peut plus s'inscrire à un repas pour le soir après 20 heures
-		if(strtotime($numero.'-'.$mois.'-'.$annee.' 20:00') <= strtotime("now") && !$midi)
+			// On ne peut plus s'inscrire à un repas pour le soir après l'heure choisi
+		if(strtotime($numero.'-'.$mois.'-'.$annee.' '.$heureSoir) <= strtotime("now") && !$midi)
 		{
 			return 3;
 		}
@@ -95,7 +110,8 @@ function boutonReserver($numero, $mois, $annee, $midi, $residence)
 							WHERE membre.id = reserverepas.id_membre
 							AND dateReserve = "'.$annee.'-'.$mois.'-'.$numero.'"
 							AND midi = '.$midi.'
-							AND residence = '.$residence)->fetch_object();
+							AND residence = '.$residence.'
+							AND membre.mail = "'.$_SESSION['mail'].'"')->fetch_object();
 					// Vérifie que le membre ne s'est pas déjà inscrit
 				if($tmp->inscrit == 0)
 				{
