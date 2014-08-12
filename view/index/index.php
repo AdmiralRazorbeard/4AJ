@@ -21,6 +21,7 @@
 						</p>
 	<?php 				} ?>
 						<p><?php echo regexTextBox($value['contenu']); ?></p>
+						<br>
 	<?php			} ?>
 				</div>
 			</div>

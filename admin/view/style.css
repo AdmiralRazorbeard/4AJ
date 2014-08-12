@@ -179,7 +179,7 @@ h1{
 }
 #actualite #contenu, #modifierNews #contenu{
     width:650px;
-    height:250px;
+    height:150px;
     resize: none;
 }
 #actualite #contenu_previsualisation, #modifierNews #contenu_previsualisation{

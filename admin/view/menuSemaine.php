@@ -22,7 +22,7 @@ include_once '/view/includes/header.php';
 						$moisWeek = $mois[date('n', strtotime('Monday next week', strtotime('+1 week')))];
 						?>
 						<option value="<?php echo $numeroWeek; ?>"><?php echo $jourWeek.' '.$moisWeek; ?></option>
-					</select>, ajouter le menu : <input type="file" name="weekFile" />. <input type="submit" />
+					</select>, ajouter le menu : <input type="file" name="weekFile" /><input type="submit" />
 				</form>
 			</div>
 		</div>

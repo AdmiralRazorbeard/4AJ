@@ -3,9 +3,9 @@ include_once '/view/includes/header.php';
 ?>
 			<div class="contentWrapper">
 				<h1>Modifier les heures limite d'inscription</h1>
-
+				<a href="index.php?section=gestionRepas">Retour</a>
 				<p>
-					<em>Ici, il s'agit de changer la limite de l'heure pour s'inscrire à un repas.</em>
+					<em>Ici, il s'agit de definir la limite horaire pour s'inscrire à un repas.</em>
 				</p>
 					<!-- Changer l'horaire midi -->
 				<form method="post">
@@ -20,7 +20,14 @@ include_once '/view/includes/header.php';
 					<select name="midiMinute">
 						<?php for ($i=0; $i <  60; $i = $i+15) { ?>
 							<option value="<?php echo $i;?>" <?php if($i == $horaireLimite[0][1]) { echo 'selected'; } ?>>
-								<?php echo $i; ?>
+								<?php if($i == 0)
+								{
+									echo "00";
+								}
+								else
+								{
+								echo $i;
+								}?>
 							</option>
 				<?php	} ?>
 					<input type="submit">
@@ -38,7 +45,14 @@ include_once '/view/includes/header.php';
 					<select name="soirMinute">
 						<?php for ($i=0; $i <  60; $i = $i+15) { ?>
 							<option value="<?php echo $i;?>" <?php if($i == $horaireLimite[1][1]) { echo 'selected'; } ?>>
-								<?php echo $i; ?>
+								<?php if($i == 0)
+								{
+									echo "00";
+								}
+								else
+								{
+								echo $i;
+								}?>
 							</option>
 				<?php	} ?>
 					<input type="submit">
