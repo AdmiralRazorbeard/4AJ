@@ -46,7 +46,7 @@ function tinymcetxt($page)
 		{
 			echo $contenu->contenuEN;
 		}
-		if(!empty($contenu->contenu) && $_SESSION['langue'] == 1)
+		else
 		{
 			echo $contenu->contenu;
 		}
