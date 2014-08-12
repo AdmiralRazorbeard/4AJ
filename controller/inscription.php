@@ -10,6 +10,7 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		$errorPassword = false;
 		$errorMail = false;
 		$errorGlobalName = false;
+		$errorDate = false;
 		$error = 0;
 		$adresse = "NULL";
 		$telFixe = "NULL";
@@ -92,9 +93,22 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		}
 		if(!empty($_POST['anneDateNaissance']) && !empty($_POST['moisDateNaissance']) && !empty($_POST['jourDateNaissance']))
 		{
-			if(is_numeric($_POST['anneDateNaissance']) && $_POST['anneDateNaissance'] <= date('Y') && $_POST['anneDateNaissance'] >= 1920 && !empty($_POST['moisDateNaissance']) && is_numeric($_POST['moisDateNaissance']) && $_POST['moisDateNaissance'] >= 1 && $_POST['moisDateNaissance'] <= 12 && !empty($_POST['jourDateNaissance']) && is_numeric($_POST['jourDateNaissance']) && $_POST['jourDateNaissance'] >= 1 && $_POST['jourDateNaissance'] <= 31)
+			if(is_numeric($_POST['anneDateNaissance']) && $_POST['anneDateNaissance'] <= date('Y') && $_POST['anneDateNaissance'] >= 1920 && !empty($_POST['moisDateNaissance']) && is_numeric($_POST['moisDateNaissance']) && $_POST['moisDateNaissance'] >= 1 && $_POST['moisDateNaissance'] <= 12 && !empty($_POST['jourDateNaissance']) && is_numeric($_POST['jourDateNaissance']) && $_POST['jourDateNaissance'] >= 1 && $_POST['jourDateNaissance'] <= 31 && checkdate($_POST['moisDateNaissance'], $_POST['jourDateNaissance'], $_POST['anneDateNaissance']))
 			{
-				$dateNaissance = $_POST['anneDateNaissance'].'-'.$_POST['moisDateNaissance'].'-'.$_POST['jourDateNaissance'];
+				if(strtotime($_POST['moisDateNaissance'].'/'.$_POST['jourDateNaissance'].'/'.$_POST['anneDateNaissance']) < time())
+				{	
+					$dateNaissance = $_POST['anneDateNaissance'].'-'.$_POST['moisDateNaissance'].'-'.$_POST['jourDateNaissance'];
+				}
+				else
+				{
+					$errorDate = true;
+					$error ++;
+				}
+			}
+			else
+			{
+				$errorDate = true;
+				$error ++;
 			}
 		}
 		if($error == 0)
@@ -116,6 +130,10 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 			if($errorMail)
 			{
 				$message3 ="<br />Ce mail est déjà utilisé pour un autre compte";
+			}
+			if($errorDate)
+			{
+				$message4 ="<br />La date de naissance est invalide";
 			}
 		}
 	}

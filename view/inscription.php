@@ -26,6 +26,11 @@
 					{ ?>
 						<em><?php echo $message3; ?></em></br>
 					<?php } ?>
+					<?php if(!empty($message4))
+					{ ?>
+						<em><?php echo $message4; ?></em></br>
+					<?php } ?>
+
 					</p>
 					<form method="post">
 						<fieldset id="inscription">
@@ -103,8 +108,8 @@
 								<em><?php langue('Le mot de passe doit contenir 7 caractères au minimun.', 'The password must contain at least 7 characters.'); ?></em><br>
 								<em><?php langue('Les champs marqués d\'un * sont obligatoires.', 'Fields with * are mandatory.'); ?></em>
 							</p>
-							<input type="submit" <?php langue('value="Envoyer"', 'value="Submit"'); ?>>
-							<input type="reset" <?php langue('value="Effacer"', 'value="Reset"'); ?>>
+							<input type="submit" value="<?php langue('Envoyer', 'Submit'); ?>">
+							<input type="reset" value="<?php langue('Effacer', 'Reset'); ?>">
 						</fieldset>
 					</form>
 				</div>
