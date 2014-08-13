@@ -62,7 +62,7 @@ include_once '/view/includes/header.php';
 						<?php if($value['id'] != 1) { ?>
 						<!-- On ne peut pas supprimer la fonction "public" -->
 						<td>
-							<a href="index.php?section=fonction&amp;delete=<?php echo $value['id']; ?>">Supprimer</a>
+							<a href="index.php?section=fonction&amp;delete=<?php echo $value['id']; ?>" onclick="return(confirm('Attention ! Si vous supprimez la fonction, cette fonction sera retirée de tous les membres qui la possèdent. Voulez-vous continuer ?'))">Supprimer</a>
 						</td>
 						<?php }
 						else {?>
