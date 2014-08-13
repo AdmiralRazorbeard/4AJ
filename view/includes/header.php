@@ -57,10 +57,10 @@ include_once('/view/includes/footerfunctions.php');
 	<body>
 	<div class="mainWrapper">
 		<div>
-			<div class="box1 boxAdresse">FJT ANNE FRANK<br>21, rue du bloc 62000 ARRAS</div>
-			<div class="box2 boxAdresse">FJT CLAIR LOGIS<br>3, rue du Paul Perin 62000 ARRAS</div>
-			<div class="box3 boxAdresse">FJT NOBEL<br>7, rue Diderot 62000 ARRAS</div>
-			<div class="box4 boxAdresse">PLATEFORME LOGEMENT<br>34 bis, Grand'Place 62000 ARRAS</div>
+			<div class="box1 boxAdresse" onclick="location.href='index.php?section=residenceAnneFrank';">FJT ANNE FRANK<br>21, rue du bloc 62000 ARRAS</div>
+			<div class="box2 boxAdresse" onclick="location.href='index.php?section=residenceClairLogis';">FJT CLAIR LOGIS<br>3, rue du Paul Perin 62000 ARRAS</div>
+			<div class="box3 boxAdresse" onclick="location.href='index.php?section=residenceNobel';">FJT NOBEL<br>7, rue Diderot 62000 ARRAS</div>
+			<div class="box4 boxAdresse" onclick="location.href='index.php?section=plateformeLogement';">PLATEFORME LOGEMENT<br>34 bis, Grand'Place 62000 ARRAS</div>
 			<div id="connexion">
 				<?php
 				if(isConnected()) {?>
@@ -107,13 +107,13 @@ include_once('/view/includes/footerfunctions.php');
 			</div>
 		</div>
 		<div id="banniere">
-			<img id="bannierelogo" src="/4AJ/view/graphicRessources/bannierelogo.png" alt="logo bannière"/>
+			<a href="index.php?section=index"><img id="bannierelogo" src="/4AJ/view/graphicRessources/bannierelogo.png" alt="logo bannière"/></a>
 			<ul id="sContent">
-				<li><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></li>
-				<li><img src="/4AJ/view/graphicRessources/2.jpg" alt="image bannière"/></li>
-				<li><img src="/4AJ/view/graphicRessources/3.jpg" alt="image bannière"/></li>
-				<li><img src="/4AJ/view/graphicRessources/2.jpg" alt="image bannière"/></li>
-				<li><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></li>
+				<li><a href="index.php?section=index"><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></a></li>
+				<li><a href="index.php?section=index"><img src="/4AJ/view/graphicRessources/2.jpg" alt="image bannière"/></a></li>
+				<li><a href="index.php?section=index"><img src="/4AJ/view/graphicRessources/3.jpg" alt="image bannière"/></a></li>
+				<li><a href="index.php?section=index"><img src="/4AJ/view/graphicRessources/2.jpg" alt="image bannière"/></a></li>
+				<li><a href="index.php?section=index"><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></a></li>
 			</ul>
 		</div>
 		<nav id="mainMenu">

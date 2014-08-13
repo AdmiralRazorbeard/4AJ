@@ -1,9 +1,7 @@
 <?php
 include_once 'request/menuSemaine.php';
 if(!isAdminRepas())
-{
-	header('location:index.php');
-}
+{ header('location:index.php?section=error'); }
 $mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 
 cleanBDDSemaine();
