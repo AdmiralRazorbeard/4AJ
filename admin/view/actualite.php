@@ -11,7 +11,7 @@ include_once '/view/includes/header.php';
 						<input type="text" name="titre" id="titre" />
 						</div>
 						<div class="form-field-visibilite">
-						<p>News visibles par :</p>
+						<p>L'actualité sera visible pour :</p>
 							<!-- Affiche toutes les autres "fonction" -->
 								<?php foreach ($allFonction as $k => $v) { ?>
 									<div class="form-field-visibilite-element">

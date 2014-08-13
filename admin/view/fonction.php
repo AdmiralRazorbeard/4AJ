@@ -8,9 +8,12 @@ include_once '/view/includes/header.php';
 					javascript:location.href='index.php?section=fonction&type='+type+'&id='+id;
 				}
 				</script>
-				<h1>Ajouter, modifier les fonctions</h1>
+				<h1>Fonctions des membres</h1>
 				<p>
-					<em>Vous pouvez modifier les droits en cliquant</em>
+					<em>-Vous pouvez modifier les droits de chaque fonction en cliquant sur les cases (les super administrateurs ont eux tous les droits).</em><br>
+					<em>-Assignez ou supprimez des fonctions aux membres en cliquant sur l'intitulé de la fonction (dans la colonne "Nom fonction").</em><br>
+					<em>-Toute personne qui s'inscrit sur le site reçoit la fonction "public" par défaut.</em><br>
+					<em>-Un membre peut cumuler plusieurs fonctions à la fois, on ne peut pas lui retirer la fonction "public"</em><br>
 				</p>
 				<table>
 					<tr>
