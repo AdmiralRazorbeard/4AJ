@@ -48,15 +48,15 @@ include_once '/view/includes/header.php';
 							</div>
 						</td>	
 						<!-- Création du tableau affichant, ça affiche la couleur, et pouvant être cliqué en utilisant la fonction changerFonction -->
-						<td onclick="changerFonction(2, <?php echo $value['id'] ?>);" <?php if($value['isAdminLivreOr']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						<td onclick="changerFonction(2, <?php echo $value['id'] ?>);" <?php if($value['isAdminLivreOr']) { echo 'class="true"><img src="view/graphicRessources/true.png" alt="true"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png" alt="false"/>'; } ?>
 						</td>
-						<td onclick="changerFonction(3, <?php echo $value['id'] ?>);" <?php if($value['isAdminActualite']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						<td onclick="changerFonction(3, <?php echo $value['id'] ?>);" <?php if($value['isAdminActualite']) { echo 'class="true"><img src="view/graphicRessources/true.png" alt="true"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png" alt="false"/>'; } ?>
 						</td>
-						<td onclick="changerFonction(4, <?php echo $value['id'] ?>);" <?php if($value['isAdminRepas']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						<td onclick="changerFonction(4, <?php echo $value['id'] ?>);" <?php if($value['isAdminRepas']) { echo 'class="true"><img src="view/graphicRessources/true.png" alt="true"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png" alt="false"/>'; } ?>
 						</td>	
-						<td onclick="changerFonction(5, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerMidi']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						<td onclick="changerFonction(5, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerMidi']) { echo 'class="true"><img src="view/graphicRessources/true.png" alt="true"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png" alt="false"/>'; } ?>
 						</td>
-						<td onclick="changerFonction(6, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerSoir']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						<td onclick="changerFonction(6, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerSoir']) { echo 'class="true"><img src="view/graphicRessources/true.png" alt="true"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png" alt="false"/>'; } ?>
 						</td>
 
 						<?php if($value['id'] != 1) { ?>
@@ -85,35 +85,59 @@ include_once '/view/includes/header.php';
 					<h3>
 						Fonction <?php echo $allFonction[$_GET['fonction']]['nom']; ?>
 					</h3>
-			<?php	if(!empty($allMembreIn)) { ?>
+			<?php	if(!empty($allMembreIn)) 
+					{ ?>
 						<!-- Si il ya des membres dans la fonction, on les affiches -->
-					<ul>
-						<?php foreach ($allMembreIn as $key => $value) { ?>
-						<!-- On affiche la liste des membres -->
-						<li><?php echo $value['nom']; ?>
-							<?php if($_GET['fonction'] != 1) { ?>
-							<!-- On ne peut supprimer un membre d'une fonction que si ce n'est pas la fonction public -->
-							, <a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;supprimerMembre=<?php echo $value['id']; ?>">Supprimer</a></li>
-							<?php } ?>
-				<?php	} ?>
-					</ul>
+						<h4>Liste des membres</h4>
+						<ul>
+							<?php foreach ($allMembreIn as $key => $value) { ?>
+							<!-- On affiche la liste des membres -->
+							<li><?php echo $value['nom']; ?>
+								<?php if($_GET['fonction'] != 1) { ?>
+								<!-- On ne peut supprimer un membre d'une fonction que si ce n'est pas la fonction public -->
+								, <a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;supprimerMembre=<?php echo $value['id']; ?>">Supprimer</a></li>
+								<?php } ?>
+					<?php	} ?>
+						</ul>
+						<p>	
+							<em>Page : 
+								<?php 
+								$j = 1;
+								for($j; $j <= $nbrePageIn; $j++) 
+								{ ?>
+									<?php if($j == $pageSupprimer) { echo '<b>'; } ?>
+									<a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;pageSupprimer=<?php echo $j; ?>"><?php echo $j; ?></a> 
+									<?php if($j == $pageSupprimer) { echo '</b>'; } ?>
+						<?php 	} ?>
+							</em>
+						</p>
 			<?php 	} 
 					/* FIN DE SI */
 					/* --------- */
 					if(!empty($allMembreNotInFonction))
 						// Si il reste des membres qui ne sont pas dans la fonction, on propose de les ajouters 
 					{ ?>
-					<form method="post">
-						<input type="hidden" name="idFonction" value="<?php echo $_GET['fonction']; ?>" />
-						<select name="addMembreInFonction">
-						<?php foreach ($allMembreNotInFonction as $key => $value) { ?>
-							<option value="<?php echo $value['id']; ?>">
-								<?php echo $value['nom']; ?>
-							</option>
-				<?php		} ?>
-						</select>
-						<input type="submit" value="Ajouter à la fonction" />
-					</form>
+						<h4>Ajouter un membre</h4>
+						<ul>
+							<?php foreach ($allMembreNotInFonction as $key => $value) {  ?>
+								<li>
+									<?php echo $value['nom']; ?>
+									, <a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;ajouterMembre=<?php echo $value['id']; ?>">Ajouter</a>
+								</li>
+							<?php } ?>
+						</ul>
+						<p>	
+							<em>Page : 
+								<?php 
+								$j = 1;
+								for($j; $j <= $nbrePageNotIn; $j++) 
+								{ ?>
+									<?php if($j == $pageAjouter) { echo '<b>'; } ?>
+									<a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;pageAjouter=<?php echo $j; ?>"><?php echo $j; ?></a> 
+									<?php if($j == $pageAjouter) { echo '</b>'; } ?>
+						<?php 	} ?>
+							</em>
+						</p>
 			<?php 	} 
 				} ?>
 			</div>
