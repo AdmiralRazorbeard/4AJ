@@ -9,6 +9,64 @@ include_once '/view/includes/header.php';
 				}
 				</script>
 				<h1>Fonctions des membres</h1>
+				<?php if(!empty($_GET['fonction']) && !empty($allFonction[$_GET['fonction']]['nom']))
+					// Si l'utilisateur à choisi une fonction, on affiche la liste des membres 
+				{ ?>
+					<h3>
+						Fonction <?php echo $allFonction[$_GET['fonction']]['nom']; ?>
+					</h3>
+			<?php	if(!empty($allMembreIn)) 
+					{ ?>
+						<!-- Si il ya des membres dans la fonction, on les affiches -->
+						<h4>Liste des membres possédant la fonction <?php echo $allFonction[$_GET['fonction']]['nom']; ?> :</h4>
+							<?php foreach ($allMembreIn as $key => $value) { ?>
+							<!-- On affiche la liste des membres -->
+							<?php echo $value['nom']; ?>
+								<?php if($_GET['fonction'] != 1) { ?>
+								<!-- On ne peut supprimer un membre d'une fonction que si ce n'est pas la fonction public -->
+								&nbsp;<a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;supprimerMembre=<?php echo $value['id']; ?>">Enlever la fonction</a>
+								<?php } ?>
+								<br>
+					<?php	} ?>
+						<p>	
+							<em>Page : 
+								<?php 
+								$j = 1;
+								for($j; $j <= $nbrePageIn; $j++) 
+								{ ?>
+									<?php if($j == $pageSupprimer) { echo '<b>'; } ?>
+									<a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;pageSupprimer=<?php echo $j; ?>"><?php echo $j; ?></a> 
+									<?php if($j == $pageSupprimer) { echo '</b>'; } ?>
+						<?php 	} ?>
+							</em>
+						</p>
+			<?php 	} 
+					/* FIN DE SI */
+					/* --------- */
+					if(!empty($allMembreNotInFonction))
+						// Si il reste des membres qui ne sont pas dans la fonction, on propose de les ajouters 
+					{ ?>
+						<br>
+						<h4>Liste des membres ne possédant pas la fonction <?php echo $allFonction[$_GET['fonction']]['nom']; ?> :</h4>
+							<?php foreach ($allMembreNotInFonction as $key => $value) {  ?>
+									<?php echo $value['nom']; ?>
+									&nbsp;<a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;ajouterMembre=<?php echo $value['id']; ?>">Ajouter la fonction</a><br>
+							<?php } ?>
+						<p>	
+							<em>Page : 
+								<?php 
+								$j = 1;
+								for($j; $j <= $nbrePageNotIn; $j++) 
+								{ ?>
+									<?php if($j == $pageAjouter) { echo '<b>'; } ?>
+									<a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;pageAjouter=<?php echo $j; ?>"><?php echo $j; ?></a> 
+									<?php if($j == $pageAjouter) { echo '</b>'; } ?>
+						<?php 	} ?>
+							</em>
+						</p>
+			<?php 	} 
+				?><hr /><?php 
+				} ?>
 				<p>
 					<em>-Vous pouvez modifier les droits de chaque fonction en cliquant sur les cases (les super administrateurs ont eux tous les droits).</em><br>
 					<em>-Assignez ou supprimez des fonctions aux membres en cliquant sur l'intitulé de la fonction (dans la colonne "Nom fonction").</em><br>
@@ -79,67 +137,6 @@ include_once '/view/includes/header.php';
 					<input type="submit" />
 				</form>
 				<hr />
-				<?php if(!empty($_GET['fonction']) && !empty($allFonction[$_GET['fonction']]['nom']))
-					// Si l'utilisateur à choisi une fonction, on affiche la liste des membres 
-				{ ?>
-					<h3>
-						Fonction <?php echo $allFonction[$_GET['fonction']]['nom']; ?>
-					</h3>
-			<?php	if(!empty($allMembreIn)) 
-					{ ?>
-						<!-- Si il ya des membres dans la fonction, on les affiches -->
-						<h4>Liste des membres</h4>
-						<ul>
-							<?php foreach ($allMembreIn as $key => $value) { ?>
-							<!-- On affiche la liste des membres -->
-							<li><?php echo $value['nom']; ?>
-								<?php if($_GET['fonction'] != 1) { ?>
-								<!-- On ne peut supprimer un membre d'une fonction que si ce n'est pas la fonction public -->
-								, <a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;supprimerMembre=<?php echo $value['id']; ?>">Supprimer</a></li>
-								<?php } ?>
-					<?php	} ?>
-						</ul>
-						<p>	
-							<em>Page : 
-								<?php 
-								$j = 1;
-								for($j; $j <= $nbrePageIn; $j++) 
-								{ ?>
-									<?php if($j == $pageSupprimer) { echo '<b>'; } ?>
-									<a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;pageSupprimer=<?php echo $j; ?>"><?php echo $j; ?></a> 
-									<?php if($j == $pageSupprimer) { echo '</b>'; } ?>
-						<?php 	} ?>
-							</em>
-						</p>
-			<?php 	} 
-					/* FIN DE SI */
-					/* --------- */
-					if(!empty($allMembreNotInFonction))
-						// Si il reste des membres qui ne sont pas dans la fonction, on propose de les ajouters 
-					{ ?>
-						<h4>Ajouter un membre</h4>
-						<ul>
-							<?php foreach ($allMembreNotInFonction as $key => $value) {  ?>
-								<li>
-									<?php echo $value['nom']; ?>
-									, <a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;ajouterMembre=<?php echo $value['id']; ?>">Ajouter</a>
-								</li>
-							<?php } ?>
-						</ul>
-						<p>	
-							<em>Page : 
-								<?php 
-								$j = 1;
-								for($j; $j <= $nbrePageNotIn; $j++) 
-								{ ?>
-									<?php if($j == $pageAjouter) { echo '<b>'; } ?>
-									<a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;pageAjouter=<?php echo $j; ?>"><?php echo $j; ?></a> 
-									<?php if($j == $pageAjouter) { echo '</b>'; } ?>
-						<?php 	} ?>
-							</em>
-						</p>
-			<?php 	} 
-				} ?>
 			</div>
 		</div>
 	</body>

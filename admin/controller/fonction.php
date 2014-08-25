@@ -1,6 +1,6 @@
 <?php
 include_once 'request/fonction.php';
-$membreParPage = 2;
+$membreParPage = 25;
 if(!isAdminFonction())
 {
 	header('location:index.php?section=error');
