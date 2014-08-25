@@ -21,7 +21,7 @@ include_once '/view/includes/header.php';
 						<h4>Liste des membres possédant la fonction <?php echo $allFonction[$_GET['fonction']]['nom']; ?> :</h4>
 							<?php foreach ($allMembreIn as $key => $value) { ?>
 							<!-- On affiche la liste des membres -->
-							<?php echo $value['nom']; ?>
+							<?php echo $value['nom'].' '.$value['prenom']; ?>
 								<?php if($_GET['fonction'] != 1) { ?>
 								<!-- On ne peut supprimer un membre d'une fonction que si ce n'est pas la fonction public -->
 								&nbsp;<a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;supprimerMembre=<?php echo $value['id']; ?>">Enlever la fonction</a>
@@ -49,7 +49,7 @@ include_once '/view/includes/header.php';
 						<br>
 						<h4>Liste des membres ne possédant pas la fonction <?php echo $allFonction[$_GET['fonction']]['nom']; ?> :</h4>
 							<?php foreach ($allMembreNotInFonction as $key => $value) {  ?>
-									<?php echo $value['nom']; ?>
+									<?php echo $value['nom'].' '.$value['prenom']; ?>
 									&nbsp;<a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;ajouterMembre=<?php echo $value['id']; ?>">Ajouter la fonction</a><br>
 							<?php } ?>
 						<p>	
