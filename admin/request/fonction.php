@@ -95,6 +95,7 @@ function allMembre($id, $membreParPage, $page)
 				FROM membre,membrefonction 
 				WHERE membre.id = membrefonction.id
 				AND membrefonction.id_fonction='.$id.'
+				ORDER BY membre.nomMembre
 				LIMIT '.$limitMin.', '.$membreParPage);
 	while($donnees = $tmp->fetch_object())
 	{
@@ -120,7 +121,7 @@ function allMembreNotIn($idFonction, $membreParPage, $page)
 					    SELECT membre.id, nomMembre FROM membre,membrefonction
 					    WHERE membre.id = membrefonction.id
 					    AND membrefonction.id_fonction = '.$idFonction.' )
-					ORDER BY membre.id 
+					ORDER BY membre.nomMembre 
 					LIMIT '.$limitMin.', '.$membreParPage);
 	while ($donnees = $tmp->fetch_object())
 	{
