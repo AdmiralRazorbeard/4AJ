@@ -85,13 +85,17 @@ function supprimerFonction($id)
 	run('DELETE FROM fonction WHERE id='.$id);
 }
 
-function allMembre($id)
+function allMembre($id, $membreParPage, $page)
+// récupere les membres d'un fonction
 {
+	$limitMax = $membreParPage*$page;
+	$limitMin = $limitMax-$membreParPage;
 	$allMembre = NULL;
 	$tmp = run('SELECT membre.id as id, nomMembre 
 				FROM membre,membrefonction 
 				WHERE membre.id = membrefonction.id
-				AND membrefonction.id_fonction='.$id);
+				AND membrefonction.id_fonction='.$id.'
+				LIMIT '.$limitMin.', '.$membreParPage);
 	while($donnees = $tmp->fetch_object())
 	{
 		$allMembre[$donnees->id]['id'] = $donnees->id;
@@ -100,20 +104,24 @@ function allMembre($id)
 	return $allMembre;
 }
 
-function supprimerFonctionMembre($idMembre, $idFonction)
+function supprimerFonctionMembre($idMembre, $idFonction, $membreParPage, $page)
 {
 	run('DELETE FROM membrefonction WHERE id='.$idMembre.' AND id_fonction='.$idFonction);
 }
 
-function allMembreNotIn($idFonction)
+function allMembreNotIn($idFonction, $membreParPage, $page)
 {
+	$limitMax = $membreParPage*$page;
+	$limitMin = $limitMax-$membreParPage;
 	$allMembreNotIn = NULL;
 	$tmp = run('	SELECT membre.id as id, nomMembre FROM membre
 					WHERE (id, nomMembre)
 					NOT IN (
 					    SELECT membre.id, nomMembre FROM membre,membrefonction
 					    WHERE membre.id = membrefonction.id
-					    AND membrefonction.id_fonction = '.$idFonction.' );');
+					    AND membrefonction.id_fonction = '.$idFonction.' )
+					ORDER BY membre.id 
+					LIMIT '.$limitMin.', '.$membreParPage);
 	while ($donnees = $tmp->fetch_object())
 	{
 		$allMembreNotIn[$donnees->id]['id'] = $donnees->id;
@@ -125,5 +133,27 @@ function allMembreNotIn($idFonction)
 function ajouterMembreAFonction($idMembre, $idFonction)
 {
 	run('INSERT INTO membrefonction(id,id_fonction) VALUES('.$idMembre.', '.$idFonction.')');
+}
+
+function nbrePage($in, $membreParPage, $fonction)
+{
+	if($in == 1)
+	{
+		$nbre = run('SELECT COUNT(*) as nbre
+			FROM membre,membrefonction 
+			WHERE membre.id = membrefonction.id
+			AND membrefonction.id_fonction='.$fonction)->fetch_object();
+		return ceil($nbre->nbre/$membreParPage);
+	}
+	else
+	{
+		$nbre = run('	SELECT COUNT(*) as nbre FROM membre
+						WHERE (id, nomMembre)
+						NOT IN (
+					    	SELECT membre.id, nomMembre FROM membre,membrefonction
+					   		WHERE membre.id = membrefonction.id
+					    	AND membrefonction.id_fonction = '.$fonction.' )')->fetch_object();
+		return ceil($nbre->nbre/$membreParPage);
+	}
 }
 ?>
