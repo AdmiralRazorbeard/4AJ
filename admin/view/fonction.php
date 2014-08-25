@@ -48,15 +48,15 @@ include_once '/view/includes/header.php';
 							</div>
 						</td>	
 						<!-- Création du tableau affichant, ça affiche la couleur, et pouvant être cliqué en utilisant la fonction changerFonction -->
-						<td onclick="changerFonction(2, <?php echo $value['id'] ?>);" <?php if($value['isAdminLivreOr']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						<td onclick="changerFonction(2, <?php echo $value['id'] ?>);" <?php if($value['isAdminLivreOr']) { echo 'class="true"><img src="view/graphicRessources/true.png" alt="true"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png" alt="false"/>'; } ?>
 						</td>
-						<td onclick="changerFonction(3, <?php echo $value['id'] ?>);" <?php if($value['isAdminActualite']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						<td onclick="changerFonction(3, <?php echo $value['id'] ?>);" <?php if($value['isAdminActualite']) { echo 'class="true"><img src="view/graphicRessources/true.png" alt="true"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png" alt="false"/>'; } ?>
 						</td>
-						<td onclick="changerFonction(4, <?php echo $value['id'] ?>);" <?php if($value['isAdminRepas']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						<td onclick="changerFonction(4, <?php echo $value['id'] ?>);" <?php if($value['isAdminRepas']) { echo 'class="true"><img src="view/graphicRessources/true.png" alt="true"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png" alt="false"/>'; } ?>
 						</td>	
-						<td onclick="changerFonction(5, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerMidi']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						<td onclick="changerFonction(5, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerMidi']) { echo 'class="true"><img src="view/graphicRessources/true.png" alt="true"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png" alt="false"/>'; } ?>
 						</td>
-						<td onclick="changerFonction(6, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerSoir']) { echo 'class="true"><img src="view/graphicRessources/true.png"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png"/>'; } ?>
+						<td onclick="changerFonction(6, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerSoir']) { echo 'class="true"><img src="view/graphicRessources/true.png" alt="true"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png" alt="false"/>'; } ?>
 						</td>
 
 						<?php if($value['id'] != 1) { ?>

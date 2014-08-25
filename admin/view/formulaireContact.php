@@ -7,14 +7,14 @@ include_once '/view/includes/header.php';
 				<form method="post">
 					<p class="form-field">
 					<label for="mailMain">Pour l'onglet contact principal : </label>
-					<input type="mail" name="mailMain" id="mailMain" value='<?php echo $mailFormulaire["mailMain"]; ?>'><input type="submit">
+					<input type="text" name="mailMain" id="mailMain" value='<?php echo $mailFormulaire["mailMain"]; ?>'><input type="submit">
 					</p>
 					
 				</form>
 				<form method="post">
 					<p class="form-field">
 					<label for="mailPlateformeLogement">Pour la plateforme logement : </label>
-					<input type="mail" name="mailPlateformeLogement" id="mailPlateformeLogement" value="<?php echo $mailFormulaire['mailPlateformeLogement']; ?>"><input type="submit">
+					<input type="text" name="mailPlateformeLogement" id="mailPlateformeLogement" value="<?php echo $mailFormulaire['mailPlateformeLogement']; ?>"><input type="submit">
 					</p>
 				</form>
 				</fieldset>

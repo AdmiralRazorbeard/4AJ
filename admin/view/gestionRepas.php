@@ -1,34 +1,6 @@
 <?php
 include_once '/view/includes/header.php';
 ?>
-<style type="text/css">
-table {
-    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
-    border: 1px solid black;
-}
-td {
-	border: 1px solid black;
-}
-th {
-	border: 1px solid black;
-	width : 150px;
-}
-.true
-{
-	background-color: green;
-	cursor:pointer;
-}
-.false
-{
-	background-color: red;
-	cursor:pointer;
-}
-.invalide
-{
-	background-color: grey;
-	cursor:not-allowed;
-}
-</style>
 			<div class="contentWrapper">
 				<h1>Nombre des repas par jour</h1>
 				<p>
@@ -54,7 +26,7 @@ th {
 						</select>
 						<input type="submit">
 					</form>
-					<table>
+					<table class="gestionRepas">
 						<tr>
 							<td></td>
 							<?php
@@ -105,7 +77,7 @@ th {
 						</select>
 						<input type="submit">
 					</form>
-					<table>
+					<table class="gestionRepas">
 						<tr>
 							<td></td>
 							<?php

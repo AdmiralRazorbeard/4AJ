@@ -331,6 +331,36 @@ h1{
     border: 1px solid #686868;
     background-color: #fff;
 }
+
+/*  --- Propriétés de gestionRepas ainsi que verouillerRepas ---  */
+
+.gestionRepas {
+    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+    border: 1px solid black;
+}
+.gestionRepas td {
+    border: 1px solid black;
+}
+.gestionRepas th {
+    border: 1px solid black;
+    width : 150px;
+}
+
+.gestionRepas .true
+{
+    background-color: green;
+    cursor:pointer;
+}
+.gestionRepas .false
+{
+    background-color: grey;
+    cursor:pointer;
+}
+.gestionRepas .invalide
+{
+    background-color: grey;
+    cursor:not-allowed;
+}
 /*  --- Propriétés de error --  */
 .error img{
     display: block;
