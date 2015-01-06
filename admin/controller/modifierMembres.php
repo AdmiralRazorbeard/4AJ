@@ -1,5 +1,7 @@
 <?php
 include_once 'request/modifierMembres.php';
+include_once 'controller/gds.php';
+
 if(!isAdminMembres() || empty($_GET['modif']) || !is_numeric($_GET['modif']))
 {
 	header('location:index.php?section=main');
@@ -49,7 +51,7 @@ if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && 
 	{
 		if((strlen($_POST['password']) >= 7 && strlen($_POST['password']) <= 100 && !ctype_space($_POST['password'])) && ($_POST['password'] == $_POST['password2']))
 		{
-			$password = md5($mysqli->real_escape_string($_POST['password']));
+			$password = sha1($mysqli->real_escape_string($GDS.$_POST['password']));
 		}
 		else
 		{

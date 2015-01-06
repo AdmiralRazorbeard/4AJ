@@ -43,7 +43,7 @@ include_once '/view/includes/header.php';
 						<a href="index.php?section=modifierFonctionMembres&amp;id=<?php echo $infoMembre['id']; ?>">Changer les fonctions du membres</a>
 						<br></p>
 						<p class="form-field">
-						<label for="changePassword">Changer le mot de passe : </label><input type="password" id="changePassword1" name="password"/>
+						<label for="changePassword">Nouveau mot de passe : </label><input type="password" id="changePassword1" name="password"/>
 						</p>
 						<p class="form-field">
 						<label for="changePassword2">Répéter le mot de passe :</label><input type="password" id="changePassword2" name="password2"/>

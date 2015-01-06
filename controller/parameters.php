@@ -1,5 +1,6 @@
 <?php
 include_once 'request/profilMembre.php';
+include_once 'controller/gds.php';
 if(!empty($_POST['recevoirMail']))
 {
 	$recevoirMailQuandNews = false;
@@ -48,11 +49,11 @@ if(isset($_POST['modification']))
 			$telPortable = $mysqli->real_escape_string($_POST['telPortable']);
 		}
 	}
-	if((!empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['password3'])) && ((md5($mysqli->real_escape_string($_POST['password1'])) == $oldPassword) && ($_POST['password2'] == $_POST['password3'])))
+	if((!empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['password3'])) && ((sha1($mysqli->real_escape_string($GDS.$_POST['password1'])) == $oldPassword) && ($_POST['password2'] == $_POST['password3'])))
 	{
 		if(strlen($_POST['password2']) > 6 && strlen($_POST['password2']) <= 100 && !ctype_space($_POST['password2']))
 		{
-			$newPassword = md5($mysqli->real_escape_string($_POST['password2']));
+			$newPassword = sha1($mysqli->real_escape_string($GDS.$_POST['password2']));
 			$messageMdp ="Le mot de passe a été modifié avec succès.";
 		}
 		else
@@ -60,7 +61,7 @@ if(isset($_POST['modification']))
 			$messageMdp ="Le nouveau mot de passe doit comporter au minimum 7 caractères.";
 		}
 	}	// Traitement d'erreur
-	elseif((!empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['password3'])) && (md5($mysqli->real_escape_string($_POST['password1'])) != $oldPassword))
+	elseif((!empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['password3'])) && (sha1($mysqli->real_escape_string($GDS.$_POST['password1'])) != $oldPassword))
 	{
 		$messageMdp = "L'ancien mot de passe ne correspond pas.";
 	}

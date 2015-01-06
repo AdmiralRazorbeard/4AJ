@@ -30,7 +30,7 @@ if(!empty($_POST['password']) || !empty($_POST['password2']) || !empty($_POST['s
 		$securite = $mysqli->real_escape_string($_POST['securite']);
 		if((strlen($_POST['password']) >= 6 && strlen($_POST['password1']) <= 100) && ($_POST['password']==($_POST['password2'])))
 		{
-			$password = md5($mysqli->real_escape_string($_POST['password']));
+			$password = sha1($mysqli->real_escape_string($GDS.$_POST['password']));
 			// On vérifie qu'il y a bien une clé de sécurité qui correspond dans la table
 			$nbre = run('SELECT COUNT(*) as nbre FROM oubliemotdepassesecurite WHERE securite="'.$securite.'"')->fetch_object();
 			if($nbre->nbre == 1)

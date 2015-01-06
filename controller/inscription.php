@@ -1,5 +1,6 @@
 <?php
 include_once 'request/inscription.php';
+include_once 'controller/gds.php';
 if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) || !empty($_POST['password1']) || !empty($_POST['password2']))
 // Si quelqu'un a complété le formulaire : 
 {
@@ -60,7 +61,7 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 			}
 			else
 			{ 
-				$password = md5($mysqli->real_escape_string($_POST['password1']));
+				$password = sha1($mysqli->real_escape_string($GDS.$_POST['password1']));
 			}
 		}
 		else
