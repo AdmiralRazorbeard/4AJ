@@ -36,7 +36,7 @@ function isAdminActualite()
 }
 
 function listeActualite()
-// Liste toute les actualités (tout si admin, sinon seulement ce à quoi ta fonction t'autorise, sinon seulement le public)
+// Liste toutes les actualités (tout si admin, sinon seulement ce à quoi ta fonction t'autorise, sinon seulement le public)
 {
 	verifNombreActualite();
 	if(!empty($_SESSION['mail']))

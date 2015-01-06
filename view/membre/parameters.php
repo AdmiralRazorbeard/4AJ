@@ -58,6 +58,17 @@
 						<input type="submit" <?php langue('value=Valider', 'value=Validate'); ?>>
 					</fieldset>
 				</form>
+				<script>
+				$("#changePassword1").bind('copy cut paste', function(e) {
+				e.preventDefault();
+				});
+				$("#changePassword2").bind('copy cut paste', function(e) {
+				e.preventDefault();
+				});
+				$("#changePassword3").bind('copy cut paste', function(e) {
+				e.preventDefault();
+				});
+				</script>
 				<?php 	
 				if(isSuperAdmin() == false) { ?>
 				<!-- Si superAdmin: impossible de se désinscrire -->

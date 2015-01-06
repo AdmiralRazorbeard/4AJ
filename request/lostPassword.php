@@ -14,7 +14,7 @@ function resetPassword($mail)
 	$tmp = run('SELECT COUNT(*) as nbre, id FROM oubliemotdepassesecurite WHERE securite = "'.$resetPassword.'"')->fetch_object();
 	while($tmp->nbre == 1)
 	{
-		// Vérifie que la clé de sécurité n'a pas déjà été utilisée
+		// Vérifie que la clé de sécurité n'a pas déjà été utilisée même si très peu probable
 		$resetPassword = motDePasse(50);
 		$tmp = run('SELECT COUNT(*) as nbre, id FROM oubliemotdepassesecurite WHERE securite = "'.$resetPassword.'"')->fetch_object();
 	}

@@ -45,15 +45,15 @@ if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && 
 			$telPortable = $mysqli->real_escape_string($_POST['telPortable']);
 		}
 	}
-	if(!empty($_POST['password']))
+	if(!empty($_POST['password']) && !empty($_POST['password2']))
 	{
-		if(strlen($_POST['password']) >= 7 && strlen($_POST['password']) <= 100 && !ctype_space($_POST['password']))
+		if((strlen($_POST['password']) >= 7 && strlen($_POST['password']) <= 100 && !ctype_space($_POST['password'])) && ($_POST['password'] == $_POST['password2']))
 		{
 			$password = md5($mysqli->real_escape_string($_POST['password']));
 		}
 		else
 		{
-			$message = "Le mot de passe doit avoir plus de 6 caractères.\nLe mot de passe n'a donc pas été modifié.";
+			$message = "Erreur: Le mot de passe doit avoir plus de 6 caractères et/ou les deux mots de passe n'étaient pas identiques\nLe mot de passe n'a donc pas été modifié.";
 		}
 	}
 	if(!empty($_POST['isSuperAdmin']))

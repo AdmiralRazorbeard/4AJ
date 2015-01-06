@@ -6,8 +6,9 @@ if(empty($_GET['id']) && empty($_POST['password']))
 }
 ########## PREMIERE PARTIE : AFFICHER FORMULAIRE ##############
 if(!empty($_GET['id']))
+//l'id correspond ici au mdp de 50 caractères créé lors de la demande de changement de mot de passe
 {
-	// Vérification qu'il y a un bien eu un reset password et récupère l'id du membre si il y a
+	// Vérification qu'il y a bien eu un reset password et récupère l'id du membre si il y a
 	$id = $mysqli->real_escape_string($_GET['id']);
 	$tmp = run('SELECT COUNT(*) as nbre, id_membre, securite, UNIX_TIMESTAMP(CurrentTimestamp) as timestamp 
 				FROM oubliemotdepassesecurite 
@@ -22,12 +23,12 @@ if(!empty($_GET['id']))
 
 ######### SECONDE PARTIE : CHANGER MOT DE PASSE ###############
 // Quelqu'un a rempli le formulaire, donc on change le mot de passe :
-if(!empty($_POST['password']) || !empty($_POST['securite']))
+if(!empty($_POST['password']) || !empty($_POST['password2']) || !empty($_POST['securite']))
 {
-	if(!empty($_POST['password']) && !empty($_POST['securite']))
+	if(!empty($_POST['password']) && !empty($_POST['password2']) && !empty($_POST['securite']))
 	{
 		$securite = $mysqli->real_escape_string($_POST['securite']);
-		if(strlen($_POST['password']) >= 6 && strlen($_POST['password1']) <= 100)
+		if((strlen($_POST['password']) >= 6 && strlen($_POST['password1']) <= 100) && ($_POST['password']==($_POST['password2'])))
 		{
 			$password = md5($mysqli->real_escape_string($_POST['password']));
 			// On vérifie qu'il y a bien une clé de sécurité qui correspond dans la table
@@ -51,7 +52,7 @@ if(!empty($_POST['password']) || !empty($_POST['securite']))
 		}
 		else
 		{
-			$_SESSION['erreur'] = "Le mot de passe doit faire plus de 6 caractères.";
+			$_SESSION['erreur'] = "Erreur: le mot de passe doit faire plus de 6 caractères et/ou les deux mots de passe n'étaient pas identiques";
 			$_SESSION['count'] = 2;
 			header('location:index.php?section=findPassword&id='.$securite);
 		}

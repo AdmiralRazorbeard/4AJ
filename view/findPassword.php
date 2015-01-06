@@ -15,8 +15,18 @@
 					<input type="hidden" name="securite" value="<?php echo $id; ?>">
 					<legend for="password">Votre nouveau mot de passe : </legend>
 					<input type="password" name="password" id="password"/>
+					<legend for="password2">Repetez votre nouveau mot de passe : </legend>
+					<input type="password" name="password2" id="password2"/>
 					<input type="submit">
 				</form>
+				<script>
+				$("#password").bind('copy cut paste', function(e) {
+				e.preventDefault();
+				});
+				$("#password2").bind('copy cut paste', function(e) {
+				e.preventDefault();
+				});
+				</script>
 			</div>
 		</div>		
 	</body>

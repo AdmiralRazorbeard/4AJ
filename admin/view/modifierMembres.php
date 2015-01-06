@@ -42,14 +42,27 @@ include_once '/view/includes/header.php';
 						</select>
 						<a href="index.php?section=modifierFonctionMembres&amp;id=<?php echo $infoMembre['id']; ?>">Changer les fonctions du membres</a>
 						<br></p>
-						<label for="changePassword">Changer le mot de passe : </label><input type="password" id="changePassword" name="password"/>
 						<p class="form-field">
+						<label for="changePassword">Changer le mot de passe : </label><input type="password" id="changePassword1" name="password"/>
+						</p>
+						<p class="form-field">
+						<label for="changePassword2">Répéter le mot de passe :</label><input type="password" id="changePassword2" name="password2"/>
+						</p>
+						<p class="form-field">							
 						<label for="isSuperAdmin">Super Administrateur : </label><input type="checkbox" id="isSuperAdmin" name="isSuperAdmin" <?php if($infoMembre['isSuperAdmin']) { echo 'checked'; } ?> />
 						</p>
 						<input type="submit" />
 						<br>
 					</fieldset>
 				</form>
+				<script>
+				$("#changePassword1").bind('copy cut paste', function(e) {
+				e.preventDefault();
+				});
+				$("#changePassword2").bind('copy cut paste', function(e) {
+				e.preventDefault();
+				});
+				</script>
 			</div>
 		</div>
 	</body>

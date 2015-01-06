@@ -5,6 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="/4AJ/view/styleInscription.css" />
 		<link rel="icon" type="image/png" href="/4AJ/view/graphicRessources/favicon.jpg" >
 		<meta charset="utf-8">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	</head> 
 	<body>
 		<div class="mainWrapper">
@@ -112,8 +113,18 @@
 							<input type="reset" value="<?php langue('Effacer', 'Reset'); ?>">
 						</fieldset>
 					</form>
+					<script>
+					$("#password1").bind('copy cut paste', function(e) {
+					e.preventDefault();
+					});
+					$("#password2").bind('copy cut paste', function(e) {
+					e.preventDefault();
+					});
+					</script>
 				</div>
 			</div>
 		</div>
 	</body>
 </html>
+
+

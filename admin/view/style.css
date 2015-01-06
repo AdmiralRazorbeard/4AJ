@@ -257,9 +257,6 @@ h1{
     border: 1px solid #686868;
     background: #fff;
 }
-#changeMember #changePassword{
-    margin-left: 18px;
-}
 /*  --- Propriétés de modifierFonctionMembres --  */
 .changeMemberFunction{
     width:550px;

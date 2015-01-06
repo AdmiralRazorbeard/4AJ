@@ -83,6 +83,7 @@ function boutonReserver($numero, $mois, $annee, $midi, $residence)
 		if(!$midi || date('N', strtotime($numero.'-'.$mois.'-'.$annee)) == 6 || date('N', strtotime($numero.'-'.$mois.'-'.$annee)) == 7)	// Si on est le soir ou le week end
 			// Test si on est soit le soir, soit le week end, pour ensuite tester les autorisations
 		{
+			//si soir
 			$tmp = run('SELECT COUNT(*) as allowed FROM membre,membrefonction,fonction
 						WHERE membre.id = membrefonction.id AND fonction.id = membrefonction.id_fonction
 						AND membre.mail = "'.$_SESSION['mail'].'"
@@ -90,6 +91,7 @@ function boutonReserver($numero, $mois, $annee, $midi, $residence)
 		}
 		else
 		{
+			//si midi
 			$tmp = run('SELECT COUNT(*) as allowed FROM membre,membrefonction,fonction
 						WHERE membre.id = membrefonction.id AND fonction.id = membrefonction.id_fonction
 						AND membre.mail = "'.$_SESSION['mail'].'"
