@@ -29,11 +29,8 @@ $nombre = null;
 foreach ($chiffres as $caractere) {
         $nombre .= $caractere;
 }
-//Selection aléatoire nombre pour forme
-$chiffreForme = mt_rand(1,3);
 ##### On a fini de créer le nombre aléatoire, on le rentre maintenant dans une variable de session #####
 $_SESSION['aleat_nbr'] = $nombre;
-$_SESSION['aleat_nbr_forme'] = $chiffreForme;
 // On détruit les variables inutiles :
 unset($chiffre);
 unset($i);
