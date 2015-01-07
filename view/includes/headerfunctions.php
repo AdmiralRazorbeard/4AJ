@@ -152,6 +152,8 @@ if(isConnected())
 if(!empty($_POST['mail']) && !empty($_POST['password']))	
 //Connexion
 {
+	usleep(500000);
+	//permet de faire une pause d'une demi seconde pour se proteger des attaques de type force brute
 	$mail = $mysqli->real_escape_string($_POST['mail']); 
 	$password = sha1($mysqli->real_escape_string($GDS.$_POST['password']));
 	$nbreMembre = countMembers($mail, $password);	

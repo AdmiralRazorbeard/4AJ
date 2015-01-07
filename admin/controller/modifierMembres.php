@@ -55,7 +55,7 @@ if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && 
 		}
 		else
 		{
-			$message = "Erreur: Le mot de passe doit avoir plus de 6 caractères et/ou les deux mots de passe n'étaient pas identiques\nLe mot de passe n'a donc pas été modifié.";
+			$message = "Erreur: Le mot de passe doit avoir plus de 6 caractères et/ou les deux mots de passe n'étaient pas identiques. \nLe mot de passe n'a donc pas été modifié.";
 		}
 	}
 	if(!empty($_POST['isSuperAdmin']))

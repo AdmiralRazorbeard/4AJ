@@ -28,11 +28,6 @@
 			</form>
 			<?php } ?>
 			<div class="connexion_inscription connexion_bold"><a href="../">Accueil</a></div>
-			<?php
-			if(!empty($message))
-			{
-				echo '<div class="connexion_text"><em>'.$message.'</em></div>'; 
-			} ?>
 		</div>
 		<div id="banniere">
 			<a href="index.php?section=main"><img src="/4AJ/admin/view/graphicRessources/administration.jpg" alt="image bannière"/></a>
