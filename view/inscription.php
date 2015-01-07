@@ -31,6 +31,14 @@
 					{ ?>
 						<em><?php echo $message4; ?></em></br>
 					<?php } ?>
+					<?php if(!empty($message5))
+					{ ?>
+						<em><?php echo $message5; ?></em></br>
+					<?php } ?>
+					<?php if(!empty($message6))
+					{ ?>
+						<em><?php echo $message6; ?></em></br>
+					<?php } ?>
 
 					</p>
 					<form method="post">
@@ -109,6 +117,40 @@
 								<em><?php langue('Le mot de passe doit contenir 7 caractères au minimun.', 'The password must contain at least 7 characters.'); ?></em><br>
 								<em><?php langue('Les champs marqués d\'un * sont obligatoires.', 'Fields with * are mandatory.'); ?></em>
 							</p>
+							<em><?php langue('Répondez aux deux questions de securité*:', 'Answer the two security questions*:'); ?></em><br>
+							<table id="tableCaptcha">
+							   <tr>
+							       <td align="center"><em><?php langue('Quelle est le nombre indiqué ci-dessous?', 'What is the number below?'); ?></em>
+							       </td>
+							       <td align="center">								
+										<?php if($_SESSION['aleat_nbr_forme']==1)
+										{ ?>
+										<em><?php langue('Quelle est la position du carré ?', 'Where is the square?'); ?></em><br>
+										<?php } ?>
+										<?php if($_SESSION['aleat_nbr_forme']==2)
+										{ ?>
+										<em><?php langue('Quelle est la position du cercle ?', 'Where is the circle?'); ?></em><br>
+										<?php } ?>
+										<?php if($_SESSION['aleat_nbr_forme']==3)
+										{ ?>
+										<em><?php langue('Quelle est la position du triangle ?', 'Where is the triangle?'); ?></em><br>
+										<?php } ?>
+									</td>
+								</tr>
+								<tr>
+									<td align="center">
+										<img src="controller/codeVerifGen/verifCodeGen.php" alt="Code de vérification" /><input type="text" name="verif_code" />
+									</td>
+									<td align="center">
+										<img src="controller/codeVerifGen/fond_verif_img2.png" alt="Code de vérification2" />
+										<select name="choix_forme" multiple="multiple" size="3">
+                                			<option value="1" selected="selected">Position 1</option>
+                                			<option value="2">Position 2</option>
+                                			<option value="3">Position 3</option>
+                        				</select>
+                        			</td>
+							   </tr>
+							</table>
 							<input type="submit" value="<?php langue('Envoyer', 'Submit'); ?>">
 							<input type="reset" value="<?php langue('Effacer', 'Reset'); ?>">
 						</fieldset>

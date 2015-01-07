@@ -49,3 +49,16 @@ h1{
     border: 1px solid #686868;
     background: #fff;
 }
+#tableCaptcha {
+border: 1px solid black;
+margin-bottom: 10px;
+}
+#tableCaptcha td{
+    padding: 0px 20px 0px 20px;
+}
+#tableCaptcha input{
+    position: relative;
+    bottom: 10px;
+    width: 70px;
+    height:28px;
+}

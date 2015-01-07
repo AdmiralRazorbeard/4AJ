@@ -1,10 +1,10 @@
 <?php
 include_once 'request/inscription.php';
 include_once 'controller/gds.php';
-if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) || !empty($_POST['password1']) || !empty($_POST['password2']))
+if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) || !empty($_POST['password1']) || !empty($_POST['password2']) || !empty($_POST['verif_code']) || !empty($_POST['choix_forme']))
 // Si quelqu'un a complété le formulaire : 
 {
-	if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['password1']) && !empty($_POST['password2']))
+	if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['verif_code']) && !empty($_POST['choix_forme']))
 	// Et si il a bien complété le formulaire :
 	{		
 			// INITIALISATION
@@ -12,6 +12,8 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		$errorMail = false;
 		$errorGlobalName = false;
 		$errorDate = false;
+		$errorCaptcha = false;
+		$errorShape = false;
 		$error = 0;
 		$adresse = "NULL";
 		$telFixe = "NULL";
@@ -25,7 +27,6 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 			$errorGlobalName=true;
 			$error ++;
 		}
-
 			// PRENOM
 		$prenom = $mysqli->real_escape_string($_POST['prenom']);
 		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $prenom) || strlen($prenom) > 100 || ctype_space($prenom))
@@ -33,7 +34,6 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 			$errorGlobalName=true;
 			$error ++;
 		}
-
 			// MAIL
 		$mail = $mysqli->real_escape_string($_POST['mail']);
 		if(!preg_match("#^[a-zA-Z0-9.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $mail) || strlen($mail) > 100)
@@ -45,7 +45,6 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 			$errorMail=true;
 			$error ++;
 		}
-
 			// recevoirMailQuandNews
 		if(!empty($_POST['recevoirMail']))
 		{
@@ -68,13 +67,11 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		{
 			$error ++;
 		}
-
 			// ADRESSE
 		if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254 && !ctype_space($_POST['adresse']))
 		{
 			$adresse = $mysqli->real_escape_string($_POST['adresse']);
 		}
-
 			// TEL FIXE
 		if(!empty($_POST['telFixe']))
 		{
@@ -83,7 +80,6 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 				$telFixe = $mysqli->real_escape_string($_POST['telFixe']);
 			}
 		}
-
 			// TEL PORTABLE
 		if(!empty($_POST['telPortable']))
 		{
@@ -112,6 +108,17 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 				$error ++;
 			}
 		}
+		if ($_POST['verif_code']!=$_SESSION['aleat_nbr']) 
+		{ // Si le champ est different code généré par l'image
+			$error++;
+			$errorCaptcha = true;
+		}
+		if ($_POST['choix_forme']!=$_SESSION['aleat_nbr_forme']) 
+		{ // Si le champ est different du code généré par l'image
+			$error++;
+			$errorShape = true;
+		}
+
 		if($error == 0)
 		{
 			addMembers($nom, $prenom, $adresse, $telFixe, $telPortable, $mail, $dateNaissance, $recevoirMailQuandNews, $password);
@@ -136,6 +143,14 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 			{
 				$message4 ="<br />La date de naissance est invalide";
 			}
+			if($errorCaptcha)
+			{
+				$message5 ="<br />Vous avez mal recopié le code anti-robots";
+			}
+			if($errorShape)
+			{
+				$message6 ="<br />Vous avez selectionné la mauvaise forme";
+			}
 		}
 	}
 	else
@@ -144,7 +159,5 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		$message = "Vous n'avez pas rempli tous les champs obligatoires.";
 	}
 }
-
-
 include_once 'view/inscription.php';
 ?>

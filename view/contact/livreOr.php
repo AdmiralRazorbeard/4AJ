@@ -36,21 +36,12 @@ function v_maxlength(id, crid, max)
 				<p>
 					<b><a href="admin/index.php?section=livreOrAConfirmer">Partie admin</a></b>
 				</p>
-				<?php
-				// Si l'utilisateur à envoyé un message :
-				if(!empty($_SESSION['confirm']))
-				{ ?>
-					<p>
-						<em>
-							<?php echo $_SESSION['confirm']; ?>
-						</em>
-					</p>
-					
-		<?php	unset($_SESSION['confirm']);
-				}
-				?>
 				<?php } ?>
 				<div id="div_livredor">
+				<?php if(!empty($confirmationMessage))
+				{ ?>
+					<em><?php echo $confirmationMessage; ?></em></br>
+				<?php } ?>
 					<?php	
 					// Affiche le livre d'or
 					if(!empty($livreOr))
@@ -90,7 +81,7 @@ function v_maxlength(id, crid, max)
 					<legend><?php langue('Laissez un message', 'Leave a message'); ?></legend>
 					<form method="post">
 						<p class="form-field">
-						<label for="nom"><?php langue('Votre nom :', 'Your name :'); ?></label>
+						<label for="nom"><?php langue('Votre nom* :', 'Your name* :'); ?></label>
 						<input type="text" name="nom" id="nom" />
 						</p>
 						<p class="form-field">
@@ -101,7 +92,7 @@ function v_maxlength(id, crid, max)
 						<em>(<?php langue('L\'Email est optionnel et ne sera pas affiché au public, mais peut nous permettre de vous recontacter', 'Your email is optional and won\'t be display in public, this may help us to contact you.'); ?>)</em>
 						</p>
 						<p class="form-field">
-						<label for="contenu"><?php langue('Contenu', 'Content'); ?> : </label>
+						<label for="contenu"><?php langue('Contenu*', 'Content*'); ?> : </label>
 						<textarea name="contenu" id="contenu" cols="50" rows="10" ></textarea>
 						</p>
 						<p class="message_info"><em><?php langue('Il vous reste', 'You have'); ?> <span id="carac_reste_textarea_1"></span> <?php langue('caractères', 'characters left'); ?>.</em></p>
@@ -114,6 +105,40 @@ function v_maxlength(id, crid, max)
 					    <p class="message_info"> 
 						<em>(<?php langue('Votre message ne s\'affichera sur la page qu\'après validation de l\'administrateur', 'Your message will be display only after validation by the administrator'); ?>)</em>
 						</p>
+						<em><?php langue('Répondez aux deux questions de securité*:', 'Answer the two security questions*:'); ?></em><br>
+							<table id="tableCaptcha">
+							   <tr>
+							       <td align="center"><em><?php langue('Quelle est le nombre indiqué ci-dessous?', 'What is the number below?'); ?></em>
+							       </td>
+							       <td align="center">								
+										<?php if($_SESSION['aleat_nbr_forme']==1)
+										{ ?>
+										<em><?php langue('Quelle est la position du carré ?', 'Where is the square?'); ?></em><br>
+										<?php } ?>
+										<?php if($_SESSION['aleat_nbr_forme']==2)
+										{ ?>
+										<em><?php langue('Quelle est la position du cercle ?', 'Where is the circle?'); ?></em><br>
+										<?php } ?>
+										<?php if($_SESSION['aleat_nbr_forme']==3)
+										{ ?>
+										<em><?php langue('Quelle est la position du triangle ?', 'Where is the triangle?'); ?></em><br>
+										<?php } ?>
+									</td>
+								</tr>
+								<tr>
+									<td align="center">
+										<img src="controller/codeVerifGen/verifCodeGen.php" alt="Code de vérification" /><input type="text" name="verif_code" />
+									</td>
+									<td align="center">
+										<img src="controller/codeVerifGen/fond_verif_img2.png" alt="Code de vérification2" />
+										<select name="choix_forme" multiple="multiple" size="3">
+                                			<option value="1" selected="selected">Position 1</option>
+                                			<option value="2">Position 2</option>
+                                			<option value="3">Position 3</option>
+                        				</select>
+                        			</td>
+							   </tr>
+							</table>
 						<input type="submit" value="<?php langue('Envoyer', 'Send'); ?>"><input type="reset" value="<?php langue('Réinitialiser', 'Reset'); ?>">
 					</form>
 				</fieldset>

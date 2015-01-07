@@ -18,18 +18,26 @@ if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBille
 }
 
 // Ajouter un nouveau billet
-if(!empty($_POST['nom']) && !empty($_POST['contenu']))
+if(!empty($_POST['nom']) && !empty($_POST['contenu']) && !empty($_POST['verif_code']) && !empty($_POST['choix_forme']))
 {
-	if(!is_numeric($_POST['nom']) && !is_numeric($_POST['contenu']) && !ctype_space($_POST['nom']) && !ctype_space($_POST['contenu']) && strlen($_POST['contenu']) <= 505)
+	if (($_POST['verif_code']==$_SESSION['aleat_nbr']) && ($_POST['choix_forme']==$_SESSION['aleat_nbr_forme'])) 
 	{
-		$nom = $mysqli->real_escape_string($_POST['nom']);
-		$contenu = $mysqli->real_escape_string($_POST['contenu']);
-		$email = "null";
-		if(!empty($_POST['mail']) && preg_match("#^[a-zA-Z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $_POST['mail']))
+		if(!is_numeric($_POST['nom']) && !is_numeric($_POST['contenu']) && !ctype_space($_POST['nom']) && !ctype_space($_POST['contenu']) && strlen($_POST['contenu']) <= 505)
 		{
-			$email = $mysqli->real_escape_string($_POST['mail']);
+			$nom = $mysqli->real_escape_string($_POST['nom']);
+			$contenu = $mysqli->real_escape_string($_POST['contenu']);
+			$email = "null";
+			if(!empty($_POST['mail']) && preg_match("#^[a-zA-Z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $_POST['mail']))
+			{
+				$email = $mysqli->real_escape_string($_POST['mail']);
+			}
+			addLivreOrAConfirmer($nom,$email,$contenu);
+			$confirmationMessage= "Message envoyé en attente de validation";
 		}
-		addLivreOrAConfirmer($nom,$email,$contenu);
+	}
+	else
+	{
+		$confirmationMessage= "Erreur aux questions de securité";
 	}
 }
 $nbreBilletParPage = returnNombreBilletParPage();
