@@ -398,7 +398,7 @@ nav li:hover ul li {
     -moz-opacity:0.7;
     /* Pour Mozilla (<= 1.6) et une partie des navigateurs Gecko */
 }
-/* --- Propriétés des captcha --- */
+/* --- Propriétés des captcha et protection --- */
 #tableCaptcha {
 border: 1px solid black;
 margin-bottom: 10px;
@@ -411,6 +411,10 @@ margin-bottom: 10px;
     bottom: 10px;
     width: 70px;
     height:28px;
+}
+/* Piège à spambot de l'anglais honey-pot */
+.hp{
+    display: none;
 }
 /*  --- Propriétés de la section index --  */
 #plateformeImg1{

@@ -4,7 +4,7 @@ include_once 'controller/gds.php';
 if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) || !empty($_POST['password1']) || !empty($_POST['password2']) || !empty($_POST['verif_code']) || !empty($_POST['choix_forme']))
 // Si quelqu'un a complété le formulaire : 
 {
-	if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['verif_code']) && !empty($_POST['choix_forme']))
+	if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['password1']) && !empty($_POST['password2']) && !empty($_POST['verif_code']) && !empty($_POST['choix_forme']) && empty($_POST['nickname']))
 	// Et si il a bien complété le formulaire :
 	{		
 			// INITIALISATION
@@ -159,5 +159,9 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		$message = "Vous n'avez pas rempli tous les champs obligatoires.";
 	}
 }
+//Selection aléatoire nombre pour forme
+$chiffreForme = mt_rand(1,3);
+$_SESSION['aleat_nbr_forme'] = $chiffreForme;
+
 include_once 'view/inscription.php';
 ?>

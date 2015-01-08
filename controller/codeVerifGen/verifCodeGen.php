@@ -37,8 +37,9 @@ unset($i);
 unset($caractere);
 unset($chiffres);
 
+$rand=mt_rand(10,24);
 imagestring($_img, 5, 18, 8, $nombre, $avant_plan);
-imageline($_img, 2,mt_rand(10,24), 90 - 2, mt_rand(10,24), $grey); 
+imageline($_img, 2,$rand, 90 - 2, (2*17-$rand), $grey); 
 
 imagepng($_img);
 ?>

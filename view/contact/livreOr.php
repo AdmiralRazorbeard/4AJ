@@ -88,6 +88,10 @@ function v_maxlength(id, crid, max)
 						<label for="email"><?php langue('Votre email :', 'Your mail :'); ?></label>
 						<input type="text" name="mail" id="email" />
 						</p>
+						<p class="hp">
+    						<label>Si vous êtes un humain, laissez ce champ vide</label>
+   							<input type="text" name="nickname">
+						</p>
 						<p class="message_info"> 
 						<em>(<?php langue('L\'Email est optionnel et ne sera pas affiché au public, mais peut nous permettre de vous recontacter', 'Your email is optional and won\'t be display in public, this may help us to contact you.'); ?>)</em>
 						</p>
@@ -127,7 +131,7 @@ function v_maxlength(id, crid, max)
 								</tr>
 								<tr>
 									<td align="center">
-										<img src="controller/codeVerifGen/verifCodeGen.php" alt="Code de vérification" /><input type="text" name="verif_code" />
+										<img id="refreshImg" src="controller/codeVerifGen/refresh.png" alt="Refresh image" /><img src="controller/codeVerifGen/verifCodeGen.php" alt="Code de vérification" id="imgCodeVerif"/><input type="text" name="verif_code" />
 									</td>
 									<td align="center">
 										<img src="controller/codeVerifGen/fond_verif_img2.png" alt="Code de vérification2" />
@@ -141,6 +145,11 @@ function v_maxlength(id, crid, max)
 							</table>
 						<input type="submit" value="<?php langue('Envoyer', 'Send'); ?>"><input type="reset" value="<?php langue('Réinitialiser', 'Reset'); ?>">
 					</form>
+				<script type="text/javascript">
+				$("#refreshImg").click(function() {
+					$("#imgCodeVerif").attr("src","controller/codeVerifGen/verifCodeGen.php?r=" + Math.random());
+				});
+				</script>
 				</fieldset>
 			</div>
 			<?php include_once '/view/includes/footer.php'; ?>

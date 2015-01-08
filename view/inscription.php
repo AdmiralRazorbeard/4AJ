@@ -51,6 +51,10 @@
 							<label for="prenom"><?php langue('Prénom* : ', 'Firstname* :'); ?></label>
 							<input required type="text" name="prenom" id="prenom">
 							</p>
+							<p class="hp">
+    						<label>Si vous êtes un humain, laissez ce champ vide</label>
+   							<input type="text" name="nickname">
+							</p>
 							<p class="form-field">
 							<label for="mail">Email* : </label>
 							<input required type="text" name="mail" id="mail">
@@ -139,7 +143,7 @@
 								</tr>
 								<tr>
 									<td align="center">
-										<img src="controller/codeVerifGen/verifCodeGen.php" alt="Code de vérification" /><input type="text" name="verif_code" />
+										<img id="refreshImg" src="controller/codeVerifGen/refresh.png" alt="Refresh image" /><img src="controller/codeVerifGen/verifCodeGen.php" alt="Code de vérification" id="imgCodeVerif"/><input type="text" name="verif_code" />
 									</td>
 									<td align="center">
 										<img src="controller/codeVerifGen/fond_verif_img2.png" alt="Code de vérification2" />
@@ -155,7 +159,12 @@
 							<input type="reset" value="<?php langue('Effacer', 'Reset'); ?>">
 						</fieldset>
 					</form>
-					<script>
+					<script type="text/javascript">
+					$("#refreshImg").click(function() {
+   						$("#imgCodeVerif").attr("src","controller/codeVerifGen/verifCodeGen.php?r=" + Math.random());
+					});
+					</script>
+					<script type="text/javascript">
 					$("#password1").bind('copy cut paste', function(e) {
 					e.preventDefault();
 					});

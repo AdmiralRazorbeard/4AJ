@@ -18,7 +18,7 @@ if($admin && !empty($_POST['nbreBilletParPage']) && is_numeric($_POST['nbreBille
 }
 
 // Ajouter un nouveau billet
-if(!empty($_POST['nom']) && !empty($_POST['contenu']) && !empty($_POST['verif_code']) && !empty($_POST['choix_forme']))
+if(!empty($_POST['nom']) && !empty($_POST['contenu']) && !empty($_POST['verif_code']) && !empty($_POST['choix_forme']) && empty($_POST['nickname']))
 {
 	if (($_POST['verif_code']==$_SESSION['aleat_nbr']) && ($_POST['choix_forme']==$_SESSION['aleat_nbr_forme'])) 
 	{
@@ -51,6 +51,9 @@ else
 	$page = 1;
 }
 $livreOr = returnLivreOr($page, $nbreBilletParPage); 	// Récupére toutes les données du livre d'or
+//Selection aléatoire nombre pour forme
+$chiffreForme = mt_rand(1,3);
+$_SESSION['aleat_nbr_forme'] = $chiffreForme;
 
 include_once 'view/contact/livreOr.php';
 ?>

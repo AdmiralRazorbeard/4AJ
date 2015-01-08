@@ -18,6 +18,10 @@ include_once '/view/includes/submenuPlateformeLogement.php';
 						<label for="subject"><?php langue('Sujet du mail* : ', 'Mail subject* : '); ?></label>
 						<input type="text" name="subject" id="subject" />
 						</p>
+						<p class="hp">
+    						<label>Si vous êtes un humain, laissez ce champ vide</label>
+   							<input type="text" name="nickname">
+						</p>
 						<p class="form-field-contenu">
 						<label for="contenu"><?php langue('Contenu* : ', 'Content* :'); ?></label>
 						<textarea name="contenu" id="contenu"></textarea>
@@ -43,7 +47,7 @@ include_once '/view/includes/submenuPlateformeLogement.php';
 								</tr>
 								<tr>
 									<td align="center">
-										<img src="controller/codeVerifGen/verifCodeGen.php" alt="Code de vérification" /><input type="text" name="verif_code" />
+										<img id="refreshImg" src="controller/codeVerifGen/refresh.png" alt="Refresh image" /><img src="controller/codeVerifGen/verifCodeGen.php" alt="Code de vérification" id="imgCodeVerif"/><input type="text" name="verif_code" />
 									</td>
 									<td align="center">
 										<img src="controller/codeVerifGen/fond_verif_img2.png" alt="Code de vérification2" />
@@ -57,6 +61,11 @@ include_once '/view/includes/submenuPlateformeLogement.php';
 							</table>
 						<input type="submit">
 					</form>
+					<script type="text/javascript">
+					$("#refreshImg").click(function() {
+						$("#imgCodeVerif").attr("src","controller/codeVerifGen/verifCodeGen.php?r=" + Math.random());
+					});
+				</script>
 				</fieldset>
 			</div>
 			<?php include_once '/view/includes/footer.php'; ?>

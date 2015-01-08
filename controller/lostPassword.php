@@ -1,18 +1,28 @@
 <?php
 include_once 'request/lostPassword.php';
-if(!empty($_POST['email']))
+if(!empty($_POST['email']) && !empty($_POST['verif_code']) && !empty($_POST['choix_forme']) && empty($_POST['nickname']))
 {
-	$result = resetPassword($mysqli->real_escape_string($_POST['email']));
-	/* Envoie le mail si il y a un membre avec ce mail et retourne true, sinon return false */
-	if(!$result)
+	if (($_POST['verif_code']==$_SESSION['aleat_nbr']) && ($_POST['choix_forme']==$_SESSION['aleat_nbr_forme']))
 	{
-		$error = "Le mail ne correspond à aucun membre.";
+		$result = resetPassword($mysqli->real_escape_string($_POST['email']));
+		/* Envoie le mail si il y a un membre avec ce mail et retourne true, sinon return false */
+		if(!$result)
+		{
+			$error = "Le mail ne correspond à aucun membre.";
+		}
+		else
+		{
+			$error = "Un mail vous a été envoyé.";
+		}
 	}
 	else
 	{
-		$error = "Un mail vous a été envoyé.";
+		$error = "Erreur aux questions de securité";
 	}
 }
+//Selection aléatoire nombre pour forme
+$chiffreForme = mt_rand(1,3);
+$_SESSION['aleat_nbr_forme'] = $chiffreForme;
 
 include_once 'view/lostPassword.php';
 ;?>
