@@ -60,8 +60,8 @@ include_once('/view/includes/footerfunctions.php');
 	</head>
 
 	<body style="background: none repeat scroll 0% 0% <?php if(!empty($_SESSION['backgroundBody'])){ echo $_SESSION['backgroundBody']; } else { echo '#04467e'; } ?>;">
-	<div class="mainWrapper" onMouseOver="color('<?php echo $_SESSION['backgroundBody']; ?>');" onMouseOut="color('#04467e');">
-		<div>
+	<div class="mainWrapper">
+		<div onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');" onMouseOver="color('#04467e');">
 			<div class="box1 boxAdresse" onclick="location.href='index.php?section=residenceAnneFrank';">FJT ANNE FRANK<br>21, rue du bloc 62000 ARRAS</div>
 			<div class="box2 boxAdresse" onclick="location.href='index.php?section=residenceClairLogis';">FJT CLAIR LOGIS<br>3, rue du Paul Perin 62000 ARRAS</div>
 			<div class="box3 boxAdresse" onclick="location.href='index.php?section=residenceNobel';">FJT NOBEL<br>7, rue Diderot 62000 ARRAS</div>
@@ -111,7 +111,7 @@ include_once('/view/includes/footerfunctions.php');
 				} ?>
 			</div>
 		</div>
-		<div id="banniere">
+		<div id="banniere" onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');" onMouseOver="color('#04467e');">
 			<a href="index.php?section=index"><img id="bannierelogo" src="/4AJ/view/graphicRessources/bannierelogo.png" alt="logo bannière"/></a>
 			<ul id="sContent">
 				<li><a href="index.php?section=index"><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></a></li>
