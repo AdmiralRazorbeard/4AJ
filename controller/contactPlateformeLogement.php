@@ -8,7 +8,7 @@ if(!empty($_POST['subject']) && !empty($_POST['email']) && !empty($_POST['conten
 		if(preg_match("#^[a-zA-Z0-9.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $_POST['email']))
 		{
 			sendMailContact(2, $_POST['email'], $_POST['subject'], $_POST['contenu']);	
-			$confirmationContact2= "Message envoyé en attente de validation";
+			$confirmationContact2= "Message envoyé";
 		}
 	}
 	else
