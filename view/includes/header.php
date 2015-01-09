@@ -52,10 +52,15 @@ include_once('/view/includes/footerfunctions.php');
 		jQuery(function($) {
 		$('.slider').sss({speed : 5600});
 		});
+		//Permet ensuite de switcher la couleur de fond du site
+		function color(color) {
+			$('body').css('background',color);
+		}
 		</script>
-	</head> 
-	<body>
-	<div class="mainWrapper">
+	</head>
+
+	<body style="background: none repeat scroll 0% 0% <?php if(!empty($_SESSION['backgroundBody'])){ echo $_SESSION['backgroundBody']; } else { echo '#04467e'; } ?>;">
+	<div class="mainWrapper" onMouseOver="color('<?php echo $_SESSION['backgroundBody']; ?>');" onMouseOut="color('#04467e');">
 		<div>
 			<div class="box1 boxAdresse" onclick="location.href='index.php?section=residenceAnneFrank';">FJT ANNE FRANK<br>21, rue du bloc 62000 ARRAS</div>
 			<div class="box2 boxAdresse" onclick="location.href='index.php?section=residenceClairLogis';">FJT CLAIR LOGIS<br>3, rue du Paul Perin 62000 ARRAS</div>
@@ -118,23 +123,23 @@ include_once('/view/includes/footerfunctions.php');
 		</div>
 		<nav id="mainMenu">
 			<ul>
-				<li><a <?php if (openSection('index')){?>id="active_item0"<?php } else { ?>id="item0"<?php } ?> href="index.php?section=index"><?php langue('Accueil', 'Home'); ?></a></li>
-				<li><a <?php if (openSous_Section_association()){?>id="active_item1"<?php } else { ?>id="item1"<?php } ?> href="index.php?section=association"><?php langue('L\'association', 'The association'); ?></a>
+				<li onMouseOver="color('#3c255e');" onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');"><a <?php if (openSection('index')){?>id="active_item0"<?php } else { ?>id="item0"<?php } ?> href="index.php?section=index"><?php langue('Accueil', 'Home'); ?></a></li>
+				<li onMouseOver="color('#387fb1');" onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');"><a <?php if (openSous_Section_association()){?>id="active_item1"<?php } else { ?>id="item1"<?php } ?> href="index.php?section=association"><?php langue('L\'association', 'The association'); ?></a>
 					<ul id="s_item1">
       					<li><a href="index.php?section=quiSommesNous"><?php langue('Qui sommes-nous?', 'Who are we?'); ?></a></li>
       					<li><a class="last_item" href="index.php?section=plateformeLogement"><?php langue('Plateforme Logement', 'Housing platform'); ?></a></li>
     				</ul>
     			</li>	
-				<li><a <?php if (openSous_Section_nosResidences()){?>id="active_item2"<?php } else { ?>id="item2"<?php } ?> href="index.php?section=nosResidences"><?php langue('Nos résidences', 'Our residences'); ?></a>
+				<li onMouseOver="color('#dec32c');" onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');"><a <?php if (openSous_Section_nosResidences()){?>id="active_item2"<?php } else { ?>id="item2"<?php } ?> href="index.php?section=nosResidences"><?php langue('Nos résidences', 'Our residences'); ?></a>
 					<ul id="s_item2">
       					<li><a href="index.php?section=residenceAnneFrank">Anne Frank</a></li>
       					<li><a href="index.php?section=residenceClairLogis">Clair Logis</a></li>
       					<li><a class="last_item" href="index.php?section=residenceNobel">Nobel</a></li>
     				</ul>
     			</li>
-				<li><a <?php if (openSection('restauration')){?>id="active_item3"<?php } else { ?>id="item3"<?php } ?> href="index.php?section=restauration"><?php langue('Restauration', 'Restauration'); ?></a></li>
-				<li><a <?php if (openSection('services')){?>id="active_item4"<?php } else { ?>id="item4"<?php } ?> href="index.php?section=services">Services</a>
-				<li><a <?php if (openSous_Section_contact()){?>id="active_item5"<?php } else { ?>id="item5"<?php } ?> href="index.php?section=contact">Contact</a>
+				<li onMouseOver="color('#92a224');" onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');"><a <?php if (openSection('restauration')){?>id="active_item3"<?php } else { ?>id="item3"<?php } ?> href="index.php?section=restauration"><?php langue('Restauration', 'Restauration'); ?></a></li>
+				<li onMouseOver="color('#b36e30');" onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');"><a <?php if (openSection('services')){?>id="active_item4"<?php } else { ?>id="item4"<?php } ?> href="index.php?section=services">Services</a>
+				<li onMouseOver="color('#4e0105');" onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');"><a <?php if (openSous_Section_contact()){?>id="active_item5"<?php } else { ?>id="item5"<?php } ?> href="index.php?section=contact">Contact</a>
 					<ul id="s_item5">
       					<li><a class="correct_size" href="index.php?section=faq">FAQ</a></li>
       					<li><a class="correct_size" href="index.php?section=liensUtiles"><?php langue('Liens utiles', 'Helpful links'); ?></a></li>

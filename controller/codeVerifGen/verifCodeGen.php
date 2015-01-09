@@ -14,7 +14,7 @@ $_img = imagecreatefrompng('fond_verif_img.png');
 // Couleur de fond :
 $arriere_plan = imagecolorallocate($_img, 0, 0, 0); // Au cas où on n'utiliserait pas d'image de fond, on utilise cette couleur-là.
 // Autres couleurs :
-$avant_plan = imagecolorallocate($_img, 246, 246, 246); // Couleur des chiffres
+$avant_plan = imagecolorallocate($_img, 240, 240, 240); // Couleur des chiffres
 $grey = imagecolorallocate($_img, 186, 186, 186);
 
 ##### Ici on crée la variable qui contiendra le nombre aléatoire #####
@@ -39,7 +39,9 @@ unset($chiffres);
 
 $rand=mt_rand(10,24);
 imagestring($_img, 5, 18, 8, $nombre, $avant_plan);
-imageline($_img, 2,$rand, 90 - 2, (2*17-$rand), $grey); 
+imageline($_img, 2,$rand, 90 - 2, (2*17-$rand), $grey);
+imageline($_img, 2,mt_rand(0,9), 90 - 2, mt_rand(0,10), $avant_plan); 
+imageline($_img, 2,mt_rand(25,32), 90 - 2, mt_rand(24,32), $avant_plan); 
 
 imagepng($_img);
 ?>

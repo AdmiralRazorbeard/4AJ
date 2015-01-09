@@ -20,21 +20,8 @@ function langue($FR, $EN)
 }
 ####### FIN GESTION LANGUAGE #######
 
-//Ce fichier permet de gerer la section à afficher en appellant ensuite le controleur
-if(isset($_GET['typeActualite']) && empty($_GET['section']))
-// Au cas où on vient d'actualite
-{
-	if(is_numeric($_GET['typeActualite']) || $_GET['typeActualite'] == 'all')
-	{
-		header('location:index.php?section=actualites&typeActualite='.$_GET['typeActualite']);
-	}
-	else
-	{
-		header('location:index.php?index=index');
-	}	
-}
-// Si on ne vient pas d'actualité, on fait comme d'hab
-elseif (empty($_GET['section']))	
+
+if (empty($_GET['section']))	
 {
     header('location:index.php?section=index');
 }

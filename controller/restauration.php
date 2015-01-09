@@ -1,5 +1,6 @@
 <?php
 include_once 'request/restauration.php';
+$_SESSION['backgroundBody']='#92a224';
 include_once 'tinymcetxt.php';
 $accessRepas = false;
 if(accesRepas())

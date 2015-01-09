@@ -21,7 +21,8 @@
 						</p>
 						<p class="form-field-contenu">
 						<label for="contenu"><?php langue('Contenu* : ', 'Content* :'); ?></label>
-						<textarea name="contenu" id="contenu"></textarea>
+						<textarea name="contenu" id="contenu"></textarea><br>
+						<em><?php langue('Les champs marqués d\'un * sont obligatoires.', 'Fields with * are mandatory.'); ?></em><br><br>
 						<em><?php langue('Répondez aux deux questions de securité*:', 'Answer the two security questions*:'); ?></em><br>
 							<table id="tableCaptcha">
 							   <tr>

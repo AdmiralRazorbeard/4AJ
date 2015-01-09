@@ -1,5 +1,6 @@
 <?php
 include_once 'request/contact.php';
+$_SESSION['backgroundBody']='#4e0105';
 include_once 'tinymcetxt.php';
 if(!empty($_POST['subject']) && !empty($_POST['email']) && !empty($_POST['contenu']) && !empty($_POST['verif_code']) && !empty($_POST['choix_forme']) && empty($_POST['nickname']))
 {

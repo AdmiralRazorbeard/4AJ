@@ -129,27 +129,27 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 			$message = "Il y a ".$error." erreur(s).";
 			if($errorPassword)
 			{
-				$message = $message."<br />Le mot de passe doit comporté plus de 6 caractères.";
+				$message2 = "<br />Le mot de passe doit comporté plus de 6 caractères.";
 			}
 			if($errorGlobalName)
 			{
-				$message2 ="<br />Veuillez vérifier la validité de vos données (Nom et/ou Prénom)";
+				$message3 ="<br />Veuillez vérifier la validité de vos données (Nom et/ou Prénom)";
 			}
 			if($errorMail)
 			{
-				$message3 ="<br />Ce mail est déjà utilisé pour un autre compte";
+				$message4 ="<br />Ce mail est déjà utilisé pour un autre compte";
 			}
 			if($errorDate)
 			{
-				$message4 ="<br />La date de naissance est invalide";
+				$message5 ="<br />La date de naissance est invalide";
 			}
 			if($errorCaptcha)
 			{
-				$message5 ="<br />Vous avez mal recopié le code anti-robots";
+				$message6 ="<br />Vous avez mal recopié le code anti-robots";
 			}
 			if($errorShape)
 			{
-				$message6 ="<br />Vous avez selectionné la mauvaise forme";
+				$message7 ="<br />Vous avez selectionné la mauvaise forme";
 			}
 		}
 	}

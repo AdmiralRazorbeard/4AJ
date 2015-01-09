@@ -17,29 +17,32 @@
 					<?php if(isConnect()) { ?><em><?php langue('Vous êtes déjà connecté : ', 'You are already connected :'); ?><a href="index.php?section=index&amp;dislog=true"><?php langue('Se déconnecter', 'Log out'); ?></a></em><?php } ?>
 					<?php if(!empty($message))
 					{ ?>
-						<em><?php echo $message; ?></em></br>
+						<em><?php echo $message; ?></em><br>
 					<?php } ?>
 					<?php if(!empty($message2))
 					{ ?>
-						<em><?php echo $message2; ?></em></br>
+						<em><?php echo $message2; ?></em><br>
 					<?php } ?>
 					<?php if(!empty($message3))
 					{ ?>
-						<em><?php echo $message3; ?></em></br>
+						<em><?php echo $message3; ?></em><br>
 					<?php } ?>
 					<?php if(!empty($message4))
 					{ ?>
-						<em><?php echo $message4; ?></em></br>
+						<em><?php echo $message4; ?></em><br>
 					<?php } ?>
 					<?php if(!empty($message5))
 					{ ?>
-						<em><?php echo $message5; ?></em></br>
+						<em><?php echo $message5; ?></em><br>
 					<?php } ?>
 					<?php if(!empty($message6))
 					{ ?>
-						<em><?php echo $message6; ?></em></br>
+						<em><?php echo $message6; ?></em><br>
 					<?php } ?>
-
+					<?php if(!empty($message7))
+					{ ?>
+						<em><?php echo $message7; ?></em><br>
+					<?php } ?>
 					</p>
 					<form method="post">
 						<fieldset id="inscription">

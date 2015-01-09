@@ -93,7 +93,7 @@ function v_maxlength(id, crid, max)
    							<input type="text" name="nickname">
 						</p>
 						<p class="message_info"> 
-						<em>(<?php langue('L\'Email est optionnel et ne sera pas affiché au public, mais peut nous permettre de vous recontacter', 'Your email is optional and won\'t be display in public, this may help us to contact you.'); ?>)</em>
+						<em><?php langue('L\'Email est optionnel et ne sera pas affiché au public, mais peut nous permettre de vous recontacter', 'Your email is optional and won\'t be display in public, this may help us to contact you.'); ?></em>
 						</p>
 						<p class="form-field">
 						<label for="contenu"><?php langue('Contenu*', 'Content*'); ?> : </label>
@@ -107,7 +107,8 @@ function v_maxlength(id, crid, max)
 							-->
 					    </script>
 					    <p class="message_info"> 
-						<em>(<?php langue('Votre message ne s\'affichera sur la page qu\'après validation de l\'administrateur', 'Your message will be display only after validation by the administrator'); ?>)</em>
+						<em>(<?php langue('Votre message ne s\'affichera sur la page qu\'après validation de l\'administrateur', 'Your message will be display only after validation by the administrator'); ?>)</em><br>
+						<em><?php langue('Les champs marqués d\'un * sont obligatoires.', 'Fields with * are mandatory.'); ?></em>
 						</p>
 						<em><?php langue('Répondez aux deux questions de securité*:', 'Answer the two security questions*:'); ?></em><br>
 							<table id="tableCaptcha">
