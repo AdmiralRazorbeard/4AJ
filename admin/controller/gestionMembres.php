@@ -1,7 +1,18 @@
 <?php
 include_once 'request/gestionMembres.php';
-if(!isAdminMembres())
-//la fonction est identique à isSuperAdmin()
+if(isAdminMembres())
+{
+	if(!empty($_GET['delete']) && is_numeric($_GET['delete']))
+	{
+		$tmp = run('SELECT isSuperAdmin FROM membre WHERE id='.$_GET['delete'])->fetch_object();
+		if($tmp->isSuperAdmin != 1)
+			// On ne peut pas supprimer un super admin, il faut d'abord le dégrader
+		{
+			supprimerMembre($_GET['delete']);
+		}
+	}
+}
+else
 {
 	header('location:index.php?section=error');
 }
@@ -43,7 +54,7 @@ elseif($orderBy=="prenomMembre"){
 else{
 	$selected=3;
 }
-$nbreMembreParPage = 20;
+$nbreMembreParPage = 25;
 $nbrePage = nbrePage($nbreMembreParPage);
 if(!empty($_GET['page']) && is_numeric($_GET['page']) && intval($_GET['page']) == $_GET['page'] && $_GET['page'] >= 1 && $_GET['page'] <= $nbrePage)
 {

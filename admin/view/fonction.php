@@ -2,12 +2,6 @@
 include_once '/view/includes/header.php';
 ?>
 			<div class="contentWrapper fonction">
-				<script type="text/javascript">
-				function changerFonction(type, id)
-				{	/*Fonction redirige sur la même page en mettant les paramètres en GET */
-					javascript:location.href='index.php?section=fonction&type='+type+'&id='+id;
-				}
-				</script>
 				<h1>Fonctions des membres</h1>
 				<?php if(!empty($_GET['fonction']) && !empty($allFonction[$_GET['fonction']]['nom']))
 					// Si l'utilisateur à choisi une fonction, on affiche la liste des membres 
@@ -15,17 +9,18 @@ include_once '/view/includes/header.php';
 					<h3>
 						Fonction <?php echo $allFonction[$_GET['fonction']]['nom']; ?>
 					</h3>
+					<div id="listeDesMembres">
 			<?php	if(!empty($allMembreIn)) 
 					{ ?>
 						<!-- Si il ya des membres dans la fonction, on les affiches -->
 						<h4>Liste des membres possédant la fonction <?php echo $allFonction[$_GET['fonction']]['nom']; ?> :</h4>
 							<?php foreach ($allMembreIn as $key => $value) { ?>
 							<!-- On affiche la liste des membres -->
-							<?php echo $value['nom'].' '.$value['prenom']; ?>
-								<?php if($_GET['fonction'] != 1) { ?>
+							<?php if($_GET['fonction'] != 1) { ?>
+							<button value="<?php echo $value['id']; ?>" class="deleteFonction">Enlever la fonction</button>
+							<?php } ?>
 								<!-- On ne peut supprimer un membre d'une fonction que si ce n'est pas la fonction public -->
-								&nbsp;<a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;supprimerMembre=<?php echo $value['id']; ?>">Enlever la fonction</a>
-								<?php } ?>
+								&nbsp;<?php echo $value['nom'].' '.$value['prenom']; ?>
 								<br>
 					<?php	} ?>
 						<p>	
@@ -49,8 +44,8 @@ include_once '/view/includes/header.php';
 						<br>
 						<h4>Liste des membres ne possédant pas la fonction <?php echo $allFonction[$_GET['fonction']]['nom']; ?> :</h4>
 							<?php foreach ($allMembreNotInFonction as $key => $value) {  ?>
-									<?php echo $value['nom'].' '.$value['prenom']; ?>
-									&nbsp;<a href="index.php?section=fonction&amp;fonction=<?php echo $_GET['fonction']; ?>&amp;ajouterMembre=<?php echo $value['id']; ?>">Ajouter la fonction</a><br>
+									<button value="<?php echo $value['id']; ?>" class="addFonction">Ajouter la fonction</button>
+									&nbsp;<?php echo $value['nom'].' '.$value['prenom']; ?><br>
 							<?php } ?>
 						<p>	
 							<em>Page : 
@@ -65,7 +60,28 @@ include_once '/view/includes/header.php';
 							</em>
 						</p>
 			<?php 	} 
-				?><hr /><?php 
+				?>
+								<script type="text/javascript">
+				function changerFonction(type, id)
+				{	/*Fonction redirige sur la même page en mettant les paramètres en GET */
+					javascript:location.href='index.php?section=fonction&type='+type+'&id='+id;
+				}
+				</script>
+				<script type="text/javascript">
+				$(document).ready(function() {
+			        $('body').on('click', '.deleteFonction', function() {
+			      		var value=$(this).attr('value');
+			      		console.log(value);
+			          	$('#listeDesMembres').load("index.php?section=fonction&fonction=<?php echo $_GET['fonction']; ?>&pageSupprimer=<?php echo $pageSupprimer; ?>&supprimerMembre=" +value+" "+"#listeDesMembres");  
+			       	});
+			       	$('body').on('click', '.addFonction', function() {
+			      		var value=$(this).attr('value');
+			      		console.log(value);
+			          	$('#listeDesMembres').load("index.php?section=fonction&fonction=<?php echo $_GET['fonction']; ?>&pageAjouter=<?php echo $pageAjouter; ?>&ajouterMembre=" +value+" "+"#listeDesMembres");   
+			       	}); 
+			       	}); 
+				</script>
+				</div><hr /><?php 
 				} ?>
 				<p>
 					<em>-Vous pouvez modifier les droits de chaque fonction en cliquant sur les cases (les super administrateurs ont eux tous les droits).</em><br>

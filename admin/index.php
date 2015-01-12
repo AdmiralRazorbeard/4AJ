@@ -35,10 +35,6 @@ elseif ($_GET['section'] == 'gestionMembres')
 {
 	include_once('controller/gestionMembres.php');
 }
-elseif ($_GET['section'] == 'deleteMembres')
-{
-	include_once('controller/deleteMembres.php');
-}
 elseif ($_GET['section'] == 'modifierMembres')
 {
 	include_once('controller/modifierMembres.php');

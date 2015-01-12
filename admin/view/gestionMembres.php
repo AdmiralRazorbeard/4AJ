@@ -7,12 +7,11 @@ include_once '/view/includes/header.php';
 				<form method="post">
                     <p class="form-field">
                         <label>Trier par:</label>
-                        <select name="orderBy">
+                        <select id="orderBy" name="orderBy">
                         	<option value="1" <?php if($selected==1){ ?>selected="selected" <?php } ?>>Nom</option>
                         	<option value="2" <?php if($selected==2){ ?>selected="selected" <?php } ?>>Prenom</option>
                             <option value="3" <?php if($selected==3){ ?>selected="selected" <?php } ?>>Ordre d'inscription</option>
                         </select>
-                        <input type="submit">
                     </p>
                 </form>
 				<table>
@@ -82,9 +81,7 @@ include_once '/view/includes/header.php';
 									Supprimer
 								</a>
 					<?php 	} else { ?>
-								<a href="index.php?section=deleteMembres&amp;delete=<?php echo $value['id']; ?>" onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce membre ?'));">
-									Supprimer
-								</a>
+								<button value="<?php echo $value['id']; ?>" class="dellmb">Supprimer</button>
 					<?php 	} ?>
 						</td>
 					</tr>
@@ -103,5 +100,19 @@ include_once '/view/includes/header.php';
 					</p>
 			</div>
 		</div>
+					<script type="text/javascript">
+					$(document).ready(function() {
+				        $('body').on('click', '.dellmb', function() {
+				      		var value=$(this).attr('value');
+				          	$('.contentWrapper').load("index.php?section=gestionMembres&page=<?php echo $page; ?>&orderBy=<?php echo $orderBy; ?>&delete="+value+" "+".contentWrapper");
+				       	});
+				       	$('body').change('#orderBy', function () {
+							var value2 = $("#orderBy" ).val();
+							$('.contentWrapper').load("index.php?section=gestionMembres "+".contentWrapper",{ orderBy:value2});
+						});
+					});
+				</script>
+				
+			
 	</body>
 </html>

@@ -20,7 +20,7 @@ include_once '/view/includes/submenuPlateformeLogement.php';
 						</p>
 						<p class="hp">
     						<label>Si vous êtes un humain, laissez ce champ vide</label>
-   							<input type="text" name="nickname">
+   							<input type="text" name="name">
 						</p>
 						<p class="form-field-contenu">
 						<label for="contenu"><?php langue('Contenu* : ', 'Content* :'); ?></label>

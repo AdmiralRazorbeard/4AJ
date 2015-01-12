@@ -1,6 +1,7 @@
 <?php
 include_once 'request/fonction.php';
-$membreParPage = 25;
+$membreParPage = 3;
+// Verifie les droits de celui qui arrive dans cette section
 if(!isAdminFonction())
 {
 	header('location:index.php?section=error');
@@ -37,12 +38,16 @@ if(!empty($_GET['fonction']) && is_numeric($_GET['fonction']))
 	{
 		ajouterMembreAFonction($_GET['ajouterMembre'], $_GET['fonction']);
 	}
+	// On récupère ensuite le nombre de page : 
+	$nbrePageIn = nbrePage(1, $membreParPage, $_GET['fonction']);
+	$nbrePageNotIn = nbrePage(0, $membreParPage, $_GET['fonction']);
+	
 	// On vérifie pour les pages :
-	if(!empty($_GET['pageSupprimer']) && is_numeric($_GET['pageSupprimer']))
+	if(!empty($_GET['pageSupprimer']) && is_numeric($_GET['pageSupprimer']) && intval($_GET['pageSupprimer']) == $_GET['pageSupprimer'] && $_GET['pageSupprimer'] >= 1 && $_GET['pageSupprimer'] <= $nbrePageIn)
 	{ $pageSupprimer = $_GET['pageSupprimer']; }
 	else
 	{ $pageSupprimer = 1; }
-	if(!empty($_GET['pageAjouter']) && is_numeric($_GET['pageAjouter']))
+	if(!empty($_GET['pageAjouter']) && is_numeric($_GET['pageAjouter']) && intval($_GET['pageAjouter']) == $_GET['pageAjouter'] && $_GET['pageAjouter'] >= 1 && $_GET['pageAjouter'] <= $nbrePageNotIn)
 	{ $pageAjouter = $_GET['pageAjouter']; }
 	else
 	{ $pageAjouter = 1; }
@@ -50,10 +55,6 @@ if(!empty($_GET['fonction']) && is_numeric($_GET['fonction']))
 	// On récupère la liste des membres de la fonction
 	$allMembreNotInFonction = allMembreNotIn($_GET['fonction'], $membreParPage, $pageAjouter);
 	// On récupère ici la liste de tous les membres ne faisant pas parti de la fonction
-
-	// On récupère ensuite le nombre de page : 
-	$nbrePageIn = nbrePage(1, $membreParPage, $_GET['fonction']);
-	$nbrePageNotIn = nbrePage(0, $membreParPage, $_GET['fonction']);
 }
 $allFonction = allFonction();
 include_once 'view/fonction.php';
