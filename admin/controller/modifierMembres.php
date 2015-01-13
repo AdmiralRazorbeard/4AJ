@@ -35,14 +35,14 @@ if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && 
 	}
 	if(!empty($_POST['telFixe']))
 	{
-		if(preg_match("#^[0-9]{10,11}$#", $_POST['telFixe']))
+		if(preg_match("#^0[1-68]([-. ]?[0-9]{2}){4}$#", $_POST['telFixe']))
 		{
 			$telFixe = $mysqli->real_escape_string($_POST['telFixe']);
 		}
 	}
 	if(!empty($_POST['telPortable']))
 	{
-		if(preg_match("#^[0-9]{10,11}$#", $_POST['telPortable']))
+		if(preg_match("#^0[1-68]([-. ]?[0-9]{2}){4}$#", $_POST['telPortable']))
 		{
 			$telPortable = $mysqli->real_escape_string($_POST['telPortable']);
 		}

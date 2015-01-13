@@ -99,6 +99,7 @@ include_once '/view/includes/header.php';
 				<?php	} ?>
 					</p>
 			</div>
+			<a href="index.php?section=generationListeMembres">Télécharger la liste des membres</a>
 		</div>
 					<script type="text/javascript">
 					$(document).ready(function() {

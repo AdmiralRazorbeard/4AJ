@@ -67,4 +67,8 @@ elseif ($_GET['section'] == 'horaireLimite')
 {
 	include_once('controller/horaireLimite.php');
 }
+elseif ($_GET['section'] == 'generationListeMembres')
+{
+	include_once('controller/generationListeMembres.php');
+}
 ?>

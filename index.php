@@ -3,6 +3,7 @@ session_start();
 date_default_timezone_set('Europe/Paris');
 include_once('request/connectionSQL.php');
 $mysqli = connection();
+/*include_once('test.php');*/
 
 ###### LANGUAGE #######
 // Cela permet de gérer la langue, on met une variable valant 1 si FR, 2 si EN.

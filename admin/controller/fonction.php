@@ -1,6 +1,6 @@
 <?php
 include_once 'request/fonction.php';
-$membreParPage = 3;
+$membreParPage = 25;
 // Verifie les droits de celui qui arrive dans cette section
 if(!isAdminFonction())
 {
