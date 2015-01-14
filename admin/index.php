@@ -71,4 +71,12 @@ elseif ($_GET['section'] == 'generationListeMembres')
 {
 	include_once('controller/generationListeMembres.php');
 }
+elseif ($_GET['section'] == 'generationNombreRepas') 
+{
+	include_once ('controller/generationNombreRepas.php');
+}
+elseif ($_GET['section'] == 'generationRecapitulatif') 
+{
+include_once ('controller/generationRecapitulatif.php');
+}
 ?>

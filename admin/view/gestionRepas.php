@@ -111,6 +111,8 @@ include_once '/view/includes/header.php';
 					</table>
 				</fieldset>
 			</div>
+			<a href="index.php?section=generationNombreRepas">Télécharger le nombre de prochaines reservations</a>
+			<a href="index.php?section=generationRecapitulatif">Télécharger le récapitulatif des reservations membres</a>
 		</div>
 	</body>
 </html>
