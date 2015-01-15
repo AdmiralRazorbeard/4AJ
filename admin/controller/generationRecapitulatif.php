@@ -41,16 +41,16 @@ if(isAdminRepas())
 		$listeMembre[$i]['prenomMembre'] = $donnees->prenomMembre; 
 		$reservation = run("SELECT id, dateReserve, midi, residence 
 							FROM reserverepas 
-							WHERE reserverepas.id_membre = '.$donnees->id.'
-							AND reserverepas BETWEEN '.$dateDebut.' AND '.$dateFin.'");
+							WHERE reserverepas.id_membre = '".$donnees->id."'
+							AND dateReserve BETWEEN '".$dateDebut."' AND '".$dateFin."'");
 		if($reservation){
 			$y=0;
 			while($temp = $reservation->fetch_object())
 				{
-					$listeMembre[$i]['reservation'][$y]['id'] = $reservation->id;
-					$listeMembre[$i]['reservation'][$y]['dateReserve'] = $reservation->dateReserve;
-					$listeMembre[$i]['reservation'][$y]['midi'] = $reservation->midi;
-					$listeMembre[$i]['reservation'][$y]['residence'] = $reservation->residence;
+					$listeMembre[$i]['reservation'][$y]['id'] = $temp->id;
+					$listeMembre[$i]['reservation'][$y]['dateReserve'] = $temp->dateReserve;
+					$listeMembre[$i]['reservation'][$y]['midi'] = $temp->midi;
+					$listeMembre[$i]['reservation'][$y]['residence'] = $temp->residence;
 					$y++;
 				}
 		}
@@ -83,9 +83,9 @@ if(isAdminRepas())
 		if(isset($value['reservation'])){
 			foreach($value['reservation'] as $k => $value2)
 			{
-				$emplacement=(int)date('d', strtotime($value2['dateReserve']));
+				/*$emplacement=(int)date('d', strtotime($value2['dateReserve']));*/
 				if($value2['midi']==1){
-					$sheet->setCellValueByColumnAndRow(($enplacement+5), $ordonne, "oui");
+					$sheet->setCellValueByColumnAndRow(5, $ordonne, "oui");
 				}
 				else{
 					$sheet->setCellValueByColumnAndRow(5, 5, "oui");
