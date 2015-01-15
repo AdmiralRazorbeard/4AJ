@@ -27,7 +27,7 @@ if(isAdminRepas())
 	$period = new DatePeriod(
     new DateTime($dateDebut),
     new DateInterval('P1D'),
-    new DateTime($dateFin)
+    new DateTime(date("Y-m-d", strtotime($dateFin." +1 day")))
 	);
 	$tmp = run('SELECT id, nomMembre, prenomMembre
 			FROM membre 
@@ -60,39 +60,58 @@ if(isAdminRepas())
 	include 'PHPExcel/Writer/Excel2007.php';
 	$workbook = new PHPExcel;
 	$sheet = $workbook->getActiveSheet();
-	$styleA1 = $sheet->getStyle('A1:F1');
+	$styleA1 = $sheet->getStyle('A1:D1');
 	$styleFont = $styleA1->getFont();
 	$styleFont->setBold(true);
+	$sheet->getColumnDimension('A')->setWidth(12);
+	$sheet->getColumnDimension('B')->setWidth(12);
+	$sheet->getColumnDimension('C')->setWidth(7);
+	$sheet->getColumnDimension('D')->setWidth(9);
+	for ($col = 'E'; $col != 'AJ'; $col++) {
+		$sheet->getColumnDimension($col)->setWidth(3);
+	}
 	$sheet->setCellValue('A1',"Nom");
 	$sheet->setCellValue('B1',"Prenom");
-	$sheet->setCellValue('C1',"Total Anne Frank");
-	$sheet->setCellValue('D1',"Total Clair Logis");
-	$sheet->setCellValue('E1',"Anne Frank");
-	$sheet->setCellValue('F1',"Clair Logis");
+	$sheet->setCellValue('C1',"Total");
+	$sheet->setCellValue('D1',"Anne Frank");
 	$z=0;
 	foreach($period as $dt)
 	{
-		$sheet->setCellValueExplicitByColumnAndRow($z+6, 1, $dt->format("m-d"),PHPExcel_Cell_DataType::TYPE_STRING);
+		$sheet->setCellValueExplicitByColumnAndRow($z+4, 1, $dt->format("d"),PHPExcel_Cell_DataType::TYPE_STRING);
 		$z++;
 	}
 	$ordonne=2;
 	foreach($listeMembre as $key => $value) 
 	{
+		if(isset($value['reservation'])){
 		$sheet->setCellValueByColumnAndRow(0, $ordonne, $value['nomMembre']);
 		$sheet->setCellValueByColumnAndRow(1, $ordonne, $value['prenomMembre']);
-		if(isset($value['reservation'])){
+		$sheet->setCellValueByColumnAndRow(3, $ordonne, "Midi");
+		$sheet->setCellValueByColumnAndRow(3, ($ordonne+1), "Soir");
+		$sheet->setCellValue('C'.(string)$ordonne,'=SUM(G'.(string)$ordonne.':AL'.(string)$ordonne.')');
+		$sheet->setCellValue('C'.(string)($ordonne+1),'=SUM(G'.(string)($ordonne+1).':AL'.(string)($ordonne+1).')');
 			foreach($value['reservation'] as $k => $value2)
 			{
-				/*$emplacement=(int)date('d', strtotime($value2['dateReserve']));*/
+				$emplacement=(int)date('d', strtotime($value2['dateReserve']));
 				if($value2['midi']==1){
-					$sheet->setCellValueByColumnAndRow(5, $ordonne, "oui");
+				 $sheet->getStyle(PHPExcel_Cell::stringFromColumnIndex($emplacement+3).(string)$ordonne)->applyFromArray(array(
+				            'fill'=>array(
+				                'type'=>PHPExcel_Style_Fill::FILL_SOLID,
+				                'color'=>array(
+				                    'argb'=>'008000'))));
+					$sheet->setCellValueByColumnAndRow(($emplacement+3), $ordonne, 1);
 				}
 				else{
-					$sheet->setCellValueByColumnAndRow(5, 5, "oui");
+					 $sheet->getStyle(PHPExcel_Cell::stringFromColumnIndex($emplacement+3).(string)($ordonne+1))->applyFromArray(array(
+				            'fill'=>array(
+				                'type'=>PHPExcel_Style_Fill::FILL_SOLID,
+				                'color'=>array(
+				                    'argb'=>'008000'))));
+					$sheet->setCellValueByColumnAndRow(($emplacement+3), ($ordonne+1), 1);
 				}
 			}
-		}
 		$ordonne=$ordonne+2;
+		}
 	}
 	$writer = new PHPExcel_Writer_Excel2007($workbook);
 	$writer->setOffice2003Compatibility(true);
