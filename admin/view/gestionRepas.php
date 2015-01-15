@@ -112,7 +112,14 @@ include_once '/view/includes/header.php';
 				</fieldset>
 			</div>
 			<a href="index.php?section=generationNombreRepas">Télécharger le nombre de prochaines reservations</a>
-			<a href="index.php?section=generationRecapitulatif">Télécharger le récapitulatif des reservations membres</a>
+			<form action="index.php?section=generationRecapitulatif" method="post">
+				<select name="moisChoisi">
+						<option value="0"><?php echo $mois[date('n', strtotime('now'))]; ?></option>
+						<option value="1"><?php echo $mois[date('n', strtotime("first day of last month"))]; ?></option>
+						<option value="2"><?php echo $mois[date('n', strtotime("first day of 2 months ago"))]; ?></option>
+				</select>
+				<input value="Télécharger le récapitulatif des réservations membres" type="submit">
+			</form>
 		</div>
 	</body>
 </html>
