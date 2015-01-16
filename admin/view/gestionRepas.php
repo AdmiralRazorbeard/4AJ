@@ -118,6 +118,10 @@ include_once '/view/includes/header.php';
 						<option value="1"><?php echo $mois[date('n', strtotime("first day of last month"))]; ?></option>
 						<option value="2"><?php echo $mois[date('n', strtotime("first day of 2 months ago"))]; ?></option>
 				</select>
+				<select name="residenceChoisie">
+						<option value="1">Anne Frank</option>
+						<option value="2">Clair Logis</option>
+				</select>
 				<input value="Télécharger le récapitulatif des réservations membres" type="submit">
 			</form>
 		</div>
