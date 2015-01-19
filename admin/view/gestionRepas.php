@@ -8,7 +8,7 @@ include_once '/view/includes/header.php';
 					<em><a href="index.php?section=menuSemaine">Ajouter un menu de la semaine</a></em><br />
 					<em><a href="index.php?section=horaireLimite">Définir un horaire limite de reservation</a></em>
 				</p>
-				<fieldset>
+				<div id="repasAnneFrank">
 					<legend>
 						Anne Frank
 					</legend>
@@ -24,9 +24,8 @@ include_once '/view/includes/header.php';
 							}
 							?>
 						</select>
-						<input type="submit">
 					</form>
-					<table class="gestionRepas">
+					<table class="gestionRepas2">
 						<tr>
 							<td></td>
 							<?php
@@ -58,8 +57,9 @@ include_once '/view/includes/header.php';
 							?>
 						</tr>
 					</table>
-				</fieldset>
-								<fieldset>
+				</div>
+				<br>
+				<div id="repasClairLogis">
 					<legend>
 						Clair Logis
 					</legend>
@@ -75,9 +75,8 @@ include_once '/view/includes/header.php';
 							}
 							?>
 						</select>
-						<input type="submit">
 					</form>
-					<table class="gestionRepas">
+					<table class="gestionRepas2">
 						<tr>
 							<td></td>
 							<?php
@@ -109,10 +108,12 @@ include_once '/view/includes/header.php';
 							?>
 						</tr>
 					</table>
-				</fieldset>
+				</div>
 			</div>
-			<a href="index.php?section=generationNombreRepas">Télécharger le nombre de prochaines reservations</a>
+			<br>
+			<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=generationNombreRepas';" value="Télécharger le nombre des prochaines reservations">
 			<form action="index.php?section=generationRecapitulatif" method="post">
+				<input value="Télécharger le récapitulatif des réservations membres" type="submit">
 				<select name="moisChoisi">
 						<option value="0"><?php echo $mois[date('n', strtotime('now'))]; ?></option>
 						<option value="1"><?php echo $mois[date('n', strtotime("first day of last month"))]; ?></option>
@@ -122,8 +123,19 @@ include_once '/view/includes/header.php';
 						<option value="1">Anne Frank</option>
 						<option value="2">Clair Logis</option>
 				</select>
-				<input value="Télécharger le récapitulatif des réservations membres" type="submit">
 			</form>
+			<script type="text/javascript">
+				$(document).ready(function() {
+			        $('body').change('#semaineAnneFrank', function() {
+			      		var weekValue=$("#semaineAnneFrank").val();
+			          	$('#repasAnneFrank').load("index.php?section=gestionRepas&semaineAnneFrank="+weekValue+" "+"#repasAnneFrank");
+			       	});
+			       	$('body').change('#semaineClairLogis', function() {
+			      		var weekValue2=$("#semaineClairLogis").val();
+			          	$('#repasClairLogis').load("index.php?section=gestionRepas&semaineClairLogis="+weekValue2+" "+"#repasClairLogis");
+			       	});
+				});
+			</script>
 		</div>
 	</body>
 </html>

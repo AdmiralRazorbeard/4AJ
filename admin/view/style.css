@@ -337,12 +337,26 @@ h1{
 }
 .gestionRepas td {
     border: 1px solid black;
+    text-align: center;
+    color:#ffffff;
 }
 .gestionRepas th {
     border: 1px solid black;
     width : 150px;
 }
-
+.gestionRepas2 {
+    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+    border: 1px solid black;
+}
+.gestionRepas2 td {
+    border: 1px solid black;
+    text-align: center;
+    color:#000000;
+}
+.gestionRepas2 th {
+    border: 1px solid black;
+    width : 150px;
+}
 .gestionRepas .true
 {
     background-color: green;
@@ -357,6 +371,10 @@ h1{
 {
     background-color: grey;
     cursor:not-allowed;
+}
+.gestionRepas .infoTableau
+{
+    color:#000000;
 }
 /*  --- Propriétés de error --  */
 .error img{

@@ -68,7 +68,7 @@
 						</tr>
 					</table>
 				</div>
-				<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter', 'I\'ve finished my reservations and I want to disconnet'); ?>">
+				<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnet'); ?>">
 				<br>
 				<br>
 						<!--  REPAS CLAIR LOGIS -->
@@ -127,7 +127,7 @@
 						</tr>
 					</table>
 				</div>
-				<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter', 'I\'ve finished my reservations and I want to disconnet'); ?>">
+				<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnet from the website'); ?>">
 				<?php } ?><br />
 				<!-- FIN CALENDRIER -->
 					<script type="text/javascript">

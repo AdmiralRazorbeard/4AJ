@@ -6,13 +6,13 @@ if(!isAdminRepas())
 	/*	Vérification pour changer de semaine, si on a changer de semaine, on redirige pour l'avoir en get */
 $semaineDuClairLogis = 0;
 $semaineDuAnneFrank = 0;
-if(!empty($_POST['semaineClairLogis']) && is_numeric($_POST['semaineClairLogis']) && $_POST['semaineClairLogis'] >= 0)
+if(!empty($_GET['semaineClairLogis']) && is_numeric($_GET['semaineClairLogis']) && $_GET['semaineClairLogis'] >= 0)
 {
-	$semaineDuClairLogis = $_POST['semaineClairLogis'];
+	$semaineDuClairLogis = $_GET['semaineClairLogis'];
 }
-if(!empty($_POST['semaineAnneFrank']) && is_numeric($_POST['semaineAnneFrank']) && $_POST['semaineAnneFrank'] >= 0)
+if(!empty($_GET['semaineAnneFrank']) && is_numeric($_GET['semaineAnneFrank']) && $_GET['semaineAnneFrank'] >= 0)
 {
-	$semaineDuAnneFrank = $_POST['semaineAnneFrank'];
+	$semaineDuAnneFrank = $_GET['semaineAnneFrank'];
 }
 	/* 	Fin vérification */
 #######################

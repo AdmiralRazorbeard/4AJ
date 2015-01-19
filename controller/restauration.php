@@ -24,9 +24,9 @@ if(!empty($_GET['semaineAnneFrank']) && is_numeric($_GET['semaineAnneFrank']))
 	/* Initialisation variable */
 if(!isset($_POST['jour']))
 {
-$mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
-$semaineAnneFrank = semaine($semaineDuAnneFrank);
-$semaineClairLogis = semaine($semaineDuClairLogis);
+	$mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
+	$semaineAnneFrank = semaine($semaineDuAnneFrank);
+	$semaineClairLogis = semaine($semaineDuClairLogis);
 }
 $validChange=1;
 if(!empty($_POST['jour']) && is_numeric($_POST['jour']) && !empty($_POST['mois']) && is_numeric($_POST['mois']) && !empty($_POST['annee']) && is_numeric($_POST['annee']) && isset($_POST['midi']) && is_numeric($_POST['midi']) && !empty($_POST['residence']) && is_numeric($_POST['residence']))
