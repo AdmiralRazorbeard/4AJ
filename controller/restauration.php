@@ -9,64 +9,51 @@ if(accesRepas())
 }
 ####################
 	/* Vérification si on change de semaine */
-if(!empty($_POST['semaineClairLogis']) && is_numeric($_POST['semaineClairLogis']))
-{
-	header('location:index.php?section=restauration&semaineClairLogis='.$_POST['semaineClairLogis']);
-}
-if(!empty($_POST['semaineAnneFrank']) && is_numeric($_POST['semaineAnneFrank']))
-{
-	header('location:index.php?section=restauration&semaineAnneFrank='.$_POST['semaineAnneFrank']);
-}
 $semaineDuClairLogis = 0;
 $semaineDuAnneFrank = 0;
-if(!empty($_GET['semaineClairLogis']) && is_numeric($_GET['semaineClairLogis']) && $_GET['semaineClairLogis'] >= 0)
+if(!empty($_GET['semaineClairLogis']) && is_numeric($_GET['semaineClairLogis']))
 {
 	$semaineDuClairLogis = $_GET['semaineClairLogis'];
 }
-if(!empty($_GET['semaineAnneFrank']) && is_numeric($_GET['semaineAnneFrank']) && $_GET['semaineAnneFrank'] >= 0)
+if(!empty($_GET['semaineAnneFrank']) && is_numeric($_GET['semaineAnneFrank']))
 {
 	$semaineDuAnneFrank = $_GET['semaineAnneFrank'];
 }
 	/* Fin vérification */
 ####################
 	/* Initialisation variable */
+if(!isset($_POST['jour']))
+{
 $mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 $semaineAnneFrank = semaine($semaineDuAnneFrank);
 $semaineClairLogis = semaine($semaineDuClairLogis);
-
-if(!empty($_GET['jour']) && is_numeric($_GET['jour']) && !empty($_GET['mois']) && is_numeric($_GET['mois']) && !empty($_GET['annee']) && is_numeric($_GET['annee']) && isset($_GET['midi']) && is_numeric($_GET['midi']) && !empty($_GET['residence']) && is_numeric($_GET['residence']))
+}
+$validChange=1;
+if(!empty($_POST['jour']) && is_numeric($_POST['jour']) && !empty($_POST['mois']) && is_numeric($_POST['mois']) && !empty($_POST['annee']) && is_numeric($_POST['annee']) && isset($_POST['midi']) && is_numeric($_POST['midi']) && !empty($_POST['residence']) && is_numeric($_POST['residence']))
 	// Si l'utilisateur a saisi des variables
 {
-	$date = $_GET['annee'].'-'.$_GET['mois'].'-'.$_GET['jour'];
-	$residence = $_GET['residence'];
-	if(boutonReserver($_GET['jour'], $_GET['mois'], $_GET['annee'], $_GET['midi'], $residence) == 1)
+	$date = $_POST['annee'].'-'.$_POST['mois'].'-'.$_POST['jour'];
+	$residence = $_POST['residence'];
+	if(boutonReserver($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $residence) == 1)
 		// Si il a l'autorisation de réserver, on réserve
 	{
 		$id_membre = run('SELECT id FROM membre WHERE mail="'.$_SESSION['mail'].'"')->fetch_object();
-		run('INSERT INTO reserverepas(dateReserve, midi, id_membre, residence) VALUES("'.$date.'", '.$_GET['midi'].', '.$id_membre->id.', '.$residence.')');
-		if($residence == 1)
-		{
-			header('location:index.php?section=restauration&semaineAnneFrank='.$semaineDuAnneFrank.'#repasAnneFrank');
-		}
-		elseif($residence == 2)
-		{
-			header('location:index.php?section=restauration&semaineClairLogis='.$semaineDuClairLogis.'#repasAnneFrank');
-		}
+		run('INSERT INTO reserverepas(dateReserve, midi, id_membre, residence) VALUES("'.$date.'", '.$_POST['midi'].', '.$id_membre->id.', '.$residence.')');
 	}
-	elseif(boutonReserver($_GET['jour'], $_GET['mois'], $_GET['annee'], $_GET['midi'], $residence) == 2)
+	elseif(boutonReserver($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $residence) == 2)
 		// On a déjà reserver, on veut donc se annulé
 	{
 		$id_membre = run('SELECT id FROM membre WHERE mail="'.$_SESSION['mail'].'"')->fetch_object();
-		run('DELETE FROM reserverepas WHERE dateReserve="'.$date.'" AND midi = '.$_GET['midi'].' AND id_membre = '.$id_membre->id.' AND residence = '.$residence);
-		if($residence == 1)
-		{
-			header('location:index.php?section=restauration&semaineAnneFrank='.$semaineDuAnneFrank.'#repasAnneFrank');
-		}
-		elseif($residence == 2)
-		{
-			header('location:index.php?section=restauration&semaineClairLogis='.$semaineDuClairLogis.'#repasAnneFrank');
-		}
+		run('DELETE FROM reserverepas WHERE dateReserve="'.$date.'" AND midi = '.$_POST['midi'].' AND id_membre = '.$id_membre->id.' AND residence = '.$residence);
+	}
+	elseif(boutonReserver($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $residence) == 3)
+		// si reservation invalide
+	{
+		$validChange=0;
 	}
 }
-include_once 'view/restauration/restauration.php';
+if(!isset($_POST['jour']))
+{
+	include_once 'view/restauration/restauration.php';
+}
 ?>

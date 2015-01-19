@@ -517,6 +517,61 @@ margin-bottom: 10px;
     padding: 5px;
     resize:none;
 }
+/*  --- Propriétés de la section restauration --  */
+.restauration #caseVerte
+{
+    color:green;
+    text-shadow: 0.5px 0.5px 0.4px black;
+}
+.restauration #caseOrange
+{
+    color:orange;
+    text-shadow: 0.5px 0.5px 0.4px black;
+}
+.restauration #caseGrise
+{
+    color:grey;
+    text-shadow: 0.5px 0.5px 0.4px black;
+}
+.restauration #buttonDisconnect
+{
+    margin-top: 7px;
+}
+.restauration table 
+{
+    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+    border: 1px solid black;
+}
+.restauration td 
+{
+    border: 1px solid black;
+    text-align: center;
+    color:#ffffff;
+}
+.restauration th 
+{
+    border: 1px solid black;
+    width : 150px;
+}
+.restauration .true
+{
+    background-color: orange;
+    cursor:pointer;
+}
+.restauration #repasAnneFrank .false, .restauration #repasClairLogis .false
+{
+    background-color: green;
+    cursor:pointer;
+}
+.restauration #repasAnneFrank .invalide, .restauration #repasClairLogis .invalide
+{
+    background-color: grey;
+    cursor:not-allowed;
+}
+.restauration #repasAnneFrank .infoTableau, .restauration #repasClairLogis .infoTableau
+{
+    color:#000000;
+}
 /*  --- Propriétés de la section parameters --  */
 .parameters fieldset{
     width:700px;
