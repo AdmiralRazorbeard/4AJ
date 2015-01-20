@@ -156,11 +156,12 @@ if(isAdminRepas())
 		$y=$y+2;
 		$t=14;
 	}
+	$nomFichier =(string)date('m-Y', strtotime("now"))."_nombre_Repas";
 	$sheet->getStyle('A1:H26')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 	$writer = new PHPExcel_Writer_Excel2007($workbook);
 	$writer->setOffice2003Compatibility(true);
 	header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-	header('Content-Disposition:inline;filename=fichier.xlsx ');
+	header('Content-Disposition:inline;filename='.$nomFichier.'.xlsx ');
 	$writer->save('php://output');
 }
 else

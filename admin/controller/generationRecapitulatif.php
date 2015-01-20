@@ -223,10 +223,18 @@ if(isAdminRepas())
 		}
 		$sheet->getStyle('C1:AI'.(string)$ordonne)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 	}
+	if($residence==1)
+	{
+		$nomFichier = "Anne_Frank_".(string)date('m-Y', strtotime($dateDebut))."_recapitulatif_reservations";
+	}
+	else
+	{
+		$nomFichier = "Clair_Logis_".(string)date('m-Y', strtotime($dateDebut))."_recapitulatif_reservations";
+	}
 	$writer = new PHPExcel_Writer_Excel2007($workbook);
 	$writer->setOffice2003Compatibility(true);
 	header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-	header('Content-Disposition:inline;filename=fichier.xlsx ');
+	header('Content-Disposition:inline;filename='.$nomFichier.'.xlsx ');
 	$writer->save('php://output');
 }
 else

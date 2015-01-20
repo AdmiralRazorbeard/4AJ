@@ -98,8 +98,8 @@ include_once '/view/includes/header.php';
 							<?php if($i == $page) {echo '</b>'; }?>
 				<?php	} ?>
 					</p>
+					<input type="submit" onclick="location.href='index.php?section=generationListeMembres';" value="Télécharger la liste des membres">
 			</div>
-			<a href="index.php?section=generationListeMembres">Télécharger la liste des membres</a>
 		</div>
 					<script type="text/javascript">
 					$(document).ready(function() {

@@ -108,10 +108,11 @@ if(isAdminMembres())
 		$y++;
 		$z=9;
 	}
+	$nomFichier ="liste_membres_site_".(string)date('m-Y', strtotime("now"));
 	$writer = new PHPExcel_Writer_Excel2007($workbook);
 	$writer->setOffice2003Compatibility(true);
 	header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-	header('Content-Disposition:inline;filename=fichier.xlsx ');
+	header('Content-Disposition:inline;filename='.$nomFichier.'.xlsx ');
 	$writer->save('php://output');
 }
 else

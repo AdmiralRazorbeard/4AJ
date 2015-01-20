@@ -111,7 +111,7 @@ include_once '/view/includes/header.php';
 					</table>
 				</div>
 				<br>
-				<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=generationNombreRepas';" value="Télécharger le nombre des prochaines reservations">
+				<input type="submit" onclick="location.href='index.php?section=generationNombreRepas';" value="Télécharger le nombre des prochaines reservations">
 				<form action="index.php?section=generationRecapitulatif" method="post">
 					<input value="Télécharger le récapitulatif des réservations membres" type="submit">
 					<select name="moisChoisi">
