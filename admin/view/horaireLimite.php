@@ -1,7 +1,7 @@
 <?php
 include_once '/view/includes/header.php';
 ?>
-			<div class="contentWrapper">
+			<div class="contentWrapper horaireLimite">
 				<h1>Modifier les heures limites de réservation</h1>
 				<a href="index.php?section=gestionRepas">Retour</a>
 				<p>
@@ -9,7 +9,7 @@ include_once '/view/includes/header.php';
 				</p>
 					<!-- Changer l'horaire midi -->
 				<form method="post">
-					<label>Changer l'horaire pour le midi : </label>
+					<label>Changer l'horaire pour le midi :</label>
 					<select name="midiHeure">
 						<?php for ($i=0; $i < 24; $i++) {  ?>
 							<option value="<?php echo $i;?>" <?php if($i == $horaireLimite[0][0]) { echo 'selected'; } ?>>
@@ -31,11 +31,11 @@ include_once '/view/includes/header.php';
 							</option>
 				<?php	} ?>
 					</select>
-					<input type="submit">
+					<input value="Enregistrer" type="submit">
 				</form><br />
 					<!-- Changer l'horaire soir -->
 				<form method="post">
-					<label>Changer l'horaire pour le soir &nbsp;: </label>
+					<label>Changer l'horaire pour le soir &nbsp;:</label>
 					<select name="soirHeure">
 						<?php for ($i=0; $i < 24; $i++) {  ?>
 							<option value="<?php echo $i;?>" <?php if($i == $horaireLimite[1][0]) { echo 'selected'; } ?>>
@@ -57,8 +57,15 @@ include_once '/view/includes/header.php';
 							</option>
 				<?php	} ?>
 					</select>
-					<input type="submit">
+					<input value="Enregistrer" type="submit">
 				</form>
+				<br>
+					<!-- Changer le nombre de jour en plus -->
+				<form method="post">
+					<label>Changer le nombre de jours avec lequel les membres doivent réserver en avance:</label>
+                    <input type="number" name="jourEnPlus" value="<?php echo($horaireLimite[2]); ?>">
+					<input value="Enregistrer" type="submit">
+				</form>			
 			</div>
 		</div>
 	</body>

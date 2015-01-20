@@ -2,11 +2,11 @@
 include_once '/view/includes/header.php';
 ?>
 			<div class="contentWrapper">
-				<h1>Nombre des repas par jour</h1>
+				<h1>Gestion restauration</h1>
 				<p>
 					<em><a href="index.php?section=verrouillerRepas">Verrouiller des journées pour les repas</a></em><br />
-					<em><a href="index.php?section=menuSemaine">Ajouter un menu de la semaine</a></em><br />
-					<em><a href="index.php?section=horaireLimite">Définir un horaire limite de reservation</a></em><br />
+					<em><a href="index.php?section=menuSemaine">Ajouter un menu pour la semaine</a></em><br />
+					<em><a href="index.php?section=horaireLimite">Définir une période limite de réservation</a></em><br />
 					<em><a href="index.php?section=bloquerReservations">Activer/Désactiver la possibilité de réserver</a></em>
 				</p>
 				<div id="repasAnneFrank">

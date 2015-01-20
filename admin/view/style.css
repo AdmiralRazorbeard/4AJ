@@ -384,6 +384,10 @@ h1{
 {
     width:600px;
 }
+.horaireLimite input[type="number"]
+{
+    width:40px;
+}
 /*  --- Propriétés de error --  */
 .error img{
     display: block;

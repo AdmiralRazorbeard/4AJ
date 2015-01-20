@@ -3,7 +3,10 @@ include_once '/view/includes/header.php';
 ?>
 			<div class="contentWrapper bloquerReservations">
 				<h2>Activer/Désactiver la possibilité de réserver</h2>
-				<em>Les réservations sont actuellement <?php if($blocage==1){?>désactivées<?php }else{ ?>activées<?php } ?></em>
+                <a href="index.php?section=gestionRepas">Retour</a>
+                <p>
+				    <em>Les réservations sont actuellement <?php if($blocage==1){?>désactivées<?php }else{ ?>activées<?php } ?></em>
+                </p>
 				<form method="post">
                     <p class="form-field-list">
                         <input type="radio" name="choix" checked="checked" value="2"/> <label>Activer les réservations</label>

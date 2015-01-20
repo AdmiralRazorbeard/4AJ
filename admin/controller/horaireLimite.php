@@ -26,6 +26,10 @@ if(isset($_POST['soirHeure'])
 {
 	changerHoraire(0, $_POST['soirHeure'], $_POST['soirMinute']);
 }
+if(isset($_POST['jourEnPlus']) && is_numeric($_POST['jourEnPlus']) && ($_POST['jourEnPlus']>=0) && ($_POST['jourEnPlus']<1000))
+{
+	reserverJourAvance(intval($_POST['jourEnPlus']));
+} 
 $horaireLimite = horaireLimite();
 
 

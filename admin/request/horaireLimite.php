@@ -3,12 +3,13 @@ function horaireLimite()
 {
 	// Retourne un tableau, de 2 dimension, la première étant midi ou soir, la seconde heure ou minute
 
-	$tmp = run('SELECT midi, soir FROM horairelimite WHERE id=1')->fetch_object();
+	$tmp = run('SELECT midi, soir, jour FROM horairelimite WHERE id=1')->fetch_object();
 	$midiTMP = $tmp->midi;
 	$soirTMP = $tmp->soir;
+	$jourTMP = $tmp->jour;
 	$midi = array($midiTMP[0]*10 + $midiTMP[1], $midiTMP[3]*10 + $midiTMP[4]);
 	$soir = array($soirTMP[0]*10 + $soirTMP[1], $soirTMP[3]*10 + $soirTMP[4]);
-	return array($midi, $soir);
+	return array($midi, $soir, $jourTMP);
 }
 
 function changerHoraire($isMidi, $heure, $minute = 0)
@@ -27,6 +28,11 @@ function changerHoraire($isMidi, $heure, $minute = 0)
 	}
 	$hour = intval($heure).':'.intval($minute);
 	run('UPDATE horairelimite SET '.$champ.' = "'.$hour.'" WHERE id=1');
+}
+function reserverJourAvance($jourEnPlus)
+//permet d'ajouter un certain nombre de jours où la reservation est impossible ce qui a pour consequence de rendre possible la reservation plus loin dans le calendrier
+{
+	run('UPDATE horairelimite SET jour = "'.$jourEnPlus.'" WHERE id=1');
 }
 function isAdminRepas()
 // Fonction pour savoir si le membre est admin des repas

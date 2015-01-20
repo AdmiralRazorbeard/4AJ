@@ -51,12 +51,13 @@ function horaireLimite()
 {
 	// Retourne un tableau, de 2 dimension, la première étant midi ou soir, la seconde heure ou minute
 
-	$tmp = run('SELECT midi, soir FROM horairelimite WHERE id=1')->fetch_object();
+	$tmp = run('SELECT midi, soir, jour FROM horairelimite WHERE id=1')->fetch_object();
 	$midiTMP = $tmp->midi;
 	$soirTMP = $tmp->soir;
+	$jourTMP = $tmp->jour;
 	$midi = array($midiTMP[0]*10 + $midiTMP[1], $midiTMP[3]*10 + $midiTMP[4]);
 	$soir = array($soirTMP[0]*10 + $soirTMP[1], $soirTMP[3]*10 + $soirTMP[4]);
-	return array($midi, $soir);
+	return array($midi, $soir, $jourTMP);
 }
 
 function boutonReserver($numero, $mois, $annee, $midi, $residence)
@@ -68,15 +69,16 @@ function boutonReserver($numero, $mois, $annee, $midi, $residence)
 		$horaireLimite = horaireLimite();
 		$heureMidi = $horaireLimite[0][0].':'.$horaireLimite[0][1];
 		$heureSoir = $horaireLimite[1][0].':'.$horaireLimite[1][1];
+		$jourEnPlus = $horaireLimite[2];
 
 			// On ne peut plus s'inscrire à un repas pour le midi après l'heure choisi
-		if(strtotime($numero.'-'.$mois.'-'.$annee.' '.$heureMidi) <= strtotime("now") && $midi)
+		if(strtotime($numero.'-'.$mois.'-'.$annee.' '.$heureMidi) <= strtotime("now + ".(string)$jourEnPlus." days") && $midi)
 		{
 			return 3;
 		}
 
 			// On ne peut plus s'inscrire à un repas pour le soir après l'heure choisi
-		if(strtotime($numero.'-'.$mois.'-'.$annee.' '.$heureSoir) <= strtotime("now") && !$midi)
+		if(strtotime($numero.'-'.$mois.'-'.$annee.' '.$heureSoir) <= strtotime("now + ".(string)$jourEnPlus." days") && !$midi)
 		{
 			return 3;
 		}
