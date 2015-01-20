@@ -16,6 +16,9 @@ body {
     box-shadow: 1px 1px 4px 0px black;
     /*  ombre du mainWrapper  adaptée aux differents navigateurs  */
 }
+.contentWrapper{
+    padding: 35px 20px 20px;
+}
 
 /*  ------------    */
 /*  --- MENU ---    */
@@ -375,6 +378,11 @@ h1{
 .gestionRepas .infoTableau
 {
     color:#000000;
+}
+/*  --- Propriétés de bloquerReservations -- */
+.bloquerReservations input[type="text"]
+{
+    width:600px;
 }
 /*  --- Propriétés de error --  */
 .error img{

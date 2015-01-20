@@ -3,9 +3,16 @@ include_once 'request/restauration.php';
 $_SESSION['backgroundBody']='#92a224';
 include_once 'tinymcetxt.php';
 $accessRepas = false;
+$blocageReservation = false;
+$raisonBlocage=NULL;
 if(accesRepas())
 {
 	$accessRepas = true;
+	if(blocageReservation())
+	{
+		$blocageReservation= true;
+		$raisonBlocage=raisonBlocage();
+	}
 }
 ####################
 	/* Vérification si on change de semaine */

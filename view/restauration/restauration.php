@@ -10,7 +10,8 @@
 				</p>
 				<!-- FIN MENU DE LA SEMAINE -->
 				<!-- DEBUT CALENDRIER POUR INSCRIPTION -->
-				<?php if($accessRepas) { ?> 
+				<?php if($accessRepas){ 
+						if(!$blocageReservation) { ?> 
 				<p>Choisissez l'une des deux résidences et cliquez sur les <b id='caseVerte'>cases vertes</b> pour réserver, cliquez sur les <b id='caseOrange'>cases oranges</b> si vous voulez déréserver (vous ne pouvez plus reserver sur les <b id='caseGrise'>cases grises</b>):</p>
 				<br>
 				<div id="repasAnneFrank">
@@ -128,7 +129,9 @@
 					</table>
 				</div>
 				<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnet from the website'); ?>">
-				<?php } ?><br />
+				<?php } else {?><h4>Réservations momentanément suspendues</h4><h4>Raison avancée: <?php echo($raisonBlocage);?></h4><?php }
+						} ?>
+						<br />
 				<!-- FIN CALENDRIER -->
 					<script type="text/javascript">
 					$(document).ready(function() {

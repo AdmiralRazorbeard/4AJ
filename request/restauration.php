@@ -150,4 +150,24 @@ function accesRepas()
 	}
 	return false;
 }
+
+function blocageReservation()
+{
+	$tmp = run('SELECT blocage FROM bloquerreservations WHERE id=1')->fetch_object();
+	$blocage = $tmp->blocage;
+	if($blocage==1)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+function raisonBlocage()
+{
+	$tmp = run('SELECT raison FROM bloquerreservations WHERE id=1')->fetch_object();
+	$raison = htmlspecialchars($tmp->raison);
+	return $raison;
+}
 ?>

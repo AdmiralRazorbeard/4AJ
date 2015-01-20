@@ -4,9 +4,10 @@ include_once '/view/includes/header.php';
 			<div class="contentWrapper">
 				<h1>Nombre des repas par jour</h1>
 				<p>
-					<em><a href="index.php?section=verrouillerRepas">Verrouiller un jour pour les repas</a></em><br />
+					<em><a href="index.php?section=verrouillerRepas">Verrouiller des journées pour les repas</a></em><br />
 					<em><a href="index.php?section=menuSemaine">Ajouter un menu de la semaine</a></em><br />
-					<em><a href="index.php?section=horaireLimite">Définir un horaire limite de reservation</a></em>
+					<em><a href="index.php?section=horaireLimite">Définir un horaire limite de reservation</a></em><br />
+					<em><a href="index.php?section=bloquerReservations">Activer/Désactiver la possibilité de réserver</a></em>
 				</p>
 				<div id="repasAnneFrank">
 					<legend>
@@ -109,21 +110,21 @@ include_once '/view/includes/header.php';
 						</tr>
 					</table>
 				</div>
+				<br>
+				<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=generationNombreRepas';" value="Télécharger le nombre des prochaines reservations">
+				<form action="index.php?section=generationRecapitulatif" method="post">
+					<input value="Télécharger le récapitulatif des réservations membres" type="submit">
+					<select name="moisChoisi">
+							<option value="0"><?php echo $mois[date('n', strtotime('now'))]; ?></option>
+							<option value="1"><?php echo $mois[date('n', strtotime("first day of last month"))]; ?></option>
+							<option value="2"><?php echo $mois[date('n', strtotime("first day of 2 months ago"))]; ?></option>
+					</select>
+					<select name="residenceChoisie">
+							<option value="1">Anne Frank</option>
+							<option value="2">Clair Logis</option>
+					</select>
+				</form>
 			</div>
-			<br>
-			<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=generationNombreRepas';" value="Télécharger le nombre des prochaines reservations">
-			<form action="index.php?section=generationRecapitulatif" method="post">
-				<input value="Télécharger le récapitulatif des réservations membres" type="submit">
-				<select name="moisChoisi">
-						<option value="0"><?php echo $mois[date('n', strtotime('now'))]; ?></option>
-						<option value="1"><?php echo $mois[date('n', strtotime("first day of last month"))]; ?></option>
-						<option value="2"><?php echo $mois[date('n', strtotime("first day of 2 months ago"))]; ?></option>
-				</select>
-				<select name="residenceChoisie">
-						<option value="1">Anne Frank</option>
-						<option value="2">Clair Logis</option>
-				</select>
-			</form>
 			<script type="text/javascript">
 				$(document).ready(function() {
 			        $('body').change('#semaineAnneFrank', function() {
