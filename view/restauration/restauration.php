@@ -28,6 +28,10 @@
 							}
 							?>
 						</select>
+						<?php if($linkAnneFrank!=NULL){ ?>
+						<!-- Si pas de menu cette semaine, ne rien afficher -->
+						<img src="/4AJ/view/graphicRessources/pdf.png" alt="image bannière"/><a href="#">Télécharger le menu de la semaine</a>
+						<?php } ?>
 					</form>
 					<table>
 							<!-- Tableau de la semaine -->
@@ -87,6 +91,10 @@
 							}
 							?>
 						</select>
+						<?php if($linkClairLogis!=NULL){ ?>
+						<!-- Si pas de menu cette semaine, ne rien afficher -->
+						<img src="/4AJ/view/graphicRessources/pdf.png" alt="image bannière"/><a href="#">Télécharger le menu de la semaine</a>
+						<?php } ?>
 					</form>
 					<table>
 							<!-- Tableau de la semaine -->
