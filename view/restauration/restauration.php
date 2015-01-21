@@ -28,11 +28,11 @@
 							}
 							?>
 						</select>
-						<?php if($linkAnneFrank!=NULL){ ?>
-						<!-- Si pas de menu cette semaine, ne rien afficher -->
-						<img src="/4AJ/view/graphicRessources/pdf.png" alt="image bannière"/><a href="#">Télécharger le menu de la semaine</a>
-						<?php } ?>
 					</form>
+					<?php if($linkAnneFrank!=NULL){ ?>
+					<!-- Si pas de menu cette semaine, ne rien afficher -->
+					<img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkAnneFrank; ?>';" value="Télécharger le menu de la semaine">
+					<?php } ?>
 					<table>
 							<!-- Tableau de la semaine -->
 						<tr>
@@ -91,11 +91,11 @@
 							}
 							?>
 						</select>
-						<?php if($linkClairLogis!=NULL){ ?>
-						<!-- Si pas de menu cette semaine, ne rien afficher -->
-						<img src="/4AJ/view/graphicRessources/pdf.png" alt="image bannière"/><a href="#">Télécharger le menu de la semaine</a>
-						<?php } ?>
 					</form>
+					<?php if($linkClairLogis!=NULL){ ?>
+					<!-- Si pas de menu cette semaine, ne rien afficher -->
+					<img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkClairLogis; ?>';" value="Télécharger le menu de la semaine">
+					<?php } ?>
 					<table>
 							<!-- Tableau de la semaine -->
 						<tr>

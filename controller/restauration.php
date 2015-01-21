@@ -43,8 +43,8 @@ if(!isset($_POST['jour']))
 	//Pour trouver le bon lien de menu à télécharger
 	$weekAnneFrank = array((int)date('W', strtotime('Monday this week', strtotime('+'.$semaineDuAnneFrank.' week'))), (int)date('o', strtotime('Monday this week', strtotime('+'.$semaineDuAnneFrank.' week'))));
 	$weekClairLogis = array((int)date('W', strtotime('Monday this week', strtotime('+'.$semaineDuClairLogis.' week'))), (int)date('o', strtotime('Monday this week', strtotime('+'.$semaineDuClairLogis.' week'))));
-	$linkAnneFrank="test";
-	$linkClairLogis=NULL;
+	$linkAnneFrank=menuExiste($weekAnneFrank, 1);
+	$linkClairLogis=menuExiste($weekClairLogis, 2);
 }
 $validChange=1;
 if(!empty($_POST['jour']) && is_numeric($_POST['jour']) && !empty($_POST['mois']) && is_numeric($_POST['mois']) && !empty($_POST['annee']) && is_numeric($_POST['annee']) && isset($_POST['midi']) && is_numeric($_POST['midi']) && !empty($_POST['residence']) && is_numeric($_POST['residence']))

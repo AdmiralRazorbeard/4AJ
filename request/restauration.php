@@ -178,4 +178,21 @@ function raisonBlocage()
 	$raison = htmlspecialchars($tmp->raison);
 	return $raison;
 }
+function menuExiste(Array $info, $residence)
+{
+	$tmp = run('SELECT COUNT(*) as nbre FROM menusemaine WHERE semaine = '.$info[0].' AND annee = '.$info[1].' AND residence ='.$residence)->fetch_object();
+	if($tmp->nbre==0)
+	{
+		return NULL;
+	}
+	else
+	{
+		if($info[0]<10){
+			return "&amp;file=".$info[1]."_0".$info[0]."_".$residence;
+		}
+		else{
+			return "&amp;file=".$info[1]."_".$info[0]."_".$residence;
+		}
+	}
+}
 ?>

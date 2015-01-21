@@ -75,9 +75,9 @@ elseif ($_GET['section'] == 'restauration')
 {
 	include_once 'controller/restauration.php';
 }
-elseif ($_GET['section'] == 'restaurationAjax')
+elseif ($_GET['section'] == 'telechargerMenu')
 {
-	include_once 'controller/restaurationAjax.php';
+	include_once 'controller/telechargerMenu.php';
 }
 //section services
 elseif ($_GET['section'] == 'services')

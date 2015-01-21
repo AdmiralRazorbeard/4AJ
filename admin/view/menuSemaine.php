@@ -5,7 +5,7 @@ include_once '/view/includes/header.php';
 				<h1>Ajouter un menu pour une semaine</h1>
 				<a href="index.php?section=gestionRepas">Retour</a>
 				<form method="post" enctype="multipart/form-data">
-					<input type="hidden" name="MAX_FILE_SIZE" value="5242880" />
+					
 					<label for="semaine">Semaine du : </label>
 					<select name="semaine" id="semaine">
 			<?php		$numeroWeek = date('W', strtotime('Monday this week')).'-'.date('o', strtotime('Monday this week'));
@@ -30,7 +30,10 @@ include_once '/view/includes/header.php';
 					</select>
 					, ajouter le menu (5 Mo maximum) : <input type="file" name="weekFile" /><input type="submit" />
 				</form>
-			</div>
+			</div><?php
+						echo($test1);
+			echo($test2);
+			echo($test3); ?>
 		</div>
 	</body>
 </html>
