@@ -18,14 +18,20 @@ if(accesRepas())
 	/* Vérification si on change de semaine */
 $semaineDuClairLogis = 0;
 $semaineDuAnneFrank = 0;
+//permet en fonction du nombre de jours avec lequel on doit reserver en avance de decaler l'affichage des semaine en conséquence
+$semaineDePlus = semaineEnPlus();
 if(!empty($_GET['semaineClairLogis']) && is_numeric($_GET['semaineClairLogis']))
 {
 	$semaineDuClairLogis = $_GET['semaineClairLogis'];
+	$semaineDuClairLogis -= $semaineDePlus;
 }
 if(!empty($_GET['semaineAnneFrank']) && is_numeric($_GET['semaineAnneFrank']))
 {
 	$semaineDuAnneFrank = $_GET['semaineAnneFrank'];
+	$semaineDuAnneFrank -= $semaineDePlus;
 }
+$semaineDuAnneFrank += $semaineDePlus;
+$semaineDuClairLogis += $semaineDePlus;
 	/* Fin vérification */
 ####################
 	/* Initialisation variable */

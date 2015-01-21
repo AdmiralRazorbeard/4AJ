@@ -2,10 +2,10 @@
 include_once '/view/includes/header.php';
 ?>
 			<div class="contentWrapper horaireLimite">
-				<h1>Modifier les heures limites de réservation</h1>
+				<h1>Modifier la période limite de réservation</h1>
 				<a href="index.php?section=gestionRepas">Retour</a>
 				<p>
-					<em>Ici, il s'agit de definir la limite horaire pour s'inscrire à un repas.</em>
+					<em>Ici, il s'agit de definir la période limite pour s'inscrire à un repas.</em>
 				</p>
 					<!-- Changer l'horaire midi -->
 				<form method="post">

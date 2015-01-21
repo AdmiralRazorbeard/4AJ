@@ -59,7 +59,13 @@ function horaireLimite()
 	$soir = array($soirTMP[0]*10 + $soirTMP[1], $soirTMP[3]*10 + $soirTMP[4]);
 	return array($midi, $soir, $jourTMP);
 }
-
+function semaineEnPlus()
+{
+	$tmp = run('SELECT jour FROM horairelimite WHERE id=1')->fetch_object();
+	$jourTMP = $tmp->jour;
+	$semaineEnPlus = floor($jourTMP/7);
+	return $semaineEnPlus;
+}
 function boutonReserver($numero, $mois, $annee, $midi, $residence)
 	// Retourne 1 si il a le droit de s'incrire, 2 si il est déjà inscrit, et 3 sinon
 	// midi = 1, soir = 0

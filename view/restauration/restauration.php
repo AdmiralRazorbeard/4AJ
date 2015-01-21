@@ -20,8 +20,8 @@
 						<label for="semaineAnneFrank"><?php langue('Semaine du', 'Week of'); ?> : </label>
 						<select name="semaineAnneFrank" id="semaineAnneFrank">
 							<?php
-							$i = 0;
-							while($i < 8)
+							$i = 0 + $semaineDePlus;
+							while($i < (10+$semaineDePlus))
 							{ ?>
 								<option <?php if(!empty($semaineDuAnneFrank) && $semaineDuAnneFrank==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '0'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); langue('', date('S', strtotime('Monday this week', strtotime('+'.$i.' week')))); echo ' '; langue($mois[date('n', strtotime('Monday this Week', strtotime('+'.$i.' week')))], date('F', strtotime('Monday this week', strtotime('+'.$i.' week')))); ?></option>
 					<?php	$i ++;
@@ -79,8 +79,8 @@
 						<label for="semaineClairLogis"><?php langue('Semaine du', 'Week of'); ?> : </label>
 						<select name="semaineClairLogis" id="semaineClairLogis">
 							<?php
-							$i = 0;
-							while($i < 8)
+							$i = 0 + $semaineDePlus;
+							while($i < (10+$semaineDePlus))
 							{ ?>
 								<option <?php if(!empty($semaineDuClairLogis) && $semaineDuClairLogis==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '0'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); langue('', date('S', strtotime('Monday this week', strtotime('+'.$i.' week')))); echo ' '; langue($mois[date('n', strtotime('Monday this Week', strtotime('+'.$i.' week')))], date('F', strtotime('Monday this week', strtotime('+'.$i.' week')))); ?></option>
 					<?php	$i ++;
