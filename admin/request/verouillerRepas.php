@@ -74,4 +74,27 @@ function boutonVerrouiller($jour, $mois, $annee, $midi, $residence)
 	}
 	return false;
 }
+
+function boutonBloquer($jour, $mois, $annee, $midi, $residence, $fonction)
+/* Retourne true si le jour est verrouiller, false sinon */
+{
+	$date = $annee.'-'.$mois.'-'.$jour;
+	$tmp = run('SELECT COUNT(*) as nbre FROM bloquerjourrepas WHERE fonction = "'.$fonction.'" AND dateBlocage = "'.$date.'" AND midi = '.$midi.' AND residence = '.$residence)->fetch_object();
+	if($tmp->nbre >= 1)
+	{
+		return true;
+	}
+	return false;
+}
+
+function membreFonction()
+{
+	$tmp = run('SELECT id, nomFonctionFR as nom FROM fonction');
+	while($donnees = $tmp->fetch_object())
+	{
+		$fonction[$donnees->id]['id'] = $donnees->id;
+		$fonction[$donnees->id]['nom'] = htmlspecialchars($donnees->nom);
+	}
+	return $fonction;
+}
 ?>

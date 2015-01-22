@@ -2,7 +2,17 @@
 
 			<div class="contentWrapper">
 				<h1>Verrouiller un jour</h1>
-				<a href="index.php?section=gestionRepas">Retour</a>
+				<a href="index.php?section=gestionRepas">Retour</a><br>
+
+					<!-- Choix de l'interdiction ou du simple blocage -->
+					<input type="radio" name="choixDeLinterdiction" class="choixDeLinterdiction" checked="checked" value="interdire"/> <label>Interdire les réservations</label>
+                    <input type="radio" name="choixDeLinterdiction" class="choixDeLinterdiction" value="bloquer"/> <label>Bloquer les réservations</label>
+                    <select id="fonctionChoisie" name="fonctionChoisie">
+                    <?php foreach ($membreFonction as $key => $listeFonction) { ?>
+                    	<option value="<?php echo $listeFonction['id']; ?>"><?php if($listeFonction['nom']=="Public"){ echo "Tout le monde"; }else{ echo $listeFonction['nom'];} ?></option>
+                    <?php } ?>
+					</select>
+
 				<div id="repasAnneFrank">
 					<legend>
 						Verrouiller un jour de repas à résidence Anne Frank
@@ -121,50 +131,95 @@
 			</div>
 			<script type="text/javascript">
 					$(document).ready(function() {
-				        $('body').change('#semaineAnneFrank', function() {
+						//Mise a jour de la semaine
+				        $('body').on('change', '#semaineAnneFrank', function() {
+				        	console.log('fonction1');
 				      		var weekValue=$("#semaineAnneFrank").val();
 				          	$('#repasAnneFrank').load("index.php?section=verrouillerRepas&semaineAnneFrank="+weekValue+" "+"#repasAnneFrank");
 				       	});
-				       	$('body').change('#semaineClairLogis', function() {
+				       	$('body').on('change', '#semaineClairLogis', function() {
+				       		console.log('fonction2');
 				      		var weekValue2=$("#semaineClairLogis").val();
 				          	$('#repasClairLogis').load("index.php?section=verrouillerRepas&semaineClairLogis="+weekValue2+" "+"#repasClairLogis");
 				       	});
+				       	//Mise a jour des boutons
 				       	$('body').on('click', 'td', function() {
+				       		//On cherche d'abord le type d'interdiction
+				       		var typeInterdiction=$(".choixDeLinterdiction:checked").val();
+				      		//On collecte puis on traite les infos de la case que l'on a coché
 				      		var informations=$(this).attr('value');
 				      		var classe=$(this).attr('class');
 				      		$(this).addClass('isselected');
+				      		console.log('fonction3');
 				      		var donnees = informations.split('_');
-				      		if(donnees[4]==1)
-				      		{
+				      		if(donnees[4]==1){
 				      			var weekValue=$("#semaineAnneFrank").val();
-				      			if (classe=="false")
-				       			{
-					       			$.post( "index.php?section=verrouillerRepas", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-									  .done(function() {
-									  		$('.false.isselected').html('non-vérouillé');
-									    	$('.false.isselected').addClass('true').removeClass('false').removeClass('isselected');
-									  })
-									  .fail(function(){
-									   alert('Erreur');
-									  })
-								}
-								if (classe=="true")
-								{
-					       			$.post( "index.php?section=verrouillerRepas", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-									  .done(function() {
-									  		$('.true.isselected').html('vérouillé');
-									    	$('.true.isselected').addClass('false').removeClass('true').removeClass('isselected');
-									  })
-									  .fail(function(){
-										alert('Erreur');
-									  })
-								}
+				      			var fonctionChoisie=$("#fonctionChoisie").val();
+				      			if(typeInterdiction== "interdire"){
+				      			//Si on est dans l'interdiction et non dans le blocage
+				      				if (classe=="false"){
+					       				$.post( "index.php?section=verrouillerRepas", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+										  .done(function() {
+										  		$('.false.isselected').html('non-vérouillé');
+										    	$('.false.isselected').addClass('true').removeClass('false').removeClass('isselected');
+										  })
+										  .fail(function(){
+										   alert('Erreur');
+										  })
+									}
+									if (classe=="true"){
+						       			$.post( "index.php?section=verrouillerRepas", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+										  .done(function() {
+										  		$('.true.isselected').html('vérouillé');
+										    	$('.true.isselected').addClass('false').removeClass('true').removeClass('isselected');
+										  })
+										  .fail(function(){
+											alert('Erreur');
+										  })
+									}
+									if (classe=="blocked"){
+										//Si c'est bloqué l'interdiction est plus forte que le blocage, elle detruit donc ce dernier
+						       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+										  .fail(function(){
+											alert('Erreur');
+										  })
+										$.post( "index.php?section=verrouillerRepas", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+										  .done(function() {
+										  		$('.blocked.isselected').html('vérouillé');
+										    	$('.blocked.isselected').addClass('false').removeClass('blocked').removeClass('isselected');
+										  })
+										  .fail(function(){
+											alert('Erreur');
+										  })
+									}
+				      			}
+				      			else{
+				      			//Si on est dans le blocage et non dans l'interdiction
+									if (classe=="true"){
+						       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+										  .done(function() {
+										  		$('.true.isselected').html('bloqué');
+										    	$('.true.isselected').addClass('blocked').removeClass('true').removeClass('isselected');
+										  })
+										  .fail(function(){
+											alert('Erreur');
+										  })
+									}
+									if (classe=="blocked"){
+						       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+										  .done(function() {
+										  		$('.blocked.isselected').html('non-vérouillé');
+										    	$('.blocked.isselected').addClass('true').removeClass('blocked').removeClass('isselected');
+										  })
+										  .fail(function(){
+											alert('Erreur');
+										  })
+									}
+				      			}
 				       		}
-				       		else
-				       		{
+				       		else{
 				       			var weekValue2=$("#semaineClairLogis").val();
-				      			if (classe=="false")
-				       			{
+				      			if (classe=="false"){
 					       			$.post( "index.php?section=verrouillerRepas", {semaineClairLogis: weekValue2, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
 									  .done(function() {
 									  		$('.false.isselected').html('non-vérouillé');
@@ -174,8 +229,7 @@
 									   alert('Erreur');
 									  })
 								}
-								if (classe=="true")
-								{
+								if (classe=="true"){
 					       			$.post( "index.php?section=verrouillerRepas", {semaineClairLogis: weekValue2, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
 									  .done(function() {
 									  		$('.true.isselected').html('vérouillé');

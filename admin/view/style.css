@@ -370,10 +370,10 @@ h1{
     background-color: grey;
     cursor:pointer;
 }
-.gestionRepas .invalide
+.gestionRepas .blocked
 {
-    background-color: grey;
-    cursor:not-allowed;
+    background-color: blue;
+    cursor:pointer;
 }
 .gestionRepas .infoTableau
 {

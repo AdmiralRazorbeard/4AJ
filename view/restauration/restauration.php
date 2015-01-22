@@ -143,11 +143,11 @@
 				<!-- FIN CALENDRIER -->
 					<script type="text/javascript">
 					$(document).ready(function() {
-				        $('body').change('#semaineAnneFrank', function() {
+				        $('body').on('change', '#semaineAnneFrank', function() {
 				      		var weekValue=$("#semaineAnneFrank").val();
 				          	$('#repasAnneFrank').load("index.php?section=restauration&semaineAnneFrank="+weekValue+" "+"#repasAnneFrank");
 				       	});
-				       	$('body').change('#semaineClairLogis', function() {
+				       	$('body').on('change', '#semaineClairLogis', function() {
 				      		var weekValue2=$("#semaineClairLogis").val();
 				          	$('#repasClairLogis').load("index.php?section=restauration&semaineClairLogis="+weekValue2+" "+"#repasClairLogis");
 				       	});
