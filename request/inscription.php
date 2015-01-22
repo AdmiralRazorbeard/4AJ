@@ -11,5 +11,4 @@ function addMembers($nomMembre, $prenomMembre, $adresse, $telFixe, $telPortable,
 	run('INSERT INTO `membrefonction`(`id`, `id_fonction`) VALUES ('.$lastId->id.', 1)');
 	//le membre a la fonction de base
 }
-
 ?>
