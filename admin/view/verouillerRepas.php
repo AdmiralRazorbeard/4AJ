@@ -178,11 +178,6 @@
 										  })
 									}
 									if (classe=="blocked"){
-										//Si c'est bloqué l'interdiction est plus forte que le blocage, elle detruit donc ce dernier
-						       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-										  .fail(function(){
-											alert('Erreur');
-										  })
 										$.post( "index.php?section=verrouillerRepas", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
 										  .done(function() {
 										  		$('.blocked.isselected').html('vérouillé');

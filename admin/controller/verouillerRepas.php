@@ -38,6 +38,8 @@ if(!empty($_POST['jour']) && is_numeric($_POST['jour']) && !empty($_POST['mois']
 		}
 		else
 		{
+			//on supprime d'abord tous les repas bloqué car si les repas bloqué concernent seulement une fonction particulière, les repas verrouillés (ou Interdits) s'adressent à tout le monde
+			run('DELETE FROM bloquerjourrepas WHERE dateBlocage="'.$date.'" AND midi='.$midi.' AND residence='.$residence);
 			run('INSERT INTO verrouillerjourrepas(dateVerouiller, midi, residence) VALUES("'.$date.'", '.$midi.', '.$residence.')');
 		}
 	}
