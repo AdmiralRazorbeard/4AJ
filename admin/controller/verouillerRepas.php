@@ -5,6 +5,7 @@ if(!isAdminRepas())
 
 $semaineDuClairLogis = 0;
 $semaineDuAnneFrank = 0;
+$fonctionChoisie = 1;
 if(!empty($_GET['semaineClairLogis']) && is_numeric($_GET['semaineClairLogis']) && $_GET['semaineClairLogis'] >= 0)
 //Si l'utilisateur change de semaine chez Clair Logis
 {
@@ -14,6 +15,11 @@ if(!empty($_GET['semaineAnneFrank']) && is_numeric($_GET['semaineAnneFrank']) &&
 //Si l'utilisateur change de semaine chez Anne Frank
 {
 	$semaineDuAnneFrank = $_GET['semaineAnneFrank'];
+}
+if(!empty($_GET['fonction']) && is_numeric($_GET['fonction']) && $_GET['fonction'] > 0)
+//Si l'utilisateur change de semaine chez Clair Logis
+{
+	$fonctionChoisie = $_GET['fonction'];
 }
 
 if(!isset($_POST['jour']))
@@ -38,7 +44,7 @@ if(!empty($_POST['jour']) && is_numeric($_POST['jour']) && !empty($_POST['mois']
 		}
 		else
 		{
-			//on supprime d'abord tous les repas bloqué car si les repas bloqué concernent seulement une fonction particulière, les repas verrouillés (ou Interdits) s'adressent à tout le monde
+			//on supprime d'abord tous les repas bloqués  pour ce moment car si les repas bloqués concernent seulement une fonction particulière, les repas verrouillés (ou interdits) s'adressent eux à tout le monde
 			run('DELETE FROM bloquerjourrepas WHERE dateBlocage="'.$date.'" AND midi='.$midi.' AND residence='.$residence);
 			run('INSERT INTO verrouillerjourrepas(dateVerouiller, midi, residence) VALUES("'.$date.'", '.$midi.', '.$residence.')');
 		}
@@ -57,9 +63,8 @@ if(!empty($_POST['jour']) && is_numeric($_POST['jour']) && !empty($_POST['mois']
 		}
 	}
 }
-/* A PARTIR d'ICI ON S'OCCUPE DU SIMPLE BLOCAGE DES REPAS */ 
 
-
+//permet ensuite de generer dans la vue les fonctions qui existent
 $membreFonction = membreFonction();
 if(!isset($_POST['jour']))
 //le contenu n'est pas rafraichi si l'on clique sur les bouton pour verrouiller les jours, c'est jquery qui permet de gerer tout cela
