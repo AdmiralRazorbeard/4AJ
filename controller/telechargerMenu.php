@@ -1,6 +1,4 @@
 <?php
-/*Après avoir vérifié que le fichier existe (l'id est bien dans la BDD) et
-après avoir sélectionné les informations sur le fichier dans la BDD (dans $bdd_infos) */
 if(file_exists('fichierPDF/'.$_GET['file'].'.pdf'))
 {
 	$name=NULL;

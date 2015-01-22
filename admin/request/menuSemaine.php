@@ -29,7 +29,40 @@ function isAdminRepas()
 	return false;
 }
 
-function cleanBDDSemaine()
+function getMenu()
+//fonction qui permet de recuperer la liste des menus
 {
+	$tmp = run('SELECT semaine, annee, residence 
+				FROM menusemaine'); 
+	$listeMenu = NULL;
+	if($tmp)
+	{
+		$i=0;
+		while($donnees = $tmp->fetch_object())
+		{
+			$listeMenu[$i]['semaine'] = $donnees->semaine;
+			$listeMenu[$i]['annee'] = $donnees->annee; 
+			$listeMenu[$i]['residence'] = $donnees->residence; 
+			$i++;
+		}
+	}
+	return $listeMenu;
+}
+
+function deleteMenu(Array $tmp)
+//fonction qui permet de recuperer la liste des menus
+{
+	if($tmp[0]<10){
+	//Pour faire correspondre au véritable nom du fichier qui se trouve dans le serveur
+		$value=$tmp[1].'_0'.$tmp[0].'_'.$tmp[2];
+	}
+	else{
+		$value=$tmp[1].'_'.$tmp[0].'_'.$tmp[2];
+	}
+	if(file_exists('../fichierPDF/'.$value.'.pdf'))
+	{
+		unlink('../fichierPDF/'.$value.'.pdf');
+		run('DELETE FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee='.$tmp[1].' AND residence ='.$tmp[2]);
+	}
 }
 ?>

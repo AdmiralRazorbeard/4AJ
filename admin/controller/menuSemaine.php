@@ -5,9 +5,8 @@ if(!isAdminRepas())
 $mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 //Extensions autorisées
 $extensionsOk = 'pdf';
-
 if(!empty($_POST['semaine']) && !empty($_POST['residenceChoisie']))
-	// Si l'utilisateur a choisi une variable ainsi qu'a mis un fichier
+// Si l'utilisateur a choisi une variable ainsi qu'a mis un fichier
 {
 	if ($_FILES['weekFile']['error'] == 0 && $_FILES['weekFile']['size'] <= 5242880 && (substr(strrchr($_FILES['weekFile']['name'], '.'), 1) == $extensionsOk))
 	{
@@ -31,47 +30,6 @@ if(!empty($_POST['semaine']) && !empty($_POST['residenceChoisie']))
 				//insertion du nouveau fichier
 				$resultat = move_uploaded_file($_FILES['weekFile']['tmp_name'],'../fichierPDF/'.$nomFichier);
 				run('INSERT INTO menusemaine(semaine, annee, residence, tailleFichier) VALUES('.$tmp[0].', '.$tmp[1].', '.$_POST['residenceChoisie'].', '.$_FILES['weekFile']['size'].')');
-				// Variable qui enregistre les erreurs
-				$erreur = 0;
-				// On ouvre le fichier pour voir s'il contient des caractères louches
-				$handle = fopen('../fichierPDF/'.$nomFichier, 'r');
-				if ($handle)
-				{
-				    while (!feof($handle) AND $erreur == 0)
-				    {
-				        $buffer = fgets($handle);
-				        
-				        switch (true) {
-				        
-				        case strstr($buffer,'<'):
-				                $erreur += 1;
-				        break;
-				        
-				        case strstr($buffer,'>'):
-				                $erreur += 1;
-				        break;
-				        
-				        case strstr($buffer,';'):
-				                $erreur += 1;
-				        break;
-				        
-				        case strstr($buffer,'&'):
-				                $erreur += 1;
-				        break;
-				        
-				        case strstr($buffer,'?'):
-				                $erreur += 1;
-				        break;
-				        }
-				    }
-				    fclose($handle);
-				// Si on a trouvé des caractères suspescts, on supprime le fichier par sécurité
-				if ($erreur > 0) {
-				        if(file_exists ('../fichierPDF/'.$nomFichier)){	        
-				        @unlink('../fichierPDF/'.$nomFichier);
-				    	}
-				    }
-				}
 				//suppression des anciens fichiers
 				$thisWeek = (int)date('W', strtotime('Monday this week'));
 				$thisYear = (int)date('o', strtotime('Monday this week'));
@@ -83,7 +41,13 @@ if(!empty($_POST['semaine']) && !empty($_POST['residenceChoisie']))
 	}
 	########### FIN GESTION FICHIER ###########
 }
-
-
+if(!empty($_GET['delete'])){
+	//si l'utilisateur supprime un menu
+	$delete = $mysqli->real_escape_string($_GET['delete']);
+	$tmp2 =explode('_', $delete);
+	deleteMenu($tmp2);
+}
+//on récupère la liste des menus
+$listeMenu = getMenu();
 include_once 'view/menuSemaine.php';
 ?>
