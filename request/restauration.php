@@ -70,69 +70,123 @@ function boutonReserver($numero, $mois, $annee, $midi, $residence)
 	// Retourne 1 si il a le droit de s'incrire, 2 si il est déjà inscrit, et 3 sinon
 	// midi = 1, soir = 0
 {
-	if(!empty($_SESSION['log']) && !empty($_SESSION['mail']))
-	{
+	if(!empty($_SESSION['log']) && !empty($_SESSION['mail'])){
 		$horaireLimite = horaireLimite();
 		$heureMidi = $horaireLimite[0][0].':'.$horaireLimite[0][1];
 		$heureSoir = $horaireLimite[1][0].':'.$horaireLimite[1][1];
 		$jourEnPlus = $horaireLimite[2];
 
-			// On ne peut plus s'inscrire à un repas pour le midi après l'heure choisi
-		if(strtotime($numero.'-'.$mois.'-'.$annee.' '.$heureMidi) <= strtotime("now + ".(string)$jourEnPlus." days") && $midi)
-		{
+		if(strtotime($numero.'-'.$mois.'-'.$annee.' '.$heureMidi) <= strtotime("now + ".(string)$jourEnPlus." days") && $midi){
+		// On ne peut plus s'inscrire à un repas pour le midi après l'heure choisi
 			return 3;
 		}
 
-			// On ne peut plus s'inscrire à un repas pour le soir après l'heure choisi
-		if(strtotime($numero.'-'.$mois.'-'.$annee.' '.$heureSoir) <= strtotime("now + ".(string)$jourEnPlus." days") && !$midi)
-		{
+		if(strtotime($numero.'-'.$mois.'-'.$annee.' '.$heureSoir) <= strtotime("now + ".(string)$jourEnPlus." days") && !$midi){
+		// On ne peut plus s'inscrire à un repas pour le soir après l'heure choisi
 			return 3;
 		}
-		if(!$midi || date('N', strtotime($numero.'-'.$mois.'-'.$annee)) == 6 || date('N', strtotime($numero.'-'.$mois.'-'.$annee)) == 7)	// Si on est le soir ou le week end
-			// Test si on est soit le soir, soit le week end, pour ensuite tester les autorisations
-		{
-			//si soir
+		if(!$midi || date('N', strtotime($numero.'-'.$mois.'-'.$annee)) == 6 || date('N', strtotime($numero.'-'.$mois.'-'.$annee)) == 7){	// Si on est le soir ou le week end
+		// Test si on est soit le soir, soit le week end, pour ensuite tester les autorisations
+			//si soir et week end
 			$tmp = run('SELECT COUNT(*) as allowed FROM membre,membrefonction,fonction
 						WHERE membre.id = membrefonction.id AND fonction.id = membrefonction.id_fonction
 						AND membre.mail = "'.$_SESSION['mail'].'"
 						AND autorisationMangerSoir = 1')->fetch_object();
 		}
-		else
-		{
+		else{
 			//si midi
 			$tmp = run('SELECT COUNT(*) as allowed FROM membre,membrefonction,fonction
 						WHERE membre.id = membrefonction.id AND fonction.id = membrefonction.id_fonction
 						AND membre.mail = "'.$_SESSION['mail'].'"
 						AND autorisationMangerMidi = 1')->fetch_object();
 		}
-		if($tmp->allowed >= 1)
-		{
-			// Vérification que le jour n'est pas verrouillé
+		if($tmp->allowed >= 1){
+		// Vérification que le jour n'est pas verrouillé
 			$tmp = run('SELECT COUNT(*) as nbre 	
 						FROM verrouillerjourrepas 
 						WHERE dateVerouiller="'.$annee.'-'.$mois.'-'.$numero.'" 
 						AND midi = '.$midi.' 
 						AND residence = '.$residence)->fetch_object();
-			if($tmp->nbre == 0)
-			{
-				$tmp = run('SELECT COUNT(*) as inscrit
-							FROM membre, reserverepas
-							WHERE membre.id = reserverepas.id_membre
-							AND dateReserve = "'.$annee.'-'.$mois.'-'.$numero.'"
+			if($tmp->nbre == 0){
+			// Si non verrouillé on va regarder s'il est bloqué quelque part
+				$tmp2 = run('SELECT COUNT(*) as blocked
+							FROM bloquerjourrepas
+							WHERE dateBlocage = "'.$annee.'-'.$mois.'-'.$numero.'"
 							AND midi = '.$midi.'
-							AND residence = '.$residence.'
-							AND membre.mail = "'.$_SESSION['mail'].'"')->fetch_object();
-					// Vérifie que le membre ne s'est pas déjà inscrit
-				if($tmp->inscrit == 0)
-				{
-					return 1;
+							AND residence = '.$residence)->fetch_object();
+				if($tmp2->blocked == 0){
+				//Si aucun blocage on regarde si la personne est inscrite ou non
+					$tmp3 = run('SELECT COUNT(*) as inscrit
+					FROM membre, reserverepas
+					WHERE membre.id = reserverepas.id_membre
+					AND dateReserve = "'.$annee.'-'.$mois.'-'.$numero.'"
+					AND midi = '.$midi.'
+					AND residence = '.$residence.'
+					AND membre.mail = "'.$_SESSION['mail'].'"')->fetch_object();
+
+					if($tmp3->inscrit == 0){
+						//non-reservé
+						return 1;
+					}
+					else{
+						//reservé
+						return 2;
+					}
 				}
-				else
-				{
-					return 2;
+				else{
+				//S'il y a blocage, il faut regarder si c'est blocage correspondent bien aux fonctions du membre
+					$listeFonctionMembre=NULL;
+					//On recupère les fonctions du membre dans une variable
+					$tmpFonctionMembre = run('SELECT membrefonction.id_fonction AS fonction FROM membre, membrefonction
+										    WHERE membre.id = membrefonction.id
+										    AND membre.mail = "'.$_SESSION['mail'].'"')->fetch_object();
+					if($tmpFonctionMembre){
+						$y=0;
+						while($temp = $tmpFonctionMembre->fetch_object()){
+							$listeFonctionMembre[$y]['fonction'] = $temp->fonction;
+							$y++;
+						}
+					}
+					
+					$z=0;
+					foreach($listeFonctionMembre as $key => $value) {
+					//Si un blocage qui correspond à l'une des fonctions du membre alors on incrémente un compteur qui s'appelle z
+						$tmp = run('SELECT COUNT(*) as blocked
+									FROM membre, membrefonction, bloquerjourrepas
+									WHERE membre.id = membrefonction.id AND membrefonction.id_fonction=bloquerjourrepas.fonction AND bloquerjourrepas.fonction='.$value['fonction'].'
+									AND dateBlocage = "'.$annee.'-'.$mois.'-'.$numero.'"
+									AND midi = '.$midi.'
+									AND residence = '.$residence.'
+									AND membre.mail = "'.$_SESSION['mail'].'"')->fetch_object();
+						$z+=($tmp->blocked);
+					}
+					if($z==0){
+					//Si le blocage qui existe ne concerne finalement pas le membre alors on procède comme avant
+						$tmp3 = run('SELECT COUNT(*) as inscrit
+						FROM membre, reserverepas
+						WHERE membre.id = reserverepas.id_membre
+						AND dateReserve = "'.$annee.'-'.$mois.'-'.$numero.'"
+						AND midi = '.$midi.'
+						AND residence = '.$residence.'
+						AND membre.mail = "'.$_SESSION['mail'].'"')->fetch_object();
+
+						if($tmp3->inscrit == 0){
+							//non-reservé
+							return 1;
+						}
+						else{
+							//reservé
+							return 2;
+						}
+					}
+					else{
+					//le blocage nous concerne, le numéro 4 correspond à une case bloquée
+						return 4;
+					}
 				}
 			}
 		}
+		//invalide
 		return 3;
 	}
 }
