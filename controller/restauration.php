@@ -69,6 +69,11 @@ if(!empty($_POST['jour']) && is_numeric($_POST['jour']) && !empty($_POST['mois']
 	{
 		$validChange=0;
 	}
+	elseif(boutonReserver($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $residence) >= 4)
+		// si reservation block
+	{
+		break;
+	}
 }
 if(!isset($_POST['jour']))
 {

@@ -530,7 +530,7 @@ margin-bottom: 10px;
 }
 .restauration #caseGrise
 {
-    color:grey;
+    color:#555555;
     text-shadow: 0.5px 0.5px 0.4px black;
 }
 .restauration #buttonDisconnect
@@ -553,7 +553,7 @@ margin-bottom: 10px;
     border: 1px solid black;
     width : 150px;
 }
-.restauration .true
+.restauration #repasAnneFrank .true, .restauration #repasClairLogis .true
 {
     background-color: orange;
     cursor:pointer;
@@ -565,7 +565,19 @@ margin-bottom: 10px;
 }
 .restauration #repasAnneFrank .invalide, .restauration #repasClairLogis .invalide
 {
-    background-color: grey;
+    background-color: #555555;
+    cursor:not-allowed;
+}
+.restauration #repasAnneFrank .falseBlocked, .restauration #repasClairLogis .falseBlocked
+{
+    color: #c8c8c8;
+    background-color: #215f21;
+    cursor:not-allowed;
+}
+.restauration #repasAnneFrank .trueBlocked, .restauration #repasClairLogis .trueblocked
+{
+    color: #c8c8c8;
+    background-color: #bc8927;
     cursor:not-allowed;
 }
 .restauration #repasAnneFrank .infoTableau, .restauration #repasClairLogis .infoTableau

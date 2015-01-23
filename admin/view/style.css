@@ -367,12 +367,12 @@ h1{
 }
 .gestionRepas .false
 {
-    background-color: grey;
+    background-color: #555555;
     cursor:pointer;
 }
 .gestionRepas .blocked
 {
-    background-color: blue;
+    background-color: #215f21;
     cursor:pointer;
 }
 .gestionRepas .infoTableau

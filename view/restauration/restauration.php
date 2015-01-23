@@ -54,7 +54,7 @@
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 1, 1)
 								?>
 								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_1"
-									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } else { echo 'class="invalide">'; } ?>
+									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } elseif($tmp == 3) { echo 'class="invalide">'; } elseif($tmp == 4) { echo 'class="falseBlocked">non-réservé'; } else { echo 'class="trueBlocked">réservé'; } ?>
 								</td>
 					<?php	} ?>
 						</tr>
@@ -67,7 +67,7 @@
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 0, 1)
 								?>
 								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_1"
-									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } else { echo 'class="invalide">'; } ?>
+									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } elseif($tmp == 3) { echo 'class="invalide">'; } elseif($tmp == 4) { echo 'class="falseBlocked">non-réservé'; } else { echo 'class="trueBlocked">réservé'; } ?>
 								</td>
 					<?php	} ?>
 						</tr>
@@ -117,7 +117,7 @@
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 1, 2)
 								?>
 								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_2"
-									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } else { echo 'class="invalide">'; } ?>
+									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } elseif($tmp == 3) { echo 'class="invalide">'; } elseif($tmp == 4) { echo 'class="falseBlocked">non-réservé'; } else { echo 'class="trueBlocked">réservé'; } ?>
 								</td>
 					<?php	} ?>
 						</tr>
@@ -130,7 +130,7 @@
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 0, 2)
 								?>
 								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_2"
-									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } else { echo 'class="invalide">'; } ?>
+									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } elseif($tmp == 3) { echo 'class="invalide">'; } elseif($tmp == 4) { echo 'class="falseBlocked">non-réservé'; } else { echo 'class="trueBlocked">réservé'; } ?>
 								</td>
 					<?php	} ?>
 						</tr>
@@ -178,7 +178,7 @@
 									   alert('Erreur');
 									  })
 								}
-								if (classe=="true")
+								else if (classe=="true")
 								{
 					       			$.post( "index.php?section=restauration", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
 									  .done(function() {
@@ -196,6 +196,18 @@
 									  .fail(function(){
 										alert('Erreur');
 									  })
+								}
+								else if(classe=="trueBlocked")
+								{
+									$('.trueBlocked.isselected').removeClass('isselected');
+								}
+								else if(classe=="falseBlocked")
+								{
+									$('.falseBlocked.isselected').removeClass('isselected');
+								}
+								else if(classe=="invalide")
+								{
+									$('.invalide.isselected').removeClass('isselected');
 								}
 				       		}
 				       		else
@@ -220,7 +232,7 @@
 									   alert('Erreur');
 									  })
 								}
-								if (classe=="true")
+								else if (classe=="true")
 								{
 					       			$.post( "index.php?section=restauration", {semaineClairLogis: weekValue2, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
 									  .done(function() {
@@ -238,6 +250,18 @@
 									  .fail(function(){
 									   alert('Erreur');
 									  })
+								}
+								else if(classe=="trueBlocked")
+								{
+									$('.trueBlocked.isselected').removeClass('isselected');
+								}
+								else if(classe=="falseBlocked")
+								{
+									$('.falseBlocked.isselected').removeClass('isselected');
+								}
+								else if(classe=="invalide")
+								{
+									$('.invalide.isselected').removeClass('isselected');
 								}
 				  			}
 				       	});
