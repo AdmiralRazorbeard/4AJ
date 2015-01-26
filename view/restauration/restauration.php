@@ -31,7 +31,7 @@
 					</form>
 					<?php if($linkAnneFrank!=NULL){ ?>
 					<!-- Si pas de menu cette semaine, ne rien afficher -->
-					<img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkAnneFrank; ?>';" value="Télécharger le menu de la semaine">
+					<div id="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkAnneFrank; ?>';" value="Télécharger le menu de la semaine"></div>
 					<?php } ?>
 					<table>
 							<!-- Tableau de la semaine -->

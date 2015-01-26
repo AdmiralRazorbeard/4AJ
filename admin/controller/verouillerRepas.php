@@ -5,7 +5,8 @@ if(!isAdminRepas())
 
 $semaineDuClairLogis = 0;
 $semaineDuAnneFrank = 0;
-$fonctionChoisie = 1;
+$fonctionChoisieAnneFrank = 1;
+$fonctionChoisieClairLogis = 1;
 if(!empty($_GET['semaineClairLogis']) && is_numeric($_GET['semaineClairLogis']) && $_GET['semaineClairLogis'] >= 0)
 //Si l'utilisateur change de semaine chez Clair Logis
 {
@@ -16,10 +17,13 @@ if(!empty($_GET['semaineAnneFrank']) && is_numeric($_GET['semaineAnneFrank']) &&
 {
 	$semaineDuAnneFrank = $_GET['semaineAnneFrank'];
 }
-if(!empty($_GET['fonction']) && is_numeric($_GET['fonction']) && $_GET['fonction'] > 0)
-//Si l'utilisateur change de semaine chez Clair Logis
+if(!empty($_GET['fonctionAnneFrank']) && is_numeric($_GET['fonctionAnneFrank']) && $_GET['fonctionAnneFrank'] > 0)
 {
-	$fonctionChoisie = $_GET['fonction'];
+	$fonctionChoisieAnneFrank = $_GET['fonctionAnneFrank'];
+}
+if(!empty($_GET['fonctionClairLogis']) && is_numeric($_GET['fonctionClairLogis']) && $_GET['fonctionClairLogis'] > 0)
+{
+	$fonctionChoisieAnneFrank = $_GET['fonctionClairLogis'];
 }
 
 if(!isset($_POST['jour']))

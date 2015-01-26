@@ -5,8 +5,8 @@
 				<a href="index.php?section=gestionRepas">Retour</a><br>
 
 					<!-- Choix de l'interdiction ou du simple blocage -->
-					<input type="radio" name="choixDeLinterdiction" class="choixDeLinterdiction" checked="checked" value="interdire"/> <label>Interdire les réservations</label>
-                    <input type="radio" name="choixDeLinterdiction" class="choixDeLinterdiction" value="bloquer"/> <label>Bloquer les réservations</label>
+					<input type="radio" name="choixDeLinterdictionAnneFrank" class="choixDeLinterdictionAnneFrank" checked="checked" value="interdire"/> <label>Interdire les réservations</label>
+                    <input type="radio" name="choixDeLinterdictionAnneFrank" class="choixDeLinterdictionAnneFrank" value="bloquer"/> <label>Bloquer les réservations</label>
                     <select id="fonctionChoisieAnneFrank" name="fonctionChoisieAnneFrank">
                     <?php foreach ($membreFonction as $key => $listeFonction) { ?>
                     	<option value="<?php echo $listeFonction['id']; ?>"><?php if($listeFonction['nom']=="Public"){ echo "Tout le monde"; }else{ echo $listeFonction['nom'];} ?></option>
@@ -53,7 +53,7 @@
 								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_1"
 									<?php if($tmp) { echo 'class="false">verrouillé'; } 
 										else{
-											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 1, 1, $fonctionChoisie);
+											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 1, 1, $fonctionChoisieAnneFrank);
 											if($tmp2) { echo 'class = "blocked">bloqué';}else{ echo 'class = "true">non-verrouillé';}
 										} ?>
 								</td>
@@ -70,7 +70,7 @@
 								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_1"
 									<?php if($tmp) { echo 'class="false">verrouillé'; } 
 										else{
-											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 0, 1, $fonctionChoisie);
+											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 0, 1, $fonctionChoisieAnneFrank);
 											if($tmp2) { echo 'class = "blocked">bloqué';}else{ echo 'class = "true">non-verrouillé';}
 										} ?>
 								</td>
@@ -79,6 +79,15 @@
 					</table>
 				</div>
 				<br>
+
+			<!-- Choix de l'interdiction ou du simple blocage -->
+				<input type="radio" name="choixDeLinterdictionClairLogis" class="choixDeLinterdictionClairLogis" checked="checked" value="interdire"/> <label>Interdire les réservations</label>
+                <input type="radio" name="choixDeLinterdictionClairLogis" class="choixDeLinterdictionClairLogis" value="bloquer"/> <label>Bloquer les réservations</label>
+                <select id="fonctionChoisieClairLogis" name="fonctionChoisieClairLogis">
+                <?php foreach ($membreFonction as $key => $listeFonction) { ?>
+                	<option value="<?php echo $listeFonction['id']; ?>"><?php if($listeFonction['nom']=="Public"){ echo "Tout le monde"; }else{ echo $listeFonction['nom'];} ?></option>
+                <?php } ?>
+				</select>
 				<div id="repasClairLogis">
 					<legend>
 						Verrouiller un jour de repas à résidence Clair Logis
@@ -117,7 +126,11 @@
 							$tmp = boutonVerrouiller($value['numero'], $value['mois'], $value['annee'], 1, 2)
 								?>
 								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_2"
-									<?php if($tmp) { echo 'class="false">verrouillé'; } else { echo 'class = "true">non-verrouillé'; } ?>
+									<?php if($tmp) { echo 'class="false">verrouillé'; } 
+										else{
+											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 1, 2, $fonctionChoisieClairLogis);
+											if($tmp2) { echo 'class = "blocked">bloqué';}else{ echo 'class = "true">non-verrouillé';}
+										} ?>
 								</td>
 					<?php	} ?>
 						</tr>
@@ -130,7 +143,11 @@
 							$tmp = boutonVerrouiller($value['numero'], $value['mois'], $value['annee'], 0, 2)
 								?>
 								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_2"
-									<?php if($tmp) { echo 'class="false">verrouillé'; } else { echo 'class = "true">non-verrouillé'; } ?>
+									<?php if($tmp) { echo 'class="false">verrouillé'; } 
+										else{
+											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 0, 2, $fonctionChoisieAnneFrank);
+											if($tmp2) { echo 'class = "blocked">bloqué';}else{ echo 'class = "true">non-verrouillé';}
+										} ?>
 								</td>
 					<?php	} ?>
 						</tr>
@@ -143,17 +160,18 @@
 				        $('body').on('change', '#semaineAnneFrank, #fonctionChoisieAnneFrank', function() {
 				      		var weekValue=$("#semaineAnneFrank").val();
 				      		var fonctionChoisie1=$("#fonctionChoisieAnneFrank").val();
-				          	$('#repasAnneFrank').load("index.php?section=verrouillerRepas&semaineAnneFrank="+weekValue+"&fonction="+fonctionChoisie1+" "+"#repasAnneFrank");
+				          	$('#repasAnneFrank').load("index.php?section=verrouillerRepas&semaineAnneFrank="+weekValue+"&fonctionAnneFrank="+fonctionChoisie1+" "+"#repasAnneFrank");
 				       	});
 				       	$('body').on('change', '#semaineClairLogis', function() {
 				      		var weekValue2=$("#semaineClairLogis").val();
-				      		var fonctionChoisie2=$("#fonctionChoisie2").val();
-				          	$('#repasClairLogis').load("index.php?section=verrouillerRepas&semaineClairLogis="+weekValue2+"&fonction="+fonctionChoisie2+" "+"#repasClairLogis");
+				      		var fonctionChoisie2=$("#fonctionChoisieClairLogis").val();
+				          	$('#repasClairLogis').load("index.php?section=verrouillerRepas&semaineClairLogis="+weekValue2+"&fonctionClairLogis="+fonctionChoisie2+" "+"#repasClairLogis");
 				       	});
 				       	//Mise a jour des boutons
 				       	$('body').on('click', 'td', function() {
 				       		//On cherche d'abord le type d'interdiction
-				       		var typeInterdiction=$(".choixDeLinterdiction:checked").val();
+				       		var typeInterdictionAnneFrank=$(".choixDeLinterdictionAnneFrank:checked").val();
+				       		var typeInterdictionClairLogis=$(".choixDeLinterdictionClairLogis:checked").val();
 				      		//On collecte puis on traite les infos de la case que l'on a coché
 				      		var informations=$(this).attr('value');
 				      		var classe=$(this).attr('class');
@@ -163,7 +181,7 @@
 				      		if(donnees[4]==1){
 				      			var weekValue=$("#semaineAnneFrank").val();
 				      			var fonctionChoisie=$("#fonctionChoisieAnneFrank").val();
-				      			if(typeInterdiction== "interdire"){
+				      			if(typeInterdictionAnneFrank== "interdire"){
 				      			//Si on est dans l'interdiction et non dans le blocage
 				      				if (classe=="false"){
 					       				$.post( "index.php?section=verrouillerRepas", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
@@ -221,28 +239,65 @@
 				      			}
 				       		}
 				       		else{
-				       			var weekValue2=$("#semaineClairLogis").val();
-				      			if (classe=="false"){
-					       			$.post( "index.php?section=verrouillerRepas", {semaineClairLogis: weekValue2, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-									  .done(function() {
-									  		$('.false.isselected').html('non-vérouillé');
-									    	$('.false.isselected').addClass('true').removeClass('false').removeClass('isselected');
-									  })
-									  .fail(function(){
-									   alert('Erreur');
-									  })
-								}
-								if (classe=="true"){
-					       			$.post( "index.php?section=verrouillerRepas", {semaineClairLogis: weekValue2, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-									  .done(function() {
-									  		$('.true.isselected').html('vérouillé');
-									    	$('.true.isselected').addClass('false').removeClass('true').removeClass('isselected');
-									  })
-									  .fail(function(){
-									   alert('Erreur');
-									  })
-								}
-				  			}
+				      			var weekValue=$("#semaineClairLogis").val();
+				      			var fonctionChoisie=$("#fonctionChoisieClairLogis").val();
+				      			if(typeInterdictionAnneFrank== "interdire"){
+				      			//Si on est dans l'interdiction et non dans le blocage
+				      				if (classe=="false"){
+					       				$.post( "index.php?section=verrouillerRepas", {semaineClairLogis: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+										  .done(function() {
+										  		$('.false.isselected').html('non-vérouillé');
+										    	$('.false.isselected').addClass('true').removeClass('false').removeClass('isselected');
+										  })
+										  .fail(function(){
+										   alert('Erreur');
+										  })
+									}
+									if (classe=="true"){
+						       			$.post( "index.php?section=verrouillerRepas", {semaineClairLogis: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+										  .done(function() {
+										  		$('.true.isselected').html('vérouillé');
+										    	$('.true.isselected').addClass('false').removeClass('true').removeClass('isselected');
+										  })
+										  .fail(function(){
+											alert('Erreur');
+										  })
+									}
+									if (classe=="blocked"){
+										$.post( "index.php?section=verrouillerRepas", {semaineClairLogis: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+										  .done(function() {
+										  		$('.blocked.isselected').html('vérouillé');
+										    	$('.blocked.isselected').addClass('false').removeClass('blocked').removeClass('isselected');
+										  })
+										  .fail(function(){
+											alert('Erreur');
+										  })
+									}
+				      			}
+				      			else{
+				      			//Si on est dans le blocage et non dans l'interdiction
+									if (classe=="true"){
+						       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaineClairLogis: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+										  .done(function() {
+										  		$('.true.isselected').html('bloqué');
+										    	$('.true.isselected').addClass('blocked').removeClass('true').removeClass('isselected');
+										  })
+										  .fail(function(){
+											alert('Erreur');
+										  })
+									}
+									if (classe=="blocked"){
+						       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaineClairLogis: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+										  .done(function() {
+										  		$('.blocked.isselected').html('non-vérouillé');
+										    	$('.blocked.isselected').addClass('true').removeClass('blocked').removeClass('isselected');
+										  })
+										  .fail(function(){
+											alert('Erreur');
+										  })
+									}
+				      			}
+				       		}
 				       	});
 					});
 				</script>
