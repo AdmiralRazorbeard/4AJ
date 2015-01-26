@@ -20,7 +20,7 @@ include_once '/view/includes/header.php';
 							$i = 0;
 							while($i < 8)
 							{ ?>
-								<option <?php if(!empty($semaineDuAnneFrank) && $semaineDuAnneFrank==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '-1'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); ?> <?php echo $mois[date('n', strtotime('Monday this week', strtotime('+'.$i.' week')))]; ?></option>
+								<option <?php if(!empty($semaineDuAnneFrank) && $semaineDuAnneFrank==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '0'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); ?> <?php echo $mois[date('n', strtotime('Monday this week', strtotime('+'.$i.' week')))]; ?></option>
 					<?php	$i ++;
 							}
 							?>
@@ -41,7 +41,7 @@ include_once '/view/includes/header.php';
 							<td>Midi</td>
 							<?php
 							foreach ($semaineAnneFrank as $key => $value) { ?>
-								<td> <!-- ici on affiche le nombre de personne inscrit pour le midi -->
+								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_1">
 									<?php echo nbreInscrit($value['numero'], $value['mois'], $value['annee'], 1, 1); ?>
 								</td>
 					<?php	}
@@ -51,7 +51,7 @@ include_once '/view/includes/header.php';
 							<td>Soir</td>
 							<?php
 							foreach ($semaineAnneFrank as $key => $value) { ?>
-								<td> <!-- ici on affiche le nombre de personne inscrit pour le soir -->
+								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_1">
 									<?php echo nbreInscrit($value['numero'], $value['mois'], $value['annee'], 0, 1); ?>
 								</td>
 					<?php	}
@@ -71,7 +71,7 @@ include_once '/view/includes/header.php';
 							$i = 0;
 							while($i < 8)
 							{ ?>
-								<option <?php if(!empty($semaineDuClairLogis) && $semaineDuClairLogis==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '-1'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); ?> <?php echo $mois[date('n', strtotime('Monday this week', strtotime('+'.$i.' week')))]; ?></option>
+								<option <?php if(!empty($semaineDuClairLogis) && $semaineDuClairLogis==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '0'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); ?> <?php echo $mois[date('n', strtotime('Monday this week', strtotime('+'.$i.' week')))]; ?></option>
 					<?php	$i ++;
 							}
 							?>
@@ -92,7 +92,7 @@ include_once '/view/includes/header.php';
 							<td>Midi</td>
 							<?php
 							foreach ($semaineClairLogis as $key => $value) { ?>
-								<td> <!-- ici on affiche le nombre de personne inscrit pour le midi -->
+								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_2">
 									<?php echo nbreInscrit($value['numero'], $value['mois'], $value['annee'], 1, 2); ?>
 								</td>
 					<?php	}
@@ -102,7 +102,7 @@ include_once '/view/includes/header.php';
 							<td>Soir</td>
 							<?php
 							foreach ($semaineClairLogis as $key => $value) { ?>
-								<td> <!-- ici on affiche le nombre de personne inscrit pour le soir -->
+								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_2">
 									<?php echo nbreInscrit($value['numero'], $value['mois'], $value['annee'], 0, 2); ?>
 								</td>
 					<?php	}
@@ -135,6 +135,25 @@ include_once '/view/includes/header.php';
 			      		var weekValue2=$("#semaineClairLogis").val();
 			          	$('#repasClairLogis').load("index.php?section=gestionRepas&semaineClairLogis="+weekValue2+" "+"#repasClairLogis");
 			       	});
+					$('body').on('click', 'td', function() {
+						console.log("test");
+			      		var informations=$(this).attr('value');
+			      		var donnees = informations.split('_');
+			      		var residence="";
+			      		var semaine="semaine";
+			      		if(donnees[4]==1){
+			      			residence="AnneFrank";
+			      			semaine+=residence;
+			      		}
+			      		else{
+			      			residence="ClairLogis";
+			      			semaine+=residence;
+			      		}
+		      			var weekValue=$("#semaine"+residence).val();
+		      			console.log(weekValue);
+		      			console.log(donnees[0]);
+		       			$(location).attr('href',"index.php?section=generationFeuilleAppel&semaine="+weekValue+"&jour="+donnees[0]+"&mois="+donnees[1]+"&annee="+donnees[2]+"&midi="+donnees[3]+"&residence="+donnees[4]);
+					});
 				});
 			</script>
 		</div>

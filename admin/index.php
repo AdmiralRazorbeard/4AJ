@@ -83,4 +83,8 @@ elseif ($_GET['section'] == 'generationRecapitulatif')
 {
 include_once ('controller/generationRecapitulatif.php');
 }
+elseif ($_GET['section'] == 'generationFeuilleAppel') 
+{
+include_once ('controller/generationFeuilleAppel.php');
+}
 ?>
