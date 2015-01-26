@@ -145,7 +145,7 @@
 								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_2"
 									<?php if($tmp) { echo 'class="false">verrouillé'; } 
 										else{
-											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 0, 2, $fonctionChoisieAnneFrank);
+											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 0, 2, $fonctionChoisieClairLogis);
 											if($tmp2) { echo 'class = "blocked">bloqué';}else{ echo 'class = "true">non-verrouillé';}
 										} ?>
 								</td>
@@ -162,7 +162,7 @@
 				      		var fonctionChoisie1=$("#fonctionChoisieAnneFrank").val();
 				          	$('#repasAnneFrank').load("index.php?section=verrouillerRepas&semaineAnneFrank="+weekValue+"&fonctionAnneFrank="+fonctionChoisie1+" "+"#repasAnneFrank");
 				       	});
-				       	$('body').on('change', '#semaineClairLogis', function() {
+				       	$('body').on('change', '#semaineClairLogis, #fonctionChoisieClairLogis', function() {
 				      		var weekValue2=$("#semaineClairLogis").val();
 				      		var fonctionChoisie2=$("#fonctionChoisieClairLogis").val();
 				          	$('#repasClairLogis').load("index.php?section=verrouillerRepas&semaineClairLogis="+weekValue2+"&fonctionClairLogis="+fonctionChoisie2+" "+"#repasClairLogis");
@@ -173,7 +173,6 @@
 				      		var informations=$(this).attr('value');
 				      		var classe=$(this).attr('class');
 				      		$(this).addClass('isselected');
-				      		console.log('fonction3');
 				      		var donnees = informations.split('_');
 				      		var residence="";
 				      		var semaine="semaine";

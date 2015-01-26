@@ -15,24 +15,28 @@
 				<p>Choisissez l'une des deux résidences et cliquez sur les <b id='caseVerte'>cases vertes</b> pour réserver, cliquez sur les <b id='caseOrange'>cases oranges</b> si vous voulez déréserver (vous ne pouvez plus reserver sur les <b id='caseGrise'>cases grises</b>):</p>
 				<br>
 				<div id="repasAnneFrank">
-					<span><strong><?php langue('Repas Anne Frank', 'Anne Frank meal'); ?></strong></span>
-					<form method="post">
-						<label for="semaineAnneFrank"><?php langue('Semaine du', 'Week of'); ?> : </label>
-						<select name="semaineAnneFrank" id="semaineAnneFrank">
-							<?php
-							$i = 0 + $semaineDePlus;
-							while($i < (10+$semaineDePlus))
-							{ ?>
-								<option <?php if(!empty($semaineDuAnneFrank) && $semaineDuAnneFrank==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '0'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); langue('', date('S', strtotime('Monday this week', strtotime('+'.$i.' week')))); echo ' '; langue($mois[date('n', strtotime('Monday this Week', strtotime('+'.$i.' week')))], date('F', strtotime('Monday this week', strtotime('+'.$i.' week')))); ?></option>
-					<?php	$i ++;
-							}
-							?>
-						</select>
-					</form>
-					<?php if($linkAnneFrank!=NULL){ ?>
-					<!-- Si pas de menu cette semaine, ne rien afficher -->
-					<div id="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkAnneFrank; ?>';" value="Télécharger le menu de la semaine"></div>
-					<?php } ?>
+					<div id="divSelectionEtMenu">
+						<div id="selectionSemaine">
+							<span><strong><?php langue('Repas Anne Frank', 'Anne Frank meal'); ?></strong></span>
+							<form method="post">
+								<label for="semaineAnneFrank"><?php langue('Semaine du', 'Week of'); ?> : </label>
+								<select name="semaineAnneFrank" id="semaineAnneFrank">
+									<?php
+									$i = 0;
+									while($i < (10+$semaineDePlus))
+									{ ?>
+										<option <?php if(!empty($semaineDuAnneFrank) && $semaineDuAnneFrank==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '0'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); langue('', date('S', strtotime('Monday this week', strtotime('+'.$i.' week')))); echo ' '; langue($mois[date('n', strtotime('Monday this Week', strtotime('+'.$i.' week')))], date('F', strtotime('Monday this week', strtotime('+'.$i.' week')))); ?></option>
+							<?php	$i ++;
+									}
+									?>
+								</select>
+							</form>
+						</div>
+						<?php if($linkAnneFrank!=NULL){ ?>
+						<!-- Si pas de menu cette semaine, ne rien afficher -->
+						<div id="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkAnneFrank; ?>';" value="Télécharger le menu de la semaine"></div>
+						<?php } ?>
+					</div>
 					<table>
 							<!-- Tableau de la semaine -->
 						<tr>
@@ -78,24 +82,28 @@
 				<br>
 						<!--  REPAS CLAIR LOGIS -->
 				<div id="repasClairLogis">
-					<span><strong><?php langue('Repas Clair Logis', 'Clair Logis meal'); ?></strong></span>
-					<form method="post">
-						<label for="semaineClairLogis"><?php langue('Semaine du', 'Week of'); ?> : </label>
-						<select name="semaineClairLogis" id="semaineClairLogis">
-							<?php
-							$i = 0 + $semaineDePlus;
-							while($i < (10+$semaineDePlus))
-							{ ?>
-								<option <?php if(!empty($semaineDuClairLogis) && $semaineDuClairLogis==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '0'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); langue('', date('S', strtotime('Monday this week', strtotime('+'.$i.' week')))); echo ' '; langue($mois[date('n', strtotime('Monday this Week', strtotime('+'.$i.' week')))], date('F', strtotime('Monday this week', strtotime('+'.$i.' week')))); ?></option>
-					<?php	$i ++;
-							}
-							?>
-						</select>
-					</form>
-					<?php if($linkClairLogis!=NULL){ ?>
-					<!-- Si pas de menu cette semaine, ne rien afficher -->
-					<img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkClairLogis; ?>';" value="Télécharger le menu de la semaine">
-					<?php } ?>
+					<div id="divSelectionEtMenu">
+						<div id="selectionSemaine">
+							<span><strong><?php langue('Repas Clair Logis', 'Clair Logis meal'); ?></strong></span>
+							<form method="post">
+								<label for="semaineClairLogis"><?php langue('Semaine du', 'Week of'); ?> : </label>
+								<select name="semaineClairLogis" id="semaineClairLogis">
+									<?php
+									$i = 0;
+									while($i < (10+$semaineDePlus))
+									{ ?>
+										<option <?php if(!empty($semaineDuClairLogis) && $semaineDuClairLogis==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '0'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); langue('', date('S', strtotime('Monday this week', strtotime('+'.$i.' week')))); echo ' '; langue($mois[date('n', strtotime('Monday this Week', strtotime('+'.$i.' week')))], date('F', strtotime('Monday this week', strtotime('+'.$i.' week')))); ?></option>
+							<?php	$i ++;
+									}
+									?>
+								</select>
+							</form>
+						</div>
+						<?php if($linkClairLogis!=NULL){ ?>
+						<!-- Si pas de menu cette semaine, ne rien afficher -->
+						<div id="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkClairLogis; ?>';" value="Télécharger le menu de la semaine"></div>
+						<?php } ?>
+					</div>
 					<table>
 							<!-- Tableau de la semaine -->
 						<tr>
@@ -145,6 +153,7 @@
 					$(document).ready(function() {
 				        $('body').on('change', '#semaineAnneFrank', function() {
 				      		var weekValue=$("#semaineAnneFrank").val();
+				      		console.log(weekValue);
 				          	$('#repasAnneFrank').load("index.php?section=restauration&semaineAnneFrank="+weekValue+" "+"#repasAnneFrank");
 				       	});
 				       	$('body').on('change', '#semaineClairLogis', function() {
@@ -156,114 +165,67 @@
 				      		var classe=$(this).attr('class');
 				      		$(this).addClass('isselected');
 				      		var donnees = informations.split('_');
-				      		if(donnees[4]==1)
-				      		{
-				      			var weekValue=$("#semaineAnneFrank").val();
-				      			if (classe=="false")
-				       			{
-					       			$.post( "index.php?section=restauration", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-									  .done(function() {
-									  	if(<?php echo $validChange?>==1)
-									  	{
-									  		$('.false.isselected').html('réservé');
-									    	$('.false.isselected').addClass('true').removeClass('false').removeClass('isselected');
-										}
-										else
-										{
-											$('.false.isselected').html('');
-											$('.false.isselected').addClass('invalide').removeClass('false').removeClass('isselected');
-										}
-									  })
-									  .fail(function(){
-									   alert('Erreur');
-									  })
-								}
-								else if (classe=="true")
-								{
-					       			$.post( "index.php?section=restauration", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-									  .done(function() {
-									  	if(<?php echo $validChange?>==1)
-									  	{
-									  		$('.true.isselected').html('non-réservé');
-									    	$('.true.isselected').addClass('false').removeClass('true').removeClass('isselected');
-										}
-										else
-										{
-											$('.true.isselected').html('');
-											$('.true.isselected').addClass('invalide').removeClass('true').removeClass('isselected');
-										}
-									  })
-									  .fail(function(){
-										alert('Erreur');
-									  })
-								}
-								else if(classe=="trueBlocked")
-								{
-									$('.trueBlocked.isselected').removeClass('isselected');
-								}
-								else if(classe=="falseBlocked")
-								{
-									$('.falseBlocked.isselected').removeClass('isselected');
-								}
-								else if(classe=="invalide")
-								{
-									$('.invalide.isselected').removeClass('isselected');
-								}
-				       		}
-				       		else
-				       		{
-				       			var weekValue2=$("#semaineClairLogis").val();
-				      			if (classe=="false")
-				       			{
-					       			$.post( "index.php?section=restauration", {semaineClairLogis: weekValue2, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-									  .done(function() {
-									  	if(<?php echo $validChange?>==1)
-									  	{
-									  		$('.false.isselected').html('réservé');
-									    	$('.false.isselected').addClass('true').removeClass('false').removeClass('isselected');
-										}
-										else
-										{
-											$('.false.isselected').html('');
-											$('.false.isselected').addClass('invalide').removeClass('false').removeClass('isselected');
-										}
-									  })
-									  .fail(function(){
-									   alert('Erreur');
-									  })
-								}
-								else if (classe=="true")
-								{
-					       			$.post( "index.php?section=restauration", {semaineClairLogis: weekValue2, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-									  .done(function() {
-									  	if(<?php echo $validChange?>==1)
-									  	{
-									  		$('.true.isselected').html('non-réservé');
-									    	$('.true.isselected').addClass('false').removeClass('true').removeClass('isselected');
-										}
-										else
-										{
-											$('.true.isselected').html('');
-											$('.true.isselected').addClass('invalide').removeClass('true').removeClass('isselected');
-										}
-									  })
-									  .fail(function(){
-									   alert('Erreur');
-									  })
-								}
-								else if(classe=="trueBlocked")
-								{
-									$('.trueBlocked.isselected').removeClass('isselected');
-								}
-								else if(classe=="falseBlocked")
-								{
-									$('.falseBlocked.isselected').removeClass('isselected');
-								}
-								else if(classe=="invalide")
-								{
-									$('.invalide.isselected').removeClass('isselected');
-								}
-				  			}
+				      		var residence="";
+				      		var semaine="semaine";
+				      		if(donnees[4]==1){
+				      			residence="AnneFrank";
+				      			semaine+=residence;
+				      		}
+				      		else{
+				      			residence="ClairLogis";
+				      			semaine+=residence;
+				      		}
+			      			var weekValue=$("#semaine"+residence).val();
+			      			if (classe=="false")
+			       			{
+				       			$.post( "index.php?section=restauration", {semaine: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+								  .done(function(data) {
+								  	if(data==1)
+								  	{
+								  		$('.false.isselected').html('réservé');
+								    	$('.false.isselected').addClass('true').removeClass('false').removeClass('isselected');
+									}
+									else
+									{
+										$('.false.isselected').html('non-réservé');
+										$('.false.isselected').addClass('falseBlocked').removeClass('false').removeClass('isselected');
+									}
+								  })
+								  .fail(function(){
+								   alert('Erreur');
+								  })
+							}
+							else if (classe=="true")
+							{
+				       			$.post( "index.php?section=restauration", {semaine: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+								  .done(function(data) {
+								  	if(data==1)
+								  	{
+								  		$('.true.isselected').html('non-réservé');
+								    	$('.true.isselected').addClass('false').removeClass('true').removeClass('isselected');
+									}
+									else
+									{
+										$('.true.isselected').html('réservé');
+										$('.true.isselected').addClass('trueBlocked').removeClass('true').removeClass('isselected');
+									}
+								  })
+								  .fail(function(){
+									alert('Erreur');
+								  })
+							}
+							else if(classe=="trueBlocked")
+							{
+								$('.trueBlocked.isselected').removeClass('isselected');
+							}
+							else if(classe=="falseBlocked")
+							{
+								$('.falseBlocked.isselected').removeClass('isselected');
+							}
+							else if(classe=="invalide")
+							{
+								$('.invalide.isselected').removeClass('isselected');
+							}
 				       	});
 					});
 				</script>

@@ -584,6 +584,21 @@ margin-bottom: 10px;
 {
     color:#000000;
 }
+.restauration #divSelectionEtMenu{
+    height:45px;
+}
+.restauration #selectionSemaine{
+    float: left;
+    margin-right: 15px;
+}
+.restauration #lienMenu input{
+    position:relative;
+    top:10px;
+}
+.restauration #lienMenu img{
+    position:relative;
+    top:15px;
+}
 /*  --- Propriétés de la section parameters --  */
 .parameters fieldset{
     width:700px;

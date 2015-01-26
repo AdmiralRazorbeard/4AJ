@@ -2,7 +2,10 @@
 include_once 'request/verouillerRepas.php';
 if(!isAdminRepas())
 { header('location:index.php?section=error'); }
-
+if(!isset($_POST['jour']) && !isset($_GET['semaineClairLogis']) && !isset($_GET['semaineAnneFrank']) && !isset($_GET['fonctionAnneFrank']) && !isset($_GET['fonctionClairLogis'])){
+//Lorsque l'on charge la page verrouillerRepas on supprime les entrées de la table bloquerjourrepas qui ne servent plus à rien
+	supprimerAnciensJoursBloques();
+}
 $semaineDuClairLogis = 0;
 $semaineDuAnneFrank = 0;
 $fonctionChoisieAnneFrank = 1;
@@ -23,7 +26,7 @@ if(!empty($_GET['fonctionAnneFrank']) && is_numeric($_GET['fonctionAnneFrank']) 
 }
 if(!empty($_GET['fonctionClairLogis']) && is_numeric($_GET['fonctionClairLogis']) && $_GET['fonctionClairLogis'] > 0)
 {
-	$fonctionChoisieAnneFrank = $_GET['fonctionClairLogis'];
+	$fonctionChoisieClairLogis = $_GET['fonctionClairLogis'];
 }
 
 if(!isset($_POST['jour']))

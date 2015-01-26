@@ -29,11 +29,11 @@ function isAdminRepas()
 	return false;
 }
 
-function cleanVerrouillerRepas()
+function supprimerAnciensJoursBloques()
 /* Supprime les jours verrouiller datant des semaines précédentes pour éviter de surcharger la bdd */
 {
 	$date = date('Y-m-d', strtotime('sunday last week'));
-	run('DELETE FROM verrouillerjourrepas WHERE dateVerouiller<"'.$date.'"');
+	run('DELETE FROM bloquerjourrepas WHERE dateBlocage<"'.$date.'"');
 }
 
 function semaine($nbreWeekPlus=0) 
