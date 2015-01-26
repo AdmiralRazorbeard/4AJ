@@ -169,134 +169,82 @@
 				       	});
 				       	//Mise a jour des boutons
 				       	$('body').on('click', 'td', function() {
-				       		//On cherche d'abord le type d'interdiction
-				       		var typeInterdictionAnneFrank=$(".choixDeLinterdictionAnneFrank:checked").val();
-				       		var typeInterdictionClairLogis=$(".choixDeLinterdictionClairLogis:checked").val();
 				      		//On collecte puis on traite les infos de la case que l'on a coché
 				      		var informations=$(this).attr('value');
 				      		var classe=$(this).attr('class');
 				      		$(this).addClass('isselected');
 				      		console.log('fonction3');
 				      		var donnees = informations.split('_');
+				      		var residence="";
+				      		var semaine="semaine";
+				      		var typeInterdiction=null;
 				      		if(donnees[4]==1){
-				      			var weekValue=$("#semaineAnneFrank").val();
-				      			var fonctionChoisie=$("#fonctionChoisieAnneFrank").val();
-				      			if(typeInterdictionAnneFrank== "interdire"){
-				      			//Si on est dans l'interdiction et non dans le blocage
-				      				if (classe=="false"){
-					       				$.post( "index.php?section=verrouillerRepas", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-										  .done(function() {
-										  		$('.false.isselected').html('non-vérouillé');
-										    	$('.false.isselected').addClass('true').removeClass('false').removeClass('isselected');
-										  })
-										  .fail(function(){
-										   alert('Erreur');
-										  })
-									}
-									if (classe=="true"){
-						       			$.post( "index.php?section=verrouillerRepas", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-										  .done(function() {
-										  		$('.true.isselected').html('vérouillé');
-										    	$('.true.isselected').addClass('false').removeClass('true').removeClass('isselected');
-										  })
-										  .fail(function(){
-											alert('Erreur');
-										  })
-									}
-									if (classe=="blocked"){
-										$.post( "index.php?section=verrouillerRepas", {semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-										  .done(function() {
-										  		$('.blocked.isselected').html('vérouillé');
-										    	$('.blocked.isselected').addClass('false').removeClass('blocked').removeClass('isselected');
-										  })
-										  .fail(function(){
-											alert('Erreur');
-										  })
-									}
-				      			}
-				      			else{
-				      			//Si on est dans le blocage et non dans l'interdiction
-									if (classe=="true"){
-						       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-										  .done(function() {
-										  		$('.true.isselected').html('bloqué');
-										    	$('.true.isselected').addClass('blocked').removeClass('true').removeClass('isselected');
-										  })
-										  .fail(function(){
-											alert('Erreur');
-										  })
-									}
-									if (classe=="blocked"){
-						       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaineAnneFrank: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-										  .done(function() {
-										  		$('.blocked.isselected').html('non-vérouillé');
-										    	$('.blocked.isselected').addClass('true').removeClass('blocked').removeClass('isselected');
-										  })
-										  .fail(function(){
-											alert('Erreur');
-										  })
-									}
-				      			}
-				       		}
-				       		else{
-				      			var weekValue=$("#semaineClairLogis").val();
-				      			var fonctionChoisie=$("#fonctionChoisieClairLogis").val();
-				      			if(typeInterdictionAnneFrank== "interdire"){
-				      			//Si on est dans l'interdiction et non dans le blocage
-				      				if (classe=="false"){
-					       				$.post( "index.php?section=verrouillerRepas", {semaineClairLogis: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-										  .done(function() {
-										  		$('.false.isselected').html('non-vérouillé');
-										    	$('.false.isselected').addClass('true').removeClass('false').removeClass('isselected');
-										  })
-										  .fail(function(){
-										   alert('Erreur');
-										  })
-									}
-									if (classe=="true"){
-						       			$.post( "index.php?section=verrouillerRepas", {semaineClairLogis: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-										  .done(function() {
-										  		$('.true.isselected').html('vérouillé');
-										    	$('.true.isselected').addClass('false').removeClass('true').removeClass('isselected');
-										  })
-										  .fail(function(){
-											alert('Erreur');
-										  })
-									}
-									if (classe=="blocked"){
-										$.post( "index.php?section=verrouillerRepas", {semaineClairLogis: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-										  .done(function() {
-										  		$('.blocked.isselected').html('vérouillé');
-										    	$('.blocked.isselected').addClass('false').removeClass('blocked').removeClass('isselected');
-										  })
-										  .fail(function(){
-											alert('Erreur');
-										  })
-									}
-				      			}
-				      			else{
-				      			//Si on est dans le blocage et non dans l'interdiction
-									if (classe=="true"){
-						       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaineClairLogis: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-										  .done(function() {
-										  		$('.true.isselected').html('bloqué');
-										    	$('.true.isselected').addClass('blocked').removeClass('true').removeClass('isselected');
-										  })
-										  .fail(function(){
-											alert('Erreur');
-										  })
-									}
-									if (classe=="blocked"){
-						       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaineClairLogis: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
-										  .done(function() {
-										  		$('.blocked.isselected').html('non-vérouillé');
-										    	$('.blocked.isselected').addClass('true').removeClass('blocked').removeClass('isselected');
-										  })
-										  .fail(function(){
-											alert('Erreur');
-										  })
-									}
-				      			}
+				      			residence="AnneFrank";
+				      			semaine+=residence;
+				      			typeInterdiction=$(".choixDeLinterdiction"+residence+":checked").val();
+				      		}
+				      		else{
+				      			residence="ClairLogis";
+				      			semaine+=residence;
+				      			typeInterdiction=$(".choixDeLinterdiction"+residence+":checked").val();
+				      		}
+			      			var weekValue=$("#semaine"+residence).val();
+			      			var fonctionChoisie=$("#fonctionChoisie"+residence).val();
+			      			if(typeInterdiction == "interdire"){
+			      			//Si on est dans l'interdiction et non dans le blocage
+			      				if (classe=="false"){
+				       				$.post( "index.php?section=verrouillerRepas", {semaine: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+									  .done(function() {
+									  		$('.false.isselected').html('non-vérouillé');
+									    	$('.false.isselected').addClass('true').removeClass('false').removeClass('isselected');
+									  })
+									  .fail(function(){
+									   alert('Erreur');
+									  })
+								}
+								if (classe=="true"){
+					       			$.post( "index.php?section=verrouillerRepas", {semaine: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+									  .done(function() {
+									  		$('.true.isselected').html('vérouillé');
+									    	$('.true.isselected').addClass('false').removeClass('true').removeClass('isselected');
+									  })
+									  .fail(function(){
+										alert('Erreur');
+									  })
+								}
+								if (classe=="blocked"){
+									$.post( "index.php?section=verrouillerRepas", {semaine: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+									  .done(function() {
+									  		$('.blocked.isselected').html('vérouillé');
+									    	$('.blocked.isselected').addClass('false').removeClass('blocked').removeClass('isselected');
+									  })
+									  .fail(function(){
+										alert('Erreur');
+									  })
+								}
+			      			}
+			      			else{
+			      			//Si on est dans le blocage et non dans l'interdiction
+								if (classe=="true"){
+					       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaine: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+									  .done(function() {
+									  		$('.true.isselected').html('bloqué');
+									    	$('.true.isselected').addClass('blocked').removeClass('true').removeClass('isselected');
+									  })
+									  .fail(function(){
+										alert('Erreur');
+									  })
+								}
+								if (classe=="blocked"){
+					       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaine: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
+									  .done(function() {
+									  		$('.blocked.isselected').html('non-vérouillé');
+									    	$('.blocked.isselected').addClass('true').removeClass('blocked').removeClass('isselected');
+									  })
+									  .fail(function(){
+										alert('Erreur');
+									  })
+								}
 				       		}
 				       	});
 					});
