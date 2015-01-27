@@ -61,26 +61,6 @@ include_once '/view/includes/header.php';
 						</p>
 			<?php 	} 
 				?>
-								<script type="text/javascript">
-				function changerFonction(type, id)
-				{	/*Fonction redirige sur la même page en mettant les paramètres en GET */
-					javascript:location.href='index.php?section=fonction&type='+type+'&id='+id;
-				}
-				</script>
-				<script type="text/javascript">
-				$(document).ready(function() {
-			        $('body').on('click', '.deleteFonction', function() {
-			      		var value=$(this).attr('value');
-			      		console.log(value);
-			          	$('#listeDesMembres').load("index.php?section=fonction&fonction=<?php echo $_GET['fonction']; ?>&pageSupprimer=<?php echo $pageSupprimer; ?>&supprimerMembre=" +value+" "+"#listeDesMembres");  
-			       	});
-			       	$('body').on('click', '.addFonction', function() {
-			      		var value=$(this).attr('value');
-			      		console.log(value);
-			          	$('#listeDesMembres').load("index.php?section=fonction&fonction=<?php echo $_GET['fonction']; ?>&pageAjouter=<?php echo $pageAjouter; ?>&ajouterMembre=" +value+" "+"#listeDesMembres");   
-			       	}); 
-			       	}); 
-				</script>
 				</div><hr /><?php 
 				} ?>
 				<p>
@@ -153,6 +133,26 @@ include_once '/view/includes/header.php';
 					<input type="submit" />
 				</form>
 				<hr />
+				<script type="text/javascript">
+				function changerFonction(type, id)
+				{	/*Fonction redirige sur la même page en mettant les paramètres en GET */
+					javascript:location.href='index.php?section=fonction&type='+type+'&id='+id;
+				}
+				</script>
+				<script type="text/javascript">
+				$(document).ready(function() {
+				        $('body').on('click', '.deleteFonction', function() {
+				      		var value=$(this).attr('value');
+				      		console.log(value);
+				          	$('#listeDesMembres').load("index.php?section=fonction&fonction=<?php echo $_GET['fonction']; ?>&pageSupprimer=<?php echo $pageSupprimer; ?>&supprimerMembre=" +value+" "+"#listeDesMembres");  
+				       	});
+				       	$('body').on('click', '.addFonction', function() {
+				      		var value=$(this).attr('value');
+				      		console.log(value);
+				          	$('#listeDesMembres').load("index.php?section=fonction&fonction=<?php echo $_GET['fonction']; ?>&pageAjouter=<?php echo $pageAjouter; ?>&ajouterMembre=" +value+" "+"#listeDesMembres");   
+				       	}); 
+			       	}); 
+				</script>
 			</div>
 		</div>
 	</body>

@@ -12,7 +12,7 @@
 				<!-- DEBUT CALENDRIER POUR INSCRIPTION -->
 				<?php if($accessRepas){ 
 						if(!$blocageReservation) { ?> 
-				<p>Choisissez l'une des deux résidences et cliquez sur les <b id='caseVerte'>cases vertes</b> pour réserver, cliquez sur les <b id='caseOrange'>cases oranges</b> si vous voulez déréserver (vous ne pouvez plus reserver sur les <b id='caseGrise'>cases grises</b>):</p>
+				<p>Choisissez l'une des deux résidences et cliquez sur les <b id='caseVerte'>cases vertes</b> pour réserver, cliquez sur les <b id='caseOrange'>cases oranges</b> si vous voulez déréserver (vous ne pouvez plus réserver sur les <b id='caseGrise'>cases grises</b>):</p>
 				<br>
 				<div id="repasAnneFrank">
 					<div id="divSelectionEtMenu">
