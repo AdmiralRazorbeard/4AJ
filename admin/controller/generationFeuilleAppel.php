@@ -8,18 +8,21 @@ if(isAdminRepas()){
 	$residence=$_GET['residence'];
 	$date = $annee.'-'.$mois.'-'.$jour;
 	$s_midi=NULL;
+	$s_residence=NULL;
 	if($midi==1){
 		$s_midi="Midi";
 	}
 	else{
 		$s_midi="Soir";
 	}
-	/*$count = run('SELECT COUNT(*) as nbre FROM verrouillerjourrepas WHERE dateVerouiller = "'.$date.'" AND midi = '.$midi.' AND residence = '.$residence)->fetch_object();
-	//si verrouillé alors il y a forcement 0 inscrit
-	if($count->nbre >= 1)
-	{
-		return 0;
-	}*/
+	if($residence==1){
+		$s_residence="Anne Frank";
+	}
+	else{
+		$s_residence="Clair Logis";
+	}
+	$count = run('SELECT COUNT(*) as nbre FROM verrouillerjourrepas WHERE dateVerouiller = "'.$date.'" AND midi = '.$midi.' AND residence = '.$residence)->fetch_object();
+	#requete: permet de savoir si cette partie de la journée est verrouillée#
 	$listeMembre = NULL;
 	$tmp = run("SELECT nomMembre, prenomMembre
 				FROM reserverepas, membre 
@@ -28,6 +31,7 @@ if(isAdminRepas()){
 				AND residence = '".$residence."'
 				AND dateReserve = '".$date."'
 				ORDER BY nomMembre ASC");
+	#requete: prélève la liste des membres de cette partie de la journée pour cette residence#
 	if($tmp){
 		$i=0;
 		while($donnees = $tmp->fetch_object()){
@@ -36,24 +40,48 @@ if(isAdminRepas()){
 		$i++;
 		}
 	}
+	$tmp2 = run('SELECT COUNT(*) as nbre FROM reserverepas WHERE dateReserve="'.$date.'" AND midi = '.$midi.' AND residence='.$residence)->fetch_object();
+	$total=$tmp2->nbre;
 	include 'PHPExcel.php';
 	include 'PHPExcel/Writer/Excel2007.php';
 	$workbook = new PHPExcel;
 	$sheet = $workbook->getActiveSheet();
-	$styleA1 = $sheet->getStyle('A3:C3');
+	$styleA1 = $sheet->getStyle('A3:B3');
 	$styleFont = $styleA1->getFont();
 	$styleFont->setBold(true);
-	$sheet->setCellValue('A1',"Date:");
-	$sheet->setCellValue('B1',(string)date('d-m-Y', strtotime($date)));
-	$sheet->setCellValue('C1',$s_midi);
+	$sheet->setCellValue('A1',(string)date('d-m-Y', strtotime($date)).' '.$s_midi);
+	$sheet->setCellValue('B1',$s_residence);
 	$sheet->setCellValue('A3',"Nom");
 	$sheet->setCellValue('B3',"Prenom");
-	if($listeMembre!=NULL){
-		$y=4;
-		foreach($listeMembre as $key => $value){
-			$sheet->setCellValueByColumnAndRow(0, $y, $value['nomMembre']);
-			$sheet->setCellValueByColumnAndRow(1, $y, $value['prenomMembre']);
-			$y++;
+	$sheet->getColumnDimension('A')->setWidth(15);
+	$sheet->getColumnDimension('B')->setWidth(15);
+	$sheet->getColumnDimension('C')->setWidth(3);
+	$sheet->getStyle('A1:B2')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+	if($count->nbre >= 1)
+	{
+		$sheet->setCellValue('A2',"Total: 0");
+		$sheet->setCellValue('B2',"Reservation Interdite");
+	}
+	else
+	{
+		$sheet->setCellValue('A2',"Total: ".$total);
+		if($listeMembre!=NULL){
+			$y=4;
+			foreach($listeMembre as $key => $value){
+				$sheet->setCellValueByColumnAndRow(0, $y, $value['nomMembre']);
+				$sheet->setCellValueByColumnAndRow(1, $y, $value['prenomMembre']);
+				$sheet->getStyle('C'.(string)$y)->getBorders()->applyFromArray(
+			    		array(
+			    			'allborders' => array(
+			    				'style' => PHPExcel_Style_Border::BORDER_MEDIUM,
+			    				'color' => array(
+			    					'rgb' => '000000'
+			    				)
+			    			)
+			    		)
+			    );
+				$y++;
+			}
 		}
 	}
 	$nomFichier=NULL;

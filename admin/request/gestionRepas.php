@@ -28,6 +28,13 @@ function isAdminRepas()
 	}
 	return false;
 }
+function semaineEnPlus()
+{
+	$tmp = run('SELECT jour FROM horairelimite WHERE id=1')->fetch_object();
+	$jourTMP = $tmp->jour;
+	$semaineEnPlus = floor($jourTMP/7);
+	return $semaineEnPlus;
+}
 function semaine($nbreWeekPlus=0) 
 // Retourne un tableau, du lundi au dimanche, contenant numéro, nom du mois, et année
 {
@@ -59,6 +66,7 @@ function nbreInscrit($jour, $mois, $annee, $midi, $residence)
 {
 	$date = $annee.'-'.$mois.'-'.$jour;
 	$count = run('SELECT COUNT(*) as nbre FROM verrouillerjourrepas WHERE dateVerouiller = "'.$date.'" AND midi = '.$midi.' AND residence = '.$residence)->fetch_object();
+	//si verrouillé alors il y a forcement 0 inscrit
 	if($count->nbre >= 1)
 	{
 		return 0;

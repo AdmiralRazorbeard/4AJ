@@ -9,7 +9,11 @@ include_once '/view/includes/header.php';
 					<em><a href="index.php?section=horaireLimite">Définir une période limite de réservation</a></em><br />
 					<em><a href="index.php?section=bloquerReservations">Activer/Désactiver la possibilité de réserver</a></em>
 				</p>
+				<hr>
 				<div id="repasAnneFrank">
+					<p>
+						<em>Cliquez sur les cases ci-dessous pour generer des feuilles d'appel</em>
+					</p>
 					<legend>
 						Anne Frank
 					</legend>
@@ -18,7 +22,7 @@ include_once '/view/includes/header.php';
 						<select name="semaineAnneFrank" id="semaineAnneFrank">
 							<?php
 							$i = 0;
-							while($i < 8)
+							while($i < 8+$semaineDePlus)
 							{ ?>
 								<option <?php if(!empty($semaineDuAnneFrank) && $semaineDuAnneFrank==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '0'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); ?> <?php echo $mois[date('n', strtotime('Monday this week', strtotime('+'.$i.' week')))]; ?></option>
 					<?php	$i ++;
@@ -41,7 +45,7 @@ include_once '/view/includes/header.php';
 							<td>Midi</td>
 							<?php
 							foreach ($semaineAnneFrank as $key => $value) { ?>
-								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_1">
+								<td class="cliquable" value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_1">
 									<?php echo nbreInscrit($value['numero'], $value['mois'], $value['annee'], 1, 1); ?>
 								</td>
 					<?php	}
@@ -51,7 +55,7 @@ include_once '/view/includes/header.php';
 							<td>Soir</td>
 							<?php
 							foreach ($semaineAnneFrank as $key => $value) { ?>
-								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_1">
+								<td class="cliquable" value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_1">
 									<?php echo nbreInscrit($value['numero'], $value['mois'], $value['annee'], 0, 1); ?>
 								</td>
 					<?php	}
@@ -69,7 +73,7 @@ include_once '/view/includes/header.php';
 						<select name="semaineClairLogis" id="semaineClairLogis">
 							<?php
 							$i = 0;
-							while($i < 8)
+							while($i < 8+$semaineDePlus)
 							{ ?>
 								<option <?php if(!empty($semaineDuClairLogis) && $semaineDuClairLogis==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '0'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); ?> <?php echo $mois[date('n', strtotime('Monday this week', strtotime('+'.$i.' week')))]; ?></option>
 					<?php	$i ++;
@@ -92,7 +96,7 @@ include_once '/view/includes/header.php';
 							<td>Midi</td>
 							<?php
 							foreach ($semaineClairLogis as $key => $value) { ?>
-								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_2">
+								<td class="cliquable" value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_2">
 									<?php echo nbreInscrit($value['numero'], $value['mois'], $value['annee'], 1, 2); ?>
 								</td>
 					<?php	}
@@ -102,7 +106,7 @@ include_once '/view/includes/header.php';
 							<td>Soir</td>
 							<?php
 							foreach ($semaineClairLogis as $key => $value) { ?>
-								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_2">
+								<td class="cliquable" value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_2">
 									<?php echo nbreInscrit($value['numero'], $value['mois'], $value['annee'], 0, 2); ?>
 								</td>
 					<?php	}
@@ -111,7 +115,9 @@ include_once '/view/includes/header.php';
 					</table>
 				</div>
 				<br>
-				<input type="submit" onclick="location.href='index.php?section=generationNombreRepas';" value="Télécharger le nombre des prochaines reservations">
+				<hr>
+				<br>
+				<input type="submit" onclick="location.href='index.php?section=generationNombreRepas';" value="Télécharger le récapitulatif du tableau ci-dessus">
 				<form action="index.php?section=generationRecapitulatif" method="post">
 					<input value="Télécharger le récapitulatif des réservations membres" type="submit">
 					<select name="moisChoisi">

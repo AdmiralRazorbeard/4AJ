@@ -360,6 +360,9 @@ h1{
     border: 1px solid black;
     width : 150px;
 }
+.gestionRepas2 .cliquable{
+    cursor:pointer;
+}
 .gestionRepas .true
 {
     background-color: green;
