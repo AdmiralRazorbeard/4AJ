@@ -1,35 +1,31 @@
 <?php
-// On crée la session avant tout
 session_start();
 
 // On définit la configuration :
-$nbr_chiffres = 6; // Nombre de chiffres qui formeront le nombre
-
-// Là, on définit le header de la page pour la transformer en image
+$nbr_chiffres = 6;
+// Nombre de chiffres qui formeront le nombre
 header ("Content-type: image/png");
-// Là, on crée notre image
+//On définit le header de la page pour la transformer en image
 $_img = imagecreatefrompng('fond_verif_img.png');
-
-// On définit maintenant les couleurs
-// Couleur de fond :
-$arriere_plan = imagecolorallocate($_img, 0, 0, 0); // Au cas où on n'utiliserait pas d'image de fond, on utilise cette couleur-là.
-// Autres couleurs :
-$avant_plan = imagecolorallocate($_img, 240, 240, 240); // Couleur des chiffres
+//On crée notre image
+$arriere_plan = imagecolorallocate($_img, 0, 0, 0);
+$avant_plan = imagecolorallocate($_img, 240, 240, 240); 
+// Couleur des chiffres
 $grey = imagecolorallocate($_img, 186, 186, 186);
 
-##### Ici on crée la variable qui contiendra le nombre aléatoire #####
 $i = 0;
 while($i < $nbr_chiffres) {
-        $chiffre = mt_rand(0, 9); // On génère le nombre aléatoire
+        $chiffre = mt_rand(0, 9);
+        // On génère le nombre aléatoire
         $chiffres[$i] = $chiffre;
         $i++;
 }
 $nombre = null;
-// On explore le tableau $chiffres afin d'y afficher toutes les entrées qui s'y trouvent
 foreach ($chiffres as $caractere) {
+// On explore le tableau $chiffres afin d'y afficher toutes les entrées qui s'y trouvent
         $nombre .= $caractere;
 }
-##### On a fini de créer le nombre aléatoire, on le rentre maintenant dans une variable de session #####
+//On a fini de créer le nombre aléatoire, on le rentre maintenant dans une variable de session
 $_SESSION['aleat_nbr'] = $nombre;
 // On détruit les variables inutiles :
 unset($chiffre);

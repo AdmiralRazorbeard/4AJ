@@ -1,17 +1,9 @@
 <?php include_once '/view/includes/header.php'; ?>
 			<div class="restauration element contentWrapper edition_mode">
-				<?php tinymcetxt('restauration'); ?>
-				<br />
-				<!-- MENU DE LA SEMAINE -->
-				<p>
-
-
-
-				</p>
-				<!-- FIN MENU DE LA SEMAINE -->
 				<!-- DEBUT CALENDRIER POUR INSCRIPTION -->
 				<?php if($accessRepas){ 
-						if(!$blocageReservation) { ?> 
+						if(!$blocageReservation) { ?>
+				<h2 style="color: #a4b819; text-shadow: 1px 1px 0.6px #103b5a;">Réservations</h2>
 				<p>Choisissez l'une des deux résidences et cliquez sur les <b id='caseVerte'>cases vertes</b> pour réserver, cliquez sur les <b id='caseOrange'>cases oranges</b> si vous voulez déréserver (vous ne pouvez plus réserver sur les <b id='caseGrise'>cases grises</b>):</p>
 				<br>
 				<div id="repasAnneFrank">
@@ -22,6 +14,7 @@
 								<label for="semaineAnneFrank"><?php langue('Semaine du', 'Week of'); ?> : </label>
 								<select name="semaineAnneFrank" id="semaineAnneFrank">
 									<?php
+									//generation liste semaines que l'on va pouvoir ensuite selectionner pour changer la semaine grâce à jquery
 									$i = 0;
 									while($i < (10+$semaineDePlus))
 									{ ?>
@@ -38,10 +31,11 @@
 						<?php } ?>
 					</div>
 					<table>
-							<!-- Tableau de la semaine -->
+						<!-- Tableau de la semaine -->
 						<tr>
 							<td></td>
 							<?php
+							//On génère ici l'intitulé de chaque collonne du tableau
 							foreach ($semaineAnneFrank as $key => $value) { ?>
 								<th>
 									<?php langue(ucfirst($key), $value['jourEN']); ?> <?php echo $value['numero']; langue('', $value["suffixe"]); ?> <?php langue($mois[$value['mois']], $value['moisEN']); ?>
@@ -53,7 +47,8 @@
 							<td class="infoTableau">
 								<?php langue('Midi', 'Lunch'); ?>
 							</td>
-							<?php 	/*Affiche les cases pour réserver ou non*/
+							<?php 	
+							//On calcule pour chaque case sa couleur puis on l'affiche (midi)
 							foreach ($semaineAnneFrank as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 1, 1)
 								?>
@@ -66,7 +61,8 @@
 							<td class="infoTableau">
 								<?php langue('Soir', 'Dinner'); ?>
 							</td>
-							<?php 	/*Affiche les cases pour réserver ou non (ici pour le soir)*/
+							<?php
+							//On calcule pour chaque case sa couleur puis on l'affiche (soir)
 							foreach ($semaineAnneFrank as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 0, 1)
 								?>
@@ -80,7 +76,7 @@
 				<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnet'); ?>">
 				<br>
 				<br>
-						<!--  REPAS CLAIR LOGIS -->
+				<!--  REPAS CLAIR LOGIS -->
 				<div id="repasClairLogis">
 					<div id="divSelectionEtMenu">
 						<div id="selectionSemaine">
@@ -89,6 +85,7 @@
 								<label for="semaineClairLogis"><?php langue('Semaine du', 'Week of'); ?> : </label>
 								<select name="semaineClairLogis" id="semaineClairLogis">
 									<?php
+									//generation liste semaines que l'on va pouvoir ensuite selectionner pour changer la semaine grâce à jquery
 									$i = 0;
 									while($i < (10+$semaineDePlus))
 									{ ?>
@@ -120,7 +117,8 @@
 							<td class="infoTableau">
 								<?php langue('Midi', 'Lunch'); ?>
 							</td>
-							<?php 	/*Affiche les cases pour réserver ou non*/
+							<?php
+							//On calcule pour chaque case sa couleur puis on l'affiche (midi)
 							foreach ($semaineClairLogis as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 1, 2)
 								?>
@@ -133,7 +131,8 @@
 							<td class="infoTableau">
 								<?php langue('Soir', 'Dinner'); ?>
 							</td>
-							<?php 	/*Affiche les cases pour réserver ou non (ici pour le soir)*/
+							<?php
+							//On calcule pour chaque case sa couleur puis on l'affiche (soir)
 							foreach ($semaineClairLogis as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 0, 2)
 								?>
@@ -143,12 +142,16 @@
 					<?php	} ?>
 						</tr>
 					</table>
+					<!-- FIN CALENDRIER -->
 				</div>
 				<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnet from the website'); ?>">
-				<?php } else {?><h4>Réservations momentanément suspendues</h4><h4>Raison avancée: <?php echo($raisonBlocage);?></h4><?php }
+				<br>
+				<br>
+				<hr>
+				<?php } else {?><h2 style="color: #a4b819; text-shadow: 1px 1px 0.6px #103b5a;">Réservations</h2><h4>Réservations momentanément suspendues</h4><h4>Raison avancée: <?php echo($raisonBlocage);?></h4><?php }
 						} ?>
-						<br />
-				<!-- FIN CALENDRIER -->
+				<?php tinymcetxt('restauration'); ?>
+				<!-- le contenu informatif de la page est placée après l'espace de réservation -->
 					<script type="text/javascript">
 					$(document).ready(function() {
 				        $('body').on('change', '#semaineAnneFrank', function() {

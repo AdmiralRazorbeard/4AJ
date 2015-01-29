@@ -4,7 +4,7 @@ include_once 'connection.php';
 include_once 'textToolBox.php';
 // Ajoute pour la regexTextBox
 
- 	## SYSTEME D'ACTUALITE ##
+ ## SYSTEME D'ACTUALITE ##
 function isAdminActualite()
 // Fonction pour savoir si le membre est admin d'actualite
 {
@@ -38,7 +38,7 @@ function isAdminActualite()
 function listeActualite()
 // Liste toutes les actualités (tout si admin, sinon seulement ce à quoi ta fonction t'autorise, sinon seulement le public)
 {
-	verifNombreActualite();
+	CleanActualite();
 	if(!empty($_SESSION['mail']))
 	{
 		$superAdmin = run('SELECT COUNT(*) as admin FROM membre WHERE mail="'.$_SESSION['mail'].'" AND isSuperAdmin = 1')->fetch_object();
@@ -50,7 +50,7 @@ function listeActualite()
 							LIMIT 3');
 		}
 		else
-		{	// seulement ta fonction
+		{	// seulement la fonction du membre
 			$actu = run('	SELECT DISTINCT news.id AS idNews, news.titreNewsFR, news.contenuNewsFR, DATE_FORMAT(news.timestampNews, "%d/%m/%y") AS timestampNews
 					 		FROM news,fonction,newsfonction,membre,membrefonction 
 					 		WHERE news.id 	= newsfonction.id 
@@ -96,10 +96,10 @@ function deleteNews($id)
 	run('DELETE FROM newsfonction WHERE id='.$id);
 	run('DELETE FROM news WHERE id='.$id);
 }
-function verifNombreActualite()
+function CleanActualite()
 // Cela supprimer au fur et à mesure les anciennes news pour éviter de surcharger la base
 {
-	$timestamp5MoisAvant = date('Y-m-d G:i:s', strtotime('3 months ago'));
-	run('DELETE FROM news WHERE timestampNews<"'.$timestamp5MoisAvant.'"');
+	$timestamp8MoisAvant = date('Y-m-d G:i:s', strtotime('8 months ago'));
+	run('DELETE FROM news WHERE timestampNews<"'.$timestamp8MoisAvant.'"');
 }
 ?>

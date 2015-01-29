@@ -1,8 +1,4 @@
 <?php
-/* ---------------
-// Request de modifierMembres.php & modifierFonctionMembres.php
-----------------*/
-
 function isAdminMembres()
 // Fonction pour savoir si le membre est super admin (seul eux ont accès à la liste des membres)
 {

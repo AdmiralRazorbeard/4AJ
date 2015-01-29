@@ -1,4 +1,6 @@
-<?php include_once '/view/includes/header.php'; ?>
+<?php
+include_once '/view/includes/header.php';
+?>
 			<div class="contentWrapper services element edition_mode">
 					<?php tinymcetxt('services'); ?>
 			</div>

@@ -1,4 +1,6 @@
-<?php include_once '/view/includes/header.php'; ?>
+<?php
+include_once '/view/includes/header.php'; 
+?>
 
 <!-- Script pour nombre de caractère -->
 <script type="text/javascript">

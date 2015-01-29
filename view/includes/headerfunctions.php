@@ -142,9 +142,6 @@ if(isConnected())
 {
 	if(!empty($_GET['dislog']) && $_GET['dislog'] == 'true')
 	{	
-		/*unset($_SESSION['mail']);
-		unset($_SESSION['log']);
-		unset($_SESSION['superAdminOn']);*/
 		session_unset();
 		session_destroy();
 		header('location:index.php?section='.$_GET['section']);

@@ -1,6 +1,6 @@
 <?php include_once('/view/includes/headerfunctions.php');
 include_once('/view/includes/footerfunctions.php');
- // Gestion des classes actives pour les boutons et de la connexion
+// Gestion des classes actives pour les boutons et de la connexion
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,10 +11,12 @@ include_once('/view/includes/footerfunctions.php');
 		<link rel="stylesheet" href="sss/sss.css" type="text/css" media="all">
 		<meta charset="utf-8">
 		<?php if(!empty($_SESSION['superAdminOn']) && isSuperAdmin())
+		//Pour ne charger les scripts que lorsque l'on est superadministrateur
 		{?>
 		<script type="text/javascript" src="/4AJ/tinymce/tinymce.min.js"></script>
 		<script type="text/javascript">
 		tinymce.init({
+			//Pour générer la boite de dialogue lorsque l'on souhaite éditer les pages
 		    selector: "#txtarea",
 		    height: 400,
 		    language : 'fr_FR',
@@ -50,6 +52,7 @@ include_once('/view/includes/footerfunctions.php');
 		<script src="sss/sss.min.js"></script>
 		<script>
 		jQuery(function($) {
+		//vitesse du diaporama jquery
 		$('.slider').sss({speed : 5600});
 		});
 		//Permet ensuite de switcher la couleur de fond du site
@@ -60,6 +63,7 @@ include_once('/view/includes/footerfunctions.php');
 	</head>
 
 	<body style="background: none repeat scroll 0% 0% <?php if(!empty($_SESSION['backgroundBody'])){ echo $_SESSION['backgroundBody']; } else { echo '#04467e'; } ?>;">
+	<!-- La couleur du body est géré par une variable de session -->
 	<div class="mainWrapper">
 		<div onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');" onMouseOver="color('#04467e');">
 			<div class="box1 boxAdresse" onclick="location.href='index.php?section=residenceAnneFrank';">FJT ANNE FRANK<br>21, rue du bloc 62000 ARRAS</div>

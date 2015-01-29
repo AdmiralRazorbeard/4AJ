@@ -25,6 +25,7 @@ function isConnect()
 	return false;
 }
 function mailExist($mail)
+// Return true s'il existe, false sinon
 {
 	$nbre = run('SELECT COUNT(*) as nbre FROM membre WHERE mail = "'.$mail.'"');
 	$nbre = $nbre->fetch_object();

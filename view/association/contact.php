@@ -66,7 +66,7 @@ include_once '/view/includes/submenuPlateformeLogement.php';
 					$("#refreshImg").click(function() {
 						$("#imgCodeVerif").attr("src","controller/codeVerifGen/verifCodeGen.php?r=" + Math.random());
 					});
-				</script>
+					</script>
 				</fieldset>
 			</div>
 			<?php include_once '/view/includes/footer.php'; ?>

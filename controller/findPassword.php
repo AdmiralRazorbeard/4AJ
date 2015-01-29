@@ -4,7 +4,7 @@ if(empty($_GET['id']) && empty($_POST['password']))
 {
 	header('location:index.php');
 }
-########## PREMIERE PARTIE : AFFICHER FORMULAIRE ##############
+########## PREMIERE PARTIE : RECEPTION ID ##############
 if(!empty($_GET['id']))
 //l'id correspond ici au mdp de 50 caractères créé lors de la demande de changement de mot de passe
 {
@@ -31,8 +31,8 @@ if(!empty($_POST['password']) || !empty($_POST['password2']) || !empty($_POST['s
 		if((strlen($_POST['password']) >= 6 && strlen($_POST['password1']) <= 100) && ($_POST['password']==($_POST['password2'])))
 		{
 			$password = sha1($mysqli->real_escape_string($GDS.$_POST['password']));
-			// On vérifie qu'il y a bien une clé de sécurité qui correspond dans la table
 			$nbre = run('SELECT COUNT(*) as nbre FROM oubliemotdepassesecurite WHERE securite="'.$securite.'"')->fetch_object();
+			// On vérifie qu'il y a bien une clé de sécurité qui correspond dans la table
 			if($nbre->nbre == 1)
 			{
 				// On récupère l'id du membre où il faut modifier le mot de passe :

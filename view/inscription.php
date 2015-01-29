@@ -168,6 +168,7 @@
 					});
 					</script>
 					<script type="text/javascript">
+					//Pour empecher les copier coller sur les mots de passe
 					$("#password1").bind('copy cut paste', function(e) {
 					e.preventDefault();
 					});

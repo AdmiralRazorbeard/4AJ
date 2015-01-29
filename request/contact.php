@@ -1,6 +1,6 @@
 <?php
 function sendMailContact($plateformeLogementOu4AJ, $mail, $sujet, $contenu)
-// plateformeLogementOu4AJ = 2 si plateformelogement, 1 si 4AJ
+// plateformeLogementOu4AJ: 2 si plateformelogement, 1 si 4AJ
 {
 	if($plateformeLogementOu4AJ == 1)
 	{

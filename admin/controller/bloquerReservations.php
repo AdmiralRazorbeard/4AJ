@@ -4,6 +4,7 @@ if(!isAdminRepas())
 { header('location:index.php?section=error'); }
 if(!empty($_POST['choix']))
 {
+	//Pour gerer le blocage temporaire des reservations
 	$raison=NULL;
 	if(!empty($_POST['raison']) && strlen($_POST['raison']) <= 254 && !ctype_space($_POST['raison']))
 	{

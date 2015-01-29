@@ -59,6 +59,7 @@
 					</fieldset>
 				</form>
 				<script>
+				//Pour empecher le copier coller sur certain champs du formulaire
 				$("#changePassword1").bind('copy cut paste', function(e) {
 				e.preventDefault();
 				});

@@ -1,4 +1,6 @@
-<?php include_once '/view/includes/header.php'; ?>
+<?php 
+include_once '/view/includes/header.php';
+?>
 			<div class="contentWrapper">
 				<h1>Changer le mot de passe de <?php echo $infoMembre['nomMembre']; ?></h1>
 				<?php
