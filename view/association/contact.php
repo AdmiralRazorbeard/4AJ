@@ -52,8 +52,9 @@ include_once '/view/includes/submenuPlateformeLogement.php';
 									</td>
 									<td>
 										<img src="controller/codeVerifGen/fond_verif_img2.png" alt="Code de vérification2" />
-										<select required name="choix_forme" multiple="multiple" size="3">
-                                			<option value="1" selected="selected">Position 1</option>
+										<select required name="choix_forme" multiple="multiple" size="4">
+											<option value="0" selected="selected"></option>
+                                			<option value="1">Position 1</option>
                                 			<option value="2">Position 2</option>
                                 			<option value="3">Position 3</option>
                         				</select>

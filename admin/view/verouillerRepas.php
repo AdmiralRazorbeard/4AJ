@@ -14,9 +14,9 @@
 					</select>
 
 				<div id="repasAnneFrank">
-					<legend>
+					<label>
 						Verrouiller un jour de repas à résidence Anne Frank
-					</legend>
+					</label>
 					<form method="post">
 						<label for="semaineAnneFrank">Semaine du : </label>
 						<select name="semaineAnneFrank" id="semaineAnneFrank">
@@ -50,11 +50,10 @@
 							foreach ($semaineAnneFrank as $key => $value) { 
 							$tmp = boutonVerrouiller($value['numero'], $value['mois'], $value['annee'], 1, 1);
 								?>
-								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_1"
-									<?php if($tmp) { echo 'class="false">verrouillé'; } 
+								<td <?php if($tmp) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 false">vérouillé');} 
 										else{
 											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 1, 1, $fonctionChoisieAnneFrank);
-											if($tmp2) { echo 'class = "blocked">bloqué';}else{ echo 'class = "true">non-verrouillé';}
+											if($tmp2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 blocked">bloqué');}else{ echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 true">non-vérouillé');}
 										} ?>
 								</td>
 					<?php	} ?>
@@ -67,11 +66,10 @@
 							foreach ($semaineAnneFrank as $key => $value) { 
 							$tmp = boutonVerrouiller($value['numero'], $value['mois'], $value['annee'], 0, 1);
 								?>
-								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_1"
-									<?php if($tmp) { echo 'class="false">verrouillé'; } 
+								<td <?php if($tmp) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 false">vérouillé');} 
 										else{
 											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 0, 1, $fonctionChoisieAnneFrank);
-											if($tmp2) { echo 'class = "blocked">bloqué';}else{ echo 'class = "true">non-verrouillé';}
+											if($tmp2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 blocked">bloqué');}else{ echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 true">non-vérouillé');}
 										} ?>
 								</td>
 					<?php	} ?>
@@ -89,9 +87,9 @@
                 <?php } ?>
 				</select>
 				<div id="repasClairLogis">
-					<legend>
+					<label>
 						Verrouiller un jour de repas à résidence Clair Logis
-					</legend>
+					</label>
 					<form method="post">
 						<label for="semaineClairLogis">Semaine du : </label>
 						<select name="semaineClairLogis" id="semaineClairLogis">
@@ -125,11 +123,10 @@
 							foreach ($semaineClairLogis as $key => $value) { 
 							$tmp = boutonVerrouiller($value['numero'], $value['mois'], $value['annee'], 1, 2)
 								?>
-								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_2"
-									<?php if($tmp) { echo 'class="false">verrouillé'; } 
+								<td <?php if($tmp) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 false">vérouillé');} 
 										else{
-											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 1, 2, $fonctionChoisieClairLogis);
-											if($tmp2) { echo 'class = "blocked">bloqué';}else{ echo 'class = "true">non-verrouillé';}
+											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 1, 2, $fonctionChoisieAnneFrank);
+											if($tmp2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 blocked">bloqué');}else{ echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 true">non-vérouillé');}
 										} ?>
 								</td>
 					<?php	} ?>
@@ -142,11 +139,10 @@
 							foreach ($semaineClairLogis as $key => $value) { 
 							$tmp = boutonVerrouiller($value['numero'], $value['mois'], $value['annee'], 0, 2)
 								?>
-								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_2"
-									<?php if($tmp) { echo 'class="false">verrouillé'; } 
+								<td <?php if($tmp) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 false">vérouillé');} 
 										else{
-											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 0, 2, $fonctionChoisieClairLogis);
-											if($tmp2) { echo 'class = "blocked">bloqué';}else{ echo 'class = "true">non-verrouillé';}
+											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 0, 2, $fonctionChoisieAnneFrank);
+											if($tmp2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 blocked">bloqué');}else{ echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 true">non-vérouillé');}
 										} ?>
 								</td>
 					<?php	} ?>
@@ -170,10 +166,11 @@
 				       	//Mise a jour des boutons
 				       	$('body').on('click', 'td', function() {
 				      		//On collecte puis on traite les infos de la case que l'on a coché
-				      		var informations=$(this).attr('value');
-				      		var classe=$(this).attr('class');
+				      		var informations=$(this).attr('class');
+			      			var tmp = informations.split(' ');
+			      			var donnees = tmp[0].split('_');
+				      		var classe=tmp[1];
 				      		$(this).addClass('isselected');
-				      		var donnees = informations.split('_');
 				      		var residence="";
 				      		var semaine="semaine";
 				      		var typeInterdiction=null;

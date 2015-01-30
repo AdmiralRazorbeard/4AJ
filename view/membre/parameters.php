@@ -22,7 +22,7 @@
 						<label for="telPortable"><?php langue('Téléphone portable', 'Mobile phone'); ?> : </label><input type="text" name="telPortable" id="telPortable" value="<?php echo $infoMembre['telPortable']; ?>" />
 						</p>
 						<p class="form-field">
-						<label for="fonction">Fonction : </label>
+						<label>Fonction : </label>
 						<select>
 					<?php 	foreach($infoMembre['fonction'] as $k => $v)
 								{ ?>

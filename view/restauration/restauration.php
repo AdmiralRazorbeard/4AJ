@@ -52,8 +52,12 @@
 							foreach ($semaineAnneFrank as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 1, 1)
 								?>
-								<td title="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_1"
-									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } elseif($tmp == 3) { echo 'class="invalide">'; } elseif($tmp == 4) { echo 'class="falseBlocked">non-réservé'; } else { echo 'class="trueBlocked">réservé'; } ?>
+								<td <?php if($tmp == 1) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 false">non-réservé');} 
+											elseif($tmp == 2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 true">réservé');} 
+											elseif($tmp == 3) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 invalide">');} 
+											elseif($tmp == 4) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 falseBlocked">non-réservé');} 
+											else { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 trueBlocked">réservé');} 
+								?>
 								</td>
 					<?php	} ?>
 						</tr>
@@ -66,8 +70,12 @@
 							foreach ($semaineAnneFrank as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 0, 1)
 								?>
-								<td title="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_1"
-									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } elseif($tmp == 3) { echo 'class="invalide">'; } elseif($tmp == 4) { echo 'class="falseBlocked">non-réservé'; } else { echo 'class="trueBlocked">réservé'; } ?>
+								<td <?php if($tmp == 1) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 false">non-réservé');} 
+											elseif($tmp == 2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 true">réservé');} 
+											elseif($tmp == 3) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 invalide">');} 
+											elseif($tmp == 4) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 falseBlocked">non-réservé');} 
+											else { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 trueBlocked">réservé');} 
+								?>
 								</td>
 					<?php	} ?>
 						</tr>
@@ -122,8 +130,12 @@
 							foreach ($semaineClairLogis as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 1, 2)
 								?>
-								<td title="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_2"
-									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } elseif($tmp == 3) { echo 'class="invalide">'; } elseif($tmp == 4) { echo 'class="falseBlocked">non-réservé'; } else { echo 'class="trueBlocked">réservé'; } ?>
+								<td <?php if($tmp == 1) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 false">non-réservé');} 
+											elseif($tmp == 2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 true">réservé');} 
+											elseif($tmp == 3) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 invalide">');} 
+											elseif($tmp == 4) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 falseBlocked">non-réservé');} 
+											else { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 trueBlocked">réservé');} 
+								?>
 								</td>
 					<?php	} ?>
 						</tr>
@@ -136,8 +148,12 @@
 							foreach ($semaineClairLogis as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 0, 2)
 								?>
-								<td title="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_2"
-									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } elseif($tmp == 3) { echo 'class="invalide">'; } elseif($tmp == 4) { echo 'class="falseBlocked">non-réservé'; } else { echo 'class="trueBlocked">réservé'; } ?>
+								<td <?php if($tmp == 1) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 false">non-réservé');} 
+											elseif($tmp == 2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 true">réservé');} 
+											elseif($tmp == 3) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 invalide">');} 
+											elseif($tmp == 4) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 falseBlocked">non-réservé');} 
+											else { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 trueBlocked">réservé');} 
+								?>
 								</td>
 					<?php	} ?>
 						</tr>
@@ -163,11 +179,11 @@
 				          	$('#repasClairLogis').load("index.php?section=restauration&semaineClairLogis="+weekValue2+" "+"#repasClairLogis");
 				       	});
 				       	$('body').on('click', 'td', function() {
-				      		var informations=$(this).attr('title');
-				      		console.log('title');
-				      		var classe=$(this).attr('class');
+				       		var informations=$(this).attr('class');
+			      			var tmp = informations.split(' ');
+			      			var donnees = tmp[0].split('_');
+				      		var classe=tmp[1];
 				      		$(this).addClass('isselected');
-				      		var donnees = informations.split('_');
 				      		var residence="";
 				      		var semaine="semaine";
 				      		if(donnees[4]==1){

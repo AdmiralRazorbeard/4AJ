@@ -12,11 +12,11 @@ include_once '/view/includes/header.php';
 				<hr>
 				<div id="repasAnneFrank">
 					<p>
-						<em>Cliquez sur les cases ci-dessous pour generer des feuilles d'appel</em>
+						<em>Cliquez sur les cases ci-dessous pour générer des feuilles d'appel</em>
 					</p>
-					<legend>
+					<label>
 						Anne Frank
-					</legend>
+					</label>
 					<form method="post">
 						<label for="semaineAnneFrank">Semaine du : </label>
 						<select name="semaineAnneFrank" id="semaineAnneFrank">
@@ -45,7 +45,7 @@ include_once '/view/includes/header.php';
 							<td>Midi</td>
 							<?php
 							foreach ($semaineAnneFrank as $key => $value) { ?>
-								<td class="cliquable" value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_1">
+								<td <?php echo ('class="cliquable '.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1"');?>>
 									<?php echo nbreInscrit($value['numero'], $value['mois'], $value['annee'], 1, 1); ?>
 								</td>
 					<?php	}
@@ -55,7 +55,7 @@ include_once '/view/includes/header.php';
 							<td>Soir</td>
 							<?php
 							foreach ($semaineAnneFrank as $key => $value) { ?>
-								<td class="cliquable" value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_1">
+								<td <?php echo ('class="cliquable '.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1"');?>>
 									<?php echo nbreInscrit($value['numero'], $value['mois'], $value['annee'], 0, 1); ?>
 								</td>
 					<?php	}
@@ -65,9 +65,9 @@ include_once '/view/includes/header.php';
 				</div>
 				<br>
 				<div id="repasClairLogis">
-					<legend>
+					<label>
 						Clair Logis
-					</legend>
+					</label>
 					<form method="post">
 						<label for="semaineClairLogis">Semaine du : </label>
 						<select name="semaineClairLogis" id="semaineClairLogis">
@@ -96,7 +96,7 @@ include_once '/view/includes/header.php';
 							<td>Midi</td>
 							<?php
 							foreach ($semaineClairLogis as $key => $value) { ?>
-								<td class="cliquable" value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_2">
+								<td <?php echo ('class="cliquable '.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2"');?>>
 									<?php echo nbreInscrit($value['numero'], $value['mois'], $value['annee'], 1, 2); ?>
 								</td>
 					<?php	}
@@ -106,7 +106,7 @@ include_once '/view/includes/header.php';
 							<td>Soir</td>
 							<?php
 							foreach ($semaineClairLogis as $key => $value) { ?>
-								<td class="cliquable" value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_2">
+								<td <?php echo ('class="cliquable '.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2"');?>>
 									<?php echo nbreInscrit($value['numero'], $value['mois'], $value['annee'], 0, 2); ?>
 								</td>
 					<?php	}
@@ -142,9 +142,9 @@ include_once '/view/includes/header.php';
 			          	$('#repasClairLogis').load("index.php?section=gestionRepas&semaineClairLogis="+weekValue2+" "+"#repasClairLogis");
 			       	});
 					$('body').on('click', 'td', function() {
-						console.log("test");
-			      		var informations=$(this).attr('value');
-			      		var donnees = informations.split('_');
+			      		var informations=$(this).attr('class');
+			      		var tmp = informations.split(' ');
+			      		var donnees = tmp[1].split('_');
 			      		var residence="";
 			      		var semaine="semaine";
 			      		if(donnees[4]==1){
@@ -156,8 +156,6 @@ include_once '/view/includes/header.php';
 			      			semaine+=residence;
 			      		}
 		      			var weekValue=$("#semaine"+residence).val();
-		      			console.log(weekValue);
-		      			console.log(donnees[0]);
 		       			$(location).attr('href',"index.php?section=generationFeuilleAppel&semaine="+weekValue+"&jour="+donnees[0]+"&mois="+donnees[1]+"&annee="+donnees[2]+"&midi="+donnees[3]+"&residence="+donnees[4]);
 					});
 				});

@@ -52,6 +52,7 @@ h1{
 #tableCaptcha {
 border: 1px solid black;
 margin-bottom: 10px;
+font-size: 15px;
 }
 /* --- Propriétés des captcha et protection --- */
 #tableCaptcha td{
