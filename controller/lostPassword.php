@@ -1,6 +1,6 @@
 <?php
 include_once 'request/lostPassword.php';
-if(!empty($_POST['email']) && !empty($_POST['verif_code']) && !empty($_POST['choix_forme']) && empty($_POST['nickname']))
+if(!empty($_POST['email']) && !empty($_POST['verif_code']) && !empty($_POST['choix_forme']) && empty($_POST['name']))
 {
 	if (($_POST['verif_code']==$_SESSION['aleat_nbr']) && ($_POST['choix_forme']==$_SESSION['aleat_nbr_forme']))
 	{

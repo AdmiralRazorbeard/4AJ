@@ -7,8 +7,8 @@
 				<p>Choisissez l'une des deux résidences et cliquez sur les <b id='caseVerte'>cases vertes</b> pour réserver, cliquez sur les <b id='caseOrange'>cases oranges</b> si vous voulez déréserver (vous ne pouvez plus réserver sur les <b id='caseGrise'>cases grises</b>):</p>
 				<br>
 				<div id="repasAnneFrank">
-					<div id="divSelectionEtMenu">
-						<div id="selectionSemaine">
+					<div class="divSelectionEtMenu">
+						<div class="selectionSemaine">
 							<span><strong><?php langue('Repas Anne Frank', 'Anne Frank meal'); ?></strong></span>
 							<form method="post">
 								<label for="semaineAnneFrank"><?php langue('Semaine du', 'Week of'); ?> : </label>
@@ -27,7 +27,7 @@
 						</div>
 						<?php if($linkAnneFrank!=NULL){ ?>
 						<!-- Si pas de menu cette semaine, ne rien afficher -->
-						<div id="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkAnneFrank; ?>';" value="Télécharger le menu de la semaine"></div>
+						<div class="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkAnneFrank; ?>';" value="Télécharger le menu de la semaine"></div>
 						<?php } ?>
 					</div>
 					<table>
@@ -52,7 +52,7 @@
 							foreach ($semaineAnneFrank as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 1, 1)
 								?>
-								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_1"
+								<td title="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_1"
 									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } elseif($tmp == 3) { echo 'class="invalide">'; } elseif($tmp == 4) { echo 'class="falseBlocked">non-réservé'; } else { echo 'class="trueBlocked">réservé'; } ?>
 								</td>
 					<?php	} ?>
@@ -66,20 +66,20 @@
 							foreach ($semaineAnneFrank as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 0, 1)
 								?>
-								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_1"
+								<td title="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_1"
 									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } elseif($tmp == 3) { echo 'class="invalide">'; } elseif($tmp == 4) { echo 'class="falseBlocked">non-réservé'; } else { echo 'class="trueBlocked">réservé'; } ?>
 								</td>
 					<?php	} ?>
 						</tr>
 					</table>
 				</div>
-				<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnet'); ?>">
+				<input class="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnet'); ?>">
 				<br>
 				<br>
 				<!--  REPAS CLAIR LOGIS -->
 				<div id="repasClairLogis">
-					<div id="divSelectionEtMenu">
-						<div id="selectionSemaine">
+					<div class="divSelectionEtMenu">
+						<div class="selectionSemaine">
 							<span><strong><?php langue('Repas Clair Logis', 'Clair Logis meal'); ?></strong></span>
 							<form method="post">
 								<label for="semaineClairLogis"><?php langue('Semaine du', 'Week of'); ?> : </label>
@@ -98,7 +98,7 @@
 						</div>
 						<?php if($linkClairLogis!=NULL){ ?>
 						<!-- Si pas de menu cette semaine, ne rien afficher -->
-						<div id="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkClairLogis; ?>';" value="Télécharger le menu de la semaine"></div>
+						<div class="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkClairLogis; ?>';" value="Télécharger le menu de la semaine"></div>
 						<?php } ?>
 					</div>
 					<table>
@@ -122,7 +122,7 @@
 							foreach ($semaineClairLogis as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 1, 2)
 								?>
-								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_2"
+								<td title="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_1_2"
 									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } elseif($tmp == 3) { echo 'class="invalide">'; } elseif($tmp == 4) { echo 'class="falseBlocked">non-réservé'; } else { echo 'class="trueBlocked">réservé'; } ?>
 								</td>
 					<?php	} ?>
@@ -136,7 +136,7 @@
 							foreach ($semaineClairLogis as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 0, 2)
 								?>
-								<td value="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_2"
+								<td title="<?php echo $value['numero']; ?>_<?php echo $value['mois']; ?>_<?php echo $value['annee']; ?>_0_2"
 									<?php if($tmp == 1) { echo 'class="false">non-réservé'; } elseif($tmp == 2) { echo 'class = "true">réservé';  } elseif($tmp == 3) { echo 'class="invalide">'; } elseif($tmp == 4) { echo 'class="falseBlocked">non-réservé'; } else { echo 'class="trueBlocked">réservé'; } ?>
 								</td>
 					<?php	} ?>
@@ -144,7 +144,7 @@
 					</table>
 					<!-- FIN CALENDRIER -->
 				</div>
-				<input id="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnet from the website'); ?>">
+				<input class="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnet from the website'); ?>">
 				<br>
 				<br>
 				<hr>
@@ -156,7 +156,6 @@
 					$(document).ready(function() {
 				        $('body').on('change', '#semaineAnneFrank', function() {
 				      		var weekValue=$("#semaineAnneFrank").val();
-				      		console.log(weekValue);
 				          	$('#repasAnneFrank').load("index.php?section=restauration&semaineAnneFrank="+weekValue+" "+"#repasAnneFrank");
 				       	});
 				       	$('body').on('change', '#semaineClairLogis', function() {
@@ -164,7 +163,8 @@
 				          	$('#repasClairLogis').load("index.php?section=restauration&semaineClairLogis="+weekValue2+" "+"#repasClairLogis");
 				       	});
 				       	$('body').on('click', 'td', function() {
-				      		var informations=$(this).attr('value');
+				      		var informations=$(this).attr('title');
+				      		console.log('title');
 				      		var classe=$(this).attr('class');
 				      		$(this).addClass('isselected');
 				      		var donnees = informations.split('_');

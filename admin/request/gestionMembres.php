@@ -75,8 +75,6 @@ function supprimerMembre($id)
 	run('UPDATE news SET id_membre=NULL WHERE id_membre='.$id);
 	run('DELETE FROM membre WHERE id='.$id);
 }
-
-
 // -------------- //
 // ---- PAGE ---- //
 // -------------- //

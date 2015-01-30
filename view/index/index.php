@@ -12,7 +12,7 @@
 					<?php
 					foreach ($allActualite as $key => $value) { ?>
 						<h4><?php echo htmlspecialchars($value['titre']); ?></h4>
-						<em id="dateNews"> Posté le <?php echo $value['timestamp']; ?></em>
+						<em class="dateNews"> Posté le <?php echo $value['timestamp']; ?></em>
 						<?php if(isAdminActualite()) 
 						{ ?>
 						<p>

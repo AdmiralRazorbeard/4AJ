@@ -136,7 +136,7 @@ nav li:hover ul li {
     position:relative;
     top:4px;
 }
-#connexion input[type=password], #connexion input[type=text]{
+#connexion input[type=password], #connexion input[type=email]{
    background-color: #075da6;
    color:white;
 }
@@ -410,6 +410,7 @@ margin-bottom: 10px;
 }
 #tableCaptcha td{
     padding: 0px 20px 0px 20px;
+    text-align: center;
 }
 #tableCaptcha input{
     position: relative;
@@ -442,7 +443,7 @@ margin-bottom: 10px;
     color:#04467e;
     margin-bottom: 0px;
 }
-#aLaUne #dateNews{
+#aLaUne .dateNews{
     color:#85a5c0;
 }
 #aLaUne p{
@@ -533,7 +534,7 @@ margin-bottom: 10px;
     color:#555555;
     text-shadow: 0.5px 0.5px 0.4px black;
 }
-.restauration #buttonDisconnect
+.restauration .buttonDisconnect
 {
     margin-top: 7px;
 }
@@ -584,18 +585,18 @@ margin-bottom: 10px;
 {
     color:#000000;
 }
-.restauration #divSelectionEtMenu{
+.restauration .divSelectionEtMenu{
     height:45px;
 }
-.restauration #selectionSemaine{
+.restauration .selectionSemaine{
     float: left;
     margin-right: 15px;
 }
-.restauration #lienMenu input{
+.restauration .lienMenu input{
     position:relative;
     top:10px;
 }
-.restauration #lienMenu img{
+.restauration .lienMenu img{
     position:relative;
     top:15px;
 }

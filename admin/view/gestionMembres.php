@@ -105,7 +105,9 @@ include_once '/view/includes/header.php';
 					$(document).ready(function() {
 				        $('body').on('click', '.dellmb', function() {
 				      		var value=$(this).attr('value');
-				          	$('.contentWrapper').load("index.php?section=gestionMembres&page=<?php echo $page; ?>&orderBy=<?php echo $orderBy; ?>&delete="+value+" "+".contentWrapper");
+				      		if(confirm('Attention ! Si le membre a reservé des repas, les enregistrements dans la base de donnée seront supprimés, souhaitez-vous continuer?')){
+				          		$('.contentWrapper').load("index.php?section=gestionMembres&page=<?php echo $page; ?>&orderBy=<?php echo $orderBy; ?>&delete="+value+" "+".contentWrapper");
+				          	}
 				       	});
 				       	$('body').change('#orderBy', function () {
 							var value2 = $("#orderBy" ).val();

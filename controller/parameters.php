@@ -19,6 +19,25 @@ if(!empty($_POST['recevoirMail']))
 	}
 
 }
+if(!empty($_POST['supprimerMembre']))
+{
+	if(!empty($_SESSION['log']) && $_SESSION['log'] == 1 && !empty($_SESSION['mail']))
+	{
+		$mail = $_SESSION['mail'];
+		$resultat=supprimerMembre($mail);
+		if($resultat==1){
+			session_unset();
+			session_destroy();
+			header('location:index.php');
+		}
+		else if($resultat==2){
+			$messageSuppressionCompte="Suppression impossible. Vous avez réalisé des réservation de repas, contactez l'administrateur du site pour supprimer votre compte ou attendez que les réservations soient enregistrées pour pouvoir supprimer votre compte.";
+		}
+		else if($resultat==3){
+			$messageSuppressionCompte="Suppression impossible car vous êtes Super Administrateur";
+		}
+	}
+}
 if(isset($_POST['modification']))
 //Verification de l'utilisation du formulaire
 {

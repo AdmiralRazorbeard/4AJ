@@ -56,6 +56,7 @@ margin-bottom: 10px;
 /* --- Propriétés des captcha et protection --- */
 #tableCaptcha td{
     padding: 0px 20px 0px 20px;
+    text-align: center
 }
 #tableCaptcha input{
     position: relative;

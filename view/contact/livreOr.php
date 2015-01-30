@@ -33,7 +33,7 @@ function v_maxlength(id, crid, max)
 				<?php if($admin) { ?>
 				<form method="post">
 					<b>Admin</b> : nombre de billet par page : 
-					<input type="text" required size="1" placeholder="<?php echo $nbreBilletParPage; ?>" name="nbreBilletParPage" /><input type="submit" colls="2" /><br /><br />
+					<input type="text" required size="1" placeholder="<?php echo $nbreBilletParPage; ?>" name="nbreBilletParPage" /><input type="submit"/><br /><br />
 				</form>
 				<p>
 					<b><a href="admin/index.php?section=livreOrAConfirmer">Partie admin</a></b>
@@ -84,14 +84,14 @@ function v_maxlength(id, crid, max)
 					<form method="post">
 						<p class="form-field">
 						<label for="nom"><?php langue('Votre nom* :', 'Your name* :'); ?></label>
-						<input type="text" name="nom" id="nom" />
+						<input required type="text" name="nom" id="nom" />
 						</p>
 						<p class="form-field">
 						<label for="email"><?php langue('Votre email :', 'Your mail :'); ?></label>
-						<input type="text" name="mail" id="email" />
+						<input type="email" name="mail" id="email" />
 						</p>
 						<p class="hp">
-    						<label>Si vous êtes un humain, laissez ce champ vide</label>
+    						<label>Si vous êtes un humain, laissez ce champ vide*</label>
    							<input type="text" name="nickname">
 						</p>
 						<p class="message_info"> 
@@ -99,7 +99,7 @@ function v_maxlength(id, crid, max)
 						</p>
 						<p class="form-field">
 						<label for="contenu"><?php langue('Contenu*', 'Content*'); ?> : </label>
-						<textarea name="contenu" id="contenu" cols="50" rows="10" ></textarea>
+						<textarea required name="contenu" id="contenu" cols="50" rows="10" ></textarea>
 						</p>
 						<p class="message_info"><em><?php langue('Il vous reste', 'You have'); ?> <span id="carac_reste_textarea_1"></span> <?php langue('caractères', 'characters left'); ?>.</em></p>
 						<!-- Script pour le nombre de caractère -->
@@ -115,9 +115,9 @@ function v_maxlength(id, crid, max)
 						<em><?php langue('Répondez aux deux questions de securité*:', 'Answer the two security questions*:'); ?></em><br>
 							<table id="tableCaptcha">
 							   <tr>
-							       <td align="center"><em><?php langue('Quelle est le nombre indiqué ci-dessous?', 'What is the number below?'); ?></em>
+							       <td><em><?php langue('Quelle est le nombre indiqué ci-dessous?', 'What is the number below?'); ?></em>
 							       </td>
-							       <td align="center">								
+							       <td>								
 										<?php if($_SESSION['aleat_nbr_forme']==1)
 										{ ?>
 										<em><?php langue('Quelle est la position du carré ?', 'Where is the square?'); ?></em><br>
@@ -133,12 +133,12 @@ function v_maxlength(id, crid, max)
 									</td>
 								</tr>
 								<tr>
-									<td align="center">
-										<img id="refreshImg" src="controller/codeVerifGen/refresh.png" alt="Refresh image" /><img src="controller/codeVerifGen/verifCodeGen.php" alt="Code de vérification" id="imgCodeVerif"/><input type="text" name="verif_code" />
+									<td>
+										<img id="refreshImg" src="controller/codeVerifGen/refresh.png" alt="Refresh image" /><img src="controller/codeVerifGen/verifCodeGen.php" alt="Code de vérification" id="imgCodeVerif"/><input required type="text" name="verif_code" />
 									</td>
-									<td align="center">
+									<td>
 										<img src="controller/codeVerifGen/fond_verif_img2.png" alt="Code de vérification2" />
-										<select name="choix_forme" multiple="multiple" size="3">
+										<select required name="choix_forme" multiple="multiple" size="3">
                                 			<option value="1" selected="selected">Position 1</option>
                                 			<option value="2">Position 2</option>
                                 			<option value="3">Position 3</option>

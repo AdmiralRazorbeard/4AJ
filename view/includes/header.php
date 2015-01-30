@@ -100,8 +100,8 @@ include_once('/view/includes/footerfunctions.php');
 				else { ?>
 				<div class="connexion_text connexion_bold"><?php langue('Connexion', 'Log in'); ?></div>
 				<form method="post">
-					<div class="connexion_text"><label for="mail">Email :</label></div><div><input type="text" id="mail" name="mail" /></div>
-					<div class="connexion_text"><label for="password"><?php langue('Mot de passe :', 'Password :'); ?></label></div><div><input type="password" id="password" name="password" /></div>
+					<div class="connexion_text"><label for="mail">Email :</label></div><div><input required type="email" id="mail" name="mail" /></div>
+					<div class="connexion_text"><label for="password"><?php langue('Mot de passe :', 'Password :'); ?></label></div><div><input required type="password" id="password" name="password" /></div>
 					<div class="connexion_submit"><input id="submit" type="submit" value="<?php langue('Envoyer', 'Send'); ?>"/></div>
 				</form>
 				<div class="connexion_text"><em><a id="lostPwd" href="index.php?section=lostPassword"><?php langue('Mot de passe perdu?', 'Forgotten your password?'); ?></a></em></div>

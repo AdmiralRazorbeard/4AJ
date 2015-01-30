@@ -166,7 +166,7 @@ if(!empty($_POST['mail']) && !empty($_POST['password']))
 	}
 	elseif($nbreMembre == 1.5)
 	{
-		$message = "Le mot de passe est invalide.";
+		$message = "Mot de passe invalide.";
 	}
 	else
 	{

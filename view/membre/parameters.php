@@ -58,6 +58,20 @@
 						<input type="submit" <?php langue('value=Valider', 'value=Validate'); ?>>
 					</fieldset>
 				</form>
+				<?php 	
+				if(isSuperAdmin() == false) { ?>
+				<!-- Si superAdmin: impossible de se désinscrire -->
+				<form method="post">
+					<fieldset>
+						<?php if(!empty($messageSuppressionCompte))
+						{ ?>
+							<em><?php echo $messageSuppressionCompte; ?></em><br>
+						<?php } ?>
+						<input type="hidden" name="supprimerMembre" value="true"/>
+						<input type="submit" value="<?php langue('Supprimer mon compte', 'Delete my account'); ?>" onclick="return(confirm('Etes-vous certain de vouloir supprimer votre compte?'))"/>
+					</fieldset>
+				</form>
+				<?php }	?>
 				<script>
 				//Pour empecher le copier coller sur certain champs du formulaire
 				$("#changePassword1").bind('copy cut paste', function(e) {
@@ -70,16 +84,6 @@
 				e.preventDefault();
 				});
 				</script>
-				<?php 	
-				if(isSuperAdmin() == false) { ?>
-				<!-- Si superAdmin: impossible de se désinscrire -->
-				<form action="index.php?section=deleteAccount" method="post" enctype="multipart/form-data" >
-                	<fieldset>
-                        <label><?php langue('Se désinscrire', 'Unsubscribe'); ?> :</label> <input type="checkbox" name="deleteAccount" onclick="return(confirm('Etes-vous sûr de vouloir supprimer votre compte définitivement? Si oui: Ok puis Envoyer'));"/>                      
-                    	<input type="submit" class="submit" name="send" <?php langue('value="Envoyer"', 'value="Send"'); ?>/>
-                	</fieldset>
-            	</form>
-            	<?php }	?>
 			</div>	
 		</div>		
 	</body>
