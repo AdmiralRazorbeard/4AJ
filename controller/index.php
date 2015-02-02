@@ -6,6 +6,7 @@ if(!empty($_SESSION['message']))
 	unset($_SESSION['message']);
 }
 $allActualite = listeActualite();
+include_once 'tinymcetxt.php';
 $_SESSION['backgroundBody']='#3c255e';
 include_once 'view/index/index.php';
 ?>

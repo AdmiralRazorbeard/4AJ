@@ -349,6 +349,14 @@ nav li:hover ul li {
 	21%,97%{top:-25px;margin-left:775px;}
 	100% {top:35px;margin-left:775px;}
 }
+#dateAujourdhui{
+    position: absolute;
+    margin-left: 800px;
+    top: 190px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1.2px 1.2px 1px black;
+}
 
 /*  --------------  */
 /*  --- CONTENU --  */
@@ -424,21 +432,23 @@ font-size: 15px;
     display: none;
 }
 /*  --- Propriétés de la section index --  */
-#plateformeImg1{
-    position: absolute;
-    margin: 20px 0px 0px 40px;
-}
 #aLaUneImg {
     position: relative;
-    left: 690px;
+    right: 18px;
+}
+#indexContent{
+    float:left;
+    width: 680px;
 }
 #aLaUne{
     width: 250px;
     height: 400px;
-    position: relative;
-    left: 710px;
+    padding-right: 5px;
     overflow-y: scroll;
+    overflow-x:hidden;
     font-size: 11px;
+    position:relative;
+    left:25px;
 }
 #aLaUne h4{
     color:#04467e;

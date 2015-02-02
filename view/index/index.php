@@ -1,10 +1,12 @@
 <?php include_once '/view/includes/header.php'; ?>
 <?php include_once '/view/includes/footerfunctions.php'; ?>
 			<div class="contentWrapper index element">
-				<a href="index.php?section=plateformeLogement"><img id="plateformeImg1" src="/4AJ/view/graphicRessources/plateformelogement1.jpg" alt="Plateforme Logement"/></a>
-				<img id="aLaUneImg" src="/4AJ/view/graphicRessources/alaune.png" alt="A la une"/>
+				<div id="indexContent">
+					<?php tinymcetxt('index'); ?>
+				</div>
 				<div id="aLaUne">
 				<!-- Bandeau actualité -->
+				<img id="aLaUneImg" src="/4AJ/view/graphicRessources/alaune.png" alt="A la une"/>
 					<?php if(isAdminActualite()) 
 					{ ?>
 					<a href="admin/index.php?section=actualite">Créer une actualité</a>
@@ -25,6 +27,7 @@
 	<?php			} ?>
 				</div>
 			</div>
+			<?php include_once '/view/includes/footer.php'; ?>
 		</div>
 	</body>
 </html>

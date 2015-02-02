@@ -2,9 +2,9 @@
 	<div id="visiteurs">
 		<?php 
 		if($_SESSION['langue'] == 2){ 
-			echo 'Number of visitors : '.nombreVisiteur(); 
+			echo 'Total visitors : '.nombreVisiteur(); 
 		}
-		else{ echo 'Nombre de visiteurs : '.nombreVisiteur(); 
+		else{ echo 'Total visiteurs : '.nombreVisiteur(); 
 		}	
 		?>
 	</div>

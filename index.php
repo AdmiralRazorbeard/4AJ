@@ -1,6 +1,7 @@
 <?php
 session_start();
 date_default_timezone_set('Europe/Paris');
+
 include_once('request/connectionSQL.php');
 $mysqli = connection();
 ###### LANGUAGE #######
@@ -17,7 +18,14 @@ function langue($FR, $EN)
 	else 
 		{ echo htmlspecialchars($FR); }
 }
-####### FIN GESTION LANGUAGE #######
+function dateAujourdhui()
+{
+	$mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
+	$jours = array('', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche');
+	return $jours[date('N')].' '.date('j').' '.$mois[date('n')].' '.date('Y');
+}
+$dateAujourdhui=dateAujourdhui();
+####### FIN GESTION LANGUAGE et DATE#######
 
 
 if (empty($_GET['section']))	

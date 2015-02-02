@@ -63,11 +63,13 @@ include_once '/view/includes/header.php';
 				?>
 				</div><hr /><?php 
 				} ?>
-				<p>
+				<p>	
+					<em>Informations:</em><br>
 					<em>-Vous pouvez modifier les droits de chaque fonction en cliquant sur les cases (les super administrateurs ont eux tous les droits).</em><br>
 					<em>-Assignez ou supprimez des fonctions aux membres en cliquant sur l'intitulé de la fonction (dans la colonne "Nom fonction").</em><br>
 					<em>-Toute personne qui s'inscrit sur le site reçoit la fonction "public" par défaut.</em><br>
 					<em>-Un membre peut cumuler plusieurs fonctions à la fois, on ne peut pas lui retirer la fonction "public"</em><br>
+					<em>-Comment se cumulent les fonctions? Réponse: (Exemple) Si un membre possède à la fois une fonction A qui lui autorise à réserver le midi ET une fonction B qui lui interdit de réserver le midi alors le membre pourra réserver le midi.</em><br>
 				</p>
 				<table>
 					<tr>
@@ -132,6 +134,9 @@ include_once '/view/includes/header.php';
 					<label for="nom">Ajouter une nouvelle fonction : </label><input type="text" name="nom" id="nom" />
 					<input type="submit" />
 				</form>
+				<p>	
+					<em>Pour donner des fonctions aux membres, cliquez sur le nom de la fonction correspondante dans la première colonne du tableau.</em><br>
+				</p>
 				<hr />
 				<script type="text/javascript">
 				function changerFonction(type, id)

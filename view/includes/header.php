@@ -116,6 +116,7 @@ include_once('/view/includes/footerfunctions.php');
 			</div>
 		</div>
 		<div id="banniere" onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');" onMouseOver="color('#04467e');">
+			<a href="index.php?section=index"><em id="dateAujourdhui"><?php echo $dateAujourdhui; ?></em></a>
 			<a href="index.php?section=index"><img id="bannierelogo" src="/4AJ/view/graphicRessources/bannierelogo.png" alt="logo bannière"/></a>
 			<ul id="sContent">
 				<li><a href="index.php?section=index"><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></a></li>

@@ -1,13 +1,20 @@
 <?php include_once '/view/includes/header.php'; ?>
 
 			<div class="contentWrapper">
-				<h1>Verrouiller un jour</h1>
+				<h1>Interdire/Bloquer des journées</h1>
 				<a href="index.php?section=gestionRepas">Retour</a><br>
-
+					<p>	
+						<em>Différences entre interdire et bloquer:</em><br>
+						<em>-Si vous interdisez une journée, plus personne ne pourra réserver pour cette journée; si une personne a réservé avant que vous ayez réalisé une interdiction sur cette journée alors sa réservation sera considérée comme nulle.</em><br>
+						<em>-L'interdiction est idéale pour interdire des journées comme des jours fériés, des vacances etc ...</em><br>
+						<em>-Si vous bloquez une journée les personnes ne pourront plus réserver, mais si des personnes ont reservé avant que vous n'ayez réalisé un blocage alors leurs réservations seront bien comptabilisées.</em><br>
+						<em>-Le blocage est idéal si vous voulez créer par exemple une limite de réservation dans le temps.</em><br>
+						<em>-Vous pouvez créer des blocages différents en fonction des fonctions possédées par les membres (contrairement aux interdictions qui s'appliquent à tout le monde).</em><br>
+					</p>
 					<!-- Choix de l'interdiction ou du simple blocage -->
 					<input type="radio" name="choixDeLinterdictionAnneFrank" class="choixDeLinterdictionAnneFrank" checked="checked" value="interdire"/> <label>Interdire les réservations</label>
                     <input type="radio" name="choixDeLinterdictionAnneFrank" class="choixDeLinterdictionAnneFrank" value="bloquer"/> <label>Bloquer les réservations</label>
-                    <select id="fonctionChoisieAnneFrank" name="fonctionChoisieAnneFrank">
+                    <select disabled id="fonctionChoisieAnneFrank" name="fonctionChoisieAnneFrank">
                     <?php foreach ($membreFonction as $key => $listeFonction) { ?>
                     	<option value="<?php echo $listeFonction['id']; ?>"><?php if($listeFonction['nom']=="Public"){ echo "Tout le monde"; }else{ echo $listeFonction['nom'];} ?></option>
                     <?php } ?>
@@ -81,7 +88,7 @@
 			<!-- Choix de l'interdiction ou du simple blocage -->
 				<input type="radio" name="choixDeLinterdictionClairLogis" class="choixDeLinterdictionClairLogis" checked="checked" value="interdire"/> <label>Interdire les réservations</label>
                 <input type="radio" name="choixDeLinterdictionClairLogis" class="choixDeLinterdictionClairLogis" value="bloquer"/> <label>Bloquer les réservations</label>
-                <select id="fonctionChoisieClairLogis" name="fonctionChoisieClairLogis">
+                <select disabled id="fonctionChoisieClairLogis" name="fonctionChoisieClairLogis">
                 <?php foreach ($membreFonction as $key => $listeFonction) { ?>
                 	<option value="<?php echo $listeFonction['id']; ?>"><?php if($listeFonction['nom']=="Public"){ echo "Tout le monde"; }else{ echo $listeFonction['nom'];} ?></option>
                 <?php } ?>
@@ -162,6 +169,25 @@
 				      		var weekValue2=$("#semaineClairLogis").val();
 				      		var fonctionChoisie2=$("#fonctionChoisieClairLogis").val();
 				          	$('#repasClairLogis').load("index.php?section=verrouillerRepas&semaineClairLogis="+weekValue2+"&fonctionClairLogis="+fonctionChoisie2+" "+"#repasClairLogis");
+				       	});
+				       	//Deux fonction pour desactiver le select avec les differentes fonction lorsque l'on est sur une interdiction et non un blocage
+				       	$('body').on('click', '.choixDeLinterdictionAnneFrank', function() {
+				      		var selection=$(".choixDeLinterdictionAnneFrank:checked").val();
+				      		if(selection=="bloquer"){
+				      			$('#fonctionChoisieAnneFrank').removeAttr('disabled');
+				      		}
+				      		if(selection=="interdire"){
+				      			$('#fonctionChoisieAnneFrank').attr('disabled', 'disabled');
+				      		}
+				       	});
+				       	$('body').on('click', '.choixDeLinterdictionClairLogis', function() {
+				      		var selection=$(".choixDeLinterdictionClairLogis:checked").val();
+				      		if(selection=="bloquer"){
+				      			$('#fonctionChoisieClairLogis').removeAttr('disabled');
+				      		}
+				      		if(selection=="interdire"){
+				      			$('#fonctionChoisieClairLogis').attr('disabled', 'disabled');
+				      		}
 				       	});
 				       	//Mise a jour des boutons
 				       	$('body').on('click', 'td', function() {
