@@ -18,7 +18,7 @@ function langue($FR, $EN)
 		{ echo htmlspecialchars($FR); }
 }
 
-if (empty($_GET['section']))	
+if (empty($_GET['section']) || ($_GET['section']!='mobile'))	
 {
     header('location:index.php?section=mobile');
 }

@@ -105,7 +105,7 @@ include_once('/view/includes/footerfunctions.php');
 					<div class="connexion_submit"><input id="submit" type="submit" value="<?php langue('Envoyer', 'Send'); ?>"/></div>
 				</form>
 				<div class="connexion_text"><em><a id="lostPwd" href="index.php?section=lostPassword"><?php langue('Mot de passe perdu?', 'Forgotten your password?'); ?></a></em></div>
-				<div class="language"><a href="index.php?section=FR<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/uk.png" alt="uk"/></a><a href="mobile/index.php?section=mobile">mobile</a></div>
+				<div class="language"><a href="index.php?section=FR<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/uk.png" alt="uk"/></a></div>
 				<div class="connexion_inscription connexion_bold"><a href="index.php?section=inscription"><?php langue('Inscription', 'Register'); ?></a></div>
 				<?php } ?>
 				<?php
@@ -146,7 +146,7 @@ include_once('/view/includes/footerfunctions.php');
 				<li onMouseOver="color('#b36e30');" onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');"><a <?php if (openSection('services')){?>id="active_item4"<?php } else { ?>id="item4"<?php } ?> href="index.php?section=services">Services</a>
 				<li onMouseOver="color('#4e0105');" onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');"><a <?php if (openSous_Section_contact()){?>id="active_item5"<?php } else { ?>id="item5"<?php } ?> href="index.php?section=contact">Contact</a>
 					<ul id="s_item5">
-      					<li><a class="correct_size" href="index.php?section=faq">FAQ</a></li>
+      					<li><a class="correct_size" href="index.php?section=nousSoutenir"><?php langue('Nous soutenir', 'Support us'); ?></a></li>
       					<li><a class="correct_size" href="index.php?section=liensUtiles"><?php langue('Liens utiles', 'Helpful links'); ?></a></li>
       					<li><a class="correct_size" href="index.php?section=memento"><?php langue('Mémento', 'Summary'); ?></a></li>
       					<li><a class="last_item correct_size" href="index.php?section=livreOr"><?php langue('Livre d\'or', 'Guest book'); ?></a></li>

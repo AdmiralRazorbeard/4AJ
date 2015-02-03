@@ -1,5 +1,6 @@
 <?php
 include_once 'request/livreOr.php';
+$_SESSION['backgroundBody']='#4e0105';
 $admin = false;
 if(isAdminLivreOr())
 {	$admin = true; }

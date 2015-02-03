@@ -2,7 +2,7 @@
 include_once '/view/includes/header.php'; 
 ?>
 			<div class="contentWrapper contact element edition_mode">
-					<?php tinymcetxt('faq'); ?>
+					<?php tinymcetxt('nousSoutenir'); ?>
 			</div>
 			<?php include_once '/view/includes/footer.php'; ?>
 		</div>

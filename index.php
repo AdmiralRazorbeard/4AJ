@@ -97,9 +97,9 @@ elseif ($_GET['section'] == 'contact')
 {
 	include_once 'controller/contact.php';
 }
-elseif ($_GET['section'] == 'faq')
+elseif ($_GET['section'] == 'nousSoutenir')
 {
-	include_once 'controller/faq.php';
+	include_once 'controller/nousSoutenir.php';
 }
 elseif ($_GET['section'] == 'memento')
 {
@@ -129,5 +129,9 @@ elseif ($_GET['section'] == 'deleteAccount')
 elseif ($_GET['section'] == 'findPassword')
 {
 	include_once('controller/findPassword.php');
+}
+else
+{
+	header('location:index.php?section=index');
 }
 ?>
