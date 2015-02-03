@@ -52,10 +52,10 @@
 							foreach ($semaineAnneFrank as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 1, 1)
 								?>
-								<td <?php if($tmp == 1) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 false">non-réservé');} 
+								<td <?php if($tmp == 1) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 false">libre');} 
 											elseif($tmp == 2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 true">réservé');} 
 											elseif($tmp == 3) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 invalide">');} 
-											elseif($tmp == 4) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 falseBlocked">non-réservé');} 
+											elseif($tmp == 4) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 falseBlocked">libre');} 
 											else { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 trueBlocked">réservé');} 
 								?>
 								</td>
@@ -70,10 +70,10 @@
 							foreach ($semaineAnneFrank as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 0, 1)
 								?>
-								<td <?php if($tmp == 1) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 false">non-réservé');} 
+								<td <?php if($tmp == 1) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 false">libre');} 
 											elseif($tmp == 2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 true">réservé');} 
 											elseif($tmp == 3) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 invalide">');} 
-											elseif($tmp == 4) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 falseBlocked">non-réservé');} 
+											elseif($tmp == 4) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 falseBlocked">libre');} 
 											else { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 trueBlocked">réservé');} 
 								?>
 								</td>
@@ -81,7 +81,7 @@
 						</tr>
 					</table>
 				</div>
-				<input class="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnet'); ?>">
+				<input class="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnect'); ?>">
 				<br>
 				<br>
 				<!--  REPAS CLAIR LOGIS -->
@@ -130,10 +130,10 @@
 							foreach ($semaineClairLogis as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 1, 2)
 								?>
-								<td <?php if($tmp == 1) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 false">non-réservé');} 
+								<td <?php if($tmp == 1) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 false">libre');} 
 											elseif($tmp == 2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 true">réservé');} 
 											elseif($tmp == 3) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 invalide">');} 
-											elseif($tmp == 4) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 falseBlocked">non-réservé');} 
+											elseif($tmp == 4) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 falseBlocked">libre');} 
 											else { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 trueBlocked">réservé');} 
 								?>
 								</td>
@@ -148,10 +148,10 @@
 							foreach ($semaineClairLogis as $key => $value) { 
 							$tmp = boutonReserver($value['numero'], $value['mois'], $value['annee'], 0, 2)
 								?>
-								<td <?php if($tmp == 1) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 false">non-réservé');} 
+								<td <?php if($tmp == 1) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 false">libre');} 
 											elseif($tmp == 2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 true">réservé');} 
 											elseif($tmp == 3) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 invalide">');} 
-											elseif($tmp == 4) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 falseBlocked">non-réservé');} 
+											elseif($tmp == 4) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 falseBlocked">libre');} 
 											else { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 trueBlocked">réservé');} 
 								?>
 								</td>
@@ -160,7 +160,7 @@
 					</table>
 					<!-- FIN CALENDRIER -->
 				</div>
-				<input class="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnet from the website'); ?>">
+				<input class="buttonDisconnect" type="submit" onclick="location.href='index.php?section=index&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnect from the website'); ?>">
 				<br>
 				<br>
 				<hr>
@@ -206,7 +206,7 @@
 									}
 									else
 									{
-										$('.false.isselected').html('non-réservé');
+										$('.false.isselected').html('libre');
 										$('.false.isselected').addClass('falseBlocked').removeClass('false').removeClass('isselected');
 									}
 								  })
@@ -220,7 +220,7 @@
 								  .done(function(data) {
 								  	if(data==1)
 								  	{
-								  		$('.true.isselected').html('non-réservé');
+								  		$('.true.isselected').html('libre');
 								    	$('.true.isselected').addClass('false').removeClass('true').removeClass('isselected');
 									}
 									else

@@ -336,28 +336,29 @@ h1{
 
 .gestionRepas {
     border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
-    border: 1px solid black;
+    border: 2px solid black;
 }
 .gestionRepas td {
-    border: 1px solid black;
+    border: 2px solid black;
     text-align: center;
     color:#ffffff;
+    height: 30px;
 }
 .gestionRepas th {
-    border: 1px solid black;
+    border: 2px solid black;
     width : 150px;
 }
 .gestionRepas2 {
     border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
-    border: 1px solid black;
+    border: 2px solid black;
 }
 .gestionRepas2 td {
-    border: 1px solid black;
+    border: 2px solid black;
     text-align: center;
     color:#000000;
 }
 .gestionRepas2 th {
-    border: 1px solid black;
+    border: 2px solid black;
     width : 150px;
 }
 .gestionRepas2 .cliquable{

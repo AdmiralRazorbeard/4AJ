@@ -552,17 +552,18 @@ font-size: 15px;
 .restauration table 
 {
     border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
-    border: 1px solid black;
+    border: 2px solid black;
 }
 .restauration td 
 {
-    border: 1px solid black;
+    border: 2px solid black;
     text-align: center;
     color:#ffffff;
+    height: 30px;
 }
 .restauration th 
 {
-    border: 1px solid black;
+    border: 2px solid black;
     width : 150px;
 }
 .restauration #repasAnneFrank .true, .restauration #repasClairLogis .true
