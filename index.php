@@ -130,6 +130,10 @@ elseif ($_GET['section'] == 'findPassword')
 {
 	include_once('controller/findPassword.php');
 }
+elseif ($_GET['section'] == 'telechargerAutresPdf')
+{
+	include_once 'controller/telechargerAutresPdf.php';
+}
 else
 {
 	header('location:index.php?section=index');

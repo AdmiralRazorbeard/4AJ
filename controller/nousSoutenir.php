@@ -24,7 +24,7 @@ function getPdf()
 //fonction qui permet de recuperer la liste des menus
 {
 	$tmp = run('SELECT nomFichier 
-				FROM autresfichierspdf WHERE page = nousSoutenir'); 
+				FROM autresfichierspdf WHERE page = "nousSoutenir"'); 
 	$listePdf = NULL;
 	if($tmp)
 	{
@@ -41,10 +41,10 @@ function getPdf()
 function deletePdf($tmp)
 //fonction qui permet de recuperer la liste des menus
 {
-	if(file_exists('../fichierPDF/'.$tmp.'.pdf'))
+	if(file_exists('fichierPDF/'.$tmp.'.pdf'))
 	{
-		unlink('../fichierPDF/'.$tmp.'.pdf');
-		run('DELETE FROM autresfichierspdf WHERE page = nousSoutenir AND nomFichier = '.$tmp);
+		unlink('fichierPDF/'.$tmp.'.pdf');
+		run('DELETE FROM autresfichierspdf WHERE page = "nousSoutenir" AND nomFichier = "'.$tmp.'"');
 	}
 }
 
@@ -54,7 +54,7 @@ if(!empty($_SESSION['superAdminOn']) && isAdminMembres())
 	$mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 	//Extensions autorisées
 	$extensionsOk = 'pdf';
-	if(!empty($_POST['nomFichier']))
+	if(!empty($_POST['nomFichier']) && strlen($_POST['nomFichier']) < 40 && !ctype_space($_POST['nomFichier']))
 	// Si l'utilisateur a choisi une variable ainsi qu'a mis un fichier
 	{
 		if ($_FILES['fichierNousSoutenir']['error'] == 0 && $_FILES['fichierNousSoutenir']['size'] <= 5242880 && (substr(strrchr($_FILES['fichierNousSoutenir']['name'], '.'), 1) == $extensionsOk))
@@ -63,18 +63,19 @@ if(!empty($_SESSION['superAdminOn']) && isAdminMembres())
 			$extension_fichier = pathinfo($_FILES['fichierNousSoutenir']['name'], PATHINFO_EXTENSION);
 			if($extension_fichier==$extensionsOk)
 			{
-				$nomFichier = $mysqli->real_escape_string($_POST['nomFichier']);
+				$nomFichier = preg_replace("/[^A-Z0-9._-]/i", "_", $_POST['nomFichier']);
 				$nomFichierComplet = $nomFichier.'.'.$extension_fichier;
-				$nbre = run('SELECT COUNT(*) as nbre FROM autresfichierspdf WHERE page = nousSoutenir AND nomFichier = '.$nomFichier)->fetch_object();
+				$test="nousSoutenir";
+				$nbre = run('SELECT COUNT(*) as nbre FROM autresfichierspdf WHERE page = "'.$test.'" AND nomFichier = "'.$nomFichier.'"')->fetch_object();
 				while($nbre->nbre >= 1)
 				{
-					unlink('../fichierPDF/'.$nomFichierComplet);
-					run('DELETE FROM autresfichierspdf WHERE page = nousSoutenir AND nomFichier = '.$nomFichier);
-					$nbre = run('SELECT COUNT(*) as nbre FROM autresfichierspdf WHERE page = nousSoutenir AND nomFichier = '.$nomFichier)->fetch_object();
+					unlink('fichierPDF/'.$nomFichierComplet);
+					run('DELETE FROM autresfichierspdf WHERE page = "nousSoutenir" AND nomFichier = "'.$nomFichier.'"');
+					$nbre = run('SELECT COUNT(*) as nbre FROM autresfichierspdf WHERE page = "'.$test.'" AND nomFichier = "'.$nomFichier.'"')->fetch_object();
 				}
 				//insertion du nouveau fichier
-				$resultat = move_uploaded_file($_FILES['fichierNousSoutenir']['tmp_name'],'../fichierPDF/'.$nomFichier);
-				run('INSERT INTO autresfichierspdf(nomFichier, page, tailleFichier) VALUES('.$nomFichier.', nousSoutenir , '.$_FILES['fichierNousSoutenir']['size'].')');
+				$resultat = move_uploaded_file($_FILES['fichierNousSoutenir']['tmp_name'],'fichierPDF/'.$nomFichierComplet);
+				run('INSERT INTO autresfichierspdf(nomFichier, page, tailleFichier) VALUES("'.$nomFichier.'", "nousSoutenir" , '.$_FILES['fichierNousSoutenir']['size'].')');
 			}
 		
 		}
