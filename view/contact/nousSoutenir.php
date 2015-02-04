@@ -3,15 +3,16 @@ include_once '/view/includes/header.php';
 ?>
 			<div class="contentWrapper contact element edition_mode">
 					<?php tinymcetxt('nousSoutenir'); ?>
-					<?php if(!empty($_SESSION['superAdminOn']) && isAdminMembres()) { ?>
+					<?php if(!empty($_SESSION['superAdminOn']) && superAdmin()) { ?>
 						<div id="uploaderFichier">
 						<h3>Uploader un fichier PDF</h3>
 						<form method="post" enctype="multipart/form-data">
 							<input type="hidden" name="MAX_FILE_SIZE" value="5242880" />
+							<input type="hidden" name="page" value="nousSoutenir" />
 							<label>Nom du fichier (sans accents):</label>
 							<input type="text" name="nomFichier"/><br>
 							<label>Selectionner le fichier (5Mo maximum) :</label>
-							<input type="file" name="fichierNousSoutenir"/><br>
+							<input type="file" name="fichier"/><br>
 							<input type="submit" value="Envoyer"/>
 						</form>
 						</div>
@@ -19,7 +20,7 @@ include_once '/view/includes/header.php';
 						<?php if($listePdf != NULL){
 						 		foreach($listePdf as $key => $value){ 
 						?>	
-							Lien vers le fichier <?php echo ($value['nomFichier']); ?>: index.php?section=telechargerAutresPdf&amp;file=<?php echo ($value['nomFichier']); ?><br>
+							Lien vers le fichier <?php echo ($value['nomFichier']); ?>: index.php?section=telechargerAutresPdf&amp;page=<?php echo ($value['page']); ?>&amp;file=<?php echo ($value['nomFichier']); ?><br>
 							<a href="index.php?section=nousSoutenir&amp;delete=<?php echo ($value['nomFichier']); ?>">Supprimer le fichier <?php echo ($value['nomFichier']); ?></a><br><br>
 						<?php } } 
 					} ?>
