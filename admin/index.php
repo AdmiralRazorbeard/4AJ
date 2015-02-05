@@ -87,4 +87,8 @@ elseif ($_GET['section'] == 'generationFeuilleAppel')
 {
 include_once ('controller/generationFeuilleAppel.php');
 }
+else
+{
+	header('location:index.php?section=main');
+}
 ?>

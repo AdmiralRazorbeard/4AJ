@@ -23,12 +23,12 @@ if(!empty($_POST['semaine']) && !empty($_POST['residenceChoisie']))
 				$nbre = run('SELECT COUNT(*) as nbre FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee = '.$tmp[1].' AND residence ='.$_POST['residenceChoisie'])->fetch_object();
 				while($nbre->nbre >= 1)
 				{
-					unlink('../fichierPDF/'.$nomFichier);
+					unlink('../fichierPDF2/'.$nomFichier);
 					run('DELETE FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee='.$tmp[1].' AND residence ='.$_POST['residenceChoisie']);
 					$nbre = run('SELECT COUNT(*) as nbre FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee = '.$tmp[1].' AND residence ='.$_POST['residenceChoisie'])->fetch_object();
 				}
 				//insertion du nouveau fichier
-				$resultat = move_uploaded_file($_FILES['weekFile']['tmp_name'],'../fichierPDF/'.$nomFichier);
+				$resultat = move_uploaded_file($_FILES['weekFile']['tmp_name'],'../fichierPDF2/'.$nomFichier);
 				run('INSERT INTO menusemaine(semaine, annee, residence, tailleFichier) VALUES('.$tmp[0].', '.$tmp[1].', '.$_POST['residenceChoisie'].', '.$_FILES['weekFile']['size'].')');
 				//suppression des anciens fichiers
 				$thisWeek = (int)date('W', strtotime('Monday this week'));

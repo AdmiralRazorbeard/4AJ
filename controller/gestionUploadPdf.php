@@ -1,7 +1,6 @@
 <?php
 if(!empty($_SESSION['superAdminOn']) && superAdmin())
 {
-	$mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 	//Extensions autorisées
 	$extensionsOk = 'pdf';
 	if(!empty($_POST['page']) && !empty($_POST['nomFichier']) && strlen($_POST['nomFichier']) < 40 && !ctype_space($_POST['nomFichier']))

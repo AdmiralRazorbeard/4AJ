@@ -12,7 +12,7 @@ include_once '/view/includes/header.php';
 						$jourWeek = date('j', strtotime('Monday this week'));
 						$moisWeek = $mois[date('n', strtotime('Monday this week'))];
 						?>
-						<option value="<?php echo $numeroWeek; ?>"><?php echo $jourWeek.' '.$moisWeek; ?></option>
+						<option selected value="<?php echo $numeroWeek; ?>"><?php echo $jourWeek.' '.$moisWeek; ?></option>
 			<?php		$numeroWeek = date('W', strtotime('Monday next week')).'-'.date('o', strtotime('Monday next week'));
 						$jourWeek = date('j', strtotime('Monday next week'));
 						$moisWeek = $mois[date('n', strtotime('Monday next week'))];
@@ -25,7 +25,7 @@ include_once '/view/includes/header.php';
 						<option value="<?php echo $numeroWeek; ?>"><?php echo $jourWeek.' '.$moisWeek; ?></option>
 					</select>
 					<select name="residenceChoisie">
-							<option value="1">Anne Frank</option>
+							<option selected value="1">Anne Frank</option>
 							<option value="2">Clair Logis</option>
 					</select>
 					, ajouter le menu (5 Mo maximum) : <input type="file" name="weekFile" /><input type="submit" />
@@ -49,7 +49,7 @@ include_once '/view/includes/header.php';
 					 	$moisDebutSemaine = ($jourPremierJanvier == 1) ? $mois[date('n', $timeStampDate)] : $mois[date('n', strtotime('last monday', $timeStampDate))];
 					?>
 					<a href="index.php?section=menuSemaine&amp;delete=<?php echo ($value['semaine'].'_'.$value['annee'].'_'.$value['residence']); ?>">Supprimer le menu du <?php echo $jourDebutSemaine.' '.$moisDebutSemaine; ?> pour la residence <?php echo $residence; ?></a><br>
-				<?php } } 
+				<?php } }
 				?>
 			</div>
 		</div>
