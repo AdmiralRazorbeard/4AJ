@@ -134,6 +134,10 @@ elseif ($_GET['section'] == 'telechargerAutresPdf')
 {
 	include_once 'controller/telechargerAutresPdf.php';
 }
+elseif ($_GET['section'] == 'mentionsLegales')
+{
+	include_once 'controller/mentionsLegales.php';
+}
 else
 {
 	header('location:index.php?section=index');
