@@ -74,4 +74,15 @@ function nbreInscrit($jour, $mois, $annee, $midi, $residence)
 	$tmp = run('SELECT COUNT(*) as nbre FROM reserverepas WHERE dateReserve="'.$date.'" AND midi = '.$midi.' AND residence='.$residence)->fetch_object();
 	return $tmp->nbre;
 }
+
+function membreFonction()
+{
+	$tmp = run('SELECT id, nomFonctionFR as nom FROM fonction');
+	while($donnees = $tmp->fetch_object())
+	{
+		$fonction[$donnees->id]['id'] = $donnees->id;
+		$fonction[$donnees->id]['nom'] = htmlspecialchars($donnees->nom);
+	}
+	return $fonction;
+}
 ?>

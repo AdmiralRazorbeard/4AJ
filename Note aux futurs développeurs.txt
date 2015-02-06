@@ -1,0 +1,20 @@
+NOTE AUX FUTURS DEVELOPPEURS
+**********************************************************************************************************************
+Le site web a été développé en mode procédural, selon une structure de type MVC (modèle-vue-controleur)
+Ainsi dans le dossier principal, dans le dossier Admin et dans le dossier Mobile; tout est divisé en trois dossier:
+-view (contient la partie HTML des pages et les feuilles de style css)
+-controller (contient la partie php qui traitent les données grâce aux fonctions dans le dossiers request)
+-request (contient les requetes nécessaires au traitement des données)
+
+En somme:
+La page index principale traite la section demandée par l'utilisateur et inclue le fichier controller de la page en question, le fichier controller traite les données grâce aux fonctions de la page request et ensuite la vue est inclue en fin de fichier.
+Il se peut que certaines requetes soient exécutées directement depuis la partie controller si certaines sont courtes.
+**********************************************************************************************************************
+Le dossier FichierPdf stocke tous les fichiers Pdf uploadés sur le site, que ce soit les menus au format Pdf ou d'autres fichiers Pdf pour la partie "vitrine" du site.
+
+**********************************************************************************************************************
+Un éditeur de texte sous license GNU a été intégré et se nomme tinymce
+Un script pour les diaporamas jquery a également été utilisé et se nomme sss sous une licence équivalente à CC0, c'est à dire sans restrictions.
+Dans la partie admin PHPExcel a été utilisé et est distribué sous license GNU, il permet ici la génération des fichiers Pdf destinés à la restauration
+
+Thomas Fournet fevrier 2015

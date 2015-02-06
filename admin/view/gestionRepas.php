@@ -129,6 +129,11 @@ include_once '/view/includes/header.php';
 							<option value="1">Anne Frank</option>
 							<option value="2">Clair Logis</option>
 					</select>
+					<select name="fonctionChoisie">
+                    <?php foreach ($membreFonction as $key => $listeFonction) { ?>
+                    	<option value="<?php echo $listeFonction['id']; ?>"><?php if($listeFonction['nom']=="Public"){ echo "Tout le monde"; }else{ echo $listeFonction['nom'];} ?></option>
+                    <?php } ?>
+					</select>
 				</form>
 			</div>
 			<script type="text/javascript">

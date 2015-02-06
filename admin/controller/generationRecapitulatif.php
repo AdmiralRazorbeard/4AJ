@@ -2,14 +2,6 @@
 include_once 'request/gestionRepas.php';
 if(isAdminRepas())
 {
-	/*$mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
-	$semaineClairLogis = semaine(0);
-	$semaineAnneFrank = semaine(0);
-	$semaineClairLogis2 = semaine(1);
-	$semaineAnneFrank2 = semaine(1);*/
-
-	/*nombre jours entre deux périodes
-	$nbjours = round((strtotime($date1) - strtotime($date2))/(60*60*24)-1);*/
 	$dateDebut=NULL;
 	$dateFin=NULL;
 	$residence=1;
@@ -44,33 +36,37 @@ if(isAdminRepas())
     new DateTime(date("Y-m-d", strtotime($dateFin." +1 day")))
 	);
 	//Selection des membres
-	$tmp = run('SELECT id, nomMembre, prenomMembre
-			FROM membre 
-			ORDER BY nomMembre ASC'); 
+	$tmp = run('SELECT membre.id, membre.nomMembre, membre.prenomMembre
+			FROM membre, membrefonction
+			WHERE membre.id = membrefonction.id
+			AND membrefonction.id_fonction = '.$_POST["fonctionChoisie"].'
+			ORDER BY nomMembre ASC');
 	$listeMembre = NULL;
 	$listeReservationInterdites = NULL;
-	$i=0;
-	while($donnees = $tmp->fetch_object())
-	//Les membres sont stockés dans la variable $listeMembre avec les réservations si elles existent
-	{
-		$listeMembre[$i]['id'] = $donnees->id;
-		$listeMembre[$i]['nomMembre'] = $donnees->nomMembre; 
-		$listeMembre[$i]['prenomMembre'] = $donnees->prenomMembre; 
-		$reservation = run("SELECT id, dateReserve, midi
-							FROM reserverepas 
-							WHERE reserverepas.id_membre = '".$donnees->id."'
-							AND residence = '".$residence."'
-							AND dateReserve BETWEEN '".$dateDebut."' AND '".$dateFin."'");
-		if($reservation){
-			$y=0;
-			while($temp = $reservation->fetch_object())
-				{
-					$listeMembre[$i]['reservation'][$y]['dateReserve'] = $temp->dateReserve;
-					$listeMembre[$i]['reservation'][$y]['midi'] = $temp->midi;
-					$y++;
-				}
+	if($tmp){
+		$i=0;
+		while($donnees = $tmp->fetch_object())
+		//Les membres sont stockés dans la variable $listeMembre avec les réservations si elles existent
+		{
+			$listeMembre[$i]['id'] = $donnees->id;
+			$listeMembre[$i]['nomMembre'] = $donnees->nomMembre; 
+			$listeMembre[$i]['prenomMembre'] = $donnees->prenomMembre; 
+			$reservation = run("SELECT id, dateReserve, midi
+								FROM reserverepas 
+								WHERE reserverepas.id_membre = '".$donnees->id."'
+								AND residence = '".$residence."'
+								AND dateReserve BETWEEN '".$dateDebut."' AND '".$dateFin."'");
+			if($reservation){
+				$y=0;
+				while($temp = $reservation->fetch_object())
+					{
+						$listeMembre[$i]['reservation'][$y]['dateReserve'] = $temp->dateReserve;
+						$listeMembre[$i]['reservation'][$y]['midi'] = $temp->midi;
+						$y++;
+					}
+			}
+		$i++;
 		}
-	$i++;
 	}
 	//Selection des jours interdits pour plus tard annuler les reservations concernées dans le tableur
 	$reservationInterdites = run("SELECT dateVerouiller, midi
@@ -123,72 +119,45 @@ if(isAdminRepas())
 		$z++;
 	}
 	$ordonne=2;
-	foreach($listeMembre as $key => $value) 
+	if($listeMembre != NULL)
 	{
-		if(isset($value['reservation']))
-		//Si les réservations existent pour le membre
+		foreach($listeMembre as $key => $value) 
 		{
-			$sheet->setCellValueByColumnAndRow(0, $ordonne, $value['nomMembre']);
-			$sheet->setCellValueByColumnAndRow(1, $ordonne, $value['prenomMembre']);
-			$sheet->setCellValueByColumnAndRow(3, $ordonne, "Midi");
-			$sheet->setCellValueByColumnAndRow(3, ($ordonne+1), "Soir");
-			//On definit pour chaque membre le total midi et soir
-			$sheet->setCellValue('C'.(string)$ordonne,'=SUM(G'.(string)$ordonne.':AL'.(string)$ordonne.')');
-			$sheet->setCellValue('C'.(string)($ordonne+1),'=SUM(G'.(string)($ordonne+1).':AL'.(string)($ordonne+1).')');
-			//On applique les deux bordures
-			$styleTop = $sheet->getStyle('A'.(string)$ordonne.':AI'.(string)$ordonne);
-	        $styleTop->applyFromArray(array(
-	            'borders'=>array(
-	                'top'=>array(
-	                    'style'=>PHPExcel_Style_Border::BORDER_MEDIUM))));
-	        $styleBottom = $sheet->getStyle('A'.(string)($ordonne+1).':AI'.(string)($ordonne+1));
-	        $styleBottom->applyFromArray(array(
-	            'borders'=>array(
-	                'bottom'=>array(
-	                    'style'=>PHPExcel_Style_Border::BORDER_MEDIUM))));
-				foreach($value['reservation'] as $k => $value2)
-				//On parcours les reservations
-				{
-					$emplacement=(int)date('d', strtotime($value2['dateReserve']));
-					if($value2['midi']==1)
-					//Si la réservation se passe le midi
-					{
-					$sheet->getStyle(PHPExcel_Cell::stringFromColumnIndex($emplacement+3).(string)$ordonne)->applyFromArray(array(
-						'fill'=>array(
-							'type'=>PHPExcel_Style_Fill::FILL_SOLID,
-	                			'color'=>array(
-	                    			'argb'=>'008000'))));
-					//On insere la valeur 1 pour une reservation 
-					$sheet->setCellValueByColumnAndRow(($emplacement+3), $ordonne, 1);
-					}
-					else
-					{
-					$sheet->getStyle(PHPExcel_Cell::stringFromColumnIndex($emplacement+3).(string)($ordonne+1))->applyFromArray(array(
-					    'fill'=>array(
-					        'type'=>PHPExcel_Style_Fill::FILL_SOLID,
-					            'color'=>array(
-					                'argb'=>'008000'))));
-					//On insere la valeur 1 pour une reservation 
-					$sheet->setCellValueByColumnAndRow(($emplacement+3), ($ordonne+1), 1);
-					}
-				}
-				if(isset($listeReservationInterdites))
-				//On va annuler dans le tableur les réservations qui ont été interdites
-				{
-					foreach($listeReservationInterdites as $k => $value3)
+			if(isset($value['reservation']))
+			//Si les réservations existent pour le membre
+			{
+				$sheet->setCellValueByColumnAndRow(0, $ordonne, $value['nomMembre']);
+				$sheet->setCellValueByColumnAndRow(1, $ordonne, $value['prenomMembre']);
+				$sheet->setCellValueByColumnAndRow(3, $ordonne, "Midi");
+				$sheet->setCellValueByColumnAndRow(3, ($ordonne+1), "Soir");
+				//On definit pour chaque membre le total midi et soir
+				$sheet->setCellValue('C'.(string)$ordonne,'=SUM(G'.(string)$ordonne.':AL'.(string)$ordonne.')');
+				$sheet->setCellValue('C'.(string)($ordonne+1),'=SUM(G'.(string)($ordonne+1).':AL'.(string)($ordonne+1).')');
+				//On applique les deux bordures
+				$styleTop = $sheet->getStyle('A'.(string)$ordonne.':AI'.(string)$ordonne);
+		        $styleTop->applyFromArray(array(
+		            'borders'=>array(
+		                'top'=>array(
+		                    'style'=>PHPExcel_Style_Border::BORDER_MEDIUM))));
+		        $styleBottom = $sheet->getStyle('A'.(string)($ordonne+1).':AI'.(string)($ordonne+1));
+		        $styleBottom->applyFromArray(array(
+		            'borders'=>array(
+		                'bottom'=>array(
+		                    'style'=>PHPExcel_Style_Border::BORDER_MEDIUM))));
+					foreach($value['reservation'] as $k => $value2)
 					//On parcours les reservations
 					{
-						$emplacement=(int)date('d', strtotime($value3['dateVerouiller']));
-						if($value3['midi']==1)
+						$emplacement=(int)date('d', strtotime($value2['dateReserve']));
+						if($value2['midi']==1)
 						//Si la réservation se passe le midi
 						{
 						$sheet->getStyle(PHPExcel_Cell::stringFromColumnIndex($emplacement+3).(string)$ordonne)->applyFromArray(array(
 							'fill'=>array(
 								'type'=>PHPExcel_Style_Fill::FILL_SOLID,
 		                			'color'=>array(
-		                    			'argb'=>'808080'))));
+		                    			'argb'=>'008000'))));
 						//On insere la valeur 1 pour une reservation 
-						$sheet->setCellValueByColumnAndRow(($emplacement+3), $ordonne, 0);
+						$sheet->setCellValueByColumnAndRow(($emplacement+3), $ordonne, 1);
 						}
 						else
 						{
@@ -196,14 +165,44 @@ if(isAdminRepas())
 						    'fill'=>array(
 						        'type'=>PHPExcel_Style_Fill::FILL_SOLID,
 						            'color'=>array(
-						                'argb'=>'808080'))));
+						                'argb'=>'008000'))));
 						//On insere la valeur 1 pour une reservation 
-						$sheet->setCellValueByColumnAndRow(($emplacement+3), ($ordonne+1), 0);
+						$sheet->setCellValueByColumnAndRow(($emplacement+3), ($ordonne+1), 1);
 						}
 					}
-				}
-			//un saut de deux à chaque car il y a le midi et le soir
-			$ordonne=$ordonne+2;
+					if(isset($listeReservationInterdites))
+					//On va annuler dans le tableur les réservations qui ont été interdites
+					{
+						foreach($listeReservationInterdites as $k => $value3)
+						//On parcours les reservations
+						{
+							$emplacement=(int)date('d', strtotime($value3['dateVerouiller']));
+							if($value3['midi']==1)
+							//Si la réservation se passe le midi
+							{
+							$sheet->getStyle(PHPExcel_Cell::stringFromColumnIndex($emplacement+3).(string)$ordonne)->applyFromArray(array(
+								'fill'=>array(
+									'type'=>PHPExcel_Style_Fill::FILL_SOLID,
+			                			'color'=>array(
+			                    			'argb'=>'808080'))));
+							//On insere la valeur 1 pour une reservation 
+							$sheet->setCellValueByColumnAndRow(($emplacement+3), $ordonne, 0);
+							}
+							else
+							{
+							$sheet->getStyle(PHPExcel_Cell::stringFromColumnIndex($emplacement+3).(string)($ordonne+1))->applyFromArray(array(
+							    'fill'=>array(
+							        'type'=>PHPExcel_Style_Fill::FILL_SOLID,
+							            'color'=>array(
+							                'argb'=>'808080'))));
+							//On insere la valeur 1 pour une reservation 
+							$sheet->setCellValueByColumnAndRow(($emplacement+3), ($ordonne+1), 0);
+							}
+						}
+					}
+				//un saut de deux à chaque car il y a le midi et le soir
+				$ordonne=$ordonne+2;
+			}
 		}
 	}
 	if($ordonne >= 4)

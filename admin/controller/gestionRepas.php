@@ -28,5 +28,7 @@ $semaineClairLogis = semaine($semaineDuClairLogis);
 $semaineAnneFrank = semaine($semaineDuAnneFrank);
 	/* Fin initialisation */
 #######################
+//permet ensuite de generer dans la vue les fonctions qui existent
+$membreFonction = membreFonction();
 include_once 'view/gestionRepas.php';
 ?>
