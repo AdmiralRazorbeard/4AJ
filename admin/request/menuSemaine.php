@@ -59,9 +59,9 @@ function deleteMenu(Array $tmp)
 	else{
 		$value=$tmp[1].'_'.$tmp[0].'_'.$tmp[2];
 	}
-	if(file_exists('../fichierPDF2/'.$value.'.pdf'))
+	if(file_exists('../fichierPDF/menu/'.$value.'.pdf'))
 	{
-		unlink('../fichierPDF2/'.$value.'.pdf');
+		unlink('../fichierPDF/menu/'.$value.'.pdf');
 		run('DELETE FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee='.$tmp[1].' AND residence ='.$tmp[2]);
 	}
 }

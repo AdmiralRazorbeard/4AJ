@@ -34,19 +34,22 @@ if(!empty($_SESSION['log']) && $_SESSION['log'] == 1 && !empty($_SESSION['mail']
 if(!empty($_POST['mail']) && !empty($_POST['password']) && !empty($_POST['choixResidence']))	
 //Connexion
 {
-	usleep(500000);
-	//permet de faire une pause d'une demi seconde pour se proteger des attaques de type force brute
-	$mail = $mysqli->real_escape_string($_POST['mail']);
-	$choixResidence=(int)$mysqli->real_escape_string($_POST['choixResidence']); 
-	$password = sha1($mysqli->real_escape_string($GDS.$_POST['password']));
-	$nbreMembre = countMembers($mail, $password);	
-	// Count membre retourne 1 si valide
-	// 1,5 si le mail est valide mais pas le password
-	if($nbreMembre == 1)
+	if(preg_match("#^[a-zA-Z0-9.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $_POST['mail']) && (!(strlen($_POST['password']) <= 6) && !(strlen($_POST['password']) > 100) && !(ctype_space($_POST['password'])) ))
 	{
-		$_SESSION['log'] = 1;
-		$_SESSION['mail'] = $mail;
-		$_SESSION['residenceMobile'] = $choixResidence;
+		usleep(500000);
+		//permet de faire une pause d'une demi seconde pour se proteger des attaques de type force brute
+		$mail = $mysqli->real_escape_string($_POST['mail']);
+		$choixResidence=(int)$mysqli->real_escape_string($_POST['choixResidence']); 
+		$password = sha1($mysqli->real_escape_string($GDS.$_POST['password']));
+		$nbreMembre = countMembers($mail, $password);	
+		// Count membre retourne 1 si valide
+		// 1,5 si le mail est valide mais pas le password
+		if($nbreMembre == 1)
+		{
+			$_SESSION['log'] = 1;
+			$_SESSION['mail'] = $mail;
+			$_SESSION['residenceMobile'] = $choixResidence;
+		}
 	}
 }
 /*---------------------------------*/

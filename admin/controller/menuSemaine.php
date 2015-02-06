@@ -5,6 +5,12 @@ if(!isAdminRepas())
 $mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 //Extensions autorisées
 $extensionsOk = 'pdf';
+if(!empty($_GET['delete'])){
+	//si l'utilisateur supprime un menu
+	$delete = $mysqli->real_escape_string($_GET['delete']);
+	$tmp2 =explode('_', $delete);
+	deleteMenu($tmp2);
+}
 if(!empty($_POST['semaine']) && !empty($_POST['residenceChoisie']))
 // Si l'utilisateur a choisi une variable ainsi qu'a mis un fichier
 {
@@ -23,12 +29,12 @@ if(!empty($_POST['semaine']) && !empty($_POST['residenceChoisie']))
 				$nbre = run('SELECT COUNT(*) as nbre FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee = '.$tmp[1].' AND residence ='.$_POST['residenceChoisie'])->fetch_object();
 				while($nbre->nbre >= 1)
 				{
-					unlink('../fichierPDF2/'.$nomFichier);
+					unlink('../fichierPDF/menu/'.$nomFichier);
 					run('DELETE FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee='.$tmp[1].' AND residence ='.$_POST['residenceChoisie']);
 					$nbre = run('SELECT COUNT(*) as nbre FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee = '.$tmp[1].' AND residence ='.$_POST['residenceChoisie'])->fetch_object();
 				}
 				//insertion du nouveau fichier
-				$resultat = move_uploaded_file($_FILES['weekFile']['tmp_name'],'../fichierPDF2/'.$nomFichier);
+				$resultat = move_uploaded_file($_FILES['weekFile']['tmp_name'],'../fichierPDF/menu/'.$nomFichier);
 				run('INSERT INTO menusemaine(semaine, annee, residence, tailleFichier) VALUES('.$tmp[0].', '.$tmp[1].', '.$_POST['residenceChoisie'].', '.$_FILES['weekFile']['size'].')');
 				//suppression des anciens fichiers
 				$thisWeek = (int)date('W', strtotime('Monday this week'));
@@ -40,12 +46,6 @@ if(!empty($_POST['semaine']) && !empty($_POST['residenceChoisie']))
 	
 	}
 	########### FIN GESTION FICHIER ###########
-}
-if(!empty($_GET['delete'])){
-	//si l'utilisateur supprime un menu
-	$delete = $mysqli->real_escape_string($_GET['delete']);
-	$tmp2 =explode('_', $delete);
-	deleteMenu($tmp2);
 }
 //on récupère la liste des menus
 $listeMenu = getMenu();

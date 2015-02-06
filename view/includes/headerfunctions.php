@@ -147,30 +147,32 @@ if(isConnected())
 		header('location:index.php?section='.$_GET['section']);
 	} 
 }
-
 if(!empty($_POST['mail']) && !empty($_POST['password']))	
 //Connexion
 {
-	usleep(500000);
-	//permet de faire une pause d'une demi seconde pour se proteger des attaques de type force brute
-	$mail = $mysqli->real_escape_string($_POST['mail']); 
-	$password = sha1($mysqli->real_escape_string($GDS.$_POST['password']));
-	$nbreMembre = countMembers($mail, $password);	
-	// Count membre retourne 1 si valide
-	// 1,5 si le mail est valide mais pas le password
-	if($nbreMembre == 1)
+	if(preg_match("#^[a-zA-Z0-9.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $_POST['mail']) && (!(strlen($_POST['password']) <= 6) && !(strlen($_POST['password']) > 100) && !(ctype_space($_POST['password'])) ))
 	{
-		$message = "Vous êtes connecté.";
-		$_SESSION['log'] = 1;
-		$_SESSION['mail'] = $mail;
-	}
-	elseif($nbreMembre == 1.5)
-	{
-		$message = "Mot de passe invalide.";
-	}
-	else
-	{
-		$message = "L'utilisateur n'existe pas.";
+		usleep(500000);
+		//permet de faire une pause d'une demi seconde pour se proteger des attaques de type force brute
+		$mail = $mysqli->real_escape_string($_POST['mail']); 
+		$password = sha1($mysqli->real_escape_string($GDS.$_POST['password']));
+		$nbreMembre = countMembers($mail, $password);	
+		// Count membre retourne 1 si valide
+		// 1,5 si le mail est valide mais pas le password
+		if($nbreMembre == 1)
+		{
+			$message = "Vous êtes connecté.";
+			$_SESSION['log'] = 1;
+			$_SESSION['mail'] = $mail;
+		}
+		elseif($nbreMembre == 1.5)
+		{
+			$message = "Mot de passe invalide.";
+		}
+		else
+		{
+			$message = "L'utilisateur n'existe pas.";
+		}
 	}
 }
 if(isConnected())

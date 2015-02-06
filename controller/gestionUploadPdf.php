@@ -3,6 +3,13 @@ if(!empty($_SESSION['superAdminOn']) && superAdmin())
 {
 	//Extensions autorisées
 	$extensionsOk = 'pdf';
+	if(!empty($_GET['delete']) && !empty($_GET['section']))
+	{
+		//si l'utilisateur supprime un menu
+		$nomFichier = $mysqli->real_escape_string($_GET['delete']);
+		$page = $mysqli->real_escape_string($_GET['section']);
+		deletePdf($nomFichier, $page);
+	}
 	if(!empty($_POST['page']) && !empty($_POST['nomFichier']) && strlen($_POST['nomFichier']) < 40 && !ctype_space($_POST['nomFichier']))
 	// Si l'utilisateur a choisi une variable ainsi qu'a mis un fichier
 	{
@@ -29,12 +36,6 @@ if(!empty($_SESSION['superAdminOn']) && superAdmin())
 		
 		}
 		########### FIN GESTION FICHIER ###########
-	}
-	if(!empty($_GET['delete']) && !empty($_GET['section'])){
-		//si l'utilisateur supprime un menu
-		$nomFichier = $mysqli->real_escape_string($_GET['delete']);
-		$page = $mysqli->real_escape_string($_GET['section']);
-		deletePdf($nomFichier, $page);
 	}
 }
 ?>

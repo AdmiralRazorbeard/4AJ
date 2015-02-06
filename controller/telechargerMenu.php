@@ -1,5 +1,7 @@
 <?php
-if(file_exists('fichierPDF/'.$_GET['file'].'.pdf'))
+include_once 'request/telechargerMenu.php';
+if(file_exists('fichierPDF/menu/'.$_GET['file'].'.pdf') && accesRepas())
+//On ne peut télécharger le menu que si l'on est autorisé à reserver
 {
 	$name=NULL;
 	$tmp = explode('_', $_GET['file']);
@@ -16,10 +18,10 @@ if(file_exists('fichierPDF/'.$_GET['file'].'.pdf'))
 	header('Content-Disposition: attachment; filename='.$name.'.pdf'); //Nom du fichier
 	header('Content-Length: '.$taille); //Taille du fichier
 	//Envoi du fichier dont le chemin est passé en paramètre
-	readfile('fichierPDF/'.$_GET['file'].'.pdf');
+	readfile('fichierPDF/menu/'.$_GET['file'].'.pdf');
 }
 else
 {
-	header('location:index.php?section=restauration');
+	header('location:index.php?section=index');
 }
 ?>

@@ -1,5 +1,14 @@
 <?php
 $_SESSION['backgroundBody']='#205f5a';
+
+//Gestions des pdf (si superAdmin)
+include_once '/request/gestionUploadPdf.php';
+if(!empty($_SESSION['superAdminOn']) && superAdmin()) {
+
+	include_once '/controller/gestionUploadPdf.php';
+	$listePdf = getPdf("plateformeLogement");
+}
+
 if(isset($_GET['section']) && empty($_GET['subSection']))
 {
 	header('location:index.php?section=plateformeLogement&subSection=main');
