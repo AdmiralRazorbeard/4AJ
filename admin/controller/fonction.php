@@ -12,7 +12,7 @@ if(!empty($_GET['type']) && !empty($_GET['id']) && is_numeric($_GET['id']) && is
 	changerPouvoir($_GET['type'], $_GET['id']);
 	header('location:index.php?section=fonction');
 }
-if(!empty($_POST['nom']) && !ctype_space($_POST['nom']))
+if(!empty($_POST['nom']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['nom']) && !ctype_space($_POST['nom']) && !strlen($_POST['nom']) > 30)
 {
 	// Ajout d'une fonction
 	ajouterFonction($mysqli->real_escape_string($_POST['nom']));
@@ -39,8 +39,8 @@ if(!empty($_GET['fonction']) && is_numeric($_GET['fonction']))
 		ajouterMembreAFonction($_GET['ajouterMembre'], $_GET['fonction']);
 	}
 	// On récupère ensuite le nombre de page : 
-	$nbrePageIn = nbrePage(1, $membreParPage, $_GET['fonction']);
-	$nbrePageNotIn = nbrePage(0, $membreParPage, $_GET['fonction']);
+	$nbrePageIn = nbrePage(1, $membreParPage, $mysqli->real_escape_string($_GET['fonction']));
+	$nbrePageNotIn = nbrePage(0, $membreParPage, $mysqli->real_escape_string($_GET['fonction']));
 	
 	// On vérifie pour les pages :
 	if(!empty($_GET['pageSupprimer']) && is_numeric($_GET['pageSupprimer']) && intval($_GET['pageSupprimer']) == $_GET['pageSupprimer'] && $_GET['pageSupprimer'] >= 1 && $_GET['pageSupprimer'] <= $nbrePageIn)
@@ -51,9 +51,9 @@ if(!empty($_GET['fonction']) && is_numeric($_GET['fonction']))
 	{ $pageAjouter = $_GET['pageAjouter']; }
 	else
 	{ $pageAjouter = 1; }
-	$allMembreIn = allMembre($_GET['fonction'], $membreParPage, $pageSupprimer);
+	$allMembreIn = allMembre($mysqli->real_escape_string($_GET['fonction']), $membreParPage, $pageSupprimer);
 	// On récupère la liste des membres de la fonction
-	$allMembreNotInFonction = allMembreNotIn($_GET['fonction'], $membreParPage, $pageAjouter);
+	$allMembreNotInFonction = allMembreNotIn($mysqli->real_escape_string($_GET['fonction']), $membreParPage, $pageAjouter);
 	// On récupère ici la liste de tous les membres ne faisant pas parti de la fonction
 }
 $allFonction = allFonction();

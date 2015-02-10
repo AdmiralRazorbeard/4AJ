@@ -1,11 +1,11 @@
 <?php
 include_once 'request/gestionRepas.php';
 if(isAdminRepas()){
-	$annee=$_GET['annee'];
-	$mois=$_GET['mois'];
-	$jour=$_GET['jour'];
-	$midi=$_GET['midi'];
-	$residence=$_GET['residence'];
+	$annee=$mysqli->real_escape_string($_GET['annee']);
+	$mois=$mysqli->real_escape_string($_GET['mois']);
+	$jour=$mysqli->real_escape_string($_GET['jour']);
+	$midi=$mysqli->real_escape_string($_GET['midi']);
+	$residence=$mysqli->real_escape_string($_GET['residence']);
 	$date = $annee.'-'.$mois.'-'.$jour;
 	$s_midi=NULL;
 	$s_residence=NULL;

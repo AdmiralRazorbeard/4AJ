@@ -8,7 +8,7 @@ if(!empty($_POST['subject']) && !empty($_POST['email']) && !empty($_POST['conten
 	{
 		if(preg_match("#^[a-zA-Z0-9.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $_POST['email']))
 		{
-			sendMailContact(1, $_POST['email'], $_POST['subject'], $_POST['contenu']);
+			sendMailContact(1, $mysqli->real_escape_string($_POST['email']), $mysqli->real_escape_string($_POST['subject']), $mysqli->real_escape_string($_POST['contenu']));
 			$confirmationContact= "Message envoyé";
 		}
 	}

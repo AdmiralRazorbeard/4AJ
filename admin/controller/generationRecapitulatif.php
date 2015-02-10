@@ -39,7 +39,7 @@ if(isAdminRepas())
 	$tmp = run('SELECT membre.id, membre.nomMembre, membre.prenomMembre
 			FROM membre, membrefonction
 			WHERE membre.id = membrefonction.id
-			AND membrefonction.id_fonction = '.$_POST["fonctionChoisie"].'
+			AND membrefonction.id_fonction = '.$mysqli->real_escape_string($_POST["fonctionChoisie"]).'
 			ORDER BY nomMembre ASC');
 	$listeMembre = NULL;
 	$listeReservationInterdites = NULL;

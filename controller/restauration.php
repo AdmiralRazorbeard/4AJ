@@ -46,32 +46,31 @@ if(!isset($_POST['jour']))
 	$linkAnneFrank=menuExiste($weekAnneFrank, 1);
 	$linkClairLogis=menuExiste($weekClairLogis, 2);
 }
-if(!empty($_POST['jour']) && is_numeric($_POST['jour']) && !empty($_POST['mois']) && is_numeric($_POST['mois']) && !empty($_POST['annee']) && is_numeric($_POST['annee']) && isset($_POST['midi']) && is_numeric($_POST['midi']) && !empty($_POST['residence']) && is_numeric($_POST['residence']))
+if(!empty($_POST['jour']) && (intval($_POST['jour'])==$_POST['jour']) && !empty($_POST['mois']) && (intval($_POST['mois'])==$_POST['mois']) && !empty($_POST['annee']) && (intval($_POST['annee'])==$_POST['annee']) && isset($_POST['midi']) && is_numeric($_POST['midi']) && !empty($_POST['residence']) && (intval($_POST['residence'])==$_POST['residence']))
 	// Si l'utilisateur a saisi des variables
 {
 	$date = $_POST['annee'].'-'.$_POST['mois'].'-'.$_POST['jour'];
-	$residence = $_POST['residence'];
-	if(boutonReserver($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $residence) == 1)
+	if(boutonReserver($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $_POST['residence']) == 1)
 		// Si il a l'autorisation de réserver, on réserve
 	{
 		$id_membre = run('SELECT id FROM membre WHERE mail="'.$_SESSION['mail'].'"')->fetch_object();
-		run('INSERT INTO reserverepas(dateReserve, midi, id_membre, residence) VALUES("'.$date.'", '.$_POST['midi'].', '.$id_membre->id.', '.$residence.')');
+		run('INSERT INTO reserverepas(dateReserve, midi, id_membre, residence) VALUES("'.$date.'", '.$_POST['midi'].', '.$id_membre->id.', '.$_POST['residence'].')');
 		//Les echos servent ici à retourner les data dans la fonction jquery
 		echo 1;
 	}
-	elseif(boutonReserver($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $residence) == 2)
+	elseif(boutonReserver($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $_POST['residence']) == 2)
 		// On a déjà reserver, on veut donc se annulé
 	{
 		$id_membre = run('SELECT id FROM membre WHERE mail="'.$_SESSION['mail'].'"')->fetch_object();
-		run('DELETE FROM reserverepas WHERE dateReserve="'.$date.'" AND midi = '.$_POST['midi'].' AND id_membre = '.$id_membre->id.' AND residence = '.$residence);
+		run('DELETE FROM reserverepas WHERE dateReserve="'.$date.'" AND midi = '.$_POST['midi'].' AND id_membre = '.$id_membre->id.' AND residence = '.$_POST['residence']);
 		echo 1;
 	}
-	elseif(boutonReserver($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $residence) == 3)
+	elseif(boutonReserver($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $_POST['residence']) == 3)
 		// si reservation invalide
 	{
 		echo 0;
 	}
-	elseif(boutonReserver($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $residence) >= 4)
+	elseif(boutonReserver($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $_POST['residence']) >= 4)
 		// si reservation block
 	{
 		break;

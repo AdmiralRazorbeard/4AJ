@@ -10,7 +10,7 @@ if(!empty($_POST['choix']))
 	{
 		$raison = $mysqli->real_escape_string($_POST['raison']);
 	}
-	$choix = ($_POST['choix']);
+	$choix = $mysqli->real_escape_string($_POST['choix']);
 	run('UPDATE bloquerreservations SET blocage='.$choix.', raison="'.$raison.'" WHERE id=1');
 }
 $tmp = run('SELECT blocage, raison FROM bloquerreservations WHERE id=1')->fetch_object();

@@ -19,6 +19,7 @@ function langue($FR, $EN)
 		{ echo htmlspecialchars($FR); }
 }
 function dateAujourdhui()
+//Pour pouvoir ensuite afficher la date dans le header du site
 {
 	$mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 	$jours = array('', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche');

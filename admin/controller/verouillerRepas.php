@@ -36,37 +36,36 @@ if(!isset($_POST['jour']))
 	$semaineAnneFrank = semaine($semaineDuAnneFrank);
 	$semaineClairLogis = semaine($semaineDuClairLogis);
 }
-if(!empty($_POST['jour']) && is_numeric($_POST['jour']) && !empty($_POST['mois']) && is_numeric($_POST['mois']) && !empty($_POST['annee']) && is_numeric($_POST['annee']) && isset($_POST['midi']) && is_numeric($_POST['midi']) && !empty($_POST['residence']) && is_numeric($_POST['residence']))
+if(!empty($_POST['jour']) && (intval($_POST['jour'])==$_POST['jour']) && !empty($_POST['mois']) && (intval($_POST['mois'])==$_POST['mois']) && !empty($_POST['annee']) && (intval($_POST['annee'])==$_POST['annee']) && isset($_POST['midi']) && is_numeric($_POST['midi']) && !empty($_POST['residence']) && (intval($_POST['residence'])==$_POST['residence']))
 	// Si l'utilisateur a bien cliqué sur le bouton
 {
 	$date = $_POST['annee'].'-'.$_POST['mois'].'-'.$_POST['jour'];
 	$midi = $_POST['midi'];
-	$residence = $_POST['residence'];
 	if(!isset($_POST['fonction']))
 	//Si c'est une interdiction et non un verrouillage
 	{
 		if(boutonVerrouiller($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $_POST['residence']))
 		{
-			run('DELETE FROM verrouillerjourrepas WHERE dateVerouiller="'.$date.'" AND midi='.$midi.' AND residence='.$residence);
+			run('DELETE FROM verrouillerjourrepas WHERE dateVerouiller="'.$date.'" AND midi='.$midi.' AND residence='.$_POST['residence']);
 		}
 		else
 		{
 			//on supprime d'abord tous les repas bloqués  pour ce moment car si les repas bloqués concernent seulement une fonction particulière, les repas verrouillés (ou interdits) s'adressent eux à tout le monde
-			run('DELETE FROM bloquerjourrepas WHERE dateBlocage="'.$date.'" AND midi='.$midi.' AND residence='.$residence);
-			run('INSERT INTO verrouillerjourrepas(dateVerouiller, midi, residence) VALUES("'.$date.'", '.$midi.', '.$residence.')');
+			run('DELETE FROM bloquerjourrepas WHERE dateBlocage="'.$date.'" AND midi='.$midi.' AND residence='.$_POST['residence']);
+			run('INSERT INTO verrouillerjourrepas(dateVerouiller, midi, residence) VALUES("'.$date.'", '.$midi.', '.$_POST['residence'].')');
 		}
 	}
 	else
 	{
 	//Si c'est un blocage
-		$fonction = $_POST['fonction']; 
-		if(boutonBloquer($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $_POST['residence'], $_POST['fonction']))
+		$fonction = intval($_POST['fonction']); 
+		if(boutonBloquer($_POST['jour'], $_POST['mois'], $_POST['annee'], $_POST['midi'], $_POST['residence'], $fonction))
 		{
-			run('DELETE FROM bloquerjourrepas WHERE dateBlocage="'.$date.'" AND midi='.$midi.' AND residence='.$residence.' AND fonction='.$fonction);
+			run('DELETE FROM bloquerjourrepas WHERE dateBlocage="'.$date.'" AND midi='.$midi.' AND residence='.$_POST['residence'].' AND fonction='.$fonction);
 		}
 		else
 		{
-			run('INSERT INTO bloquerjourrepas(dateBlocage, midi, residence, fonction) VALUES("'.$date.'", '.$midi.', '.$residence.', '.$fonction.')');
+			run('INSERT INTO bloquerjourrepas(dateBlocage, midi, residence, fonction) VALUES("'.$date.'", '.$midi.', '.$_POST['residence'].', '.$fonction.')');
 		}
 	}
 }

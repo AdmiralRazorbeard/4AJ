@@ -103,7 +103,7 @@
 							<select id="anneDateNaissance" name="anneDateNaissance">
 								<option value="0" selected>-----</option>
 								<?php 
-								for($i = 1920; $i <= date('Y'); $i++)
+								for($i = 1905; $i <= date('Y'); $i++)
 								{ ?>
 								<option value="<?php echo $i;?>"><?php echo $i; ?></option>
 							<?php	} ?>

@@ -4,7 +4,7 @@ include_once 'controller/gds.php';
 if(!empty($_POST['recevoirMail']))
 {
 	$recevoirMailQuandNews = false;
-	$mail = $_SESSION['mail'];
+	$mail = $mysqli->real_escape_string($_SESSION['mail']);
 	if(!empty($_POST['recevoirMailQuandNews']))
 	{
 		$recevoirMailQuandNews = true;
@@ -23,7 +23,7 @@ if(!empty($_POST['supprimerMembre']))
 {
 	if(!empty($_SESSION['log']) && $_SESSION['log'] == 1 && !empty($_SESSION['mail']))
 	{
-		$mail = $_SESSION['mail'];
+		$mail = $mysqli->real_escape_string($_SESSION['mail']);
 		$resultat=supprimerMembre($mail);
 		if($resultat==1){
 			session_unset();
@@ -41,7 +41,7 @@ if(!empty($_POST['supprimerMembre']))
 if(isset($_POST['modification']))
 //Verification de l'utilisation du formulaire
 {
-	$mail = $_SESSION['mail'];
+	$mail = $mysqli->real_escape_string($_SESSION['mail']);
 	$adresse = '';
 	$dateNaissance = '';
 	$telFixe = '';
@@ -50,7 +50,7 @@ if(isset($_POST['modification']))
 	$newPassword = getPassword($mail); // Au cas où que l'utilisateur saisit un mauvais mdp
 	//récupération du mot de passe de l'utilisateur
 	$messageMdp = '';
-	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254 && !ctype_space($_POST['adresse']))
+	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254 && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['adresse']) && !ctype_space($_POST['adresse']))
 	{
 		$adresse = $mysqli->real_escape_string($_POST['adresse']);
 	}
@@ -91,7 +91,7 @@ if(isset($_POST['modification']))
 	updateMembre($adresse, $telFixe, $telPortable, $newPassword, $mail);
 	//Les vérifications ont été réalisées donc on peut mettre à jour le profil du membre
 }
-$infoMembre = infoMembre($_SESSION['mail']);
+$infoMembre = infoMembre($mysqli->real_escape_string($_SESSION['mail']));
 //Recuperation des infos du membre par le biais de son adresse mail
 include_once 'view/membre/parameters.php';
 ?>

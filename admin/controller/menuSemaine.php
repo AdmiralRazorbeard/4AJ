@@ -25,17 +25,18 @@ if(!empty($_POST['semaine']) && !empty($_POST['residenceChoisie']))
 			// tmp[0] c'est les semaines et tmp[1] c'est l'année
 			if(!empty($tmp[0]) && is_numeric($tmp[0]) && $tmp[0] >= 0 && $tmp[0] <= 53 && !empty($tmp[1]) && is_numeric($tmp[1]) && $tmp[1] >= 2015 && $tmp[1] <= 2500)
 			{
+				$residenceChoisie=$mysqli->real_escape_string($_POST['residenceChoisie']);
 				$nomFichier = $tmp[1].'_'.$tmp[0].'_'.$_POST['residenceChoisie'].'.'.$extension_fichier;
-				$nbre = run('SELECT COUNT(*) as nbre FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee = '.$tmp[1].' AND residence ='.$_POST['residenceChoisie'])->fetch_object();
+				$nbre = run('SELECT COUNT(*) as nbre FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee = '.$tmp[1].' AND residence ='.$residenceChoisie)->fetch_object();
 				while($nbre->nbre >= 1)
 				{
 					unlink('../fichierPDF/menu/'.$nomFichier);
 					run('DELETE FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee='.$tmp[1].' AND residence ='.$_POST['residenceChoisie']);
-					$nbre = run('SELECT COUNT(*) as nbre FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee = '.$tmp[1].' AND residence ='.$_POST['residenceChoisie'])->fetch_object();
+					$nbre = run('SELECT COUNT(*) as nbre FROM menusemaine WHERE semaine = '.$tmp[0].' AND annee = '.$tmp[1].' AND residence ='.$residenceChoisie)->fetch_object();
 				}
 				//insertion du nouveau fichier
 				$resultat = move_uploaded_file($_FILES['weekFile']['tmp_name'],'../fichierPDF/menu/'.$nomFichier);
-				run('INSERT INTO menusemaine(semaine, annee, residence, tailleFichier) VALUES('.$tmp[0].', '.$tmp[1].', '.$_POST['residenceChoisie'].', '.$_FILES['weekFile']['size'].')');
+				run('INSERT INTO menusemaine(semaine, annee, residence, tailleFichier) VALUES('.$tmp[0].', '.$tmp[1].', '.$residenceChoisie.', '.$_FILES['weekFile']['size'].')');
 				//suppression des anciens fichiers
 				$thisWeek = (int)date('W', strtotime('Monday this week'));
 				$thisYear = (int)date('o', strtotime('Monday this week'));

@@ -54,7 +54,7 @@ elseif($orderBy=="prenomMembre"){
 else{
 	$selected=3;
 }
-$nbreMembreParPage = 25;
+$nbreMembreParPage = 1;
 $nbrePage = nbrePage($nbreMembreParPage);
 if(!empty($_GET['page']) && is_numeric($_GET['page']) && intval($_GET['page']) == $_GET['page'] && $_GET['page'] >= 1 && $_GET['page'] <= $nbrePage)
 {

@@ -21,7 +21,7 @@ if(!empty($_SESSION['superAdminOn']) && superAdmin())
 			{
 				$nomFichier = preg_replace("/[^A-Z0-9._-]/i", "_", $_POST['nomFichier']);
 				$nomFichierComplet = $nomFichier.'.'.$extension_fichier;
-				$page=$_POST['page'];
+				$page=$mysqli->real_escape_string($_POST['page']);
 				$nbre = run('SELECT COUNT(*) as nbre FROM autresfichierspdf WHERE page = "'.$page.'" AND nomFichier = "'.$nomFichier.'"')->fetch_object();
 				while($nbre->nbre >= 1)
 				{

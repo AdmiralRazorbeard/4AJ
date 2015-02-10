@@ -6,11 +6,11 @@ if(!isAdminLivreOr())
 }
 if(!empty($_GET['confirm']) && is_numeric($_GET['confirm']))
 {
-	afficherLivreOr($_GET['confirm']);
+	afficherLivreOr(intval($_GET['confirm']));
 }
 if(!empty($_GET['delete']) && is_numeric($_GET['delete']))
 {
-	deleteLivreOr($_GET['delete']);
+	deleteLivreOr(intval($_GET['delete']));
 }
 $allLivreOr = returnLivreOrAConfirmer();
 $nbreLivreOrAConfirmer = nbreLivreOrAConfirmer();

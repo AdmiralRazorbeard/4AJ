@@ -4,6 +4,8 @@ include_once '/view/includes/header.php';
 			<div class="contentWrapper changeMember">
 				<h1>Modifier <em><?php echo $infoMembre['nomMembre']; ?></em></h1>
 				<a href="index.php?section=gestionMembres">Retour</a>
+				<?php if($infoMembre!=NULL){ ?>
+				<!-- Vérifie que le membre existe -->
 				<form method="post">
 					<fieldset id="changeMember">
 						<p id="info_changeMember">
@@ -55,6 +57,7 @@ include_once '/view/includes/header.php';
 						<br>
 					</fieldset>
 				</form>
+				<?php } ?>
 				<script>
 				$("#changePassword1").bind('copy cut paste', function(e) {
 				e.preventDefault();
