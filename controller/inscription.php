@@ -29,7 +29,7 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		}
 			// PRENOM
 		$prenom = $mysqli->real_escape_string($_POST['prenom']);
-		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $prenom) || strlen($prenom) > 100 || ctype_space($prenom))
+		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $nom) || strlen($prenom) > 100 || ctype_space($prenom))
 		{
 			$errorGlobalName=true;
 			$error ++;

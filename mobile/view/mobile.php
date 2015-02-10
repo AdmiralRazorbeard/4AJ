@@ -29,7 +29,7 @@
 			<!-- DEBUT CALENDRIER POUR INSCRIPTION -->
 			<?php if($accessRepas){ 
 					if(!$blocageReservation) {
-						if($_SESSION['residenceMobile']==1) { ?>
+						if(isset($_SESSION['residenceMobile']) && $_SESSION['residenceMobile']==1) { ?>
 			<input class="buttonDisconnect" type="submit" onclick="location.href='index.php?section=mobile&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnect from the website'); ?>">
 			<div id="repasAnneFrank">
 				<span><strong><?php langue('Repas Anne Frank', 'Anne Frank meal'); ?></strong></span>
@@ -77,7 +77,7 @@
 					</tr>
 				</table>
 			</div>
-			<?php } else { ?>
+			<?php } elseif(isset($_SESSION['residenceMobile']) && $_SESSION['residenceMobile']==2) { ?>
 			<!--  REPAS CLAIR LOGIS -->
 			<input class="buttonDisconnect" type="submit" onclick="location.href='index.php?section=mobile&amp;dislog=true';" value="<?php langue('J\'ai fini de réserver et je veux me déconnecter du site', 'I\'ve finished my reservations and I want to disconnect from the website'); ?>">
 			<div id="repasClairLogis">
