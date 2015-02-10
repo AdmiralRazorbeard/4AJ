@@ -7,7 +7,7 @@ $mois = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juille
 $extensionsOk = 'pdf';
 if(!empty($_GET['delete'])){
 	//si l'utilisateur supprime un menu
-	$delete = $mysqli->real_escape_string($_GET['delete']);
+	$delete = preg_replace("/[^A-Z0-9_-]/i", "0", $mysqli->real_escape_string($_GET['delete']));
 	$tmp2 =explode('_', $delete);
 	deleteMenu($tmp2);
 }

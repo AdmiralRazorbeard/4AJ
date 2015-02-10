@@ -68,7 +68,7 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 			$error ++;
 		}
 			// ADRESSE
-		if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254 && !ctype_space($_POST['adresse']))
+		if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254 && !ctype_space($_POST['adresse']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['adresse']))
 		{
 			$adresse = $mysqli->real_escape_string($_POST['adresse']);
 		}

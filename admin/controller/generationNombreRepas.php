@@ -160,8 +160,13 @@ if(isAdminRepas())
 	$sheet->getStyle('A1:H26')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 	$writer = new PHPExcel_Writer_Excel2007($workbook);
 	$writer->setOffice2003Compatibility(true);
+	header('Content-Description: File Transfer');
+	header('Content-Type: application/octet-stream');
 	header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 	header('Content-Disposition:inline;filename='.$nomFichier.'.xlsx ');
+	header('Expires: 0');
+	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+	header('Pragma: public');
 	$writer->save('php://output');
 }
 else
