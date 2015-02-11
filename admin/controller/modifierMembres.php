@@ -7,7 +7,7 @@ if(!isAdminMembres() || empty($_GET['modif']) || !is_numeric($_GET['modif']))
 	header('location:index.php?section=main');
 }
 
-if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['nom']) && !ctype_space($_POST['nom']) && !strlen($_POST['nom']) > 100 && !empty($_POST['prenom']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['prenom']) && !ctype_space($_POST['prenom']) && !strlen($_POST['prenom']) > 100)
+if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['nom']) && !ctype_space($_POST['nom']) && !strlen($_POST['nom']) > 30 && !empty($_POST['prenom']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['prenom']) && !ctype_space($_POST['prenom']) && !strlen($_POST['prenom']) > 30)
 {
 	$id = $_POST['id'];
 	$nom = $mysqli->real_escape_string($_POST['nom']);
@@ -18,7 +18,7 @@ if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && 
 	$telPortable = '';
 	$password = '0';
 	$isSuperAdmin = '0';
-	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254 && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['adresse']) && !ctype_space($_POST['adresse']))
+	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 110 && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['adresse']) && !ctype_space($_POST['adresse']))
 	{
 		$adresse = $mysqli->real_escape_string($_POST['adresse']);
 	}

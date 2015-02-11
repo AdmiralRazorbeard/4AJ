@@ -23,7 +23,7 @@ if(!empty($_POST['nom']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔ
 {
 	if (($_POST['verif_code']==$_SESSION['aleat_nbr']) && ($_POST['choix_forme']==$_SESSION['aleat_nbr_forme'])) 
 	{
-		if(!ctype_space($_POST['nom']) && !ctype_space($_POST['contenu']) && strlen($_POST['contenu']) <= 505)
+		if(!ctype_space($_POST['nom']) && !ctype_space($_POST['contenu']) && strlen($_POST['nom']) <= 60 && strlen($_POST['contenu']) <= 505)
 		{
 			$nom = $mysqli->real_escape_string($_POST['nom']);
 			$contenu = $mysqli->real_escape_string($_POST['contenu']);

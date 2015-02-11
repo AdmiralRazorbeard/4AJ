@@ -22,14 +22,14 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 		$recevoirMailQuandNews = 0;
 			// NOM
 		$nom = $mysqli->real_escape_string($_POST['nom']);
-		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $nom) || strlen($nom) > 100 || ctype_space($nom))
+		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $nom) || strlen($nom) > 30 || ctype_space($nom))
 		{
 			$errorGlobalName=true;
 			$error ++;
 		}
 			// PRENOM
 		$prenom = $mysqli->real_escape_string($_POST['prenom']);
-		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $nom) || strlen($prenom) > 100 || ctype_space($prenom))
+		if(preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $nom) || strlen($prenom) > 30 || ctype_space($prenom))
 		{
 			$errorGlobalName=true;
 			$error ++;
@@ -68,7 +68,7 @@ if(!empty($_POST['nom']) || !empty($_POST['prenom']) || !empty($_POST['mail']) |
 			$error ++;
 		}
 			// ADRESSE
-		if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254 && !ctype_space($_POST['adresse']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['adresse']))
+		if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 110 && !ctype_space($_POST['adresse']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['adresse']))
 		{
 			$adresse = $mysqli->real_escape_string($_POST['adresse']);
 		}

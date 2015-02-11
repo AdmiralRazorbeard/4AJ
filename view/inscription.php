@@ -63,7 +63,7 @@
 							<input required type="email" name="mail" id="mail">
 							</p>
 							<p class="form-field">
-							<label for="adresse"><?php langue('Adresse : ', 'Adress :'); ?></label>
+							<label for="adresse"><?php langue('Coordonnées : ', 'Contact details :'); ?></label>
 							<input type="text" name="adresse" id="adresse">
 							</p>
 							<p class="form-field">

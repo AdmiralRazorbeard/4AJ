@@ -50,7 +50,7 @@ if(isset($_POST['modification']))
 	$newPassword = getPassword($mail); // Au cas où que l'utilisateur saisit un mauvais mdp
 	//récupération du mot de passe de l'utilisateur
 	$messageMdp = '';
-	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 254 && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['adresse']) && !ctype_space($_POST['adresse']))
+	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 110 && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['adresse']) && !ctype_space($_POST['adresse']))
 	{
 		$adresse = $mysqli->real_escape_string($_POST['adresse']);
 	}
