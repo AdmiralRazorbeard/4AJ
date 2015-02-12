@@ -69,3 +69,16 @@ font-size: 15px;
 .hp{
     display: none;
 }
+#footer{
+    height: 30px;
+    padding-top: 20px;
+    padding-left:128px;
+    font-size: 10px;
+}
+#footer a{
+    color:black;
+    text-decoration:none;
+}
+#visiteurs{
+    margin-right: 20px;
+}

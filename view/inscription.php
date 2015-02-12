@@ -1,3 +1,4 @@
+<?php include_once '/view/includes/footerfunctions.php'; ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -122,6 +123,7 @@
 							</p>
 							<p class="inscription_info">
 								<em><?php langue('Le mot de passe doit contenir 7 caractères au minimun.', 'The password must contain at least 7 characters.'); ?></em><br>
+								<em><?php langue('Pour des raisons de sécurité, évitez d\'utiliser le même mot de passe que celui de votre boite mail.','For your safety, please don\'t use your mail password for this password.'); ?></em><br>
 								<em><?php langue('Les champs marqués d\'un * sont obligatoires.', 'Fields with * are mandatory.'); ?></em>
 							</p>
 							<em><?php langue('Répondez aux deux questions de securité*:', 'Answer the two security questions*:'); ?></em><br>
@@ -179,6 +181,7 @@
 					</script>
 				</div>
 			</div>
+			<?php include_once '/view/includes/footer.php'; ?>
 		</div>
 	</body>
 </html>
