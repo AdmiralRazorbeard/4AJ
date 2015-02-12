@@ -43,7 +43,7 @@ elseif ($_GET['section'] == 'EN')
 }
 elseif ($_GET['section'] == 'index')
 {
-	include_once 'controller/index.php';
+	include_once 'controller/main.php';
 }
 elseif ($_GET['section'] == 'inscription')
 {

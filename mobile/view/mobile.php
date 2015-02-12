@@ -129,13 +129,11 @@
 			<?php } } else {?><h2 style="color: #a4b819; text-shadow: 1px 1px 0.6px #103b5a;">Réservations</h2><h4>Réservations momentanément suspendues</h4><h4>Raison avancée: <?php echo($raisonBlocage);?></h4><?php }
 					} ?>
 				<script type="text/javascript">
-				$(document).ready(function() {
+				$(document).on("pageinit", function() {
 					var weekValueAnneFrank=<?php echo $semaineDePlus; ?>;
-					console.log(weekValueAnneFrank);
 			       	$('body').on('swipeleft', '#repasAnneFrank', function(event) {
 			       		event.stopImmediatePropagation();
 			      		weekValueAnneFrank=weekValueAnneFrank+1;
-			      		console.log(weekValueAnneFrank);
 			      		$('#repasAnneFrank').fadeOut(100, function(){
 			          		$('#repasAnneFrank').load("index.php?section=mobile&semaineAnneFrank="+weekValueAnneFrank+" "+"#repasAnneFrank", function(){
 			          			$('#repasAnneFrank').fadeIn(100);
