@@ -36,7 +36,7 @@ if(!empty($_POST['mail']) && !empty($_POST['password']) && !empty($_POST['choixR
 {
 	if(preg_match("#^[a-zA-Z0-9.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $_POST['mail']) && (!(strlen($_POST['password']) <= 6) && !(strlen($_POST['password']) > 100) && !(ctype_space($_POST['password'])) ))
 	{
-		usleep(500000);
+		usleep(1000000);
 		//permet de faire une pause d'une demi seconde pour se proteger des attaques de type force brute
 		$mail = $mysqli->real_escape_string($_POST['mail']);
 		$choixResidence=(int)$mysqli->real_escape_string($_POST['choixResidence']); 
