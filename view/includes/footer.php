@@ -8,5 +8,5 @@
 		}	
 		?>
 	</span>
-	<a href="index.php?section=mentionsLegales">Mentions légales</a>
+	<a href="index.php?section=mentionsLegales">Mentions légales &amp; CGU</a>
 </div>
