@@ -2,7 +2,7 @@
 include_once 'request/telechargerMenu.php';
 $file = preg_replace("/[^A-Z0-9_-]/i", "0", $mysqli->real_escape_string($_GET['file']));
 //Empeche l'utilisateur de pouvoir remonter l'arborescence des fichiers en modifiant l'adresse
-if(file_exists('fichierPDF/menu/'.$file.'.pdf') && is_readable('fichierPDF/menu/'.$file.'.pdf') && accesRepas())
+if(file_exists('fichierPDF/menu/'.$file.'.pdf') && is_readable('fichierPDF/menu/'.$file.'.pdf'))
 //On ne peut télécharger le menu que si l'on est autorisé à reserver
 {
 	$name=NULL;

@@ -1,5 +1,56 @@
 <?php include_once '/view/includes/header.php'; ?>
 			<div class="restauration element contentWrapper edition_mode">
+				<!-- Affichage des menus si la personne est deconnectée -->
+				<?php if(!isConnected()){ ?>
+				<h2 style="color: #a4b819; font-size:16px; text-shadow: 1px 1px 0.6px #103b5a;"><?php langue('Télécharger le menu', 'Download the menu'); ?></h2>
+				<div id="menuAnneFrank">
+					<div class="selectionSemaine">
+						<form method="post">
+							<label for="menuSemaineAnneFrank"><?php langue('[Anne Frank] Semaine du', '[Anne Frank] Week of'); ?> : </label>
+							<select name="menuSemaineAnneFrank" id="menuSemaineAnneFrank">
+								<?php
+								//generation liste semaines que l'on va pouvoir ensuite selectionner pour changer la semaine grâce à jquery
+								$i = 0;
+								while($i < (10+$semaineDePlus))
+								{ ?>
+									<option <?php if(!empty($semaineDuAnneFrank) && $semaineDuAnneFrank==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '0'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); langue('', date('S', strtotime('Monday this week', strtotime('+'.$i.' week')))); echo ' '; langue($mois[date('n', strtotime('Monday this Week', strtotime('+'.$i.' week')))], date('F', strtotime('Monday this week', strtotime('+'.$i.' week')))); ?></option>
+						<?php	$i ++;
+								}
+								?>
+							</select>
+						</form>
+					</div>
+					<?php if($linkAnneFrank!=NULL){ ?>
+					<!-- Si pas de menu cette semaine, ne rien afficher -->
+					<div class="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkAnneFrank; ?>';" value="Télécharger le menu de la semaine"></div>
+					<?php } ?>
+				</div>
+				<div id="menuClairLogis">
+					<div class="selectionSemaine">
+						<form method="post">
+							<label for="menuSemaineClairLogis"><?php langue('[Clair Logis] Semaine du', '[Clair Logis] Week of'); ?> : </label>
+							<select name="menuSemaineClairLogis" id="menuSemaineClairLogis">
+								<?php
+								//generation liste semaines que l'on va pouvoir ensuite selectionner pour changer la semaine grâce à jquery
+								$i = 0;
+								while($i < (10+$semaineDePlus))
+								{ ?>
+									<option <?php if(!empty($semaineDuClairLogis) && $semaineDuClairLogis==$i) { echo 'selected'; } ?> value="<?php if($i == 0) { echo '0'; } else { echo $i; } ?>"><?php echo date('d', strtotime('Monday this week', strtotime('+'.$i.' week'))); langue('', date('S', strtotime('Monday this week', strtotime('+'.$i.' week')))); echo ' '; langue($mois[date('n', strtotime('Monday this Week', strtotime('+'.$i.' week')))], date('F', strtotime('Monday this week', strtotime('+'.$i.' week')))); ?></option>
+						<?php	$i ++;
+								}
+								?>
+							</select>
+						</form>
+					</div>
+					<?php if($linkClairLogis!=NULL){ ?>
+					<!-- Si pas de menu cette semaine, ne rien afficher -->
+					<div class="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkClairLogis; ?>';" value="Télécharger le menu de la semaine"></div>
+					<?php } ?>
+				</div>
+				<hr>
+				<?php } ?>
+
+
 				<!-- DEBUT CALENDRIER POUR INSCRIPTION -->
 				<?php if($accessRepas){ 
 						if(!$blocageReservation) { ?>
@@ -170,6 +221,16 @@
 				<!-- le contenu informatif de la page est placée après l'espace de réservation -->
 					<script type="text/javascript">
 					$(document).ready(function() {
+						//Changer les semaines juste pour la selection du menu (lorsque l'on est pas connecté)
+						$('body').on('change', '#menuSemaineAnneFrank', function() {
+				      		var weekValue=$("#menuSemaineAnneFrank").val();
+				          	$('#menuAnneFrank').load("index.php?section=restauration&semaineAnneFrank="+weekValue+" "+"#menuAnneFrank");
+				       	});
+				       	$('body').on('change', '#menuSemaineClairLogis', function() {
+				      		var weekValue2=$("#menuSemaineClairLogis").val();
+				          	$('#menuClairLogis').load("index.php?section=restauration&semaineClairLogis="+weekValue2+" "+"#menuClairLogis");
+				       	});
+						//Changer les semaines avec les calendrier (lorsque l'on est connecté)
 				        $('body').on('change', '#semaineAnneFrank', function() {
 				      		var weekValue=$("#semaineAnneFrank").val();
 				          	$('#repasAnneFrank').load("index.php?section=restauration&semaineAnneFrank="+weekValue+" "+"#repasAnneFrank");

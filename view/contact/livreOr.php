@@ -50,14 +50,14 @@ function v_maxlength(id, crid, max)
 					{
 						foreach($livreOr as $k => $v)
 						{ ?>
-							<b><?php echo $v['nom']; ?></b>
+							<b><?php echo $v['nom'].','; ?></b>
 
 							<!-- Si admin, cela affiche l'adresse mail -->
 							<?php if($admin && !empty($v['mail']) && $v['mail'] != "null") { ?>
 							(<a href="mailto:<?php echo $v['mail']; ?>"><?php echo $v['mail'];?></a>)
 							<?php } ?>
 							<!-- Affiche la date -->
-							, <?php langue('le '.$v['timeLivreOr'], 'the '.$v['timeLivreOrEN']); ?>
+							<?php langue('le '.$v['timeLivreOr'], 'the '.$v['timeLivreOrEN']); ?>
 							<!-- Rajoute un bouton supprimer si admin -->
 							<?php if($admin) { ?>
 							<a href="index.php?section=livreOr&amp;delete=<?php echo $v['id']; ?>">Supprimer</a> 
@@ -87,15 +87,12 @@ function v_maxlength(id, crid, max)
 						<input required type="text" name="nom" id="nom" />
 						</p>
 						<p class="form-field">
-						<label for="email"><?php langue('Votre email :', 'Your mail :'); ?></label>
-						<input type="email" name="mail" id="email" />
+						<label for="email"><?php langue('Votre email* :', 'Your mail* :'); ?></label>
+						<input required type="email" name="mail" id="email" />
 						</p>
 						<p class="hp">
     						<label>Si vous êtes un humain, laissez ce champ vide*</label>
    							<input type="text" name="nickname">
-						</p>
-						<p class="message_info"> 
-						<em><?php langue('L\'Email est optionnel et ne sera pas affiché au public, mais peut nous permettre de vous recontacter', 'Your email is optional and won\'t be display in public, this may help us to contact you.'); ?></em>
 						</p>
 						<p class="form-field">
 						<label for="contenu"><?php langue('Contenu*', 'Content*'); ?> : </label>

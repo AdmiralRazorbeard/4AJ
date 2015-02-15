@@ -609,13 +609,20 @@ font-size: 15px;
     float: left;
     margin-right: 15px;
 }
-.restauration .lienMenu input{
+.restauration #repasAnneFrank .lienMenu input, .restauration #repasClairLogis .lienMenu input{
     position:relative;
     top:10px;
 }
-.restauration .lienMenu img{
+.restauration #repasAnneFrank .lienMenu img, .restauration #repasClairLogis .lienMenu img{
     position:relative;
     top:15px;
+}
+.restauration #menuAnneFrank, .restauration #menuClairLogis{
+    height:30px;
+}
+.restauration #menuAnneFrank input, .restauration #menuClairLogis input{
+    position: relative;
+    bottom: 6px;
 }
 /*  --- Propriétés de la section parameters --  */
 .parameters fieldset{

@@ -126,7 +126,12 @@
 				</table>
 				<!-- FIN CALENDRIER -->
 			</div>
-			<?php } } else {?><h2 style="color: #a4b819; text-shadow: 1px 1px 0.6px #103b5a;">Réservations</h2><h4>Réservations momentanément suspendues</h4><h4>Raison avancée: <?php echo($raisonBlocage);?></h4><?php }
+			<?php } } else {?>
+			<!-- Réservation impossible car il y a eu blocage des réservations -->
+			<h2 style="color: #a4b819; text-shadow: 1px 1px 0.6px #103b5a;">Réservations</h2>
+			<h4>Réservations momentanément suspendues</h4><h4>Raison avancée: <?php echo($raisonBlocage);?></h4>
+			<input class="buttonDisconnect" type="submit" onclick="location.href='index.php?section=mobile&amp;dislog=true';" value="<?php langue('Je veux me déconnecter du site', 'I want to disconnect from the website'); ?>">
+			<?php }
 					} ?>
 				<script type="text/javascript">
 				$(document).on("pageinit", function() {

@@ -8,21 +8,13 @@ include_once '/view/includes/header.php';
 					<input type="hidden" name="MAX_FILE_SIZE" value="5242880" />
 					<label for="semaine">Semaine du : </label>
 					<select name="semaine" id="semaine">
-			<?php		$numeroWeek = date('W', strtotime('Monday this week')).'-'.date('o', strtotime('Monday this week'));
-						$jourWeek = date('j', strtotime('Monday this week'));
-						$moisWeek = $mois[date('n', strtotime('Monday this week'))];
+			<?php		for($i=0; $i<9; $i++){
+						$numeroWeek = date('W', strtotime('Monday this week', strtotime('+'.$i.' week'))).'-'.date('o', strtotime('Monday this week', strtotime('+'.$i.' week')));
+						$jourWeek = date('j', strtotime('Monday this week', strtotime('+'.$i.' week')));
+						$moisWeek = $mois[date('n', strtotime('Monday this week', strtotime('+'.$i.' week')))];
 						?>
-						<option selected value="<?php echo $numeroWeek; ?>"><?php echo $jourWeek.' '.$moisWeek; ?></option>
-			<?php		$numeroWeek = date('W', strtotime('Monday next week')).'-'.date('o', strtotime('Monday next week'));
-						$jourWeek = date('j', strtotime('Monday next week'));
-						$moisWeek = $mois[date('n', strtotime('Monday next week'))];
-						?>
-						<option value="<?php echo $numeroWeek; ?>"><?php echo $jourWeek.' '.$moisWeek; ?></option>
-			<?php		$numeroWeek = date('W', strtotime('Monday next week', strtotime('+1 week'))).'-'.date('o', strtotime('Monday next week', strtotime('+1 week')));
-						$jourWeek = date('j', strtotime('Monday next week', strtotime('+1 week')));
-						$moisWeek = $mois[date('n', strtotime('Monday next week', strtotime('+1 week')))];
-						?>
-						<option value="<?php echo $numeroWeek; ?>"><?php echo $jourWeek.' '.$moisWeek; ?></option>
+						<option <?php if($i==0){ echo "selected ";} ?>value="<?php echo $numeroWeek; ?>"><?php echo $jourWeek.' '.$moisWeek; ?></option>
+						<?php } ?>
 					</select>
 					<select name="residenceChoisie">
 							<option selected value="1">Anne Frank</option>
