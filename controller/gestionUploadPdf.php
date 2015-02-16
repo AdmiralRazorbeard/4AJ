@@ -9,6 +9,7 @@ if(!empty($_SESSION['superAdminOn']) && superAdmin())
 		$nomFichier = preg_replace("/[^A-Z0-9_-]/i", "0", $mysqli->real_escape_string($_GET['delete']));
 		$page = preg_replace("/[^A-Z0-9_-]/i", "0", $mysqli->real_escape_string($_GET['section']));
 		deletePdf($nomFichier, $page);
+		header('location:index.php?section='.$page);
 	}
 	if(!empty($_POST['page']) && !empty($_POST['nomFichier']) && strlen($_POST['nomFichier']) < 50 && !ctype_space($_POST['nomFichier']))
 	// Si l'utilisateur a choisi une variable ainsi qu'a mis un fichier

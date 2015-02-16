@@ -10,6 +10,7 @@ if(!empty($_GET['delete'])){
 	$delete = preg_replace("/[^A-Z0-9_-]/i", "0", $mysqli->real_escape_string($_GET['delete']));
 	$tmp2 =explode('_', $delete);
 	deleteMenu($tmp2);
+	header('location:index.php?section=menuSemaine');
 }
 if(!empty($_POST['semaine']) && !empty($_POST['residenceChoisie']))
 // Si l'utilisateur a choisi une variable ainsi qu'a mis un fichier

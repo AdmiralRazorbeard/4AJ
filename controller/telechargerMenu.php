@@ -19,7 +19,7 @@ if(file_exists('fichierPDF/menu/'.$file.'.pdf') && is_readable('fichierPDF/menu/
 	$tmp3 = run('SELECT telechargement FROM menusemaine WHERE semaine = '.$tmp[1].' AND annee = '.$tmp[0].' AND residence ='.$tmp[2])->fetch_object();
 	$tmp3 = $tmp3->telechargement;
 	$tmp3 ++;
-	run('UPDATE menusemaine SET telechargement = '.$tmp3);
+	run('UPDATE menusemaine SET telechargement = '.$tmp3.' WHERE semaine = '.$tmp[1].' AND annee = '.$tmp[0].' AND residence ='.$tmp[2]);
 	//Création des headers, pour indiquer au navigateur qu'il s'agit d'un fichier à télécharger
 	header('Content-Description: File Transfer');
 	header('Content-Type: application/octet-stream');

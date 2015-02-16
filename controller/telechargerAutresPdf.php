@@ -10,7 +10,7 @@ if(file_exists('fichierPDF/'.$page.'/'.$file.'.pdf') && is_readable('fichierPDF/
 	$tmp2 = run('SELECT telechargement FROM autresfichierspdf WHERE nomFichier = "'.$file.'" AND page = "'.$page.'"')->fetch_object();
 	$tmp2 = $tmp2->telechargement;
 	$tmp2 ++;
-	run('UPDATE autresfichierspdf SET telechargement = '.$tmp2);
+	run('UPDATE autresfichierspdf SET telechargement = '.$tmp2.' WHERE nomFichier = "'.$file.'" AND page = "'.$page.'"');
 	//Création des headers, pour indiquer au navigateur qu'il s'agit d'un fichier à télécharger
 	header('Content-Description: File Transfer');
 	header('Content-Type: application/octet-stream');
