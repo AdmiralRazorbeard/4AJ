@@ -22,7 +22,7 @@ include_once '/view/includes/submenuPlateformeLogement.php';
 						 		foreach($listePdf as $key => $value){ 
 						?>	
 							Lien vers le fichier <?php echo ($value['nomFichier']); ?>: index.php?section=telechargerAutresPdf&amp;page=<?php echo ($value['page']); ?>&amp;file=<?php echo ($value['nomFichier']); ?><br>
-							<a href="index.php?section=plateformeLogement&amp;delete=<?php echo ($value['nomFichier']); ?>">Supprimer le fichier <?php echo ($value['nomFichier']); ?></a><br><br>
+							<a href="index.php?section=plateformeLogement&amp;delete=<?php echo ($value['nomFichier']); ?>">Supprimer le fichier <?php echo ($value['nomFichier']); ?></a>&emsp;&emsp;Téléchargements: <?php echo $value['telechargement']; ?><br><br>
 						<?php } } 
 					} ?>
 			</div>

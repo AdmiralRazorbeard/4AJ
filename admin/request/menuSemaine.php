@@ -32,7 +32,7 @@ function isAdminRepas()
 function getMenu()
 //fonction qui permet de recuperer la liste des menus
 {
-	$tmp = run('SELECT semaine, annee, residence 
+	$tmp = run('SELECT semaine, annee, residence, telechargement 
 				FROM menusemaine'); 
 	$listeMenu = NULL;
 	if($tmp)
@@ -42,7 +42,8 @@ function getMenu()
 		{
 			$listeMenu[$i]['semaine'] = $donnees->semaine;
 			$listeMenu[$i]['annee'] = $donnees->annee; 
-			$listeMenu[$i]['residence'] = $donnees->residence; 
+			$listeMenu[$i]['residence'] = $donnees->residence;
+			$listeMenu[$i]['telechargement'] = $donnees->telechargement;
 			$i++;
 		}
 	}

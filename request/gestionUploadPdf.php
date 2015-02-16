@@ -20,7 +20,7 @@ function superAdmin()
 function getPdf($page)
 //fonction qui permet de recuperer la liste des menus
 {
-	$tmp = run('SELECT nomFichier, page 
+	$tmp = run('SELECT nomFichier, page, telechargement 
 				FROM autresfichierspdf WHERE page = "'.$page.'"'); 
 	$listePdf = NULL;
 	if($tmp)
@@ -30,6 +30,7 @@ function getPdf($page)
 		{
 			$listePdf[$i]['nomFichier'] = $donnees->nomFichier;
 			$listePdf[$i]['page'] = $donnees->page;
+			$listePdf[$i]['telechargement'] = $donnees->telechargement;
 			$i++;
 		}
 	}

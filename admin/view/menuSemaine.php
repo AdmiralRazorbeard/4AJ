@@ -40,7 +40,7 @@ include_once '/view/includes/header.php';
 						$jourDebutSemaine = ($jourPremierJanvier == 1) ? date('d', $timeStampDate) : date('d', strtotime('last monday', $timeStampDate));
 					 	$moisDebutSemaine = ($jourPremierJanvier == 1) ? $mois[date('n', $timeStampDate)] : $mois[date('n', strtotime('last monday', $timeStampDate))];
 					?>
-					<a href="index.php?section=menuSemaine&amp;delete=<?php echo ($value['semaine'].'_'.$value['annee'].'_'.$value['residence']); ?>">Supprimer le menu du <?php echo $jourDebutSemaine.' '.$moisDebutSemaine; ?> pour la residence <?php echo $residence; ?></a><br>
+					<a href="index.php?section=menuSemaine&amp;delete=<?php echo ($value['semaine'].'_'.$value['annee'].'_'.$value['residence']); ?>">Supprimer le menu du <?php echo $jourDebutSemaine.' '.$moisDebutSemaine; ?> pour la residence <?php echo $residence; ?></a>&emsp;&emsp;Téléchargements: <?php echo $value['telechargement']; ?><br>
 				<?php } }
 				?>
 			</div>
