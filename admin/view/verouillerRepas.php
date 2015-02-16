@@ -57,10 +57,10 @@
 							foreach ($semaineAnneFrank as $key => $value) { 
 							$tmp = boutonVerrouiller($value['numero'], $value['mois'], $value['annee'], 1, 1);
 								?>
-								<td <?php if($tmp) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 false">vérouillé');} 
+								<td <?php if($tmp) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 false">interdit');} 
 										else{
 											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 1, 1, $fonctionChoisieAnneFrank);
-											if($tmp2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 blocked">bloqué');}else{ echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 true">non-vérouillé');}
+											if($tmp2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 blocked">bloqué');}else{ echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_1 true">');}
 										} ?>
 								</td>
 					<?php	} ?>
@@ -73,10 +73,10 @@
 							foreach ($semaineAnneFrank as $key => $value) { 
 							$tmp = boutonVerrouiller($value['numero'], $value['mois'], $value['annee'], 0, 1);
 								?>
-								<td <?php if($tmp) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 false">vérouillé');} 
+								<td <?php if($tmp) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 false">interdit');} 
 										else{
 											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 0, 1, $fonctionChoisieAnneFrank);
-											if($tmp2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 blocked">bloqué');}else{ echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 true">non-vérouillé');}
+											if($tmp2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 blocked">bloqué');}else{ echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_1 true">');}
 										} ?>
 								</td>
 					<?php	} ?>
@@ -130,10 +130,10 @@
 							foreach ($semaineClairLogis as $key => $value) { 
 							$tmp = boutonVerrouiller($value['numero'], $value['mois'], $value['annee'], 1, 2)
 								?>
-								<td <?php if($tmp) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 false">vérouillé');} 
+								<td <?php if($tmp) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 false">interdit');} 
 										else{
 											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 1, 2, $fonctionChoisieAnneFrank);
-											if($tmp2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 blocked">bloqué');}else{ echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 true">non-vérouillé');}
+											if($tmp2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 blocked">bloqué');}else{ echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_1_2 true">');}
 										} ?>
 								</td>
 					<?php	} ?>
@@ -146,10 +146,10 @@
 							foreach ($semaineClairLogis as $key => $value) { 
 							$tmp = boutonVerrouiller($value['numero'], $value['mois'], $value['annee'], 0, 2)
 								?>
-								<td <?php if($tmp) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 false">vérouillé');} 
+								<td <?php if($tmp) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 false">interdit');} 
 										else{
 											$tmp2 = boutonBloquer($value['numero'], $value['mois'], $value['annee'], 0, 2, $fonctionChoisieAnneFrank);
-											if($tmp2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 blocked">bloqué');}else{ echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 true">non-vérouillé');}
+											if($tmp2) { echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 blocked">bloqué');}else{ echo ('class="'.$value['numero'].'_'.$value['mois'].'_'.$value['annee'].'_0_2 true">');}
 										} ?>
 								</td>
 					<?php	} ?>
@@ -217,7 +217,7 @@
 			      				if (classe=="false"){
 				       				$.post( "index.php?section=verrouillerRepas", {semaine: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
 									  .done(function() {
-									  		$('.false.isselected').html('non-vérouillé');
+									  		$('.false.isselected').html('');
 									    	$('.false.isselected').addClass('true').removeClass('false').removeClass('isselected');
 									  })
 									  .fail(function(){
@@ -227,7 +227,7 @@
 								if (classe=="true"){
 					       			$.post( "index.php?section=verrouillerRepas", {semaine: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
 									  .done(function() {
-									  		$('.true.isselected').html('vérouillé');
+									  		$('.true.isselected').html('interdit');
 									    	$('.true.isselected').addClass('false').removeClass('true').removeClass('isselected');
 									  })
 									  .fail(function(){
@@ -237,7 +237,7 @@
 								if (classe=="blocked"){
 									$.post( "index.php?section=verrouillerRepas", {semaine: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
 									  .done(function() {
-									  		$('.blocked.isselected').html('vérouillé');
+									  		$('.blocked.isselected').html('interdit');
 									    	$('.blocked.isselected').addClass('false').removeClass('blocked').removeClass('isselected');
 									  })
 									  .fail(function(){
@@ -260,7 +260,7 @@
 								if (classe=="blocked"){
 					       			$.post( "index.php?section=verrouillerRepas", {fonction: fonctionChoisie, semaine: weekValue, jour: donnees[0], mois: donnees[1], annee: donnees[2], midi: donnees[3], residence: donnees[4] })
 									  .done(function() {
-									  		$('.blocked.isselected').html('non-vérouillé');
+									  		$('.blocked.isselected').html('');
 									    	$('.blocked.isselected').addClass('true').removeClass('blocked').removeClass('isselected');
 									  })
 									  .fail(function(){
