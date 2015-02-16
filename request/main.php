@@ -38,12 +38,11 @@ function isAdminActualite()
 function listeActualite()
 // Liste toutes les actualités (tout si admin, sinon seulement ce à quoi ta fonction t'autorise, sinon seulement le public)
 {
-	CleanActualite();
 	if(!empty($_SESSION['mail']))
 	{
 		$superAdmin = run('SELECT COUNT(*) as admin FROM membre WHERE mail="'.$_SESSION['mail'].'" AND isSuperAdmin = 1')->fetch_object();
 		if($superAdmin->admin == 1)
-		{	// Tout car admin
+		{	// Tout car superAdmin
 			$actu = run('	SELECT DISTINCT news.id AS idNews,  news.titreNewsFR, news.contenuNewsFR, DATE_FORMAT(news.timestampNews, "%d/%m/%y") AS timestampNews
 					 		FROM news 
 					 		ORDER BY news.timestampNews DESC
@@ -86,7 +85,7 @@ function listeActualite()
 	}
 	else
 	{ 
-		// ceci est pour contrer si il n'y a plus de news.
+		// Ceci est pour contrer si il n'y a plus de news.
 		return array();
 	}
 }
@@ -95,11 +94,5 @@ function deleteNews($id)
 {
 	run('DELETE FROM newsfonction WHERE id='.$id);
 	run('DELETE FROM news WHERE id='.$id);
-}
-function CleanActualite()
-// Cela supprimer au fur et à mesure les anciennes news pour éviter de surcharger la base
-{
-	$timestamp8MoisAvant = date('Y-m-d G:i:s', strtotime('8 months ago'));
-	run('DELETE FROM news WHERE timestampNews<"'.$timestamp8MoisAvant.'"');
 }
 ?>

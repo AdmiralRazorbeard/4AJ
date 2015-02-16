@@ -43,7 +43,15 @@ function allFonction()
 function addActualite($titre, $contenu, $idMembre)
 // Ajoute une actualité
 {
+	CleanActualite();
 	run('INSERT INTO news(id_membre, titreNewsFR, contenuNewsFR) VALUES ('.$idMembre.', "'.$titre.'", "'.$contenu.'")');
+}
+function CleanActualite()
+// Cela supprimer au fur et à mesure les anciennes news pour éviter de surcharger la base
+{
+	$timestamp1AnAvant = date('Y-m-d G:i:s', strtotime('1 year ago'));
+	run('DELETE FROM newsfonction WHERE timestampNews<"'.$timestamp1AnAvant.'"');
+	run('DELETE FROM news WHERE timestampNews<"'.$timestamp1AnAvant.'"');
 }
 function deleteNews($id)
 {

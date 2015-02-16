@@ -9,9 +9,10 @@ if(!$admin)
 	header('location:index.php?section=error');
 }
 $allFonction = allFonction();
+$message=NULL;
 if(!empty($_POST['titre']) && !empty($_POST['actualite']))
 {
-	if(strlen($_POST['titre']) <= 254 && strlen($_POST['actualite']) <= 5000 && !ctype_space($_POST['titre']) && !ctype_space($_POST['actualite']))
+	if(strlen($_POST['titre']) <= 254 && strlen($_POST['actualite']) <= 20000 && !ctype_space($_POST['titre']) && !ctype_space($_POST['actualite']))
 	{
 		$titre = $mysqli->real_escape_string($_POST['titre']);
 		$contenu = $mysqli->real_escape_string($_POST['actualite']);
@@ -27,7 +28,9 @@ if(!empty($_POST['titre']) && !empty($_POST['actualite']))
 		}
 		if($issetFonctionChoisi)
 		{
+			//On ajoute la nouvelle actualité
 			addActualite($titre, $contenu, $idMembre);
+			$message="Message envoyé";
 			$idLastNews = run('SELECT id FROM news ORDER BY id DESC LIMIT 0,1')->fetch_object();
 			$idLastNews = $idLastNews->id;
 			foreach ($allFonction as $key => $value) 
