@@ -82,8 +82,8 @@ function supprimerFonction($id)
 {
 	run('DELETE FROM newsfonction WHERE id_fonction='.$id);
 	run('DELETE FROM membrefonction WHERE id_fonction='.$id);
-	run('DELETE FROM fonction WHERE id='.$id);
 	run('DELETE FROM bloquerjourrepas WHERE fonction='.$id);
+	run('DELETE FROM fonction WHERE id='.$id);
 }
 
 function allMembre($id, $membreParPage, $page)

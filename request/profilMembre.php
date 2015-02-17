@@ -61,7 +61,7 @@ function supprimerMembre($mail){
 		$tmp2 = run('SELECT COUNT(*) AS nbre FROM membre, reserverepas WHERE reserverepas.id_membre="'.$account[0]['id'].'"')->fetch_object();
 		$nbreReservations = $tmp2->nbre;
 		if($nbreReservations == 0)
-		//S'il n'y a pas de réservation
+		//S'il n'y a pas de réservation on peut le supprimer
 		{
 			run('DELETE FROM membrefonction WHERE id='.$account[0]['id']);
 			run('UPDATE news SET id_membre=NULL WHERE id_membre='.$account[0]['id']);

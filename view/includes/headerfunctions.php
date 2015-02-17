@@ -111,6 +111,9 @@ function isSuperAdmin()
 	return false;	
 }
 
+////////////////////////////////////////////////////
+// Gestion de la connexion/ deconnexion / superadmin
+////////////////////////////////////////////////////
 if(!empty($_GET['superAdminOn']) && $_GET['superAdminOn'])
 {
 	if(isSuperAdmin())
