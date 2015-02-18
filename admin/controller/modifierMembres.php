@@ -7,7 +7,7 @@ if(!isAdminMembres() || empty($_GET['modif']) || !is_numeric($_GET['modif']))
 	header('location:index.php?section=main');
 }
 
-if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['nom']) && !ctype_space($_POST['nom']) && !strlen($_POST['nom']) > 30 && !empty($_POST['prenom']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['prenom']) && !ctype_space($_POST['prenom']) && !strlen($_POST['prenom']) > 30)
+if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['nom']) && !ctype_space($_POST['nom']) && !(strlen($_POST['nom']) > 30) && !empty($_POST['prenom']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['prenom']) && !ctype_space($_POST['prenom']) && !(strlen($_POST['prenom']) > 30))
 {
 	$id = $_POST['id'];
 	$nom = $mysqli->real_escape_string($_POST['nom']);

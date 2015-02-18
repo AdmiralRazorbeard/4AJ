@@ -115,7 +115,7 @@ include_once '/view/includes/header.php';
 						<td onclick="changerFonction(6, <?php echo $value['id'] ?>);" <?php if($value['autorisationMangerSoir']) { echo 'class="true"><img src="view/graphicRessources/true.png" alt="true"/>'; } else { echo 'class="false"><img src="view/graphicRessources/false.png" alt="false"/>'; } ?>
 						</td>
 
-						<?php if($value['id'] != 1) { ?>
+						<?php if($value['id'] != 1 && $value['id'] != 2) { ?>
 						<!-- On ne peut pas supprimer la fonction "public" -->
 						<td>
 							<a href="index.php?section=fonction&amp;delete=<?php echo $value['id']; ?>" onclick="return(confirm('Attention ! Si vous supprimez la fonction, cette fonction sera retirée de tous les membres qui la possèdent. Voulez-vous continuer ?'))">Supprimer</a>
@@ -140,10 +140,17 @@ include_once '/view/includes/header.php';
 				<hr />
 				<script type="text/javascript">
 				function changerFonction(type, id)
-				{	/*Fonction redirige sur la même page en mettant les paramètres en GET */
-					javascript:location.href='index.php?section=fonction&type='+type+'&id='+id;
+				/*Fonction redirige sur la même page en mettant les paramètres en GET */
+				{
+					if(id!=1 && id!=2)
+					{
+						window.location='index.php?section=fonction&type='+type+'&id='+id;
+					}
 				}
 				</script>
+				<?php if(isset($_GET['fonction']))
+				// Le script pour ajouter des membres n'est affiché que lorsque Get['fonction'] existe
+				{ ?>
 				<script type="text/javascript">
 				$(document).ready(function() {
 				        $('body').on('click', '.deleteFonction', function() {
@@ -158,6 +165,7 @@ include_once '/view/includes/header.php';
 				       	}); 
 			       	}); 
 				</script>
+				<?php } ?>
 			</div>
 		</div>
 	</body>

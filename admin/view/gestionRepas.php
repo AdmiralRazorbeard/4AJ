@@ -115,6 +115,9 @@ include_once '/view/includes/header.php';
 					</table>
 				</div>
 				<br>
+				<p>
+					<em>NB: Dans le tableau, H signifie Halal. Exemple: 15/(H:4) signifie 15 réservations dont 4 Halal.</em>
+				</p>
 				<hr>
 				<br>
 				<input type="submit" onclick="location.href='index.php?section=generationNombreRepas';" value="Télécharger le récapitulatif du tableau ci-dessus">

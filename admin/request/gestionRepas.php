@@ -72,7 +72,10 @@ function nbreInscrit($jour, $mois, $annee, $midi, $residence)
 		return 0;
 	}
 	$tmp = run('SELECT COUNT(*) as nbre FROM reserverepas WHERE dateReserve="'.$date.'" AND midi = '.$midi.' AND residence='.$residence)->fetch_object();
-	return $tmp->nbre;
+	$res1= ($tmp->nbre);
+	$tmp2 = run('SELECT COUNT(*) as nbre FROM reserverepas, membrefonction WHERE reserverepas.id_membre=membrefonction.id AND membrefonction.id_fonction=2 AND dateReserve="'.$date.'" AND midi = '.$midi.' AND residence='.$residence)->fetch_object();
+	$res2= ($tmp2->nbre);
+	return $res1."/(H:".$res2.")";
 }
 
 function membreFonction()

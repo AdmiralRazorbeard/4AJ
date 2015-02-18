@@ -9,15 +9,18 @@ if(!isAdminFonction())
 if(!empty($_GET['type']) && !empty($_GET['id']) && is_numeric($_GET['id']) && is_numeric($_GET['type']))
 {
 	// On change le pouvoir de la fonction (inversement en fonction de ce qu'elle était)
-	changerPouvoir($_GET['type'], $_GET['id']);
-	header('location:index.php?section=fonction');
+	if($_GET['id']!=1 && $_GET['id']!=2)
+	{
+		changerPouvoir($_GET['type'], $_GET['id']);
+		header('location:index.php?section=fonction');
+	}
 }
 if(!empty($_POST['nom']) && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['nom']) && !ctype_space($_POST['nom']) && !(strlen($_POST['nom']) > 30))
 {
 	// Ajout d'une fonction
 	ajouterFonction($mysqli->real_escape_string($_POST['nom']));
 }
-if(!empty($_GET['delete']) && is_numeric($_GET['delete']) && $_GET['delete'] > 1)
+if(!empty($_GET['delete']) && is_numeric($_GET['delete']) && $_GET['delete'] > 2)
 	// Supprime seulement si ce n'est pas la fonction "public"
 {
 	supprimerFonction($_GET['delete']);
