@@ -18,20 +18,16 @@ function isSuperAdmin()
 }
 function mailFormulaire()
 {
-	$tmp = run('SELECT mailMain, mailPlateformeLogement FROM mail WHERE id=1')->fetch_object();
+	$tmp = run('SELECT mailMain, mailPlateformeLogement, mailAnneFrank, mailClairLogis, mailNobel FROM mail WHERE id=1')->fetch_object();
 	$mail['mailMain'] = $tmp->mailMain;
 	$mail['mailPlateformeLogement'] = $tmp->mailPlateformeLogement;
+	$mail['mailAnneFrank'] = $tmp->mailAnneFrank;
+	$mail['mailClairLogis'] = $tmp->mailClairLogis;
+	$mail['mailNobel'] = $tmp->mailNobel;
 	return $mail;
 }
 
-function changerMail($lequel, $mail)
-// Change le mail du contactMain (lequel == 1) ou mailPlateformeLogement (lequel == 2)
+function changerMail($destinataire, $mail)
 {
-	if($lequel == 1)
-		{ $lequel = 'mailMain'; }
-	elseif($lequel == 2)
-		{ $lequel = 'mailPlateformeLogement'; }
-	else
-		{ header('location:index.php?section=formulaireContact'); }
-	run('UPDATE mail SET '.$lequel.'= "'.$mail.'" WHERE id=1'); // Il n'y a qu'une seule entrée dans la bdd
+	run('UPDATE mail SET '.$destinataire.'= "'.$mail.'" WHERE id=1'); // Il n'y a qu'une seule entrée dans la bdd
 }

@@ -422,6 +422,10 @@ font-size: 15px;
     padding: 0px 20px 0px 20px;
     text-align: center;
 }
+.nosResidences #tableCaptcha td{ 
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}
 #tableCaptcha input{
     position: relative;
     bottom: 10px;
@@ -501,18 +505,23 @@ font-size: 15px;
 #message_livredor .form-field textarea{
     resize:none;
 }
-/*  --- Propriétés de mainContact ET plateformeLogementContact--  */
+/*  --- Propriétés de mainContact, plateformeLogementContact et residenceContact--  */
 #mainContact, #plateformeLogementContact{
     width:600px;
     margin:auto;
     padding-left:50px;
 }
-#mainContact .form-field, #plateformeLogementContact .form-field{
+#residenceContact{
+    width:498px;
+    margin:auto;
+    padding-left: 16px;
+}
+#mainContact .form-field, #plateformeLogementContact .form-field, #residenceContact .form-field{
     margin:5px;
     overflow:hidden;
     margin:auto;
 }
-#mainContact .form-field label, #mainContact .form-field-contenu label, #plateformeLogementContact .form-field label, #plateformeLogementContact .form-field-contenu label{
+#mainContact .form-field label, #mainContact .form-field-contenu label, #plateformeLogementContact .form-field label, #plateformeLogementContact .form-field-contenu label, #residenceContact .form-field label, #residenceContact .form-field-contenu label{
     float:left;
     width:35%;
     padding: 5px; 
@@ -524,9 +533,22 @@ font-size: 15px;
     border: 1px solid #686868;
     background-color: #fff;
 }
+#residenceContact .form-field input{
+    float: left;
+    width: 59%;
+    padding: 5px;
+    border: 1px solid #686868;
+    background-color: #fff;
+}
 #mainContact #contenu, #plateformeLogementContact #contenu{
     width: 545px;
     height:250px;
+    padding: 5px;
+    resize:none;
+}
+#residenceContact #contenu{
+    width: 480px;
+    height:120px;
     padding: 5px;
     resize:none;
 }

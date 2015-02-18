@@ -1,16 +1,23 @@
 <?php
-function sendMailContact($plateformeLogementOu4AJ, $mail, $sujet, $contenu)
-// plateformeLogementOu4AJ: 2 si plateformelogement, 1 si 4AJ
+function sendMailContact($destinataire, $mail, $sujet, $contenu)
+// destinataire: 1 si 4AJ, 2 si plateformelogement, 3 anne frank, 4 clair logis, 5 nobel
 {
-	if($plateformeLogementOu4AJ == 1)
-	{
-		$tmp = run('SELECT mailMain as mail FROM mail WHERE id=1')->fetch_object();
-		// Pour 4AJ
-	}
-	else
-	{
-		$tmp = run('SELECT mailPlateformeLogement as mail FROM mail WHERE id=1')->fetch_object();
-		// Pour plateforme logement
+	switch ($destinataire) {
+    case 1:
+        $tmp = run('SELECT mailMain as mail FROM mail WHERE id=1')->fetch_object();
+        break;
+    case 2:
+        $tmp = run('SELECT mailPlateformeLogement as mail FROM mail WHERE id=1')->fetch_object();
+        break;
+    case 3:
+        $tmp = run('SELECT mailAnneFrank as mail FROM mail WHERE id=1')->fetch_object();
+        break;
+   	case 4:
+        $tmp = run('SELECT mailClairLogis as mail FROM mail WHERE id=1')->fetch_object();
+        break;
+    case 5:
+        $tmp = run('SELECT mailNobel as mail FROM mail WHERE id=1')->fetch_object();
+        break;
 	}
 	$email = $tmp->mail;
 	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $email)) // On filtre les serveurs qui rencontrent des bogues.
