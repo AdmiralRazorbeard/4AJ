@@ -1,4 +1,4 @@
-<?php include_once '/view/includes/header.php'; ?>
+<?php include_once 'view/includes/header.php'; ?>
 			<div class="restauration element contentWrapper edition_mode">
 				<!-- Affichage des menus si la personne est deconnectée -->
 				<?php if(!isConnected()){ ?>
@@ -22,7 +22,7 @@
 					</div>
 					<?php if($linkAnneFrank!=NULL){ ?>
 					<!-- Si pas de menu cette semaine, ne rien afficher -->
-					<div class="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkAnneFrank; ?>';" value="Télécharger le menu de la semaine"></div>
+					<div class="lienMenu"><img src="view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkAnneFrank; ?>';" value="Télécharger le menu de la semaine"></div>
 					<?php } ?>
 				</div>
 				<div id="menuClairLogis">
@@ -44,7 +44,7 @@
 					</div>
 					<?php if($linkClairLogis!=NULL){ ?>
 					<!-- Si pas de menu cette semaine, ne rien afficher -->
-					<div class="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkClairLogis; ?>';" value="Télécharger le menu de la semaine"></div>
+					<div class="lienMenu"><img src="view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkClairLogis; ?>';" value="Télécharger le menu de la semaine"></div>
 					<?php } ?>
 				</div>
 				<hr>
@@ -78,7 +78,7 @@
 						</div>
 						<?php if($linkAnneFrank!=NULL){ ?>
 						<!-- Si pas de menu cette semaine, ne rien afficher -->
-						<div class="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkAnneFrank; ?>';" value="Télécharger le menu de la semaine"></div>
+						<div class="lienMenu"><img src="view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkAnneFrank; ?>';" value="Télécharger le menu de la semaine"></div>
 						<?php } ?>
 					</div>
 					<table>
@@ -157,7 +157,7 @@
 						</div>
 						<?php if($linkClairLogis!=NULL){ ?>
 						<!-- Si pas de menu cette semaine, ne rien afficher -->
-						<div class="lienMenu"><img src="/4AJ/view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkClairLogis; ?>';" value="Télécharger le menu de la semaine"></div>
+						<div class="lienMenu"><img src="view/graphicRessources/pdf.png" alt="icone pdf"/><input type="submit" onclick="location.href='index.php?section=telechargerMenu<?php echo $linkClairLogis; ?>';" value="Télécharger le menu de la semaine"></div>
 						<?php } ?>
 					</div>
 					<table>
@@ -310,7 +310,7 @@
 					});
 				</script>
 			</div>
-			<?php include_once '/view/includes/footer.php'; ?>
+			<?php include_once 'view/includes/footer.php'; ?>
 		</div>
 	</body>
 </html>

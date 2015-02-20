@@ -1,5 +1,5 @@
 <?php
-include_once '/view/includes/header.php';
+include_once 'view/includes/header.php';
 ?>
 			<div class="contentWrapper bloquerReservations">
 				<h2>Activer/Désactiver la possibilité de réserver</h2>

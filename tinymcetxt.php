@@ -2,7 +2,7 @@
 function tinymcetxt($page)
 {
 	$mysqli = connection();
-	if(isset($_POST['contenuFR']) || isset($_POST['contenuEN']) && isSuperAdmin())
+	if(isset($_POST['contenuFR']) || isset($_POST['contenuEN']) && !empty($_SESSION['superAdminOn']))
 	{
 		if(isset($_POST['contenuFR']) && strlen($_POST['contenuFR']) <= 64000)
 		{
@@ -14,7 +14,7 @@ function tinymcetxt($page)
 		}
 	}
 	$contenu = run('SELECT contenu, contenuEN FROM informationpage WHERE page="'.$page.'"')->fetch_object();
-	if(!empty($_SESSION['superAdminOn']) && isSuperAdmin())
+	if(!empty($_SESSION['superAdminOn']))
 	{ 
 		// Evite d'avoir une valeur vide pour ensuite l'afficher sinon cela provoque une erreur
 		if($_SESSION['langue'] == 1) 

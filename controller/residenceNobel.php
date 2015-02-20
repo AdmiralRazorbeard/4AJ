@@ -21,5 +21,5 @@ if(!empty($_POST['subject']) && !empty($_POST['email']) && !empty($_POST['conten
 $chiffreForme = mt_rand(1,3);
 $_SESSION['aleat_nbr_forme'] = $chiffreForme;
 
-include_once '/view/nosResidences/residenceNobel.php';
+include_once 'view/nosResidences/residenceNobel.php';
 ?>

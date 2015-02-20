@@ -1,5 +1,5 @@
 <?php
-include_once('/controller/gds.php');
+include_once('controller/gds.php');
 function isConnected()
 // Return true si connecté, false sinon
 {
@@ -158,7 +158,7 @@ if(!empty($_POST['mail']) && !empty($_POST['password']))
 		usleep(1000000);
 		//permet de faire une pause d'une demi seconde pour se proteger des attaques de type force brute
 		$mail = $mysqli->real_escape_string($_POST['mail']); 
-		$password = sha1($mysqli->real_escape_string($GDS.$_POST['password']));
+		$password = sha1($GDS.$_POST['password']);
 		$nbreMembre = countMembers($mail, $password);	
 		// Count membre retourne 1 si valide
 		// 1,5 si le mail est valide mais pas le password

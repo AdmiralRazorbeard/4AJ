@@ -1,19 +1,19 @@
-<?php include_once('/view/includes/headerfunctions.php');
-include_once('/view/includes/footerfunctions.php');
+<?php include_once('view/includes/headerfunctions.php');
+include_once('view/includes/footerfunctions.php');
 // Gestion des classes actives pour les boutons et de la connexion
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>4AJ, un tremplin pour les jeunes</title>
-		<link rel="stylesheet" type="text/css" href="/4AJ/view/style.css" />
-		<link rel="icon" type="image/png" href="/4AJ/view/graphicRessources/favicon.jpg" >
+		<link rel="stylesheet" type="text/css" href="view/style.css" />
+		<link rel="icon" type="image/png" href="view/graphicRessources/favicon.jpg" >
 		<link rel="stylesheet" href="sss/sss.css" type="text/css" media="all">
 		<meta charset="utf-8">
 		<?php if(!empty($_SESSION['superAdminOn']) && isSuperAdmin())
 		//Pour ne charger les scripts que lorsque l'on est superadministrateur
 		{?>
-		<script type="text/javascript" src="/4AJ/tinymce/tinymce.min.js"></script>
+		<script type="text/javascript" src="tinymce/tinymce.min.js"></script>
 		<script type="text/javascript">
 		tinymce.init({
 			//Pour générer la boite de dialogue lorsque l'on souhaite éditer les pages
@@ -79,7 +79,7 @@ include_once('/view/includes/footerfunctions.php');
 			<?php 	if(isAdminSomewhere())
 					// Si l'utilisateur est admin
 					{ ?> 
-						<div class="language"><a href="index.php?section=FR<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/uk.png" alt="uk"/></a></div>
+						<div class="language"><a href="index.php?section=FR<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="view/graphicRessources/uk.png" alt="uk"/></a></div>
 						<div class="connexion_inscription connexion_bold">
 							<a href="admin/index.php?section=main">Partie administrateur</a>
 						</div>
@@ -105,7 +105,7 @@ include_once('/view/includes/footerfunctions.php');
 					<div class="connexion_submit"><input id="submit" type="submit" value="<?php langue('Envoyer', 'Send'); ?>"/></div>
 				</form>
 				<div class="connexion_text"><em><a id="lostPwd" href="index.php?section=lostPassword"><?php langue('Mot de passe perdu?', 'Forgotten your password?'); ?></a></em></div>
-				<div class="language"><a href="index.php?section=FR<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="/4AJ/view/graphicRessources/uk.png" alt="uk"/></a></div>
+				<div class="language"><a href="index.php?section=FR<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="view/graphicRessources/france.png" alt="france"/></a><a href="index.php?section=EN<?php if(!empty($_GET['section'])) { echo '&amp;sect='.$_GET['section']; } ?>"><img src="view/graphicRessources/uk.png" alt="uk"/></a></div>
 				<div class="connexion_inscription connexion_bold"><a href="index.php?section=inscription"><?php langue('Inscription', 'Register'); ?></a></div>
 				<?php } ?>
 				<?php
@@ -117,13 +117,13 @@ include_once('/view/includes/footerfunctions.php');
 		</div>
 		<div id="banniere" onMouseOut="color('<?php echo $_SESSION['backgroundBody']; ?>');" onMouseOver="color('#04467e');">
 			<a href="index.php?section=index"><em id="dateAujourdhui"><?php echo $dateAujourdhui; ?></em></a>
-			<a href="index.php?section=index"><img id="bannierelogo" src="/4AJ/view/graphicRessources/bannierelogo.png" alt="logo bannière"/></a>
+			<a href="index.php?section=index"><img id="bannierelogo" src="view/graphicRessources/bannierelogo.png" alt="logo bannière"/></a>
 			<ul id="sContent">
-				<li><a href="index.php?section=index"><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></a></li>
-				<li><a href="index.php?section=index"><img src="/4AJ/view/graphicRessources/2.jpg" alt="image bannière"/></a></li>
-				<li><a href="index.php?section=index"><img src="/4AJ/view/graphicRessources/3.jpg" alt="image bannière"/></a></li>
-				<li><a href="index.php?section=index"><img src="/4AJ/view/graphicRessources/2.jpg" alt="image bannière"/></a></li>
-				<li><a href="index.php?section=index"><img src="/4AJ/view/graphicRessources/1.jpg" alt="image bannière"/></a></li>
+				<li><a href="index.php?section=index"><img src="view/graphicRessources/1.jpg" alt="image bannière"/></a></li>
+				<li><a href="index.php?section=index"><img src="view/graphicRessources/2.jpg" alt="image bannière"/></a></li>
+				<li><a href="index.php?section=index"><img src="view/graphicRessources/3.jpg" alt="image bannière"/></a></li>
+				<li><a href="index.php?section=index"><img src="view/graphicRessources/2.jpg" alt="image bannière"/></a></li>
+				<li><a href="index.php?section=index"><img src="view/graphicRessources/1.jpg" alt="image bannière"/></a></li>
 			</ul>
 		</div>
 		<nav id="mainMenu">

@@ -1,5 +1,5 @@
 <?php
-include_once '/view/includes/header.php';
+include_once 'view/includes/header.php';
 ?>
 			<div class="contentWrapper livreOr">
 			<h1>Gestion du livre d'or </h1>

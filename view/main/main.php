@@ -1,12 +1,12 @@
-<?php include_once '/view/includes/header.php'; ?>
-<?php include_once '/view/includes/footerfunctions.php'; ?>
+<?php include_once 'view/includes/header.php'; ?>
+<?php include_once 'view/includes/footerfunctions.php'; ?>
 			<div class="contentWrapper index element">
 				<div id="indexContent">
 					<?php tinymcetxt('index'); ?>
 				</div>
 				<div id="aLaUne">
 				<!-- Bandeau actualité -->
-				<img id="aLaUneImg" src="/4AJ/view/graphicRessources/alaune.png" alt="A la une"/>
+				<img id="aLaUneImg" src="view/graphicRessources/alaune.png" alt="A la une"/>
 					<?php if(isAdminActualite()) 
 					{ ?>
 					<a href="admin/index.php?section=actualite">Créer une actualité</a>
@@ -27,7 +27,7 @@
 	<?php			} ?>
 				</div>
 			</div>
-			<?php include_once '/view/includes/footer.php'; ?>
+			<?php include_once 'view/includes/footer.php'; ?>
 		</div>
 	</body>
 </html>

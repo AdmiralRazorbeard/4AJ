@@ -1,10 +1,10 @@
-<?php include_once '/view/includes/footerfunctions.php'; ?>
+<?php include_once 'view/includes/footerfunctions.php'; ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>4AJ, un tremplin pour les jeunes</title>
-		<link rel="stylesheet" type="text/css" href="/4AJ/view/styleInscription.css" />
-		<link rel="icon" type="image/png" href="/4AJ/view/graphicRessources/favicon.jpg" >
+		<link rel="stylesheet" type="text/css" href="view/styleInscription.css" />
+		<link rel="icon" type="image/png" href="view/graphicRessources/favicon.jpg" >
 		<meta charset="utf-8">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	</head> 
@@ -181,7 +181,7 @@
 					</script>
 				</div>
 			</div>
-			<?php include_once '/view/includes/footer.php'; ?>
+			<?php include_once 'view/includes/footer.php'; ?>
 		</div>
 	</body>
 </html>

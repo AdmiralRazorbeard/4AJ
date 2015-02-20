@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<title>4AJ, un tremplin pour les jeunes</title>
-		<link rel="stylesheet" type="text/css" href="/4AJ/mobile/view/styleMobile.css" />
-		<link rel="icon" type="image/png" href="/4AJ/view/graphicRessources/favicon.jpg" >
+		<link rel="stylesheet" type="text/css" href="/mobile/view/styleMobile.css" />
+		<link rel="icon" type="image/png" href="view/graphicRessources/favicon.jpg" >
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />

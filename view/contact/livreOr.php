@@ -1,5 +1,5 @@
 <?php
-include_once '/view/includes/header.php'; 
+include_once 'view/includes/header.php'; 
 ?>
 
 <!-- Script pour nombre de caractère -->
@@ -29,7 +29,7 @@ function v_maxlength(id, crid, max)
 -->
 </script>
 			<div class="contentWrapper">	
-				<img id="img_livredor" src="/4AJ/view/graphicRessources/<?php langue('livredor', 'guestbook'); ?>.png" alt="livreOr" />
+				<img id="img_livredor" src="view/graphicRessources/<?php langue('livredor', 'guestbook'); ?>.png" alt="livreOr" />
 				<?php if($admin) { ?>
 				<form method="post">
 					<b>Admin</b> : nombre de billet par page : 
@@ -153,7 +153,7 @@ function v_maxlength(id, crid, max)
 				</script>
 				</fieldset>
 			</div>
-			<?php include_once '/view/includes/footer.php'; ?>
+			<?php include_once 'view/includes/footer.php'; ?>
 		</div>
 	</body>
 </html>

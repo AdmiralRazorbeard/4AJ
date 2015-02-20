@@ -1,5 +1,5 @@
 <?php
-include_once '/view/includes/header.php';
+include_once 'view/includes/header.php';
 ?>
 			<div class="contentWrapper changeMember">
 				<h1>Modifier <em><?php echo $infoMembre['nomMembre']; ?></em></h1>

@@ -1,4 +1,4 @@
-<?php include_once '/view/includes/header.php'; ?>
+<?php include_once 'view/includes/header.php'; ?>
 			<div class="contentWrapper parameters">
 				<form method="post">
 					<fieldset id="changeMember">

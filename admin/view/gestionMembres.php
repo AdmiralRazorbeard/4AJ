@@ -1,5 +1,5 @@
 <?php
-include_once '/view/includes/header.php';
+include_once 'view/includes/header.php';
 ?>
 			<div class="contentWrapper memberGestion">
 				<h1>Gestion des membres</h1>
@@ -101,21 +101,19 @@ include_once '/view/includes/header.php';
 					<input type="submit" onclick="location.href='index.php?section=generationListeMembres';" value="Télécharger la liste des membres">
 			</div>
 		</div>
-					<script type="text/javascript">
-					$(document).ready(function() {
-				        $('body').on('click', '.dellmb', function() {
-				      		var value=$(this).attr('value');
-				      		if(confirm('Attention ! Si le membre a reservé des repas, les enregistrements dans la base de données seront supprimés, souhaitez-vous continuer?')){
-				          		$('.contentWrapper').load("index.php?section=gestionMembres&page=<?php echo $page; ?>&orderBy=<?php echo $orderBy; ?>&delete="+value+" "+".contentWrapper");
-				          	}
-				       	});
-				       	$('body').change('#orderBy', function () {
-							var value2 = $("#orderBy" ).val();
-							$('.contentWrapper').load("index.php?section=gestionMembres "+".contentWrapper",{ orderBy:value2});
-						});
-					});
-				</script>
-				
-			
+		<script type="text/javascript">
+		$(document).ready(function() {
+	        $('body').on('click', '.dellmb', function() {
+	      		var value=$(this).attr('value');
+	      		if(confirm('Attention ! Si le membre a reservé des repas, les enregistrements dans la base de données seront supprimés, souhaitez-vous continuer?')){
+	          		$('.contentWrapper').load("index.php?section=gestionMembres&page=<?php echo $page; ?>&orderBy=<?php echo $orderBy; ?>&delete="+value+" "+".contentWrapper");
+	          	}
+	       	});
+	       	$('body').change('#orderBy', function () {
+				var value2 = $("#orderBy" ).val();
+				$('.contentWrapper').load("index.php?section=gestionMembres "+".contentWrapper",{ orderBy:value2});
+			});
+		});
+	</script>	
 	</body>
 </html>

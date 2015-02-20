@@ -1,10 +1,10 @@
 <?php
 function connection()
 {
-	$serveur	= 'localhost';
-	$user 		= 'root';
-	$password 	= 'root';
-	$BDD 		= '4AJ';
+	$serveur	= 'ajeudysvim4aj.mysql.db';
+	$user 		= 'ajeudysvim4aj';
+	$password 	= '4w2bGuV4';
+	$BDD 		= 'ajeudysvim4aj';
 	return $cnx = new mysqli($serveur, $user, $password, $BDD);
 }
 function run($sql)

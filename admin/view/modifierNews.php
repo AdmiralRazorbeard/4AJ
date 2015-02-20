@@ -1,5 +1,5 @@
 <?php
-include_once '/view/includes/header.php';
+include_once 'view/includes/header.php';
 ?>
 			<div class="contentWrapper">
 				<h1>Modifier la news n°<?php echo $infoNews['id']; ?></h1>

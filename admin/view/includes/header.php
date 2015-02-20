@@ -1,12 +1,12 @@
-<?php include_once('/view/includes/headerfunctions.php');
+<?php include_once('view/includes/headerfunctions.php');
 // Gestion des classes actives pour les boutons et de la connexion
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>4AJ, un tremplin pour les jeunes</title>
-		<link rel="stylesheet" type="text/css" href="/4AJ/admin/view/style.css" />
-		<link rel="icon" type="image/png" href="/4AJ/view/graphicRessources/favicon.jpg" >
+		<link rel="stylesheet" type="text/css" href="/admin/view/style.css" />
+		<link rel="icon" type="image/png" href="view/graphicRessources/favicon.jpg" >
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<meta charset="utf-8">
 	</head> 
@@ -30,7 +30,7 @@
 			<div class="connexion_inscription connexion_bold"><a href="../">Accueil</a></div>
 		</div>
 		<div id="banniere">
-			<a href="index.php?section=main"><img src="/4AJ/admin/view/graphicRessources/administration.jpg" alt="image bannière"/></a>
+			<a href="index.php?section=main"><img src="/admin/view/graphicRessources/administration.jpg" alt="image bannière"/></a>
 		</div>
 		<nav id="menu">
 			<ul>

@@ -1,6 +1,6 @@
 <?php 
-include_once '/view/includes/header.php';
-include_once '/view/includes/submenuPlateformeLogement.php';
+include_once 'view/includes/header.php';
+include_once 'view/includes/submenuPlateformeLogement.php';
 ?>
 			<div class="contentWrapper plateformeLogement edition_mode element">
 			<?php tinymcetxt('contact_plateformeLogement'); ?><br /><br />
@@ -70,7 +70,7 @@ include_once '/view/includes/submenuPlateformeLogement.php';
 					</script>
 				</fieldset>
 			</div>
-			<?php include_once '/view/includes/footer.php'; ?>
+			<?php include_once 'view/includes/footer.php'; ?>
 		</div>		
 	</body>
 </html>
