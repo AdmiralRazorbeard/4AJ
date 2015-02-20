@@ -111,7 +111,7 @@
 							</select>
 							</p>
 							<p class="form-field">
-								<label for="recevoirMail"><?php langue('Recevoir des newsletters : ', 'Subscribe to the newsletters'); ?></label>
+								<label for="recevoirMail"><?php langue('Recevoir les lettres d\'information de 4AJ sur sa boite mail: ', 'Subscribe to the newsletters of 4AJ'); ?></label>
 								<input type="checkbox" name="recevoirMail" id="recevoirMail" checked="checked">
 							<p class="form-field">
 								<label for="password1"><?php langue('Mot de passe* : ', 'Password* : '); ?></label>

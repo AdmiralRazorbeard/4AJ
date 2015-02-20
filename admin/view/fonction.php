@@ -132,7 +132,7 @@ include_once '/view/includes/header.php';
 				<form method="post">
 					<!-- Ajout d'une nouvelle fonction -->
 					<label for="nom">Ajouter une nouvelle fonction : </label><input type="text" name="nom" id="nom" />
-					<input type="submit" />
+					<input type="submit" value="Enregistrer"/>
 				</form>
 				<p>	
 					<em>Pour donner des fonctions aux membres, cliquez sur le nom de la fonction correspondante dans la première colonne du tableau.</em><br>

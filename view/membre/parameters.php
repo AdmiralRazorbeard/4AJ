@@ -46,16 +46,16 @@
 						<p class="form-field">
 						<label for="changePassword3"><?php langue('Repeter mot de passe', 'Repeat password'); ?> : </label><input type="password" id="changePassword3" name="password3"/>
 						</p>
-						<input type="submit" />
+						<input type="submit" <?php langue('value=Enregistrer', 'value=Save'); ?>>
 					</fieldset>
 				</form>
 				<form method="post">
 					<fieldset>
 						<input type="hidden" name="recevoirMail" value="true"/>
 						<p>
-							<label for="recevoirMailQuandNews"><?php langue('Autoriser la réception de newsletters', 'Receive newsletters'); ?> : </label><input type="checkbox"  id="recevoirMailQuandNews" <?php if($infoMembre['recevoirMailQuandNews']) { echo 'checked'; } ?> name="recevoirMailQuandNews"> 
+							<label for="recevoirMailQuandNews"><?php langue('Autoriser la réception des lettres d\'information de 4AJ', 'Receive newsletters'); ?> : </label><input type="checkbox"  id="recevoirMailQuandNews" <?php if($infoMembre['recevoirMailQuandNews']) { echo 'checked'; } ?> name="recevoirMailQuandNews"> 
 						</p>
-						<input type="submit" <?php langue('value=Valider', 'value=Validate'); ?>>
+						<input type="submit" <?php langue('value=Enregistrer', 'value=Save'); ?>>
 					</fieldset>
 				</form>
 				<?php 	

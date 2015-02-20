@@ -1,5 +1,5 @@
 <?php
-if(!empty($_SESSION['superAdminOn']) && superAdmin())
+if(!empty($_SESSION['superAdminOn']))
 {
 	//Extensions autorisées
 	$extensionsOk = 'pdf';

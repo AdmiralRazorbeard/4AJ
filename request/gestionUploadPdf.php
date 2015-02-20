@@ -1,24 +1,6 @@
 <?php
-function superAdmin()
-// Fonction pour savoir si le membre est super admin (seul eux ont accès à la liste des membres)
-{
-	$mysqli = connection();
-	if(!empty($_SESSION['log']) && $_SESSION['log'] == 1 && !empty($_SESSION['mail']))
-	{
-		$mail 	= $mysqli->real_escape_string($_SESSION['mail']);
-		$tmp	= run('SELECT isSuperAdmin FROM membre WHERE mail = "'.$mail.'"');
-		$tmp 	= $tmp->fetch_object();
-		if($tmp->isSuperAdmin == 1)
-		// Si super admin, il a le pouvoir
-		{
-			return true;
-		}
-	}
-	return false;
-}
-
 function getPdf($page)
-//fonction qui permet de recuperer la liste des menus
+//fonction qui permet de recuperer la liste des fichiersPDF
 {
 	$tmp = run('SELECT nomFichier, page, telechargement 
 				FROM autresfichierspdf WHERE page = "'.$page.'"'); 

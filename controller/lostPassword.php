@@ -4,7 +4,7 @@ if(!empty($_POST['email']) && !empty($_POST['verif_code']) && !empty($_POST['cho
 {
 	if (($_POST['verif_code']==$_SESSION['aleat_nbr']) && ($_POST['choix_forme']==$_SESSION['aleat_nbr_forme']))
 	{
-		$result = resetPassword($mysqli->real_escape_string($_POST['email']));
+		$result = resetPassword($_POST['email']);
 		/* Envoie le mail si il y a un membre avec ce mail et retourne true, sinon return false */
 		if(!$result)
 		{

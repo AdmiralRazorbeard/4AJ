@@ -26,7 +26,7 @@ include_once '/view/includes/header.php';
 										<option value="<?php echo $v['id']; ?>" <?php if($v['id'] == 1) { echo 'disabled'; } ?>><?php echo $v['nom']; ?></option>
 						<?php		} ?>
 						</select>
-						<input type="submit" />
+						<input type="submit" value="Enregistrer" />
 						</fieldset>
 					</form>
 
@@ -43,7 +43,7 @@ include_once '/view/includes/header.php';
 									<option value="<?php echo $v['id']; ?>"><?php echo $v['nom']; ?></option>
 							<?php	} ?>
 							</select>
-							<input type="submit" />
+							<input type="submit" value="Enregistrer" />
 							</fieldset>
 						</form>
 					<?php

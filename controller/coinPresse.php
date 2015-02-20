@@ -5,7 +5,7 @@ $_SESSION['backgroundBody']='#4e0105';
 if(!empty($_SESSION['superAdminOn'])) {
 	include_once '/request/gestionUploadPdf.php';
 	include_once '/controller/gestionUploadPdf.php';
-	$listePdf = getPdf("nousSoutenir");
+	$listePdf = getPdf("coinPresse");
 }
-include_once '/view/contact/nousSoutenir.php';
+include_once '/view/contact/coinPresse.php';
 ?>

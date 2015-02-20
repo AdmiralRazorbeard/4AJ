@@ -149,6 +149,7 @@ include_once('/view/includes/footerfunctions.php');
       					<li><a class="correct_size" href="index.php?section=nousSoutenir"><?php langue('Nous soutenir', 'Support us'); ?></a></li>
       					<li><a class="correct_size" href="index.php?section=liensUtiles"><?php langue('Liens utiles', 'Helpful links'); ?></a></li>
       					<li><a class="correct_size" href="index.php?section=memento"><?php langue('Mémento', 'Summary'); ?></a></li>
+      					<li><a class="correct_size" href="index.php?section=coinPresse"><?php langue('Coin presse', 'Press area'); ?></a></li>
       					<li><a class="last_item correct_size" href="index.php?section=livreOr"><?php langue('Livre d\'or', 'Guest book'); ?></a></li>
     				</ul>
     			</li>	

@@ -669,9 +669,9 @@ font-size: 15px;
     background: #fff;
 }
 #footer{
-    height: 30px;
     padding: 10px 20px 0px 20px;
     font-size: 10px;
+    height:30px;
 }
 #footer a{
     color:black;

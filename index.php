@@ -110,6 +110,10 @@ elseif ($_GET['section'] == 'liensUtiles')
 {
 	include_once 'controller/liensUtiles.php';
 }
+elseif ($_GET['section'] == 'coinPresse')
+{
+	include_once 'controller/coinPresse.php';
+}
 elseif ($_GET['section'] == 'livreOr')
 {
 	include_once 'controller/livreOr.php';

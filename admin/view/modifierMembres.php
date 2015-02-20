@@ -53,7 +53,7 @@ include_once '/view/includes/header.php';
 						<p class="form-field">							
 						<label for="isSuperAdmin">Super Administrateur : </label><input type="checkbox" id="isSuperAdmin" name="isSuperAdmin" <?php if($infoMembre['isSuperAdmin']) { echo 'checked'; } ?> />
 						</p>
-						<input type="submit" />
+						<input type="submit" value="Enregistrer" />
 						<br>
 					</fieldset>
 				</form>

@@ -4,9 +4,9 @@ include_once '/view/includes/submenuPlateformeLogement.php';
 ?>
 			<div class="contentWrapper plateformeLogement element edition_mode">
 					<?php tinymcetxt('plateformeLogement'); ?>
-					<?php if(!empty($_SESSION['superAdminOn']) && superAdmin()) { ?>
+					<?php if(!empty($_SESSION['superAdminOn'])) { ?>
 						<div id="uploaderFichier">
-						<h3>Uploader un fichier PDF</h3>
+						<h3>Exporter un fichier PDF</h3>
 						<form method="post" enctype="multipart/form-data">
 							<input type="hidden" name="MAX_FILE_SIZE" value="5242880" />
 							<input type="hidden" name="page" value="plateformeLogement" />
@@ -21,7 +21,7 @@ include_once '/view/includes/submenuPlateformeLogement.php';
 						<?php if($listePdf != NULL){
 						 		foreach($listePdf as $key => $value){ 
 						?>	
-							Lien vers le fichier <?php echo ($value['nomFichier']); ?>: index.php?section=telechargerAutresPdf&amp;page=<?php echo ($value['page']); ?>&amp;file=<?php echo ($value['nomFichier']); ?><br>
+							Lien vers le fichier <?php echo ($value['nomFichier']); ?>:<br>index.php?section=telechargerAutresPdf&amp;page=<?php echo ($value['page']); ?>&amp;file=<?php echo ($value['nomFichier']); ?><br>
 							<a href="index.php?section=plateformeLogement&amp;delete=<?php echo ($value['nomFichier']); ?>">Supprimer le fichier <?php echo ($value['nomFichier']); ?></a>&emsp;&emsp;Téléchargements: <?php echo $value['telechargement']; ?><br><br>
 						<?php } } 
 					} ?>
