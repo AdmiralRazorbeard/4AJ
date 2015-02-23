@@ -16,13 +16,12 @@ include_once 'view/includes/header.php';
 						<div class="form-field-visibilite">
 						<p>L'actualité sera visible pour :</p>
 							<!-- Affiche toutes les fonction mais pas reservation halal qui est une fonction particulière servant juste de repère -->
-								<?php foreach ($allFonction as $k => $value) { 
-										if($k != 2){ ?>
+								<?php foreach ($allFonction as $k => $value) { ?>
 											<div class="form-field-visibilite-element">
 												<input type="checkbox" <?php if($k == 1) { echo 'checked'; } ?> name="<?php echo $k; ?>" id="<?php echo $k; ?>">
 												<label for="<?php echo $k; ?>"><?php if($value['nom']=='Public'){echo "Tout le monde";}else{echo $value['nom'];} ?></label>
 											</div>
-								<?php } } ?>
+								<?php } ?>
 						</div>
 						<div class="form-field-contenu">
 							<p id="p_form-field-contenu">Contenu:</p>

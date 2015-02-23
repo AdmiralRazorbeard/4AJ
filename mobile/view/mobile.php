@@ -25,6 +25,7 @@
 					</fieldset>
 					<input id="submit" type="submit" value="Envoyer"/>
 				</form>
+				<em>Cette interface est dédiée aux supports tactiles uniquement</em>
 			<?php } ?>
 			<!-- DEBUT CALENDRIER POUR INSCRIPTION -->
 			<?php if($accessRepas){ 

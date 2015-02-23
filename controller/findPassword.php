@@ -1,5 +1,6 @@
 <?php
 include_once 'request/findPassword.php';
+include_once 'controller/gds.php';
 if(empty($_GET['id']) && empty($_POST['password']))
 {
 	header('location:index.php');
@@ -23,43 +24,35 @@ if(!empty($_GET['id']))
 
 ######### SECONDE PARTIE : CHANGER MOT DE PASSE ###############
 // Quelqu'un a rempli le formulaire, donc on change le mot de passe :
-if(!empty($_POST['password']) || !empty($_POST['password2']) || !empty($_POST['securite']))
+if(!empty($_POST['password']) && !empty($_POST['password2']) && !empty($_POST['securite']))
 {
-	if(!empty($_POST['password']) && !empty($_POST['password2']) && !empty($_POST['securite']))
+	$securite = $mysqli->real_escape_string($_POST['securite']);
+	if((strlen($_POST['password']) > 6 && strlen($_POST['password2']) <= 100) && ($_POST['password']==($_POST['password2'])))
 	{
-		$securite = $mysqli->real_escape_string($_POST['securite']);
-		if((strlen($_POST['password']) >= 6 && strlen($_POST['password1']) <= 100) && ($_POST['password']==($_POST['password2'])))
+		$password = sha1($mysqli->real_escape_string($GDS.$_POST['password']));
+		$nbre = run('SELECT COUNT(*) as nbre FROM oubliemotdepassesecurite WHERE securite="'.$securite.'"')->fetch_object();
+		// On vérifie qu'il y a bien une clé de sécurité qui correspond dans la table
+		if($nbre->nbre == 1)
 		{
-			$password = sha1($mysqli->real_escape_string($GDS.$_POST['password']));
-			$nbre = run('SELECT COUNT(*) as nbre FROM oubliemotdepassesecurite WHERE securite="'.$securite.'"')->fetch_object();
-			// On vérifie qu'il y a bien une clé de sécurité qui correspond dans la table
-			if($nbre->nbre == 1)
+			// On récupère l'id du membre où il faut modifier le mot de passe :
+			$idMembre = run('SELECT id_membre FROM oubliemotdepassesecurite WHERE securite="'.$securite.'"')->fetch_object();
+			// On vérifie que le membre existe encore
+			$tmp = run('SELECT COUNT(*) as nbre FROM membre WHERE id = '.$idMembre->id_membre)->fetch_object();
+			if($tmp->nbre == 1)
 			{
-				// On récupère l'id du membre où il faut modifier le mot de passe :
-				$idMembre = run('SELECT id_membre FROM oubliemotdepassesecurite WHERE securite="'.$securite.'"')->fetch_object();
-				// On vérifie que le membre existe encore
-				$tmp = run('SELECT COUNT(*) as nbre FROM membre WHERE id = '.$idMembre->id_membre)->fetch_object();
-				if($tmp->nbre == 1)
-				{
-					// On change le mot de passe
-					run('UPDATE membre SET password="'.$password.'" WHERE id='.$idMembre->id_membre);
-					// On supprime l'entrée dans oubliemotdepassesecurite
-					run('DELETE FROM oubliemotdepassesecurite WHERE securite="'.$securite.'"');
-					$_SESSION['changerMotDePasse'] = "Le mot de passe a bien été modifié.";
-					header('location:index.php');
-				}
+				// On change le mot de passe
+				run('UPDATE membre SET password="'.$password.'" WHERE id='.$idMembre->id_membre);
+				// On supprime l'entrée dans oubliemotdepassesecurite
+				run('DELETE FROM oubliemotdepassesecurite WHERE securite="'.$securite.'"');
+				header('location:index.php');
 			}
-		}
-		else
-		{
-			$_SESSION['erreur'] = "Erreur: le mot de passe doit faire plus de 6 caractères et/ou les deux mots de passe n'étaient pas identiques";
-			$_SESSION['count'] = 2;
-			header('location:index.php?section=findPassword&id='.$securite);
 		}
 	}
 	else
 	{
-		header('location:index.php');
+		$_SESSION['erreur'] = "Erreur: le mot de passe doit faire plus de 6 caractères et/ou les deux mots de passe n'étaient pas identiques";
+		$_SESSION['count'] = 2;
+		header('location:index.php?section=findPassword&id='.$securite);
 	}
 }
 include_once 'view/findPassword.php';

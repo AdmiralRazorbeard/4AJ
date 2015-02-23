@@ -7,7 +7,7 @@ function addLivreOrAConfirmer($nom, $email, $contenu)
 function nbrePage($nbreBilletParPage)
 // Compte le nombre de page qu'il doit y avoir, le nombre passé en paramètre et le nombre de billet par page.
 {
-	$tmp = run('SELECT COUNT(*) as nbre FROM livreOr WHERE afficher=1')->fetch_object();
+	$tmp = run('SELECT COUNT(*) as nbre FROM livreor WHERE afficher=1')->fetch_object();
 	$tmp = $tmp->nbre;
 	return ceil($tmp/$nbreBilletParPage);
 }

@@ -25,7 +25,6 @@ function resetPassword($mail)
 function cleanOublierPassword()
 // Nettoie la table oublier password pour tout les clés de sécurité datant de plus de 2 heures
 {
-	$now = strtotime("now");
 	$tmp = run('SELECT id FROM oubliemotdepassesecurite 
 		 		WHERE UNIX_TIMESTAMP(CurrentTimestamp) < "'.strtotime("-2 hours").'"');
 	while($donnees = $tmp->fetch_object())
@@ -45,10 +44,10 @@ function sendMail($mail, $resetPassword)
 	   $passage_ligne = "\n";
 	}
 	//=====Déclaration des messages au format texte et au format HTML.
-	$message_txt = "R&eacute;initialisation du mot de passe pour 4AJ.fr
-	Pour r&eacute;initialiser votre mot de passe, veuillez suivre ce lien : http://4AJ.fr/index.php?section=findPassword&id=".$resetPassword."";	
-	$message_html = "R&eacute;initialisation du mot de passe pour 4AJ.fr<br />
-	Pour r&eacute;initialiser votre mot de passe, veuillez suivre ce lien : <a href='http://4AJ.fr/index.php?section=findPassword&id=".$resetPassword."'>http://4AJ.fr/index.php?section=findPassword&id=".$resetPassword."</a>";	
+	$message_txt = "R&eacute;initialisation du mot de passe pour 4aj.eu
+	Pour r&eacute;initialiser votre mot de passe, veuillez suivre ce lien : http://4aj.eu/index.php?section=findPassword&id=".$resetPassword."";	
+	$message_html = "R&eacute;initialisation du mot de passe pour 4aj.eu<br />
+	Pour r&eacute;initialiser votre mot de passe, veuillez suivre ce lien : <a href='http://4aj.eu/index.php?section=findPassword&id=".$resetPassword."'>http://4aj.eu/index.php?section=findPassword&id=".$resetPassword."</a>";	
 
 	//==========
 	 
@@ -57,12 +56,12 @@ function sendMail($mail, $resetPassword)
 	//==========
 	 
 	//=====Définition du sujet.
-	$sujet = "Réinitialisation du mot de passe de 4AJ.fr";
+	$sujet = "Réinitialisation du mot de passe de 4aj.eu";
 	//=========
 	 
 	//=====Création du header de l'e-mail.
-	$header = "From: \"4AJ\"<noreply@4AJ.fr>".$passage_ligne;
-	$header.= "Reply-to: \"noreply-4AJ\" <noreply@4AJ.fr>".$passage_ligne;
+	$header = "From: \"4aj\"<noreply@4aj.eu>".$passage_ligne;
+	$header.= "Reply-to: \"noreply-4aj\" <noreply@4aj.eu>".$passage_ligne;
 	$header.= "MIME-Version: 1.0".$passage_ligne;
 	$header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
 	//==========

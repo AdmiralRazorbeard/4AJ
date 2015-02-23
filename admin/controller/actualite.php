@@ -30,7 +30,6 @@ if(!empty($_POST['titre']) && !empty($_POST['actualite']))
 		{
 			//On ajoute la nouvelle actualité
 			addActualite($titre, $contenu, $idMembre);
-			$message="Message envoyé";
 			$idLastNews = run('SELECT id FROM news ORDER BY id DESC LIMIT 0,1')->fetch_object();
 			$idLastNews = $idLastNews->id;
 			foreach ($allFonction as $key => $value) 
@@ -42,6 +41,7 @@ if(!empty($_POST['titre']) && !empty($_POST['actualite']))
 				}
 			}
 			envoieMail($idLastNews);
+			$message="Message envoyé";
 		}
 
 	}

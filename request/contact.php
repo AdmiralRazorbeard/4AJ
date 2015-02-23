@@ -29,9 +29,8 @@ function sendMailContact($destinataire, $mail, $sujet, $contenu)
 	   $passage_ligne = "\n";
 	}
 	//=====Déclaration des messages au format texte et au format HTML.
-	$message_txt = "Mail de : ".$mail."
-	".utf8_encode($contenu);	
-	$message_html = "Mail de : ".$mail." <br />".nl2br(utf8_encode($contenu));
+	$message_txt = "Mail de : ".$mail." ".$contenu;	
+	$message_html = "Mail de : ".$mail." <br />".nl2br($contenu);
 
 	//==========
 	 
@@ -40,12 +39,12 @@ function sendMailContact($destinataire, $mail, $sujet, $contenu)
 	//==========
 	 
 	//=====Définition du sujet.
-	$sujet = "Formulaire de contact 4AJ || ".utf8_encode($sujet);
+	$sujet = "Formulaire contact 4AJ || ".$sujet;
 	//=========
 	 
 	//=====Création du header de l'e-mail.
-	$header = "From: \"4AJ\"<noreply@4AJ.fr>".$passage_ligne;
-	$header.= "Reply-to: \"noreply-4AJ\" <noreply@4AJ.fr>".$passage_ligne;
+	$header = "From: \"4AJ\"<noreply@4aj.eu>".$passage_ligne;
+	$header.= "Reply-to: \"noreply-4aj\" <noreply@4aj.eu>".$passage_ligne;
 	$header.= "MIME-Version: 1.0".$passage_ligne;
 	$header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
 	//==========

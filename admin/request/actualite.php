@@ -66,20 +66,19 @@ function envoieMail($lastNews)
 	$infoLastNews = run('SELECT titreNewsFR, contenuNewsFR FROM news WHERE id='.$lastNews)->fetch_object();
 	// Requete pour avoir les mails de ceux qui veulent recevoir des news
 	$tmp = run('SELECT DISTINCT mail
-				FROM membre, fonction, newsfonction, news
-				WHERE membre.id = fonction.id
-				AND fonction.id = newsfonction.id_fonction
-				AND recevoirMailQuandNews = 1
-				AND newsfonction.id = news.id
-				AND news.id = '.$lastNews);
+				FROM newsfonction, membrefonction, membre
+				WHERE newsfonction.id = '.$lastNews.'
+				AND newsfonction.id_fonction = membrefonction.id_fonction
+				AND membrefonction.id = membre.id
+				AND recevoirMailQuandNews = 1');
 	while($donnees = $tmp->fetch_object())
 	{
-		sendMail($donnees->mail, htmlspecialchars($infoLastNews->titreNewsFR), $infoLastNews->contenuNewsFR);
+		sendMail($donnees->mail, htmlentities($infoLastNews->titreNewsFR), htmlentities($infoLastNews->contenuNewsFR));
 	}
 }
-function sendMail($mail, $titre, $contenu)
+function sendMail($email, $titre, $contenu)
 {
-	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
+	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $email)) // On filtre les serveurs qui rencontrent des bogues.
 	{
 	    $passage_ligne = "\r\n";
 	}
@@ -88,13 +87,13 @@ function sendMail($mail, $titre, $contenu)
 	   $passage_ligne = "\n";
 	}
 	//=====Déclaration des messages au format texte et au format HTML.
-	$message_txt = "Une nouvelle actualité a été posté sur 4AJ.fr : ".$titre."
-Vous pouvez retrouver cette actualité sur http://4AJ.fr/index.php?section=actualite";	
-	$message_html = "<h1>Une nouvelle actualité a été posté sur 4AJ.fr</h1>
-	<h4>".$titre."</h4>
+	$message_txt = "Une nouvelle actualité a été posté sur 4aj.eu : ".$titre."
+	Vous pouvez retrouver cette actualité sur http://4aj.eu/index.php";	
+	$message_html = "<h4>Une nouvelle actualité a été posté sur 4aj.eu</h4>
+	<h2>".$titre."</h2>
 	<p>
-		".$contenu."
-	</p>	";
+		".nl2br($contenu)."
+	</p>";
 
 	//==========
 	 
@@ -103,12 +102,12 @@ Vous pouvez retrouver cette actualité sur http://4AJ.fr/index.php?section=actua
 	//==========
 	 
 	//=====Définition du sujet.
-	$sujet = "Nouvelle actualite sur 4AJ.fr";
+	$sujet = "Nouvelle actualité sur 4aj.eu || ".$titre;
 	//=========
 	 
 	//=====Création du header de l'e-mail.
-	$header = "From: \"4AJ\"<noreply@4AJ.fr>".$passage_ligne;
-	$header.= "Reply-to: \"noreply-4AJ\" <noreply@4AJ.fr>".$passage_ligne;
+	$header = "From: \"4AJ\"<noreply@4aj.eu>".$passage_ligne;
+	$header.= "Reply-to: \"noreply-4aj\" <noreply@4aj.eu>".$passage_ligne;
 	$header.= "MIME-Version: 1.0".$passage_ligne;
 	$header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
 	//==========
@@ -116,13 +115,13 @@ Vous pouvez retrouver cette actualité sur http://4AJ.fr/index.php?section=actua
 	//=====Création du message.
 	$message = $passage_ligne."--".$boundary.$passage_ligne;
 	//=====Ajout du message au format texte.
-	$message.= "Content-Type: text/plain; charset=\"UTF8\"".$passage_ligne;
+	$message.= "Content-Type: text/plain; charset=\"UTF-8\"".$passage_ligne;
 	$message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
 	$message.= $passage_ligne.$message_txt.$passage_ligne;
 	//==========
 	$message.= $passage_ligne."--".$boundary.$passage_ligne;
 	//=====Ajout du message au format HTML
-	$message.= "Content-Type: text/html; charset=\"ISO-8859-1\"".$passage_ligne;
+	$message.= "Content-Type: text/html; charset=\"UTF-8\"".$passage_ligne;
 	$message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
 	$message.= $passage_ligne.$message_html.$passage_ligne;
 	//==========
@@ -131,7 +130,7 @@ Vous pouvez retrouver cette actualité sur http://4AJ.fr/index.php?section=actua
 	
 	 
 	//=====Envoi de l'e-mail.
-	mail($mail,$sujet,$message,$header);
+	mail($email,$sujet,$message,$header);
 	//==========
 }
 ?>

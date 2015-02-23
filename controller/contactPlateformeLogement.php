@@ -1,19 +1,31 @@
 <?php
 include_once 'tinymcetxt.php';
 include_once 'request/contact.php';
-if(!empty($_POST['subject']) && !empty($_POST['email']) && !empty($_POST['contenu']) && !empty($_POST['verif_code']) && !empty($_POST['choix_forme']) && empty($_POST['name']))
+if(!empty($_POST['subject'])
+	&& !empty($_POST['email'])
+	&& !empty($_POST['contenu'])
+	&& !empty($_POST['verif_code'])
+	&& !empty($_POST['choix_forme'])
+	&& empty($_POST['name']))
 {
 	if (($_POST['verif_code']==$_SESSION['aleat_nbr']) && ($_POST['choix_forme']==$_SESSION['aleat_nbr_forme']))
 	{
-		if(preg_match("#^[a-zA-Z0-9.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $_POST['email']))
+		if(preg_match("#^[a-zA-Z0-9.+/=!\#%&'*/?^`{|}~_-]+@[a-zA-Z0-9.+/=!\#%&'*/?^`.{|}~_-]+\.[a-z]+$#", $_POST['email']) 
+			&& preg_match('#[^\n\r]#', $_POST['subject'])
+			&& (strlen($_POST['subject'])<=200)
+			&& (strlen($_POST['contenu'])<=10000))
 		{
-			sendMailContact(2, $mysqli->real_escape_string($_POST['email']), $mysqli->real_escape_string($_POST['subject']), $mysqli->real_escape_string($_POST['contenu']));	
-			$confirmationContact2= "Message envoyé";
+			sendMailContact(2, $_POST['email'], htmlentities($_POST['subject']), htmlentities($_POST['contenu']));
+			$confirmationContact= "Message envoyé";
+		}
+		else
+		{
+			$confirmationContact= "Erreur dans le formulaire";
 		}
 	}
 	else
 	{
-		$confirmationContact2= "Erreur aux questions de securité";
+		$confirmationContact= "Erreur aux questions de securité";
 	}
 }
 //Selection aléatoire nombre pour forme
