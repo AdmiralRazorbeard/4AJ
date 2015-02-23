@@ -21,6 +21,11 @@ if(isAdminRepas())
 		$dateDebut=date('Y-m-d', strtotime("first day of 2 months ago"));
 		$dateFin=date('Y-m-d', strtotime("last day of 2 months ago"));
 	}
+	elseif($_POST["moisChoisi"]==3)
+	{
+		$dateDebut=date('Y-m-d', strtotime("first day of 3 months ago"));
+		$dateFin=date('Y-m-d', strtotime("last day of 3 months ago"));
+	}
 	if($_POST["residenceChoisie"]==1)
 	//Choix de la résidence
 	{

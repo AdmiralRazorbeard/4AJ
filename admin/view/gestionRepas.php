@@ -7,7 +7,8 @@ include_once 'view/includes/header.php';
 					<em><a href="index.php?section=verrouillerRepas">Interdire/Bloquer des journées pour les repas</a></em><br />
 					<em><a href="index.php?section=menuSemaine">Ajouter un menu pour la semaine</a></em><br />
 					<em><a href="index.php?section=horaireLimite">Définir une période limite de réservation</a></em><br />
-					<em><a href="index.php?section=bloquerReservations">Activer/Désactiver la possibilité de réserver</a></em>
+					<em><a href="index.php?section=bloquerReservations">Activer/Désactiver la possibilité de réserver</a></em><br />
+					<em><a href="index.php?section=viderReservations">Vider les anciens enregistrements de réservations</a></em>
 				</p>
 				<hr>
 				<div id="repasAnneFrank">
@@ -117,16 +118,17 @@ include_once 'view/includes/header.php';
 				<br>
 				<p>
 					<em>NB: Dans le tableau, H signifie Halal. Exemple: 15/(H:4) signifie 15 réservations dont 4 Halal.</em>
+					<input type="submit" onclick="location.href='index.php?section=generationNombreRepas';" value="Télécharger le récapitulatif du tableau ci-dessus">
 				</p>
 				<hr>
 				<br>
-				<input type="submit" onclick="location.href='index.php?section=generationNombreRepas';" value="Télécharger le récapitulatif du tableau ci-dessus">
 				<form action="index.php?section=generationRecapitulatif" method="post">
 					<input value="Télécharger le récapitulatif des réservations membres" type="submit">
 					<select name="moisChoisi">
 							<option value="0"><?php echo $mois[date('n', strtotime('now'))]; ?></option>
 							<option value="1"><?php echo $mois[date('n', strtotime("first day of last month"))]; ?></option>
 							<option value="2"><?php echo $mois[date('n', strtotime("first day of 2 months ago"))]; ?></option>
+							<option value="3"><?php echo $mois[date('n', strtotime("first day of 3 months ago"))]; ?></option>
 					</select>
 					<select name="residenceChoisie">
 							<option value="1">Anne Frank</option>
@@ -138,6 +140,7 @@ include_once 'view/includes/header.php';
                     <?php } ?>
 					</select>
 				</form>
+				<em>NB: Veillez à télécharger ce fichier tous les mois pour chaque résidence (le téléchargement peut prendre quelques secondes).</em>
 			</div>
 			<script type="text/javascript">
 				$(document).ready(function() {

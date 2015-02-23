@@ -92,7 +92,7 @@ function allMembre($id, $membreParPage, $page)
 	$limitMax = $membreParPage*$page;
 	$limitMin = $limitMax-$membreParPage;
 	$allMembre = NULL;
-	$tmp = run('SELECT membre.id as id, nomMembre, prenomMembre
+	$tmp = run('SELECT membre.id as id, nomMembre, prenomMembre, mail
 				FROM membre,membrefonction 
 				WHERE membre.id = membrefonction.id
 				AND membrefonction.id_fonction='.$id.'
@@ -103,6 +103,7 @@ function allMembre($id, $membreParPage, $page)
 		$allMembre[$donnees->id]['id'] = $donnees->id;
 		$allMembre[$donnees->id]['nom'] = htmlspecialchars($donnees->nomMembre);
 		$allMembre[$donnees->id]['prenom'] = htmlspecialchars($donnees->prenomMembre);
+		$allMembre[$donnees->id]['mail'] = $donnees->mail;
 	}
 	return $allMembre;
 }
@@ -117,7 +118,7 @@ function allMembreNotIn($idFonction, $membreParPage, $page)
 	$limitMax = $membreParPage*$page;
 	$limitMin = $limitMax-$membreParPage;
 	$allMembreNotIn = NULL;
-	$tmp = run('	SELECT membre.id as id, nomMembre, prenomMembre FROM membre
+	$tmp = run('	SELECT membre.id as id, nomMembre, prenomMembre, mail FROM membre
 					WHERE (id, nomMembre, prenomMembre)
 					NOT IN (
 					    SELECT membre.id, nomMembre, prenomMembre FROM membre,membrefonction
@@ -130,6 +131,7 @@ function allMembreNotIn($idFonction, $membreParPage, $page)
 		$allMembreNotIn[$donnees->id]['id'] = $donnees->id;
 		$allMembreNotIn[$donnees->id]['nom'] = htmlspecialchars($donnees->nomMembre);
 		$allMembreNotIn[$donnees->id]['prenom'] = htmlspecialchars($donnees->prenomMembre);
+		$allMembreNotIn[$donnees->id]['mail'] = $donnees->mail;
 	}
 	return $allMembreNotIn;
 }

@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<title>4AJ, un tremplin pour les jeunes</title>
-		<link rel="stylesheet" type="text/css" href="/admin/view/style.css" />
+		<link rel="stylesheet" type="text/css" href="view/style.css" />
 		<link rel="icon" type="image/png" href="view/graphicRessources/favicon.jpg" >
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<meta charset="utf-8">

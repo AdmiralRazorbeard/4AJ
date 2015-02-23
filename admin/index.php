@@ -71,6 +71,10 @@ elseif ($_GET['section'] == 'bloquerReservations')
 {
 	include_once('controller/bloquerReservations.php');
 }
+elseif ($_GET['section'] == 'viderReservations')
+{
+	include_once('controller/viderReservations.php');
+}
 elseif ($_GET['section'] == 'generationListeMembres')
 {
 	include_once('controller/generationListeMembres.php');
