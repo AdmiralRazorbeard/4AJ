@@ -39,7 +39,18 @@ function allFonction()
 	}
 	return $fonction;
 }
-
+function styleMail($contenu)
+{
+	$contenu = preg_replace('#&lt;gras&gt;(.+)&lt;/gras&gt;#', '<b>$1</b>', $contenu);
+	$contenu = preg_replace('#&lt;italique&gt;(.+)&lt;/italique&gt;#', '<em>$1</em>', $contenu);
+	$contenu = preg_replace('#&lt;souligne&gt;(.+)&lt;/souligne&gt;#', '<span class="underline">$1</span>', $contenu);
+	$contenu = preg_replace('#&lt;taille valeur=&quot;(.+)&quot;&gt;(.+)&lt;/taille&gt;#', '<span class="$1">$2</span>', $contenu);
+	$contenu = preg_replace('#&lt;lien url=&quot;(.+)&quot;&gt;(.+)&lt;/lien&gt;#', '<a href="$1">$2</a>', $contenu);	
+	$contenu = preg_replace('#&lt;mail url=&quot;(.+)&quot;&gt;(.+)&lt;/mail&gt;#', '<a href="mailto:$1">$2</a>', $contenu);	
+	$contenu = preg_replace('#&lt;titre&gt;(.+)&lt;/titre&gt;#', '<h1>$1</h1>', $contenu);
+	$contenu = preg_replace('#&lt;stitre&gt;(.+)&lt;/stitre&gt;#', '<h3>$1</h3>', $contenu);
+	return $contenu;
+}
 function addActualite($titre, $contenu, $idMembre)
 // Ajoute une actualité
 {
@@ -73,7 +84,7 @@ function envoieMail($lastNews)
 				AND recevoirMailQuandNews = 1');
 	while($donnees = $tmp->fetch_object())
 	{
-		sendMail($donnees->mail, htmlentities($infoLastNews->titreNewsFR), htmlentities($infoLastNews->contenuNewsFR));
+		sendMail($donnees->mail, htmlspecialchars($infoLastNews->titreNewsFR), htmlentities($infoLastNews->contenuNewsFR));
 	}
 }
 function sendMail($email, $titre, $contenu)
@@ -102,7 +113,7 @@ function sendMail($email, $titre, $contenu)
 	//==========
 	 
 	//=====Définition du sujet.
-	$sujet = "Nouvelle actualité sur 4aj.eu || ".$titre;
+	$sujet = "Nouvelle actualite sur 4aj.eu || ".$titre;
 	//=========
 	 
 	//=====Création du header de l'e-mail.

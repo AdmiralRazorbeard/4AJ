@@ -21,7 +21,7 @@ include_once 'view/includes/submenuPlateformeLogement.php';
 						<?php if($listePdf != NULL){
 						 		foreach($listePdf as $key => $value){ 
 						?>	
-							Lien vers le fichier <?php echo ($value['nomFichier']); ?>:<br>index.php?section=telechargerAutresPdf&amp;page=<?php echo ($value['page']); ?>&amp;file=<?php echo ($value['nomFichier']); ?><br>
+							Lien vers le fichier <?php echo ($value['nomFichier']); ?>:<br>http://www.4aj.eu/index.php?section=telechargerAutresPdf&amp;page=<?php echo ($value['page']); ?>&amp;file=<?php echo ($value['nomFichier']); ?><br>
 							<a href="index.php?section=plateformeLogement&amp;delete=<?php echo ($value['nomFichier']); ?>">Supprimer le fichier <?php echo ($value['nomFichier']); ?></a>&emsp;&emsp;Téléchargements: <?php echo $value['telechargement']; ?><br><br>
 						<?php } } 
 					} ?>

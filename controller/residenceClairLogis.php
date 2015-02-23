@@ -16,7 +16,7 @@ if(!empty($_POST['subject'])
 			&& (strlen($_POST['subject'])<=200)
 			&& (strlen($_POST['contenu'])<=10000))
 		{
-			sendMailContact(4, $_POST['email'], htmlentities($_POST['subject']), htmlentities($_POST['contenu']));
+			sendMailContact(4, $_POST['email'], htmlspecialchars($_POST['subject']), htmlentities($_POST['contenu']));
 			$confirmationContact= "Message envoyé";
 		}
 		else
