@@ -164,9 +164,9 @@ if(!empty($_POST['mail']) && !empty($_POST['password']))
 		// 1,5 si le mail est valide mais pas le password
 		if($nbreMembre == 1)
 		{
-			$message = "Vous êtes connecté.";
 			$_SESSION['log'] = 1;
 			$_SESSION['mail'] = $mail;
+			header('location:index.php?section='.$_GET['section']);
 		}
 		elseif($nbreMembre == 1.5)
 		{

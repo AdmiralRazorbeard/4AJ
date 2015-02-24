@@ -75,6 +75,8 @@ function envoieMail($lastNews)
 {
 	// Récupère les infos de la news
 	$infoLastNews = run('SELECT titreNewsFR, contenuNewsFR FROM news WHERE id='.$lastNews)->fetch_object();
+	$titre = htmlspecialchars($infoLastNews->titreNewsFR);
+	$contenu = styleMail(htmlentities($infoLastNews->contenuNewsFR));
 	// Requete pour avoir les mails de ceux qui veulent recevoir des news
 	$tmp = run('SELECT DISTINCT mail
 				FROM newsfonction, membrefonction, membre
@@ -84,7 +86,7 @@ function envoieMail($lastNews)
 				AND recevoirMailQuandNews = 1');
 	while($donnees = $tmp->fetch_object())
 	{
-		sendMail($donnees->mail, htmlspecialchars($infoLastNews->titreNewsFR), htmlentities($infoLastNews->contenuNewsFR));
+		sendMail($donnees->mail, $titre, $contenu);
 	}
 }
 function sendMail($email, $titre, $contenu)

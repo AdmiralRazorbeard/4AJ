@@ -2,14 +2,14 @@
 include_once 'view/includes/header.php';
 ?>
 			<div class="contentWrapper">
-				<h1>Changer de mot de passe</h1>
+				<h1><?php langue('Changer de mot de passe', 'Change your password'); ?></h1>
 				<?php if(!empty($error)) { ?>
 				<p>
 					<em><?php echo $error; ?></em>
 				</p>
 				<?php } ?>
 				<form method="post">
-					<label for="email"><?php langue('Votre adresse mail : ', 'Your mail adress : '); ?></label>
+					<label for="email"><?php langue('Votre adresse mail : ', 'Your mail address : '); ?></label>
 					<input required type="text" name="email" id="email"/><br>
 					<p class="hp">
     					<label>Si vous êtes un humain, laissez ce champ vide*</label>
