@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>4AJ, un tremplin pour les jeunes</title>
-		<link rel="stylesheet" type="text/css" href="/mobile/view/styleMobile.css" />
+		<link rel="stylesheet" type="text/css" href="view/styleMobile.css" />
 		<link rel="icon" type="image/png" href="view/graphicRessources/favicon.jpg" >
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
@@ -249,5 +249,9 @@
 				});
 			</script>
 		</div>
+		<?php
+		//On referme la connexion
+		$mysqli->close();
+		?>
 	</body>
 </html>

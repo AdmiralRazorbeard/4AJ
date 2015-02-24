@@ -9,4 +9,8 @@
 		?>
 	</span>
 	<a href="index.php?section=mentionsLegales">Mentions légales &amp; CGU</a>
+	<?php
+	//On referme la connexion
+	$mysqli->close();
+	?>
 </div>
