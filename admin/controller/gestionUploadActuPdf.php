@@ -12,7 +12,7 @@ if(!empty($_GET['delete']) && !empty($_GET['section']))
 if(!empty($_POST['page']) && !empty($_POST['nomFichier']) && strlen($_POST['nomFichier']) < 50 && !ctype_space($_POST['nomFichier']))
 // Si l'utilisateur a choisi une variable ainsi qu'a mis un fichier
 {
-	if ($_FILES['fichier']['error'] == 0 && $_FILES['fichier']['size'] <= 5242880 && (substr(strrchr($_FILES['fichier']['name'], '.'), 1) == $extensionsOk))
+	if ($_FILES['fichier']['error'] == 0 && $_FILES['fichier']['size'] <= 10485760 && (substr(strrchr($_FILES['fichier']['name'], '.'), 1) == $extensionsOk))
 	{
 		//On récupère l'extension d'une autre manière
 		$extension_fichier = pathinfo($_FILES['fichier']['name'], PATHINFO_EXTENSION);

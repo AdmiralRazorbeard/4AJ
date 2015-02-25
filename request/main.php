@@ -46,7 +46,7 @@ function listeActualite()
 			$actu = run('	SELECT DISTINCT news.id AS idNews,  news.titreNewsFR, news.contenuNewsFR, DATE_FORMAT(news.timestampNews, "%d/%m/%y") AS timestampNews
 					 		FROM news 
 					 		ORDER BY news.timestampNews DESC
-							LIMIT 3');
+							LIMIT 6');
 		}
 		else
 		{	// seulement la fonction du membre
@@ -58,7 +58,7 @@ function listeActualite()
 					 		AND fonction.id = membrefonction.id_fonction
 					 		AND membre.mail = "'.$_SESSION["mail"].'"
 					 		ORDER BY news.timestampNews DESC
-							LIMIT 3');
+							LIMIT 6');
 		}
 	}
 	else
@@ -69,7 +69,7 @@ function listeActualite()
 				 		AND fonction.id = newsfonction.id_fonction 
 				 		AND newsfonction.id_fonction = 1
 				 		ORDER BY news.timestampNews DESC
-						LIMIT 3');		
+						LIMIT 6');		
 	}
 	while($tmp = $actu->fetch_object())
 	{

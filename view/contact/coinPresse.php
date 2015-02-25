@@ -7,11 +7,11 @@ include_once 'view/includes/header.php';
 					<div id="uploaderFichier">
 					<h3>Exporter un fichier PDF</h3>
 					<form method="post" enctype="multipart/form-data">
-						<input type="hidden" name="MAX_FILE_SIZE" value="5242880" />
+						<input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
 						<input type="hidden" name="page" value="coinPresse" />
 						<label>Nom du fichier (sans accents):</label>
 						<input type="text" name="nomFichier"/><br>
-						<label>Selectionner le fichier (5Mo maximum) :</label>
+						<label>Selectionner le fichier (10Mo maximum) :</label>
 						<input type="file" name="fichier"/><br>
 						<input type="submit" value="Envoyer"/>
 					</form>

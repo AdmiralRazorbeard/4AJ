@@ -38,9 +38,30 @@ if(!empty($_POST['semaine']) && !empty($_POST['residenceChoisie']))
 				//insertion du nouveau fichier
 				$resultat = move_uploaded_file($_FILES['weekFile']['tmp_name'],'../fichierPDF/menu/'.$nomFichier);
 				run('INSERT INTO menusemaine(semaine, annee, residence, tailleFichier) VALUES('.$tmp[0].', '.$tmp[1].', '.$residenceChoisie.', '.$_FILES['weekFile']['size'].')');
-				//suppression des anciens fichiers
+				/////////////////////////////////////////////////////////////////////
+				//suppression des anciens fichiers menu (qui ne sont plus d'actualité)
+				/////////////////////////////////////////////////////////////////////
 				$thisWeek = (int)date('W', strtotime('Monday this week'));
 				$thisYear = (int)date('o', strtotime('Monday this week'));
+				$menuASupprimer = run('SELECT semaine, annee FROM menusemaine WHERE annee < '.$thisYear.' UNION SELECT semaine, annee FROM menusemaine WHERE annee ='.$thisYear.' AND semaine <'.$thisWeek);
+				if($menuASupprimer){
+					while($donnees = $menuASupprimer->fetch_object())
+					{
+						$semaineMenu = (string)($donnees->semaine);
+						if($donnees->semaine <10){
+							$semaineMenu = "0".$semaineMenu;
+						}
+						$anneeMenu = (string)($donnees->annee);
+						if(file_exists('../fichierPDF/menu/'.$anneeMenu.'_'.$semaineMenu.'_1.pdf')){
+						//suppression menu anne frank
+							unlink('../fichierPDF/menu/'.$anneeMenu.'_'.$semaineMenu.'_1.pdf');
+						}
+						if(file_exists('../fichierPDF/menu/'.$anneeMenu.'_'.$semaineMenu.'_2.pdf')){
+						//suppression menu clair logis
+							unlink('../fichierPDF/menu/'.$anneeMenu.'_'.$semaineMenu.'_2.pdf');
+						}
+					}
+				}
 				run('DELETE FROM menusemaine WHERE annee <'.$thisYear);
 				run('DELETE FROM menusemaine WHERE annee ='.$thisYear.' AND semaine <'.$thisWeek);
 			}

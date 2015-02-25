@@ -60,7 +60,7 @@ function addActualite($titre, $contenu, $idMembre)
 function CleanActualite()
 // Cela supprimer au fur et à mesure les anciennes news pour éviter de surcharger la base
 {
-	$timestamp1AnAvant = date('Y-m-d G:i:s', strtotime('1 year ago'));
+	$timestamp1AnAvant = date('Y-m-d G:i:s', strtotime('2 year ago'));
 	run('DELETE FROM newsfonction WHERE timestampNews<"'.$timestamp1AnAvant.'"');
 	run('DELETE FROM news WHERE timestampNews<"'.$timestamp1AnAvant.'"');
 }

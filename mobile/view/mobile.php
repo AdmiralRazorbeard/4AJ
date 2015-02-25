@@ -135,7 +135,7 @@
 			<?php }
 					} ?>
 				<script type="text/javascript">
-				$(document).on("pageinit", function() {
+				$(document).on('pageinit', function() {
 					var weekValueAnneFrank=<?php echo $semaineDePlus; ?>;
 			       	$('body').on('swipeleft', '#repasAnneFrank', function(event) {
 			       		event.stopImmediatePropagation();
