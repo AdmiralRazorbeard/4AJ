@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors','On');
 session_start();
 date_default_timezone_set('Europe/Paris');
 

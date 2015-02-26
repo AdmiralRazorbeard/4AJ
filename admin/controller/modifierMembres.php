@@ -18,7 +18,7 @@ if(!empty($_POST['id']) && is_numeric($_POST['id']) && !empty($_POST['nom']) && 
 	$telPortable = '';
 	$password = '0';
 	$isSuperAdmin = '0';
-	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 110 && !preg_match("#[^a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['adresse']) && !ctype_space($_POST['adresse']))
+	if(!empty($_POST['adresse']) && strlen($_POST['adresse']) <= 110 && !preg_match("#[^0-9a-zA-ZÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ -]#", $_POST['adresse']) && !ctype_space($_POST['adresse']))
 	{
 		$adresse = $mysqli->real_escape_string($_POST['adresse']);
 	}
