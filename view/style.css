@@ -681,6 +681,11 @@ font-size: 15px;
 #visiteurs{
     margin-right: 20px;
 }
+/*  --- Style pour les email qui sont encodés par javascript --  */
+.Emailcode{
+    color:black;
+    text-decoration:none;
+}
 
 /*  ----------------  */
 /*  --- TOOL BOX ---  */
